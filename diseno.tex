@@ -1,0 +1,271 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%                  															       %%%%%%
+%%%%%%%                                      CAPITULO 3: DISEÑO DE LA APLICACIÓN                                   %%%%%%
+%%%%%%%  																	       %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Diseño de la aplicación}
+\paragraph{}
+El primer paso a la hora de desarrollar cualquier aplicación es el diseño de la misma. Este proceso engloba tanto el diseño visual como la elección de herramientas a utilizar según los requisitos de dicha aplicación. En este capítulo se expone todo lo relacionado con este proceso.
+\section{Tipo de arquitectura}
+\paragraph{}
+El modelo de arquitectura más habitual es el \textbf{MVC} (Modelo Vista Controlador) (figura \ref{fig:mvcpattern}). El modelo correspondería con la arquitectura de base de datos y el diseño de la misma, la vista son las interfaces o plantillas que se muestran al usuario y el controlador es el encargado de dotar a la aplicación de lógica y funcionalidad. Existen otros tipos de arquitectura tales como \textbf{MVVM} (figura \ref{fig:mvvmpattern}), donde el controlador del patrón MVC se sustituye por VM o \emph{ViewModel} que establece que cada vista posee lógica y un sistema de \emph{data-binding} entre plantillas.
+
+\begin{figure}[htbp]
+    \centering
+    \subfigure[Patrón de arquitectura MVC]{
+   	 \includegraphics[width=1\textwidth]{mvc.png}
+    	\label{fig:mvcpattern}
+    }
+    \subfigure[Patrón de arquitectura MVVM]{
+    	\includegraphics[width=1\textwidth]{mvvm.png}
+	 \label{fig:mvvmpattern}
+    }
+    \caption{Patrones de arquitectura}
+    \label{fig:patterns}
+\end{figure}
+
+\paragraph{}
+La elección del patrón de arquitectura a usar es importante puesto que esa decisión nos limitará a la hora de usar determinadas herramientas.
+\paragraph{}
+Meteor posee una arquitectura peculiar. En la documentación se expone que posee una arquitectura MVC. Pero, dado que sus vistas poseen lógica y existe data-binding el patrón que según mis conocimientos se basa es MVVM. Por este motivo el patrón de arquitectura utilizado en esta aplicación será el MVVM (Model View ViewModel).
+\section{Búsqueda de herramientas de desarrollo}
+\paragraph{}
+Partiendo de los requisitos establecidos que caracterizarán la aplicación podemos afirmar que necesitamos encontrar herramientas que nos permitan construir una aplicación en tiempo real, realizar grabaciones de audio, una interfaz con UX como parámetro fundamental y que trabaje de manera óptima.
+
+\subsubsection{Aplicación en tiempo real y prototipado rápido}
+\paragraph{}
+Necesitamos algún framework o plataforma que trabaje con el concepto de reactividad o que lo simule. Elegimos MeteorJS por su flexibilidad y su asombroso concepto de reactividad. Al utilizar esta plataforma no tenemos que preocuparnos de qué frameworks usar para desarrollar el cliente por un lado y el servidor por otro o como gestionar los modelos de datos porque Meteor ya incluye toda la lógica necesario y según su paradigma o patrón de trabajo engloba ambos entornos. Además no hay que declarar el modelo de datos de forma tradicional o como en otras plataformas y frameworks ya que Meteor incluye desde el principio MongoDB como su base de datos. 
+\paragraph{}
+Para el enrutamiento es precisa otra herramienta que nos proporcione la funcionalidad de especificar a qué recurso pertenece una plantilla y que datos asociamos a ella. Para ello existen varios paquetes para Meteor que realizan este proceso como IronRouter o FlowRouter. Ambos igual de válidos pero para este proyecto se ha optado por IronRouter, ya que dispone de mayor documentación.
+\paragraph{}
+Para el concepto de publicaciones y subscripciones de Meteor usaremos publishComposite, un paquete que permite realizar publicaciones compuestas (varias colecciones con relación de dependencia reactiva) y que siguen manteniendo el principio de reactividad y optimizando nuestro sistema de subscripciones. Sin este paquete realizar esta labor es más compleja.  
+\paragraph{}
+Otro aspecto a tener en cuenta es la gestión de paquetes. En este ámbito Bower es excelente. Pero usando Meteor no lo necesitamos ya que posee su propio gestor de paquetes y mediante su CLI podemos añadir, actualizar y borrar paquetes de nuestro proyecto.
+
+\subsubsection{Grabaciones de audio}
+\paragraph{}
+La grabación sobre editor con audio constituye el elemento base de esta aplicación. Existen numerosas formas de grabar audio vía web y algunas API de sitios como SoundCloud incorporan un grabador de audio directamente. Aunque esta hubiera sido la vía más rápida, la verdad es que no habría sido la más flexible, ya que el hacerlo de esta manera requería que el uploading se efectuara en SoundCloud. Por este motivo se ha utilizado la tecnología de WebRTC para esta tarea y construido un grabador modular que puede incorporarse facilmente a otros proyectos y que además si se desea usar el servicio de hosting de SoundCloud seguiría siendo factible. 
+
+\subsubsection{Interfaz con UX como parámetro de diseño fundamental}
+\paragraph{}
+Toda aplicación debe ser atractiva al usuario y no sólo en términos visuales sino en eficacia a la hora de gestionar acciones. Existen numerorsos frameworks y bibliotecas frontend para desarrollar dicha labor correctamente tales como Foundation, Bootstrap o Pure.css. En este proyecto nos hemos decantado por la biblioteca frontend Bootstrap, quizá la más explotada hasta la fecha. Su sistema de maquetación se ha convertido en estándar para el diseño web. También nos hemos visto con la necesidad de dotar de flexibilidad a las plantillas cuando el sistema de columnas de Bootstrap no mostraba los resultados deseados y para ello hemos utilizado la tecnología Flexbox.
+\paragraph{}
+Hoy en día trabar con CSS o CSS3 puro se podría considerar un error, ya que existen preprocesadores que permiten una mejor arquitectura para nuestros estilos como son Less y Sass. Ambos son muy parecidos, aunque Sass es mucho más legible. Por ello se han desarrollado las hojas de estilos mediante este preprocesador utilizando un paquete.
+
+
+
+
+
+\section{Diseño entidades y base de datos}
+\paragraph{}
+Esta fase del diseño es primordial pues sin unas entidades bien definidas no sería posible la organización del contenido del sitio ni su correcta presentación. El diseño de entidades se basa en las necesidades del usuario al utilizar la aplicación y lo que queremos que dicha aplicación le aporte. La base de datos será la traducción del modelo entidad relación diseñado a partir de las características de cada entidad y su relación con las demás.
+
+\subsection{Entidades}
+\paragraph{}
+Hemos dicho que las grabaciones en esta aplicación son el elemento atómico o base. Por lo que aquí tenemos nuestra primera entidad de la aplicación.
+\paragraph{}
+ Ahora hay que pararse a pensar y a hacernos preguntas del tipo ¿Qué le gustaría hacer al usuario con esas grabaciones?¿Cómo estarían organizadas?¿Existen límites?¿Cuál es el fin de la grabación?.
+Esto nos lleva a crear un diseño con un enfoque didáctico y funcional, el cual corresponde con la finalidad de realizar cualquier grabación. Por esto esta aplicación lo que pretende es crear una Comunidad para desarrolladores y cualquiera que le interese el mundo del software. Cada usuario podrá compartir sus conocimientos y sus inquietudes, dudas en lo que a programación se refiere. Vista esta dualidad debemos establecer dos ámbitos en la aplicación. Uno correspondería con el aprendizaje y otro a la enseñanza. En definitiva se basa en el intercambio de conocimientos sobre software.
+\paragraph{}
+Por este motivo establecemos las entidades de Canal y de Lección. El elemento canal debe estar basado en un tema específico y cualquier usuario puede contribuir con sus conocimientos sobre el tema. Sería una especie de foro, pero con preguntas y respuestas propuestas mediante grabación de audio sobre editor. El elemento lección se diferencia del elemento canal en que sólo el autor de dicho elemento puede generar contenido de forma directa. Este contenido se generará y se organizará en torno a secciones, una nueva entidad. Las secciones tendrán un título y estará compuestas de una o más grabaciones. Además para una mejor experiencia de usuario estas grabaciones deberán componer una lista de reproducción. Esta lista tendrá las opciones de reproducción automática y de reproducción circular (al finalizar con la última comenzará con la primera de la lista). 
+\paragraph{}
+Las lecciones deben ser participativas. No es muy didáctico que sólo el creador de la lección sea el que comparta sus conocimientos. Aunque sí que es verdad que los contenidos inmediatos de la lección sólo son creados por el autor, esos contenidos pueden ser respondidos o corregidos mediante una nueva grabación que no formará parte de la sección pero que sí quedará almacenada en la lista de respuestas de dicha grabación inicial. Con esto surge la necesidad de que a cada grabación pueda grabarse una respuesta.
+\paragraph{}
+Otra entidad fundamental son los propios usuarios ya que las mayorias de las entidades que estamos describiendo mantienen una relación directa con ellos. 
+\paragraph{}
+Ahora que ya tenemos nuestras cuatro entidades básicas: Grabaciones, Canales, Lecciones y Usuarios, podemos hacernos nuevas preguntas sobre funcionalidades de la aplicación y posibles acciones de los usuarios sobre dichas entidades, incluyendo a los mismos usuarios. 
+\paragraph{}
+Para una mejor experiencia queremos realizar sugerencias de contenido a los usuarios por lo que necesitamos conocer sus pasos a través de la aplicación y una forma de lograrlo es fijándonos en sus gustos. Para ello cada entidad básica podrá ser votada y comentada. Surgen dos nuevas entidades: comentarios y votos. Con esto, las sugerencias se dividirán en dos secciones principales: 
+\begin{itemize}
+	\item Populares: los más votados
+	\item Recomendados: se filtrarán según las etiquetas de los elementos votados por el usuario.
+\end{itemize}
+\paragraph{}
+Puesto que pensamos en la aplicación como una comunidad de desarrolladores, debemos de existir alguna forma de comunicación entre los usuarios a parte de los comentarios y las grabaciones. Aquí surge la entidad de las conversaciones y nuevas preguntas: ¿conversaciones privadas o públicas?¿con qué usuarios puedo establecer una conversación?¿desde dónde? Para responder a estas preguntas necesitamos un punto de partida y ese es la página de perfil de cada usuario. Desde cualquier entidad un usuario podrá acceder a la página de perfil del autor y realizar una petición de contacto. Ahora han surgido dos nuevas entidades: relaciones y peticiones de contacto (Relations y Requests). Una vez se establezca la relación de contacto entre dos usuarios, éstos podrán mantener una conversación. Con la creación de conversaciones surgen dos nuevas entidades: 
+\begin{itemize}
+	\item Mensajes (Messages): mensajes que se intercambian en cada conversación.
+	\item Alertas (ConversationAlerts): notificará al usuario de cualquier cambio cuando no se encuentre en la página de la conversación.
+\end{itemize}
+Para más información sobre la entidad conversaciones y sus entidades agregadas y módulos ver capitulo ...
+\paragraph{}
+Los usuarios deben estar al tanto de lo que ocurre en la aplicación. Para esto se crea el módulo de notificaciones. A cada usuario se le notificará todo lo relacionado a aquello que se subscriba. Por esto se podrá subscribir a cada lección y cada canal y esto supone otra entidad distinta: subscripciones (usersEnrolled). Las notificaciones no se basan solamente en las subscripciones sino que también se le notificará al usuario todo lo relacionado con él. Este módulo se explicará con más detalle en el capítulo 4. 
+\paragraph{}
+Finalmente, tras este diseño, contamos con las siguientes entidades: 
+\begin{itemize}
+	\item Grabaciones (Records)
+	\item Documentos(Documents)
+	\item Canales (Channels)
+	\item Lecciones (Lessons)
+	\item Etiquetas (Tags)
+	\item Comentarios (Comments)
+	\item Usuarios (Users)
+	\item Relaciones (Relations)
+	\item Peticiones de contacto (Requests)
+	\item Conversaciones (Conversations)
+	\item Mensajes (Messages)
+	\item Subscripciones (UsersEnrolled)
+	\item	 Alertas de conversación (ConversationAlerts)
+	\item Notificaciones (Notifications)
+\end{itemize}
+\subsection{Base de datos}
+Una vez realizado el diseño de entidades, necesitamos conocer las relaciones entre ambas para diseñar la base de datos. Para ello el primer paso es realizar un diagrama entidad-relación, que en nuestro caso es el siguiente: 
+(diagrama entidad relación)
+\paragraph{}
+A través de este diagrama podemos extraer la información necesaria para diseñar los documentos de cada entidad que se almacenarán en la base de datos. 
+\paragraph{}
+Por ejemplo el diseño del documento para una grabación contendrá la siguiente información: 
+\begin{itemize}
+	\item \_id: será el identificador único para el documento en la base de datos.
+	\item author: el identificador del documento usuario creador de dicha grabación.
+	\item description: la descripción. 
+	\item RC: será la lista de eventos grabados sobre el editor indexados por una marca de tiempo (instante de grabación).
+	\item createAt: fecha de creación.
+	\item docs\_count, votes\_count, replies\_count, comments\_count: contadores para documentos, votos, respuestas y comentarios.
+	\item channel\_id: identificador del canal al que pertenece.
+	\item lesson\_id: identificador de la lección a la que pertenece.
+	\item section\_id: identificador de la sección a la que pertenece.
+	\item order: orden dentro de una lista de reproducción.
+	\item tags: etiquetas
+	\item img: miniatura de la grabación.
+	\item duration: duración de la grabación.
+	\item isReply: indica si es una respuesta a una grabación.
+	\item parent\_id: identificador de la grabación a la que responde.
+	\item track: objeto con los parámetros de identificación del audio almacenado en SoundCloud.
+	
+\end{itemize}
+
+En el apéndice \ref{appendix:documentsdesign} se encuentran todos los diseños de los documentos para cada una de las entidades.
+
+
+
+\section{Organización del contenido e interfaces}
+\paragraph{}
+Una vez establecidas las entidades que compondrán la aplicación, conocidas sus conexiones y traducidas éstas en documentos para la base de datos, es necesario diseñar interfaces que permitan organizar el contenido de la aplicación y la correcta comunicación y flujo de navegación entre dichas entidades. Esta organización del contenido la vamos a realizar a través de los recursos de nuestra aplicación y las conexiones a través del enrutamiento a dichos recursos. Por este motivo debemos diseñar correctamente la jerarquía de recursos. Para esto establecemos la siguiente categorización: recursos principales, de detalle, de creación, de configuración y especiales.
+
+\subsection{Recursos principales}
+\subsubsection{/ o raíz} 
+\paragraph{}
+Corresponde a la página de inicio o página inicial de la aplicación. Este recurso será dual en su contenido. Esta dualidad dependerá del estado en el que se encuentre el usuario. 
+\paragraph{}
+Si el usuario no ha iniciado sesión se mostraría la página de acceso a la aplicación donde se encontraría un formulario dinámico con la funcionalidad de inicio de sessión o de registro, además un enlace para poder recuperar la contraseña. También se mostraría un resumen de las funcionalidades de la aplicación y enlaces para los recursos de /tutorials y /features.
+\paragraph{}
+Si el usuario ha iniciado sesión o se ha registrado (una vez se ha creado el usuario se realiza el inicio de sesión) se visualizaría la página raíz de la aplicación. En este momento la mayoría de recursos compartirán el mismo diseño base que consta de un sidebar y de un contenedor para el contenido asociado. La idea de utilizar un sidebar es proporcionar al usuario un acceso rápido a todos los contenidos incluyendo los creados por él (recursos principales y recursos de detalle propios del usuario) y a las notificaciones y alertas asociadas a la acción de otros usuarios y de él mismo. Además de la opción de poder cerrar sesión en cualquier momento. El contenido asociado a este recurso constará de un espacio para recomendaciones basadas en la navegación del usuario dentro de la aplicación, un módulo ofreciendo el acceso directo a los contenidos más populares y un espacio para realizar búsquedas rápidas y dinámicas. El motor de búsqueda se basará en auto-completados dinámicos asociados a etiquetas predefinidas que categorizarán la búsqueda. 
+
+\subsubsection{/channels, /lessons y /records}
+\paragraph{}
+Proporciona acceso a todos los canales de la aplicación mediante una lista y al recurso de creación /channels/submit que permite la creación de un nuevo canal. Se podrán visualizar los canales ordenados por número de votos (populares) o por fecha de creación inversa (más actuales). Además el motor de búsqueda se encuentra accesible en esta página, aunque restringida la búsqueda sólo para mostrar canales.
+La misma funcionalidad la encontramos para los recursos /lessons y /records aunque asociada al tipo de contenido correspondiente.
+
+\subsection{Recursos de detalle}
+Esta categoría abarca todos los recursos destinados a un contenido específico. En cada uno de estos recursos se realizarán restricciones en función del rol del usuario que los visite: creador o visitante.
+\subsubsection{/channels/:id}
+\paragraph{}
+Este recurso corresponderá al canal que posea el identificador correspondiente al mismo. El contenido estará formado por una cabecera o header y por un sistema de tabs. 
+\paragraph{}
+La cabecera constará de dos imágenes (una destinada para la miniatura del canal a la hora de mostrarlo como elemento de una lista y otra como elemento de personalización), una caja para mostrar información sobre el autor, la fecha de creación y los contadores, botones para votar el canal y aceptar/cancelar subscripción, un enlace al recurso de edición del canal, una descripción y la lista de etiquetas del canal. 
+\paragraph{}
+El sistema de tabs estará formado por tres tabs: grabaciones, comentarios y usuarios. 
+\begin{itemize}
+	\item Grabaciones: miniaturas de las grabaciones asociadas al canal. Además un enlace al recurso de creación de grabaciones. 
+	\item Comentarios: comentarios del canal (se podrán comentar a su vez)
+	\item Usuarios: lista de usuarios subscritos al canal. Cada elemento será un enlace al perfil de cada usuario.
+\end{itemize}
+
+\subsubsection{/lessons/:id}
+\paragraph{}
+Este recurso es similar al recurso destinado a un canal, por lo tanto tendrá la misma estructura. Una cabecera y un sistema de tabs. La cabecera mostrará el mismo contenido que el de un canal aunque visualmente será diferente. El sistema de tabs estará formado por tres tabs: secciones, comentarios y usuarios. En la tab secciones se mostrará la lista de secciones que constituyen el contenido de la lección en sí. 
+\paragraph{}
+Cada sección es un elemento editable y contendrá grabaciones. Por lo que cada elemento sección tendrá un título, un orden dentro de la lección, un enlace para reproducir el contenido, un enlace para crear nuevas grabaciones dentro de la sección, contadores y otro sistema de tabs formado por dos tabs: uno que mostrará la lista de grabaciones y otro para configuración (se podrán remover o cambiar de orden las grabaciones correspondientes a esa sección).
+
+Al contrario que los canales, a las lecciones sólo el creador podrá añadirles contenido directamente y sólo los usuarios que se subscriban podrán explorar el mismo. Las subscripciones en los canales son para recibir notificaciones sobre nuevo contenido o como resultado de algún voto.
+
+\subsubsection{/records/:id}
+\paragraph{}
+Este recurso se organizará de forma similar a los anteriores (cabecera y sistema de tabs), aunque diferirá en gran parte su contenido y su funcionalidad. La cabecera estará compuesta por un título, una descripción, un botón para realizar votos, un reproductor y una caja de autor que contendrá información sobre el autor, contadores para la grabación y la fecha de creación.
+Además una serie de enlaces:
+\begin{itemize}
+	\item Enlace al canal/lección del que procede (si forma parte su contenido).
+	\item Enlace a la grabación de la que es respuesta (si es una respuesta).
+	\item Enlace al recurso creador de grabaciones para realizar una nueva grabación como respuesta. (sólo disponible cuando la reproducción ha terminado o ha sido pausada).
+\end{itemize} 
+\paragraph{}
+El sistema de tabs contendrá las siguientes tabs: 
+\begin{itemize}
+	\item Respuestas: se mostrará un timeline con las respuestas ordenadas según su instante de inicio correspondiente al instante de reproducción de la grabación.
+	\item Comentarios: lista de comentarios para la grabación.
+	\item Relacionados: lista de grabaciones relacionadas (contienen etiquetas comunes).
+\end{itemize}
+\subsubsection{/profile/:id}
+\paragraph{}
+Este recurso está destinado para mostrar los contenidos de cada usuario y funcionalidades destinadas tanto al propio usuario como al visitante como: 
+\begin{itemize}
+	\item usuario dueño: verificación de email, cambio de contraseña, acceso al perfil del servicio asociado (si lo hay), acceso al recurso de edición del perfil, acceso al tab conversaciones y al filtro peticiones del tab contactos, acceso al recurso de creación de conversaciones, canales, lecciones y grabaciones, acceso al recurso especial para enviar emails a los contactos con email y acceso al recurso especial para gestionar el borrado del contenido del propio usuario en la aplicación.
+	\item usuario visitante: botón para enviar una solicitud de contacto (si es que no lo es ya)/ botón para enviar un email y crear una nueva conversación con el usuario (si es que ya se ha establecido la relación de contacto) y acceso a la lista de contactos, canales, lecciones y grabaciones.
+\end{itemize}
+
+Visualmente, en la cabecera, se mostrará un banner y una foto de perfil personalizable.
+
+\subsubsection{/conversations/:id}
+Este recurso corresponderá a una conversación en concreto. La interfaz mostrará un asunto para la conversación, una lista de miembros, una lista de opciones (salir, añadir nuevos miembros, borrar historial de mensajes y echar a un miembro que sólo tendrá acceso el líder de la conversación), la lista de mensajes (los del usuario actual a la derecha y los demás a la izquierda) y un espacio para escribir cada mensaje en el que se podrán incorporar enlaces y emoticonos. 
+\paragraph{}
+
+\subsection{Recursos de creación}
+Estos recursos están destinados a la creación de nuevos elementos dentro de la plataforma. Por lo tanto habrá uno por cada tipo de entidad elemental o que posean un recurso detalle asociado.
+
+\subsubsection{/channels/submit}
+\subsubsection{/lessons/submit}
+\subsubsection{/records/submit}
+\subsubsection{/conversations/submit}
+
+
+\subsection{Recursos de configuración (settings resources)}
+\subsubsection{/channels/:id/edit}
+\subsubsection{/lesson/:id/edit}
+\subsubsection{/conversation/:id/edit}
+
+\subsection{Recursos especiales (special resources)}
+\subsubsection{/verifications}
+\subsubsection{/verify-email/:token}
+\subsubsection{/forgot-password}
+\subsubsection{/recover-password/:token}
+\subsubsection{/change-password}
+\subsubsection{/send-email}
+\subsubsection{/redirect}
+\subsubsection{/not-found}
+
+\section{Grabación, reproducción y respuesta sobre editor}
+\paragraph{}
+Como se ha dicho las grabaciones constituyen el elemento base del contenido de la aplicación. Por este motivo es necesario diseñar correctamente el funcionamiento del grabador y del reproductor. El usuario podrá crear una nueva grabación asociada a un canal o a una sección dentro de una lección o bien una grabación totalmente independiente. Además podrá realizar respuestas a estas grabaciones mediante una nueva grabación comenzando el proceso en cualquier punto de su reproducción. Esto hace que sea posible la explotación del contenido de la aplicación.
+\paragraph{}
+El primer paso es distinguir entre audio y video. El audio se grabará desde el micrófono del usuario y el vídeo mostrará el proceso de edición sobre un editor de código. Puesto que en la actualidad no existen herramientas a la hora de realizar una grabación sobre un elemento HTML a no ser que posea la etiqueta de canvas de HTML5, la grabación consistirá en realizar una captura de los eventos sobre el editor e indexarlos mediante el instante en el que ocurren durante la misma. 
+\paragraph{}
+El separar audio y vídeo en el proceso de grabación supone un problema a la hora de realizar la reproducción puesto que es necesario realizar la sincronización entre los dos elementos. Pero, con un buen enfoque, se puede lograr la sincronización completa.
+\paragraph{}
+Al realizar la búsqueda de herramientas elegimos una tecnología para grabar el audio (RTCRecorder) y un editor de código online que proporcionaba una API muy completa y sencilla (Ace Editor). Las características realmente útiles en este contexto de estas dos tecnologías son:
+\begin{itemize}
+	\item RTC Recorder: utiliza HTML5 Media para captar los servicios necesarios del usuario (acceder al micrófono) y para generar un grabador que mediante métodos nos permitirá comenzar la grabación, pausarla, finalizarla y conseguir el audio resultante en un objeto tipo Blob que podremos subir a nuestro servicio de almacenamiento en la nube.
+	\item Ace Editor: el API nos proporciona métodos para generar un editor a partir de un identificador HTML y poder capturar sus eventos y almacenarlos en una lista indexados, como se ha dicho, por su instante durante la grabación. Además podremos elegir el lenguaje de programación y el tema que queramos para nuestras grabaciones.
+\end{itemize}
+
+\paragraph{}
+Para hacer más completas cada grabación, se ha trabajado con la idea de grabación de documentos, es decir, cuando queramos realizar una grabación, deberemos crear al menos un documento o archivo con un título único e identificativo, escogeremos el lenguaje de programación y el tema en el editor. De esta forma una grabación estará compuesta por uno o más documentos. Por lo que hay que manejar los eventos creación y cambio de documento durante el proceso de grabación para que se muestre el cambio durante su reproducción. Ni que decir tiene que este enfoque afectará a la hora de realizar una respuesta. 
+\paragraph{}
+Las respuestas al igual que las grabaciones normales se realizarán en el recurso creador asociado /records/submit. Por este motivo será necesario dotar de lógica a la plantilla o interfaz capaz de diferenciar si se trata de una respuesta o de una grabación normal, y además se debe mantener el estado aunque el usuario refresque la página o retorne. Para ello se utilizarán queryStrings en el enrutamiento y la plantilla cargará unos datos u otros dependiendo de su existencia.
+\paragraph{}
+El progreso de grabación y reproducción quedan reflejados al igual que el flujo de grabaciones y respuestas en la figura \ref{fig:processandflow}.
+\begin{figure}[htbp]
+    \centering
+    \subfigure[Proceso de grabación]{
+   	 \includegraphics[width=1\textwidth]{recordProcess.png}
+    	\label{fig:recProgress}
+    }
+    \subfigure[Proceso de reproducción]{
+    	\includegraphics[width=1\textwidth]{playProcess.png}
+	 \label{fig:playProgress}
+    }
+    \caption{Procesos de grabación, reproducción y esquema de flujo.}
+    \label{fig:processandflow}
+\end{figure}
+\paragraph{}
+\section{Cloud Storage}
+Necesitamos un servicio de almacenamiento de audio en la nube. Para ello hemos elegido el servicio de SoundCloud. SoundCloud nos proporciona una API REST muy sencilla de utilizar mediante su sdk. Esta nos permitirá subir archivos tipo blob que acabamos de grabar, crear un stream para una pista de audio concreta y borrar contenidos de manera limpia. Para utilizar su servicio es necesario la autenticación del usuario y una aplicación que crearemos en el espacio para desarrolladores de soundcloud. A esta aplicación se le atribuirán unos credenciales que permitirán el acceso al API REST de SoundCloud. La configuración de dicha aplicación y el servicio dentro de nuestra plataforma se explicará con más detalle en el capítulo \ref{cap:desarrollo}.

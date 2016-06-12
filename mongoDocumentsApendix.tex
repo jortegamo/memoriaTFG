@@ -1,0 +1,172 @@
+\chapter{Diseño de documentos para Mongo}\label{appendix:documentsdesign}
+\begin{lstlisting}[caption=Diseño de documento para una grabación, label={recordMongo}]
+var record = {
+    _id: //idMongo,
+    author: //idUser,
+    title: //no único,
+    description: //(opcional),
+    RC: [{},...], //Funciones de reproducción sobre el editor
+    createAt: //fechaCreación,
+    docs_count: //contador de documentos,
+    votes_count: //contador de votos,
+    replies_count: //contador de respuestas,
+    comments_count: //contador de comentarios,
+    channel_id: //canal al que pertenece,
+    lesson_id: //lección a la que pertenece,
+    section_id: //sección a la que pertenece dentro de una lección,
+    order: ,//orden dentro de la lista de reproducción.
+    tags: [{},...], //etiquetas,
+    ready: //(boolean) para conocer la disponibilidad del record.
+    img: //imagen miniatura,
+    duration: //duración en milisegundos de la grabación.
+    isReply: //(boolean) indica si se trata de una respuesta a otro record.
+    parent_id: //idMongo del record al que responde.
+    track: //{_id: 'id del track en SoundCloud', link: 'link SoundCloud'}
+}; 
+\end{lstlisting}
+\begin{lstlisting}[caption=Diseño de documento para los documentos de cada grabación, label={documentMongo}]
+var doc = {
+    _id: //idMongo,
+    record: //record al que pertenecen,
+    doc: {
+         title: //titulo del documento (único para el record),
+         theme: //tema del editor tras último cambio,
+         mode: //tema del editor tras el último cambio,
+         value: //último estado del contenido del editor
+    },
+    start: //(boolean) (True)? comienzo grabación : se ha creado durante la grabación
+           //o es el estado final de otro inicial.
+};
+
+\end{lstlisting}
+\begin{lstlisting}[caption=Diseño de documento para un canal, label={channelMongo}]
+var channel = {
+    _id: //idMongo,
+    author: //id_user,
+    title: //único,
+    banner: //url img banner,
+    img: //url img miniatura,
+    description: //(opcional),
+    tags: //etiquetas [{name: //nombre etiqueta}],
+    createAt: //fechaCreación,
+    votes_count: //contador para los votos,
+    records_count: //contador para los records,
+    comments_count: //contador para los comentarios,
+    users_count: //contador para los usuarios que se subscriban
+};
+\end{lstlisting}
+\begin{lstlisting}[caption=Diseño de documento para una lección, label={lessonMongo}]
+var lesson = {
+    _id: //idMongo,
+    author: //id_user,
+    title: //único,
+    img: //url img miniatura,
+    description: //(opcional),
+    tags: //etiquetas [{name: //nombre etiqueta}],
+    createAt: //fechaCreación,
+    votes_count: //contador para los votos,
+    sections_count: //contador para las secciones,
+    comments_count: //contador para los comentarios,
+    users_count: //contador para los usuarios que se apunten
+}; 
+\end{lstlisting}
+\begin{lstlisting}[caption=Diseño de documento para una sección, label={sectionMongo}]
+var section = {
+    _id: //idMongo,
+    title: //único,
+    createAt: //fechaCreación,
+    records_count: //contador para los records,
+    lesson_id: //id de la lección a la que pertenece.
+    order: //orden de la sección.
+}; 
+\end{lstlisting}		
+\begin{lstlisting}[caption=Diseño de documento para cada subscripción de un usuario, label={userEnrolledMongo}]
+var userEnrolled = {
+    _id: //idMongo,
+    contextId: //id del canal o de la lección a la que se han subscrito,
+    user_id: //id del usuario
+};
+\end{lstlisting}
+\begin{lstlisting}[caption=Diseño de documento para una etiqueta, label={tagMongo}]
+var tag = {
+    _id: //idMongo,
+    name: //nombre para la etiqueta
+};
+\end{lstlisting}
+\begin{lstlisting}[caption=Diseño de documento para una conversación, label={conversationMongo}]
+var conversation = {
+    _id: //idMongo,
+    subject: //asunto de la conversación,
+    author: //líder de la conversación.
+    last_modified: //fecha de ultima modificación (cada vez que se inserta un mensaje),
+    members: //[{},...], array de miembros,
+    members_count: //contador para los miembros,
+    messages_count: //contador para los mensajes
+};
+\end{lstlisting}
+\begin{lstlisting}[caption=Diseño de documento para los mensajes, label={messageMongo}]
+var message = {
+    _id: //idMongo,
+    author: //id del creador,
+    createdAt: //fecha de creación,
+    message: //contenido del mensaje
+    conversation_id: //id de la conversación a la que pertenece.
+}
+\end{lstlisting}
+\begin{lstlisting}[caption=Diseño de documento para una alerta de conversación, label={conversationAlertMongo}]
+var conversationAlert = {
+    _id: //idMongo,
+    user_id: //usuario al que se le muestra la alerta,
+    conversation_id: //id de la conversación de la que procede,
+    alertsAllow: //flag (boolean) si es true se muestran las alertas y si es false no.
+    alerts_count: //contador de alertas
+};
+\end{lstlisting}
+\begin{lstlisting}[caption=Diseño de documento para cada usuario, label={userMongo}]
+var user = {
+    _id: //idMongo,
+    username: //nombre de usuario (único),
+    avatar: //avatar del usuario,
+    banner: //banner de la pagina de usuario,
+    description: //descripción del usuario,
+    status: //estado de conexión,
+    emails: //[{address: //emailAddress,verified: //Boolean,},...],
+    ... //otros campos establecidos por meteor-accounts.
+};
+\end{lstlisting}
+\begin{lstlisting}[caption=Diseño de documento para las peticiones de contacto, label={requestsMongo}]
+var request = {
+    _id: //idMongo,
+    requested: //{id: id_user, delete: boolean},
+    applicant: //{id: id_user, delete: boolean},
+    status: //(string) 'pending', 'accepted', 'refused'
+};
+\end{lstlisting}
+\begin{lstlisting}[caption=Diseño de documento para establecer la relación de contacto, label={relationMongo}]
+var relation = {
+    _id: //idMongo,
+    createdAt: //fecha creación,
+    users: //[id_user_requested, id_user_applicant],
+};
+\end{lstlisting}
+\begin{lstlisting}[caption=Diseño de documento para los comentarios, label={commentMongo}]
+var comment = {
+    _id: //idMongo,
+    author: //id del creador,
+    createdAt: //fecha de creación,
+    isReply: //(Boolean) indica si es una respuesta o no,
+    replies_count: //contador de respuestas,
+    message: //contenido del mensaje
+};
+\end{lstlisting}
+\begin{lstlisting}[caption=Diseño de documento para una notificación, label={notificationMongo}]
+var notification = {
+    _id: //idMongo,
+    to: //id_user destinatario,
+    from: //id_user origen,
+    parentContextTitle: //es el título de la lección, record o channel en el que se ha producido,
+    urlParameters: //son los parámetros para construir el enlace al clickar sobre la notificación,
+    type: //(string) 'channel', 'record', 'comment', etc,
+    message: //(string) de contenido HTML
+};
+\end{lstlisting}
