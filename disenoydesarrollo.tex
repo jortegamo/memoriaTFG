@@ -1,0 +1,98 @@
+\chapter{Diseño y desarrollo de la aplicación}
+\section{Tipo de Arquitectura}
+\paragraph{}
+El modelo de arquitectura más habitual es el \textbf{MVC} (Modelo Vista Controlador) (figura \ref{fig:mvcpattern}). El modelo correspondería con la arquitectura de base de datos y el diseño de la misma, la vista son las interfaces o plantillas que se muestran al usuario y el controlador es el encargado de dotar a la aplicación de lógica y funcionalidad. Existen otros tipos de arquitectura tales como \textbf{MVVM} (figura \ref{fig:mvvmpattern}), donde el controlador del patrón MVC se sustituye por VM o \emph{ViewModel} que establece que cada vista posee lógica y un sistema de \emph{data-binding} entre plantillas.
+
+\begin{figure}[htbp]
+    \centering
+    \subfigure[Patrón de arquitectura MVC]{
+   	 \includegraphics[width=1\textwidth]{mvc.png}
+    	\label{fig:mvcpattern}
+    }
+    \subfigure[Patrón de arquitectura MVVM]{
+    	\includegraphics[width=1\textwidth]{mvvm.png}
+	 \label{fig:mvvmpattern}
+    }
+    \caption{Patrones de arquitectura}
+    \label{fig:patterns}
+\end{figure}
+
+\paragraph{}
+La elección del patrón de arquitectura a usar es importante puesto que esa decisión nos limitará a la hora de usar determinadas herramientas.
+\paragraph{}
+
+\section{Búsqueda de herramientas}
+\paragraph{}
+Partiendo de los requisitos establecidos que caracterizarán la aplicación podemos afirmar que necesitamos encontrar herramientas que nos permitan construir una aplicación en tiempo real, realizar grabaciones de audio, una interfaz con UX (User eXperience) como parámetro fundamental y que trabaje de manera óptima.
+
+\subsubsection{Aplicación en tiempo real y prototipado rápido}
+\paragraph{}
+Necesitamos algún framework o plataforma que trabaje con el concepto de reactividad o que lo simule. Elegimos MeteorJS por su flexibilidad, su asombroso concepto de reactividad y por su patrón de trabajo que engloba el desarrollo del cliente y del servidor. Debido a esta elección utilizaremos MongoDB como tecnología de base de datos y MVVM como patrón de arquitectura de la aplicación.
+\paragraph{}
+Para el enrutamiento es precisa otra herramienta que nos proporcione la funcionalidad de especificar a qué recurso pertenece una plantilla y que datos asociamos a ella. Para ello existen varios paquetes para Meteor que realizan este proceso como IronRouter o FlowRouter. Ambos igual de válidos pero para este proyecto se ha optado por IronRouter, ya que dispone de mayor documentación.
+\paragraph{}
+Para el concepto de publicaciones y subscripciones de Meteor usaremos publishComposite, un paquete que permite realizar publicaciones compuestas (varias colecciones con relación de dependencia reactiva) y que siguen manteniendo el principio de reactividad y optimizando nuestro sistema de subscripciones. Sin este paquete realizar esta labor es más compleja. 
+
+\subsubsection{Grabaciones de audio}
+\paragraph{}
+Existen numerosas formas de grabar audio vía web y algunas API de sitios como SoundCloud incorporan un grabador de audio directamente. Aunque esta hubiera sido la vía más rápida, la verdad es que no habría sido la más flexible, ya que el hacerlo de esta manera requería que el uploading se efectuara en SoundCloud. Por este motivo se ha utilizado la tecnología de WebRTC para esta tarea y construido un grabador modular que puede incorporarse fácilmente a otros proyectos y que además si se desea usar el servicio de hosting de SoundCloud seguiría siendo factible. 
+
+\subsubsection{Hosting o Almacenamiento}
+\paragraph{}
+Utilizaremos el servicio de hosting de SoundCloud para almacenar el audio de nuestras grabaciones. No es lo más sensato para una aplicación real y comercializable puesto que existen restricciones en lo que corresponde a capacidad, pero para nuestra aplicación es más que suficiente. 
+
+\subsubsection{Interfaz con UX como parámetro de diseño fundamental}
+\paragraph{}
+Partiendo del requisito de que la aplicación debe ser atractiva al usuario y no sólo en términos visuales sino en eficacia a la hora de gestionar acciones, en este proyecto nos hemos decantado por el framework front-end Bootstrap para la maquetación y por la tecnología Flexbox para dotar de flexibilidad a las plantillas. Además utilizaremos SASS como preprocesador de CSS con el fin de optimizar nuestra arquitectura de estilos mediante un paquete para Meteor.
+
+
+\section{Composición Inicial y entorno de desarrollo}
+\paragraph{}
+Una vez realizada la búsqueda de herramientas comenzamos a componer el entorno de nuestra aplicación. Para este proyecto utilizaremos el programa WebStorm de JetBrains. Incorpora herramientas de búsqueda y sustitución avanzada, terminal para comandos, integración con sistema de control de versiones Git y plugins que facilitan la labor de desarrollo como elmet.
+\subsection{Primeros pasos}
+\paragraph{}
+Gracias al CLI de Meteor generamos nuestra aplicación mediante el comando: \emph{meteor create $<$AppName$>$}. Esto nos genera una carpeta con tres ficheros: index.html, index.js e index.css. En este momento ya tenemos nuestra aplicación Meteor creada. 
+\paragraph{}
+Ahora debemos estructurar nuestra aplicación según la jerarquía mostrada en la figura \ref{fig:hierarchyFolders} creando los ficheros y carpetas necesarios.
+
+\paragraph{}
+Una vez estructurada la aplicación instalamos los paquetes iniciales mediante el comando: \emph{meteor add $<$ PackageName$>$}. La lista de paquetes iniciales es la siguiente: 
+\begin{itemize}
+\item \textbf{accounts-base:} paquete base para cuentas de usuario.
+\item \textbf{accounts-password:} contraseña como servicio de registro de usuarios.
+\item \textbf{fortawesome:fontawesome:} biblioteca de iconos.
+\item \textbf{fourseven:scss:} preprocesador Sass para estilos.
+\item \textbf{iron:router:} paquete para enrutamiento.
+\item \textbf{mizzao:bootstrap-3} maquetación.
+\item \textbf{reywood:publish-composite:} publicaciones avanzadas y compuestas.
+\end{itemize}
+
+\subsection{Mixins}
+\paragraph{}
+SASS nos permite crear reglas dinámicas de estilos que poder incluir en cualquier clase llamados mixins. Para este proyecto hemos utilizado este concepto para la labor de cross-browsing. Esta labor se basa en la traducción de una misma regla a los distintos navegadores Web, ya que cada navegador interpreta algunas reglas de forma distinta. Por lo que estos mixins nos permiten unificar diferentes reglas que se interpretan de manera distinta dependiendo del navegador. Un ejemplo de mixin es el siguiente: 
+\begin{lstlisting}[caption=Mixin border-radius, label={mixinEj}]
+@mixin border-radius($radius){
+	-webkit-border-radius: $radius;  #safari, chrome
+	-moz-border-radius: $radius; #mozilla firefox
+	-ms-border-radius: $radius; #Internet Explorer
+	border-radius: $radius; #new
+}
+\end{lstlisting}
+\paragraph{}
+Creamos un fichero con el nombre de \_mixins.scss dentro de la carpeta client al nivel del fichero index.html. El carácter \_ indica al preprocesador que esta hoja de estilos no la debe procesar. El procesado lo realizará en el momento que la importemos a otra hoja de estilos e incluyamos algún mixin.
+Los mixins más utilizados en este proyecto serán los siguientes: border-radius, flexbox (flex, flex-direction, flex-wrap, etc), opacity, transition, animation y gradient. El archivo está disponible en el repositorio de GitHub.
+\section{Prototipo 1: Registro de usuarios y layout principal}
+\section{Prototipo 2: Grabador y reproductor simples}
+\section{Prototipo 3: Grabador y reproductor basados en documentos}
+\section{Prototipo 4: Respuestas a grabaciones}
+\section{Prototipo 5: Página de perfil}
+\section{Prototipo 6: Formularios dinámicos y complementos}
+\section{Prototipo 7: Organización en Canales}
+\section{Prototipo 8: Organización en Lecciones}
+\section{Prototipo 9: Contactos}
+\section{Prototipo 10: Conversaciones}
+\section{Prototipo 11: Emails e integración de servicios de registro}
+\section{Prototipo 12: Página principal}
+\section{Prototipo 13: Página de inicio, espacio para tutoriales y features}
+\section{Prototipo Final: Restricciones de acceso y cross-browsing}
+\section{Despliegue y pruebas globales}

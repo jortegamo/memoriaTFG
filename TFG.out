@@ -14,80 +14,50 @@
 \BOOKMARK [1][-]{section.1.5}{HTML5 Media}{chapter.1}% 14
 \BOOKMARK [2][-]{subsection.1.5.1}{WebRTC}{section.1.5}% 15
 \BOOKMARK [2][-]{subsection.1.5.2}{RTCRecorder}{section.1.5}% 16
-\BOOKMARK [1][-]{section.1.6}{Tecnolog\355as Cloud}{chapter.1}% 17
-\BOOKMARK [2][-]{subsection.1.6.1}{API Soundcloud}{section.1.6}% 18
-\BOOKMARK [1][-]{section.1.7}{Herramientas para trabajo en equipo}{chapter.1}% 19
-\BOOKMARK [2][-]{subsection.1.7.1}{Git y GitHub}{section.1.7}% 20
-\BOOKMARK [2][-]{subsection.1.7.2}{PivotalTracker}{section.1.7}% 21
-\BOOKMARK [2][-]{subsection.1.7.3}{Slack}{section.1.7}% 22
-\BOOKMARK [0][-]{chapter.2}{Objetivos y metodolog\355a}{}% 23
-\BOOKMARK [1][-]{section.2.1}{Motivaci\363n}{chapter.2}% 24
-\BOOKMARK [1][-]{section.2.2}{Requisitos}{chapter.2}% 25
-\BOOKMARK [1][-]{section.2.3}{Metodolog\355a y plan de trabajo}{chapter.2}% 26
-\BOOKMARK [0][-]{chapter.3}{Dise\361o de la aplicaci\363n}{}% 27
-\BOOKMARK [1][-]{section.3.1}{Tipo de arquitectura}{chapter.3}% 28
-\BOOKMARK [1][-]{section.3.2}{B\372squeda de herramientas de desarrollo}{chapter.3}% 29
-\BOOKMARK [1][-]{section.3.3}{Dise\361o entidades y base de datos}{chapter.3}% 30
-\BOOKMARK [2][-]{subsection.3.3.1}{Entidades}{section.3.3}% 31
-\BOOKMARK [2][-]{subsection.3.3.2}{Base de datos}{section.3.3}% 32
-\BOOKMARK [1][-]{section.3.4}{Organizaci\363n del contenido e interfaces}{chapter.3}% 33
-\BOOKMARK [2][-]{subsection.3.4.1}{Recursos principales}{section.3.4}% 34
-\BOOKMARK [2][-]{subsection.3.4.2}{Recursos de detalle}{section.3.4}% 35
-\BOOKMARK [2][-]{subsection.3.4.3}{Recursos de creaci\363n}{section.3.4}% 36
-\BOOKMARK [2][-]{subsection.3.4.4}{Recursos de configuraci\363n \(settings resources\)}{section.3.4}% 37
-\BOOKMARK [2][-]{subsection.3.4.5}{Recursos especiales \(special resources\)}{section.3.4}% 38
-\BOOKMARK [1][-]{section.3.5}{Grabaci\363n, reproducci\363n y respuesta sobre editor}{chapter.3}% 39
-\BOOKMARK [1][-]{section.3.6}{Cloud Storage}{chapter.3}% 40
-\BOOKMARK [0][-]{chapter.4}{Desarrollo de la aplicaci\363n}{}% 41
-\BOOKMARK [1][-]{section.4.1}{Aprendizaje}{chapter.4}% 42
-\BOOKMARK [2][-]{subsection.4.1.1}{CSS3 y preprocesadores}{section.4.1}% 43
-\BOOKMARK [2][-]{subsection.4.1.2}{API SoundCloud}{section.4.1}% 44
-\BOOKMARK [1][-]{section.4.2}{Componiendo el escenario}{chapter.4}% 45
-\BOOKMARK [2][-]{subsection.4.2.1}{Entorno de desarrollo}{section.4.2}% 46
-\BOOKMARK [2][-]{subsection.4.2.2}{Paquetes}{section.4.2}% 47
-\BOOKMARK [2][-]{subsection.4.2.3}{Collecciones}{section.4.2}% 48
-\BOOKMARK [2][-]{subsection.4.2.4}{Enrutamiento}{section.4.2}% 49
-\BOOKMARK [2][-]{subsection.4.2.5}{Mixins iniciales}{section.4.2}% 50
-\BOOKMARK [1][-]{section.4.3}{Layout Principal}{chapter.4}% 51
-\BOOKMARK [1][-]{section.4.4}{Registro de usuarios}{chapter.4}% 52
-\BOOKMARK [2][-]{subsection.4.4.1}{Sign In y Sign Up}{section.4.4}% 53
-\BOOKMARK [2][-]{subsection.4.4.2}{Verificaci\363n de Email}{section.4.4}% 54
-\BOOKMARK [2][-]{subsection.4.4.3}{Cambio y recuperaci\363n de contrase\361a}{section.4.4}% 55
-\BOOKMARK [2][-]{subsection.4.4.4}{Servicios agregados}{section.4.4}% 56
-\BOOKMARK [1][-]{section.4.5}{Sidebar}{chapter.4}% 57
-\BOOKMARK [1][-]{section.4.6}{Formularios}{chapter.4}% 58
-\BOOKMARK [2][-]{subsection.4.6.1}{Dise\361o de plantilla din\341mica}{section.4.6}% 59
-\BOOKMARK [2][-]{subsection.4.6.2}{Creadores de entidades}{section.4.6}% 60
-\BOOKMARK [2][-]{subsection.4.6.3}{Conversaciones}{section.4.6}% 61
-\BOOKMARK [2][-]{subsection.4.6.4}{Grabaciones}{section.4.6}% 62
-\BOOKMARK [1][-]{section.4.7}{Entidades}{chapter.4}% 63
-\BOOKMARK [2][-]{subsection.4.7.1}{Canales}{section.4.7}% 64
-\BOOKMARK [2][-]{subsection.4.7.2}{Lecciones}{section.4.7}% 65
-\BOOKMARK [2][-]{subsection.4.7.3}{Secciones}{section.4.7}% 66
-\BOOKMARK [2][-]{subsection.4.7.4}{Grabaciones}{section.4.7}% 67
-\BOOKMARK [2][-]{subsection.4.7.5}{Listas de reproducci\363n}{section.4.7}% 68
-\BOOKMARK [2][-]{subsection.4.7.6}{Conversaciones}{section.4.7}% 69
-\BOOKMARK [1][-]{section.4.8}{Perfil de usuario}{chapter.4}% 70
-\BOOKMARK [2][-]{subsection.4.8.1}{Rol due\361o}{section.4.8}% 71
-\BOOKMARK [2][-]{subsection.4.8.2}{Rol visitante}{section.4.8}% 72
-\BOOKMARK [2][-]{subsection.4.8.3}{Contactos}{section.4.8}% 73
-\BOOKMARK [1][-]{section.4.9}{Tutoriales}{chapter.4}% 74
-\BOOKMARK [1][-]{section.4.10}{Landing}{chapter.4}% 75
-\BOOKMARK [1][-]{section.4.11}{BrowseCrossing}{chapter.4}% 76
-\BOOKMARK [1][-]{section.4.12}{Full Responsive}{chapter.4}% 77
-\BOOKMARK [1][-]{section.4.13}{Despliegue}{chapter.4}% 78
-\BOOKMARK [0][-]{chapter.5}{Experimentaci\363n}{}% 79
-\BOOKMARK [1][-]{section.5.1}{Motivaci\363n}{chapter.5}% 80
-\BOOKMARK [1][-]{section.5.2}{Planteamiento y objetivos}{chapter.5}% 81
-\BOOKMARK [1][-]{section.5.3}{Proceso y realizaci\363n}{chapter.5}% 82
-\BOOKMARK [1][-]{section.5.4}{Resultados}{chapter.5}% 83
-\BOOKMARK [0][-]{chapter.6}{Conclusi\363n}{}% 84
-\BOOKMARK [0][-]{section*.153}{Bibliograf\355a}{}% 85
-\BOOKMARK [1][-]{section.6.1}{Principales Sitios Web}{section*.153}% 86
-\BOOKMARK [1][-]{section.6.2}{Libros}{section*.153}% 87
-\BOOKMARK [1][-]{section.6.3}{Art\355culos}{section*.153}% 88
-\BOOKMARK [1][-]{section.6.4}{Tutoriales}{section*.153}% 89
-\BOOKMARK [1][-]{section.6.5}{Paquetes}{section*.153}% 90
-\BOOKMARK [1][-]{section.6.6}{Repositorios}{section*.153}% 91
-\BOOKMARK [0][-]{section*.155}{Ap\351ndices}{}% 92
-\BOOKMARK [0][-]{appendix.Alph1}{Dise\361o de documentos para Mongo}{}% 93
+\BOOKMARK [1][-]{section.1.6}{AceEditor}{chapter.1}% 17
+\BOOKMARK [1][-]{section.1.7}{Tecnolog\355as Cloud}{chapter.1}% 18
+\BOOKMARK [2][-]{subsection.1.7.1}{API Soundcloud}{section.1.7}% 19
+\BOOKMARK [1][-]{section.1.8}{Herramientas para trabajo en equipo}{chapter.1}% 20
+\BOOKMARK [2][-]{subsection.1.8.1}{Git y GitHub}{section.1.8}% 21
+\BOOKMARK [2][-]{subsection.1.8.2}{PivotalTracker}{section.1.8}% 22
+\BOOKMARK [2][-]{subsection.1.8.3}{Slack}{section.1.8}% 23
+\BOOKMARK [0][-]{chapter.2}{Objetivos y metodolog\355a}{}% 24
+\BOOKMARK [1][-]{section.2.1}{Motivaci\363n}{chapter.2}% 25
+\BOOKMARK [1][-]{section.2.2}{Requisitos}{chapter.2}% 26
+\BOOKMARK [1][-]{section.2.3}{Metodolog\355a y plan de trabajo}{chapter.2}% 27
+\BOOKMARK [0][-]{chapter.3}{Dise\361o y desarrollo de la aplicaci\363n}{}% 28
+\BOOKMARK [1][-]{section.3.1}{Tipo de Arquitectura}{chapter.3}% 29
+\BOOKMARK [1][-]{section.3.2}{B\372squeda de herramientas}{chapter.3}% 30
+\BOOKMARK [1][-]{section.3.3}{Composici\363n Inicial y entorno de desarrollo}{chapter.3}% 31
+\BOOKMARK [2][-]{subsection.3.3.1}{Primeros pasos}{section.3.3}% 32
+\BOOKMARK [2][-]{subsection.3.3.2}{Mixins}{section.3.3}% 33
+\BOOKMARK [1][-]{section.3.4}{Prototipo 1: Registro de usuarios y layout principal}{chapter.3}% 34
+\BOOKMARK [1][-]{section.3.5}{Prototipo 2: Grabador y reproductor simples}{chapter.3}% 35
+\BOOKMARK [1][-]{section.3.6}{Prototipo 3: Grabador y reproductor basados en documentos}{chapter.3}% 36
+\BOOKMARK [1][-]{section.3.7}{Prototipo 4: Respuestas a grabaciones}{chapter.3}% 37
+\BOOKMARK [1][-]{section.3.8}{Prototipo 5: P\341gina de perfil}{chapter.3}% 38
+\BOOKMARK [1][-]{section.3.9}{Prototipo 6: Formularios din\341micos y complementos}{chapter.3}% 39
+\BOOKMARK [1][-]{section.3.10}{Prototipo 7: Organizaci\363n en Canales}{chapter.3}% 40
+\BOOKMARK [1][-]{section.3.11}{Prototipo 8: Organizaci\363n en Lecciones}{chapter.3}% 41
+\BOOKMARK [1][-]{section.3.12}{Prototipo 9: Contactos}{chapter.3}% 42
+\BOOKMARK [1][-]{section.3.13}{Prototipo 10: Conversaciones}{chapter.3}% 43
+\BOOKMARK [1][-]{section.3.14}{Prototipo 11: Emails e integraci\363n de servicios de registro}{chapter.3}% 44
+\BOOKMARK [1][-]{section.3.15}{Prototipo 12: P\341gina principal}{chapter.3}% 45
+\BOOKMARK [1][-]{section.3.16}{Prototipo 13: P\341gina de inicio, espacio para tutoriales y features}{chapter.3}% 46
+\BOOKMARK [1][-]{section.3.17}{Prototipo Final: Restricciones de acceso y cross-browsing}{chapter.3}% 47
+\BOOKMARK [1][-]{section.3.18}{Despliegue y pruebas globales}{chapter.3}% 48
+\BOOKMARK [0][-]{chapter.4}{Experimentaci\363n}{}% 49
+\BOOKMARK [1][-]{section.4.1}{Motivaci\363n}{chapter.4}% 50
+\BOOKMARK [1][-]{section.4.2}{Planteamiento y objetivos}{chapter.4}% 51
+\BOOKMARK [1][-]{section.4.3}{Proceso y realizaci\363n}{chapter.4}% 52
+\BOOKMARK [1][-]{section.4.4}{Resultados}{chapter.4}% 53
+\BOOKMARK [0][-]{chapter.5}{Conclusi\363n}{}% 54
+\BOOKMARK [0][-]{section*.100}{Bibliograf\355a}{}% 55
+\BOOKMARK [1][-]{section.5.1}{Principales Sitios Web}{section*.100}% 56
+\BOOKMARK [1][-]{section.5.2}{Libros}{section*.100}% 57
+\BOOKMARK [1][-]{section.5.3}{Art\355culos}{section*.100}% 58
+\BOOKMARK [1][-]{section.5.4}{Tutoriales}{section*.100}% 59
+\BOOKMARK [1][-]{section.5.5}{Paquetes}{section*.100}% 60
+\BOOKMARK [1][-]{section.5.6}{Repositorios}{section*.100}% 61
+\BOOKMARK [0][-]{section*.102}{Ap\351ndices}{}% 62
+\BOOKMARK [0][-]{appendix.Alph1}{Dise\361o de documentos para Mongo}{}% 63

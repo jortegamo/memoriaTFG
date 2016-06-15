@@ -1,243 +1,160 @@
 \select@language {spanish}
-\contentsline {chapter}{\numberline {1}Introducci\'on}{7}{chapter.1}
-\contentsline {paragraph}{}{7}{section*.3}
-\contentsline {section}{\numberline {1.1}Desarrollo Web}{7}{section.1.1}
-\contentsline {paragraph}{}{7}{section*.4}
-\contentsline {paragraph}{}{7}{section*.5}
-\contentsline {paragraph}{}{8}{section*.6}
-\contentsline {paragraph}{}{8}{section*.7}
-\contentsline {paragraph}{}{8}{section*.8}
-\contentsline {section}{\numberline {1.2}Tecnolog\IeC {\'\i }as Web}{9}{section.1.2}
-\contentsline {paragraph}{}{9}{section*.9}
-\contentsline {subsection}{\numberline {1.2.1}Frameworks}{9}{subsection.1.2.1}
-\contentsline {paragraph}{}{10}{section*.10}
-\contentsline {subsubsection}{AngularJS}{10}{section*.11}
-\contentsline {paragraph}{}{10}{section*.12}
-\contentsline {paragraph}{}{10}{section*.13}
-\contentsline {subsubsection}{EmberJS}{10}{section*.14}
-\contentsline {paragraph}{}{10}{section*.15}
-\contentsline {subsubsection}{Django}{11}{section*.16}
-\contentsline {paragraph}{}{11}{section*.17}
-\contentsline {subsubsection}{ReactJS}{11}{section*.18}
-\contentsline {paragraph}{}{11}{section*.19}
-\contentsline {subsubsection}{MeteorJS}{11}{section*.20}
-\contentsline {paragraph}{}{11}{section*.21}
-\contentsline {paragraph}{}{12}{section*.22}
-\contentsline {subsubsection}{BackboneJS}{12}{section*.23}
-\contentsline {paragraph}{}{12}{section*.24}
-\contentsline {subsubsection}{ExpressJS}{12}{section*.25}
-\contentsline {paragraph}{}{12}{section*.26}
-\contentsline {subsubsection}{Bootstrap \cite {baz8}}{12}{section*.27}
-\contentsline {paragraph}{}{12}{section*.28}
-\contentsline {subsection}{\numberline {1.2.2}Librer\IeC {\'\i }as}{13}{subsection.1.2.2}
-\contentsline {paragraph}{}{13}{section*.29}
-\contentsline {subsubsection}{JQuery}{13}{section*.30}
-\contentsline {paragraph}{}{13}{section*.31}
-\contentsline {subsubsection}{UnderscoreJS \cite {baz13}}{13}{section*.32}
-\contentsline {paragraph}{}{13}{section*.33}
-\contentsline {subsection}{\numberline {1.2.3}Lenguajes}{14}{subsection.1.2.3}
-\contentsline {paragraph}{}{14}{section*.34}
-\contentsline {subsubsection}{HTML5}{14}{section*.35}
-\contentsline {paragraph}{}{14}{section*.36}
-\contentsline {paragraph}{}{14}{section*.37}
-\contentsline {paragraph}{}{14}{section*.38}
-\contentsline {paragraph}{}{15}{section*.39}
-\contentsline {subsubsection}{CSS3}{15}{section*.40}
-\contentsline {paragraph}{}{15}{section*.41}
-\contentsline {subsubsection}{Javascript \cite {baz9}}{15}{section*.42}
-\contentsline {paragraph}{}{15}{section*.43}
-\contentsline {paragraph}{}{15}{section*.44}
-\contentsline {paragraph}{}{15}{section*.45}
-\contentsline {section}{\numberline {1.3}MeteorJS}{16}{section.1.3}
-\contentsline {paragraph}{}{16}{section*.46}
-\contentsline {subsection}{\numberline {1.3.1}Reactividad}{16}{subsection.1.3.1}
-\contentsline {paragraph}{}{16}{section*.47}
-\contentsline {paragraph}{}{17}{section*.48}
-\contentsline {subsection}{\numberline {1.3.2}Sistema de plantillas reactivas}{17}{subsection.1.3.2}
-\contentsline {paragraph}{}{17}{section*.49}
-\contentsline {subsection}{\numberline {1.3.3}Comunicaci\'on con el servidor}{17}{subsection.1.3.3}
-\contentsline {paragraph}{}{17}{section*.50}
-\contentsline {paragraph}{}{18}{section*.51}
-\contentsline {paragraph}{}{18}{section*.52}
-\contentsline {paragraph}{}{18}{section*.54}
-\contentsline {paragraph}{}{19}{section*.55}
-\contentsline {paragraph}{}{19}{section*.56}
-\contentsline {paragraph}{}{20}{section*.57}
-\contentsline {section}{\numberline {1.4}MongoDB}{20}{section.1.4}
-\contentsline {paragraph}{}{21}{section*.58}
-\contentsline {subsection}{\numberline {1.4.1}MongoDB y MeteorJS}{21}{subsection.1.4.1}
-\contentsline {paragraph}{}{21}{section*.59}
-\contentsline {paragraph}{}{21}{section*.60}
-\contentsline {paragraph}{}{22}{section*.61}
-\contentsline {subsection}{\numberline {1.4.2}Publicaciones y Subscripciones}{22}{subsection.1.4.2}
-\contentsline {paragraph}{}{22}{section*.62}
-\contentsline {section}{\numberline {1.5}HTML5 Media}{23}{section.1.5}
-\contentsline {subsection}{\numberline {1.5.1}WebRTC}{23}{subsection.1.5.1}
-\contentsline {subsection}{\numberline {1.5.2}RTCRecorder}{23}{subsection.1.5.2}
-\contentsline {section}{\numberline {1.6}Tecnolog\IeC {\'\i }as Cloud}{24}{section.1.6}
-\contentsline {paragraph}{}{24}{section*.63}
-\contentsline {paragraph}{}{24}{section*.64}
-\contentsline {subsection}{\numberline {1.6.1}API Soundcloud}{24}{subsection.1.6.1}
-\contentsline {paragraph}{}{24}{section*.65}
-\contentsline {paragraph}{}{25}{section*.66}
-\contentsline {section}{\numberline {1.7}Herramientas para trabajo en equipo}{25}{section.1.7}
-\contentsline {paragraph}{}{25}{section*.67}
-\contentsline {subsection}{\numberline {1.7.1}Git y GitHub}{25}{subsection.1.7.1}
-\contentsline {paragraph}{}{25}{section*.68}
-\contentsline {paragraph}{}{26}{section*.69}
-\contentsline {subsection}{\numberline {1.7.2}PivotalTracker}{26}{subsection.1.7.2}
-\contentsline {paragraph}{}{26}{section*.70}
-\contentsline {subsection}{\numberline {1.7.3}Slack}{26}{subsection.1.7.3}
-\contentsline {chapter}{\numberline {2}Objetivos y metodolog\IeC {\'\i }a}{28}{chapter.2}
-\contentsline {section}{\numberline {2.1}Motivaci\'on}{28}{section.2.1}
-\contentsline {paragraph}{}{28}{section*.71}
-\contentsline {paragraph}{}{28}{section*.72}
-\contentsline {paragraph}{}{29}{section*.73}
-\contentsline {section}{\numberline {2.2}Requisitos}{29}{section.2.2}
-\contentsline {paragraph}{}{29}{section*.74}
-\contentsline {paragraph}{}{29}{section*.75}
-\contentsline {section}{\numberline {2.3}Metodolog\IeC {\'\i }a y plan de trabajo}{37}{section.2.3}
-\contentsline {paragraph}{}{37}{section*.76}
-\contentsline {paragraph}{}{37}{section*.77}
+\contentsline {chapter}{\numberline {1}Introducci\'on}{6}{chapter.1}
+\contentsline {paragraph}{}{6}{section*.3}
+\contentsline {section}{\numberline {1.1}Desarrollo Web}{6}{section.1.1}
+\contentsline {paragraph}{}{6}{section*.4}
+\contentsline {paragraph}{}{6}{section*.5}
+\contentsline {paragraph}{}{7}{section*.6}
+\contentsline {paragraph}{}{7}{section*.7}
+\contentsline {paragraph}{}{7}{section*.8}
+\contentsline {section}{\numberline {1.2}Tecnolog\IeC {\'\i }as Web}{8}{section.1.2}
+\contentsline {paragraph}{}{8}{section*.9}
+\contentsline {subsection}{\numberline {1.2.1}Frameworks}{8}{subsection.1.2.1}
+\contentsline {paragraph}{}{9}{section*.10}
+\contentsline {subsubsection}{AngularJS}{9}{section*.11}
+\contentsline {paragraph}{}{9}{section*.12}
+\contentsline {paragraph}{}{9}{section*.13}
+\contentsline {subsubsection}{EmberJS}{9}{section*.14}
+\contentsline {paragraph}{}{9}{section*.15}
+\contentsline {subsubsection}{Django}{10}{section*.16}
+\contentsline {paragraph}{}{10}{section*.17}
+\contentsline {subsubsection}{ReactJS}{10}{section*.18}
+\contentsline {paragraph}{}{10}{section*.19}
+\contentsline {subsubsection}{MeteorJS}{10}{section*.20}
+\contentsline {paragraph}{}{10}{section*.21}
+\contentsline {paragraph}{}{11}{section*.22}
+\contentsline {subsubsection}{BackboneJS}{11}{section*.23}
+\contentsline {paragraph}{}{11}{section*.24}
+\contentsline {subsubsection}{ExpressJS}{11}{section*.25}
+\contentsline {paragraph}{}{11}{section*.26}
+\contentsline {subsubsection}{Bootstrap \cite {baz8}}{11}{section*.27}
+\contentsline {paragraph}{}{11}{section*.28}
+\contentsline {subsection}{\numberline {1.2.2}Librer\IeC {\'\i }as}{12}{subsection.1.2.2}
+\contentsline {paragraph}{}{12}{section*.29}
+\contentsline {subsubsection}{JQuery}{12}{section*.30}
+\contentsline {paragraph}{}{12}{section*.31}
+\contentsline {subsubsection}{UnderscoreJS \cite {baz13}}{12}{section*.32}
+\contentsline {paragraph}{}{12}{section*.33}
+\contentsline {subsection}{\numberline {1.2.3}Lenguajes}{13}{subsection.1.2.3}
+\contentsline {paragraph}{}{13}{section*.34}
+\contentsline {subsubsection}{HTML5}{13}{section*.35}
+\contentsline {paragraph}{}{13}{section*.36}
+\contentsline {paragraph}{}{13}{section*.37}
+\contentsline {paragraph}{}{13}{section*.38}
+\contentsline {paragraph}{}{14}{section*.39}
+\contentsline {subsubsection}{CSS3}{14}{section*.40}
+\contentsline {paragraph}{}{14}{section*.41}
+\contentsline {subsubsection}{Javascript \cite {baz9}}{14}{section*.42}
+\contentsline {paragraph}{}{14}{section*.43}
+\contentsline {paragraph}{}{14}{section*.44}
+\contentsline {paragraph}{}{14}{section*.45}
+\contentsline {section}{\numberline {1.3}MeteorJS}{15}{section.1.3}
+\contentsline {paragraph}{}{15}{section*.46}
+\contentsline {subsection}{\numberline {1.3.1}Reactividad}{15}{subsection.1.3.1}
+\contentsline {paragraph}{}{15}{section*.47}
+\contentsline {paragraph}{}{16}{section*.48}
+\contentsline {subsection}{\numberline {1.3.2}Sistema de plantillas reactivas}{16}{subsection.1.3.2}
+\contentsline {paragraph}{}{16}{section*.49}
+\contentsline {subsection}{\numberline {1.3.3}Comunicaci\'on con el servidor}{16}{subsection.1.3.3}
+\contentsline {paragraph}{}{16}{section*.50}
+\contentsline {paragraph}{}{17}{section*.51}
+\contentsline {paragraph}{}{17}{section*.52}
+\contentsline {paragraph}{}{17}{section*.54}
+\contentsline {paragraph}{}{18}{section*.55}
+\contentsline {paragraph}{}{18}{section*.56}
+\contentsline {paragraph}{}{19}{section*.57}
+\contentsline {section}{\numberline {1.4}MongoDB}{19}{section.1.4}
+\contentsline {paragraph}{}{20}{section*.58}
+\contentsline {subsection}{\numberline {1.4.1}MongoDB y MeteorJS}{20}{subsection.1.4.1}
+\contentsline {paragraph}{}{20}{section*.59}
+\contentsline {paragraph}{}{20}{section*.60}
+\contentsline {paragraph}{}{21}{section*.61}
+\contentsline {subsection}{\numberline {1.4.2}Publicaciones y Subscripciones}{21}{subsection.1.4.2}
+\contentsline {paragraph}{}{21}{section*.62}
+\contentsline {section}{\numberline {1.5}HTML5 Media}{22}{section.1.5}
+\contentsline {subsection}{\numberline {1.5.1}WebRTC}{22}{subsection.1.5.1}
+\contentsline {subsection}{\numberline {1.5.2}RTCRecorder}{22}{subsection.1.5.2}
+\contentsline {section}{\numberline {1.6}AceEditor}{23}{section.1.6}
+\contentsline {paragraph}{}{23}{section*.63}
+\contentsline {section}{\numberline {1.7}Tecnolog\IeC {\'\i }as Cloud}{23}{section.1.7}
+\contentsline {paragraph}{}{23}{section*.64}
+\contentsline {paragraph}{}{23}{section*.65}
+\contentsline {subsection}{\numberline {1.7.1}API Soundcloud}{23}{subsection.1.7.1}
+\contentsline {paragraph}{}{24}{section*.66}
+\contentsline {paragraph}{}{24}{section*.67}
+\contentsline {section}{\numberline {1.8}Herramientas para trabajo en equipo}{24}{section.1.8}
+\contentsline {paragraph}{}{24}{section*.68}
+\contentsline {subsection}{\numberline {1.8.1}Git y GitHub}{25}{subsection.1.8.1}
+\contentsline {paragraph}{}{25}{section*.69}
+\contentsline {paragraph}{}{25}{section*.70}
+\contentsline {subsection}{\numberline {1.8.2}PivotalTracker}{25}{subsection.1.8.2}
+\contentsline {paragraph}{}{25}{section*.71}
+\contentsline {subsection}{\numberline {1.8.3}Slack}{26}{subsection.1.8.3}
+\contentsline {chapter}{\numberline {2}Objetivos y metodolog\IeC {\'\i }a}{27}{chapter.2}
+\contentsline {section}{\numberline {2.1}Motivaci\'on}{27}{section.2.1}
+\contentsline {paragraph}{}{27}{section*.72}
+\contentsline {paragraph}{}{27}{section*.73}
+\contentsline {paragraph}{}{28}{section*.74}
+\contentsline {section}{\numberline {2.2}Requisitos}{28}{section.2.2}
+\contentsline {paragraph}{}{28}{section*.75}
+\contentsline {paragraph}{}{28}{section*.76}
+\contentsline {section}{\numberline {2.3}Metodolog\IeC {\'\i }a y plan de trabajo}{36}{section.2.3}
+\contentsline {paragraph}{}{36}{section*.77}
 \contentsline {paragraph}{}{37}{section*.78}
-\contentsline {chapter}{\numberline {3}Dise\~no de la aplicaci\'on}{40}{chapter.3}
-\contentsline {paragraph}{}{40}{section*.79}
-\contentsline {section}{\numberline {3.1}Tipo de arquitectura}{40}{section.3.1}
-\contentsline {paragraph}{}{40}{section*.80}
-\contentsline {paragraph}{}{40}{section*.81}
-\contentsline {paragraph}{}{42}{section*.82}
-\contentsline {section}{\numberline {3.2}B\'usqueda de herramientas de desarrollo}{42}{section.3.2}
-\contentsline {paragraph}{}{42}{section*.83}
-\contentsline {subsubsection}{Aplicaci\'on en tiempo real y prototipado r\'apido}{42}{section*.84}
-\contentsline {paragraph}{}{42}{section*.85}
-\contentsline {paragraph}{}{42}{section*.86}
-\contentsline {paragraph}{}{43}{section*.87}
-\contentsline {paragraph}{}{43}{section*.88}
-\contentsline {subsubsection}{Grabaciones de audio}{43}{section*.89}
-\contentsline {paragraph}{}{43}{section*.90}
-\contentsline {subsubsection}{Interfaz con UX como par\'ametro de dise\~no fundamental}{43}{section*.91}
-\contentsline {paragraph}{}{43}{section*.92}
-\contentsline {paragraph}{}{44}{section*.93}
-\contentsline {section}{\numberline {3.3}Dise\~no entidades y base de datos}{44}{section.3.3}
-\contentsline {paragraph}{}{44}{section*.94}
-\contentsline {subsection}{\numberline {3.3.1}Entidades}{44}{subsection.3.3.1}
-\contentsline {paragraph}{}{44}{section*.95}
-\contentsline {paragraph}{}{45}{section*.96}
-\contentsline {paragraph}{}{45}{section*.97}
-\contentsline {paragraph}{}{45}{section*.98}
-\contentsline {paragraph}{}{46}{section*.99}
-\contentsline {paragraph}{}{46}{section*.100}
-\contentsline {paragraph}{}{46}{section*.101}
-\contentsline {paragraph}{}{46}{section*.102}
-\contentsline {paragraph}{}{47}{section*.103}
-\contentsline {paragraph}{}{47}{section*.104}
-\contentsline {subsection}{\numberline {3.3.2}Base de datos}{48}{subsection.3.3.2}
-\contentsline {paragraph}{}{48}{section*.105}
-\contentsline {paragraph}{}{48}{section*.106}
-\contentsline {section}{\numberline {3.4}Organizaci\'on del contenido e interfaces}{50}{section.3.4}
-\contentsline {paragraph}{}{50}{section*.107}
-\contentsline {subsection}{\numberline {3.4.1}Recursos principales}{50}{subsection.3.4.1}
-\contentsline {subsubsection}{/ o ra\IeC {\'\i }z}{50}{section*.108}
-\contentsline {paragraph}{}{50}{section*.109}
-\contentsline {paragraph}{}{50}{section*.110}
-\contentsline {paragraph}{}{50}{section*.111}
-\contentsline {subsubsection}{/channels, /lessons y /records}{51}{section*.112}
-\contentsline {paragraph}{}{51}{section*.113}
-\contentsline {subsection}{\numberline {3.4.2}Recursos de detalle}{51}{subsection.3.4.2}
-\contentsline {subsubsection}{/channels/:id}{52}{section*.114}
-\contentsline {paragraph}{}{52}{section*.115}
-\contentsline {paragraph}{}{52}{section*.116}
-\contentsline {paragraph}{}{52}{section*.117}
-\contentsline {subsubsection}{/lessons/:id}{52}{section*.118}
-\contentsline {paragraph}{}{52}{section*.119}
-\contentsline {paragraph}{}{53}{section*.120}
-\contentsline {subsubsection}{/records/:id}{53}{section*.121}
-\contentsline {paragraph}{}{53}{section*.122}
-\contentsline {paragraph}{}{54}{section*.123}
-\contentsline {subsubsection}{/profile/:id}{54}{section*.124}
-\contentsline {paragraph}{}{54}{section*.125}
-\contentsline {subsubsection}{/conversations/:id}{55}{section*.126}
-\contentsline {paragraph}{}{55}{section*.127}
-\contentsline {subsection}{\numberline {3.4.3}Recursos de creaci\'on}{55}{subsection.3.4.3}
-\contentsline {subsubsection}{/channels/submit}{56}{section*.128}
-\contentsline {subsubsection}{/lessons/submit}{56}{section*.129}
-\contentsline {subsubsection}{/records/submit}{56}{section*.130}
-\contentsline {subsubsection}{/conversations/submit}{56}{section*.131}
-\contentsline {subsection}{\numberline {3.4.4}Recursos de configuraci\'on (settings resources)}{56}{subsection.3.4.4}
-\contentsline {subsubsection}{/channels/:id/edit}{56}{section*.132}
-\contentsline {subsubsection}{/lesson/:id/edit}{56}{section*.133}
-\contentsline {subsubsection}{/conversation/:id/edit}{56}{section*.134}
-\contentsline {subsection}{\numberline {3.4.5}Recursos especiales (special resources)}{56}{subsection.3.4.5}
-\contentsline {subsubsection}{/verifications}{56}{section*.135}
-\contentsline {subsubsection}{/verify-email/:token}{56}{section*.136}
-\contentsline {subsubsection}{/forgot-password}{56}{section*.137}
-\contentsline {subsubsection}{/recover-password/:token}{56}{section*.138}
-\contentsline {subsubsection}{/change-password}{56}{section*.139}
-\contentsline {subsubsection}{/send-email}{56}{section*.140}
-\contentsline {subsubsection}{/redirect}{56}{section*.141}
-\contentsline {subsubsection}{/not-found}{56}{section*.142}
-\contentsline {section}{\numberline {3.5}Grabaci\'on, reproducci\'on y respuesta sobre editor}{56}{section.3.5}
-\contentsline {paragraph}{}{56}{section*.143}
-\contentsline {paragraph}{}{57}{section*.144}
-\contentsline {paragraph}{}{57}{section*.145}
-\contentsline {paragraph}{}{57}{section*.146}
-\contentsline {paragraph}{}{58}{section*.147}
-\contentsline {paragraph}{}{58}{section*.148}
-\contentsline {paragraph}{}{58}{section*.149}
-\contentsline {paragraph}{}{58}{section*.150}
-\contentsline {section}{\numberline {3.6}Cloud Storage}{59}{section.3.6}
-\contentsline {chapter}{\numberline {4}Desarrollo de la aplicaci\'on}{60}{chapter.4}
-\contentsline {paragraph}{}{60}{section*.151}
-\contentsline {section}{\numberline {4.1}Aprendizaje}{60}{section.4.1}
-\contentsline {paragraph}{}{60}{section*.152}
-\contentsline {subsection}{\numberline {4.1.1}CSS3 y preprocesadores}{60}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}API SoundCloud}{61}{subsection.4.1.2}
-\contentsline {section}{\numberline {4.2}Componiendo el escenario}{61}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Entorno de desarrollo}{61}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Paquetes}{61}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Collecciones}{61}{subsection.4.2.3}
-\contentsline {subsection}{\numberline {4.2.4}Enrutamiento}{61}{subsection.4.2.4}
-\contentsline {subsection}{\numberline {4.2.5}Mixins iniciales}{61}{subsection.4.2.5}
-\contentsline {section}{\numberline {4.3}Layout Principal}{62}{section.4.3}
-\contentsline {section}{\numberline {4.4}Registro de usuarios}{62}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Sign In y Sign Up}{62}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Verificaci\'on de Email}{62}{subsection.4.4.2}
-\contentsline {subsection}{\numberline {4.4.3}Cambio y recuperaci\'on de contrase\~na}{62}{subsection.4.4.3}
-\contentsline {subsection}{\numberline {4.4.4}Servicios agregados}{62}{subsection.4.4.4}
-\contentsline {section}{\numberline {4.5}Sidebar}{62}{section.4.5}
-\contentsline {section}{\numberline {4.6}Formularios}{63}{section.4.6}
-\contentsline {subsection}{\numberline {4.6.1}Dise\~no de plantilla din\'amica}{63}{subsection.4.6.1}
-\contentsline {subsection}{\numberline {4.6.2}Creadores de entidades}{63}{subsection.4.6.2}
-\contentsline {subsection}{\numberline {4.6.3}Conversaciones}{63}{subsection.4.6.3}
-\contentsline {subsection}{\numberline {4.6.4}Grabaciones}{63}{subsection.4.6.4}
-\contentsline {section}{\numberline {4.7}Entidades}{63}{section.4.7}
-\contentsline {subsection}{\numberline {4.7.1}Canales}{63}{subsection.4.7.1}
-\contentsline {subsection}{\numberline {4.7.2}Lecciones}{63}{subsection.4.7.2}
-\contentsline {subsection}{\numberline {4.7.3}Secciones}{64}{subsection.4.7.3}
-\contentsline {subsection}{\numberline {4.7.4}Grabaciones}{64}{subsection.4.7.4}
-\contentsline {subsection}{\numberline {4.7.5}Listas de reproducci\'on}{64}{subsection.4.7.5}
-\contentsline {subsection}{\numberline {4.7.6}Conversaciones}{64}{subsection.4.7.6}
-\contentsline {section}{\numberline {4.8}Perfil de usuario}{65}{section.4.8}
-\contentsline {subsection}{\numberline {4.8.1}Rol due\~no}{65}{subsection.4.8.1}
-\contentsline {subsection}{\numberline {4.8.2}Rol visitante}{65}{subsection.4.8.2}
-\contentsline {subsection}{\numberline {4.8.3}Contactos}{65}{subsection.4.8.3}
-\contentsline {section}{\numberline {4.9}Tutoriales}{65}{section.4.9}
-\contentsline {section}{\numberline {4.10}Landing}{65}{section.4.10}
-\contentsline {section}{\numberline {4.11}BrowseCrossing}{65}{section.4.11}
-\contentsline {section}{\numberline {4.12}Full Responsive}{65}{section.4.12}
-\contentsline {section}{\numberline {4.13}Despliegue}{65}{section.4.13}
-\contentsline {chapter}{\numberline {5}Experimentaci\'on}{66}{chapter.5}
-\contentsline {section}{\numberline {5.1}Motivaci\'on}{66}{section.5.1}
-\contentsline {section}{\numberline {5.2}Planteamiento y objetivos}{66}{section.5.2}
-\contentsline {section}{\numberline {5.3}Proceso y realizaci\'on}{66}{section.5.3}
-\contentsline {section}{\numberline {5.4}Resultados}{66}{section.5.4}
-\contentsline {chapter}{\numberline {6}Conclusi\'on}{67}{chapter.6}
-\contentsline {chapter}{Bibliograf\'{\i }a}{68}{section*.153}
-\contentsline {section}{\numberline {6.1}Principales Sitios Web}{69}{section.6.1}
-\contentsline {section}{\numberline {6.2}Libros}{69}{section.6.2}
-\contentsline {section}{\numberline {6.3}Art\IeC {\'\i }culos}{69}{section.6.3}
-\contentsline {section}{\numberline {6.4}Tutoriales}{69}{section.6.4}
-\contentsline {section}{\numberline {6.5}Paquetes}{69}{section.6.5}
-\contentsline {section}{\numberline {6.6}Repositorios}{69}{section.6.6}
-\contentsline {chapter}{Ap\'endices}{70}{section*.155}
-\contentsline {chapter}{\numberline {A}Dise\~no de documentos para Mongo}{71}{appendix.Alph1}
+\contentsline {paragraph}{}{37}{section*.79}
+\contentsline {chapter}{\numberline {3}Dise\~no y desarrollo de la aplicaci\'on}{39}{chapter.3}
+\contentsline {section}{\numberline {3.1}Tipo de Arquitectura}{39}{section.3.1}
+\contentsline {paragraph}{}{39}{section*.80}
+\contentsline {paragraph}{}{39}{section*.81}
+\contentsline {paragraph}{}{39}{section*.82}
+\contentsline {section}{\numberline {3.2}B\'usqueda de herramientas}{41}{section.3.2}
+\contentsline {paragraph}{}{41}{section*.83}
+\contentsline {subsubsection}{Aplicaci\'on en tiempo real y prototipado r\'apido}{41}{section*.84}
+\contentsline {paragraph}{}{41}{section*.85}
+\contentsline {paragraph}{}{41}{section*.86}
+\contentsline {paragraph}{}{41}{section*.87}
+\contentsline {subsubsection}{Grabaciones de audio}{42}{section*.88}
+\contentsline {paragraph}{}{42}{section*.89}
+\contentsline {subsubsection}{Hosting o Almacenamiento}{42}{section*.90}
+\contentsline {paragraph}{}{42}{section*.91}
+\contentsline {subsubsection}{Interfaz con UX como par\'ametro de dise\~no fundamental}{42}{section*.92}
+\contentsline {paragraph}{}{42}{section*.93}
+\contentsline {section}{\numberline {3.3}Composici\'on Inicial y entorno de desarrollo}{43}{section.3.3}
+\contentsline {paragraph}{}{43}{section*.94}
+\contentsline {subsection}{\numberline {3.3.1}Primeros pasos}{43}{subsection.3.3.1}
+\contentsline {paragraph}{}{43}{section*.95}
+\contentsline {paragraph}{}{43}{section*.96}
+\contentsline {paragraph}{}{43}{section*.97}
+\contentsline {subsection}{\numberline {3.3.2}Mixins}{44}{subsection.3.3.2}
+\contentsline {paragraph}{}{44}{section*.98}
+\contentsline {paragraph}{}{44}{section*.99}
+\contentsline {section}{\numberline {3.4}Prototipo 1: Registro de usuarios y layout principal}{46}{section.3.4}
+\contentsline {section}{\numberline {3.5}Prototipo 2: Grabador y reproductor simples}{46}{section.3.5}
+\contentsline {section}{\numberline {3.6}Prototipo 3: Grabador y reproductor basados en documentos}{46}{section.3.6}
+\contentsline {section}{\numberline {3.7}Prototipo 4: Respuestas a grabaciones}{46}{section.3.7}
+\contentsline {section}{\numberline {3.8}Prototipo 5: P\'agina de perfil}{46}{section.3.8}
+\contentsline {section}{\numberline {3.9}Prototipo 6: Formularios din\'amicos y complementos}{46}{section.3.9}
+\contentsline {section}{\numberline {3.10}Prototipo 7: Organizaci\'on en Canales}{46}{section.3.10}
+\contentsline {section}{\numberline {3.11}Prototipo 8: Organizaci\'on en Lecciones}{46}{section.3.11}
+\contentsline {section}{\numberline {3.12}Prototipo 9: Contactos}{46}{section.3.12}
+\contentsline {section}{\numberline {3.13}Prototipo 10: Conversaciones}{46}{section.3.13}
+\contentsline {section}{\numberline {3.14}Prototipo 11: Emails e integraci\'on de servicios de registro}{46}{section.3.14}
+\contentsline {section}{\numberline {3.15}Prototipo 12: P\'agina principal}{46}{section.3.15}
+\contentsline {section}{\numberline {3.16}Prototipo 13: P\'agina de inicio, espacio para tutoriales y features}{46}{section.3.16}
+\contentsline {section}{\numberline {3.17}Prototipo Final: Restricciones de acceso y cross-browsing}{46}{section.3.17}
+\contentsline {section}{\numberline {3.18}Despliegue y pruebas globales}{46}{section.3.18}
+\contentsline {chapter}{\numberline {4}Experimentaci\'on}{47}{chapter.4}
+\contentsline {section}{\numberline {4.1}Motivaci\'on}{47}{section.4.1}
+\contentsline {section}{\numberline {4.2}Planteamiento y objetivos}{47}{section.4.2}
+\contentsline {section}{\numberline {4.3}Proceso y realizaci\'on}{47}{section.4.3}
+\contentsline {section}{\numberline {4.4}Resultados}{47}{section.4.4}
+\contentsline {chapter}{\numberline {5}Conclusi\'on}{48}{chapter.5}
+\contentsline {chapter}{Bibliograf\'{\i }a}{49}{section*.100}
+\contentsline {section}{\numberline {5.1}Principales Sitios Web}{50}{section.5.1}
+\contentsline {section}{\numberline {5.2}Libros}{50}{section.5.2}
+\contentsline {section}{\numberline {5.3}Art\IeC {\'\i }culos}{50}{section.5.3}
+\contentsline {section}{\numberline {5.4}Tutoriales}{50}{section.5.4}
+\contentsline {section}{\numberline {5.5}Paquetes}{50}{section.5.5}
+\contentsline {section}{\numberline {5.6}Repositorios}{50}{section.5.6}
+\contentsline {chapter}{Ap\'endices}{51}{section*.102}
+\contentsline {chapter}{\numberline {A}Dise\~no de documentos para Mongo}{52}{appendix.Alph1}
