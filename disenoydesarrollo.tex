@@ -82,6 +82,203 @@ SASS nos permite crear reglas dinámicas de estilos que poder incluir en cualquie
 Creamos un fichero con el nombre de \_mixins.scss dentro de la carpeta client al nivel del fichero index.html. El carácter \_ indica al preprocesador que esta hoja de estilos no la debe procesar. El procesado lo realizará en el momento que la importemos a otra hoja de estilos e incluyamos algún mixin.
 Los mixins más utilizados en este proyecto serán los siguientes: border-radius, flexbox (flex, flex-direction, flex-wrap, etc), opacity, transition, animation y gradient. El archivo está disponible en el repositorio de GitHub.
 \section{Prototipo 1: Registro de usuarios y layout principal}
+\paragraph{}
+Este es el primer prototipo de la aplicación y se corresponde con el layout principal de la aplicación y con el registro de usuarios. 
+\subsection{Layout principal}
+\begin{figure}[htbp]
+    \centering
+    \subfigure[Large layout]{
+   	 \includegraphics[scale=0.42]{layoutLarge.png}
+    	\label{fig:layoutLg}
+    }
+    \subfigure[Small Layout]{
+    	\includegraphics[scale=0.42]{layoutSmall.png}
+	 \label{fig:layoutSm}
+    }
+    \caption{Diseño de Layout Full-responsive}
+    \label{fig:layoutFR}
+\end{figure}
+Iron Router establece que el diseño de la aplicación debe realizarse en torno a dos plantillas: \{\{yield\}\} y \{\{layout\}\}. El layout es la plantilla genérica y el yield es el contenido. Como puede verse en la figura \ref{fig:layoutFR}, ésta va a ser la estructura genérica de nuestra aplicación: 
+\begin{itemize}
+	\item \textbf{Layout: } estará compuesta por un sidebar, un header y la plantilla yield.
+	\item \textbf{Yield:} esta plantilla es dinámica y se podrá asignar una plantilla u otra dependiendo de la ruta en la que nos encontremos.
+\end{itemize}
+\paragraph{}
+Partiendo del requisito de que los usuarios deben estar autenticados para acceder a la funcionalidad de la aplicación es necesario diseñar el flujo de registro de usuario y situarlo en un recurso o ruta. Debido a esta restricción el flujo se situará en el recurso raíz (/). Por lo que, dependiendo de si el usuario está autenticado o no al acceder a esta ruta deberá mostrarse una plantilla u otra. En este caso:
+\begin{itemize}
+\item Si el usuario está autenticado el layout estará compuesto por la plantilla \{\{$<$sidebar\}\},  \{\{$<$header\}\} y la plantilla \{\{$<$yield\}\} que corresponderá a la plantilla \{\{$<$startPage\}\}.
+\item  Si el usuario no está autenticado el layout estará compuesto solamente por la plantilla \{\{$<$yield\}\} que corresponderá a la plantilla \{\{$<$mainPage\}\}.
+\end{itemize}
+El siguiente código muestra el fichero HTML de la plantilla \{\{layout\}\}:
+\begin{lstlisting}[language=HTML]
+<template name="layout">
+    <div id="main-wrapper">
+        {{#if currentUser}}
+            {{> sidebar }}
+            <div id="page-wrapper">
+                {{> header}}
+                {{> yield }}
+            </div>
+       	{{else}}
+            {{> yield}}
+            {{> loginModal }}
+        {{/if}}
+    </div>
+</template>
+\end{lstlisting}
+El ayudante (helper) currentUser que proporciona Meteor proporciona una función cuyo valor de retorno es un objeto javascript si el usuario está autenticado o null si no lo está. Por lo que gracias a Spacebars y sus flujos de control (\{\{if\}\},\{\{else\}\}\,{\{/if\}\}) podemos realizar este diseño de forma sencilla.
+
+\subsubsection{Sidebar y header}
+\paragraph{}
+Uno de los requisitos de la aplicación es que debe ser full-responsive. Esto es que se adapte a cualquier tamaño de pantalla. Por lo que es necesario un diseño adaptativo para cada pantalla de la aplicación en la que el layout no es excepción. Como se muestra en la figura \ref{fig:layoutFR}, la plantilla \{\{$<$sidebar\}\} se ocultará para pantallas estrechas y aparecerá la plantilla \{\{$<$header\}\}. Ésta constará de una serie de botones que al hacer click en cada uno de ellos hará que se se muestre el sidebar con el contenido correspondiente. El diseño del header puede verse siguiente figura: 
+\begin{figure}[hb]
+	\includegraphics[width=\textwidth]{header}
+	\label{fig:header}
+	\caption{Diseño header}
+\end{figure}
+
+\paragraph{}
+El sidebar está compuesta por tres espacios diferenciados (figura \ref{fig:sidMenuV1}):
+\begin{itemize}
+	\item \textbf{Caja Principal:} en ella aparecerá el logo de la aplicación y el nombre que serán enlaces al recurso raíz (/).
+	\item \textbf{Contenido:} el contenido del sidebar se organiza mediante un menú de tabs. 
+	\item \textbf{Caja de usuario:} en ella aparecerá el avatar y el nombre de usuario que serán enlaces al recurso perfil y un botón para cerrar sesión.
+\end{itemize}
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[height=0.72\textheight]{sidebarMenuVersion1}
+	\label{fig:sidMenuV1}
+	\caption{Diseño sidebar}
+\end{figure}
+\subsubsection{Configuración de Iron Router}
+\paragraph{}
+Iron Router permite establecer una configuración genérica para todas las plantillas especificando la plantilla de carga, el layout, plantilla notFound y subscripciones a las colecciones que necesitemos tener accesibles en todo momento. En este prototipo establecemos solamente la plantilla layout.
+\paragraph{}
+Puesto que acabamos de hablar del primer recurso de la aplicación debemos establecer una ruta para el mismo especificando qué plantilla ha de mostrarse de la siguiente manera:
+\begin{lstlisting}[language=Javascript]
+Router.configure({
+	layoutTemplate: 'layout'
+});
+
+Router.route({'/',
+	name: 'mainPage'
+});
+\end{lstlisting}
+
+\subsection{Registro de usuarios}
+\paragraph{}
+Para el registro de usuarios creamos una plantilla llamada \{\{>loginModal\}\} que será un Modal de bootstrap y que mediante una variable de sesión de Meteor mostrará un formulario para que los usuarios puedan registrarse u otro para que puedan iniciar sesión. Esta variable de sesión podría ser global y podría ser utilizada para crear un formulario dinámico que dependiera del valor de dicha sesión. Por lo que creamos una plantilla genérica para formularios y después incluimos el que correspondiera según el valor de la variable como sigue:
+
+\begin{lstlisting}[language=HTML]
+<template name=loginModal>
+	<!-- bootstrap modal-->
+		{{>formAwesome}}
+	<!-- end bootstrap modal-->
+</template>
+<template name='formAwesome'>
+	{{Template.dynamic template=formTemplate}}
+</template>
+
+<template name='signInForm'>
+	<button></button>
+</template>
+<template name='signUpForm'>
+	<button></button>
+</template>
+\end{lstlisting}
+
+\begin{lstlisting}[language=Javascript]
+//Cuando el modal se renderiza en el DOM, se establece el valor por defecto
+//que es que se muestre el formulario para iniciar sesión.
+Template.loginModal.rendered = function(){
+	Session.set('formTemplate','signInForm');
+};
+Template.formAwesome.helpers({
+	//El helper template de la plantilla Template.dynamic hace que dicha 
+	//plantilla se sustituya por la indicada en dicho helper
+	formTemplate: function(){return Session.get('formTemplate')}
+});
+Template.signInForm.events({
+	//cambiamos al formulario de registro.
+	'click button': function(){Session.set('formTemplate','signUpForm')}
+});
+
+Template.signUpForm.events({
+	//cambiamos al formulario de inicio de sesión.
+	'click button': function(){Session.set('formTemplate','signInForm')}
+});
+\end{lstlisting}
+
+
+\subsubsection{Formulario de inicio de sesión}
+Atendiendo a los requisitos los usuarios para iniciar sesión deberán rellenar un formulario con dos campos (figura \ref{fig:signIn}):
+\begin{itemize}
+	\item \textbf{usuario}: nombre de usuario o email.
+	\item \textbf{contraseña}: contraseña del usuario.
+\end{itemize}
+El inicio de sesión en Meteor se realiza mediante una llamada desde el cliente a la función loginWithPassword proporcionada por el paquete accounts-password pasando como argumento el nombre de usuario o email y la contraseña.
+\subsubsection{Formulario de registro}
+Atendiendo a los requisitos los usuarios para registrarse deberán suministrar un nombre de usuario, una contraseña y opcionalmente un email (figura \ref{fig:signUp}). El email servirá para la verificación del usuario y para acciones y gestiones que exploraremos más adelante. 
+\begin{figure}[htbp]
+    \centering
+    \subfigure[Formulario de inicio de sesión]{
+   	 \includegraphics[scale=0.5]{signInForm.png}
+    	\label{fig:signIn}
+    }
+    \subfigure[Formulario de registro]{
+    	\includegraphics[scale=0.45]{signUpForm.png}
+	 \label{fig:signUp}
+    }
+    \caption{Diseño formularios de registro}
+    \label{fig:signForms}
+\end{figure}
+El registro de usuarios en meteor se realiza mediante una llamada en el servidor a la función createUser que proporciona accounts-base. Puesto que el evento asociado al click del botón se encuentra en el cliente se necesita establecer un method en el servidor que sirva de enlace para el cliente. El cliente llamará al method y éste se ejecutará en el servidor llamando a la función createUser. De forma orientativa se muestra el siguiente código:
+
+\begin{lstlisting}[language=Javascript]
+if (Meteor.isClient){
+	Template.signUpForm.events({
+		'click button': function(e){
+			var paramsUser; //extraemos los valores de los campos.
+			Meteor.call('signUpMethod',paramsUser,function(err,res){
+				if (err) throw new Meteor.error('Error al crear el usuario');
+				if (res) console.log(usuario creado con id: res);
+			});
+		}
+	});
+};
+
+if(Meteor.isServer){
+	Meteor.methods({
+		'signUpMethod': function(paramsUser){
+			if (userIsValid(paramsUser)){
+				return Accounts.createUser(paramsUser,callback)
+			}else
+				return false;
+			}
+	})
+};
+\end{lstlisting}
+
+En el momento que el cliente realiza la llamada con los datos suministrados por el usuario, se deberá verificar que los datos son correctos y que cumplen una serie de reglas. (Validación de nuevo usuario).
+
+El resultado de este prototipo puede verse a continuación:
+\begin{figure}[htbp]
+    \centering
+    \subfigure[Formulario de inicio de sesión]{
+   	 \includegraphics[width=0.9\textwidth]{sign-in-form.png}
+    	\label{fig:signInReal}
+    }
+    \subfigure[Formulario de registro]{
+    	\includegraphics[width=0.9\textwidth]{sign-up-form.png}
+	 \label{fig:signUpReal}
+    }
+    \caption{Formularios de registro en Página de inicio}
+    \label{fig:signFormsReal}
+\end{figure}
+
+
+
+
 \section{Prototipo 2: Grabador y reproductor simples}
 \section{Prototipo 3: Grabador y reproductor basados en documentos}
 \section{Prototipo 4: Respuestas a grabaciones}
