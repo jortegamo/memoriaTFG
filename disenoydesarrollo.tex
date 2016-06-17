@@ -259,17 +259,17 @@ if(Meteor.isServer){
 };
 \end{lstlisting}
 
-En el momento que el cliente realiza la llamada con los datos suministrados por el usuario, se deberá verificar que los datos son correctos y que cumplen una serie de reglas. (Validación de nuevo usuario).
+En el momento que el cliente realiza la llamada con los datos suministrados por el usuario, se deberá verificar que los datos son correctos y que cumplen una serie de reglas. (Validación de nuevo usuario). Una vez verificado se creará un objeto usuario en la colección disponible en Meteor.users cuya estructura es la mostrada en la figura \ref{userMongo}. En este momento ya tenemos definida la primera entidad de la aplicación (Usuarios).
 
 El resultado de este prototipo puede verse a continuación:
 \begin{figure}[htbp]
     \centering
     \subfigure[Formulario de inicio de sesión]{
-   	 \includegraphics[width=0.9\textwidth]{sign-in-form.png}
+   	 \includegraphics[width=0.7\textwidth]{sign-in-form.png}
     	\label{fig:signInReal}
     }
     \subfigure[Formulario de registro]{
-    	\includegraphics[width=0.9\textwidth]{sign-up-form.png}
+    	\includegraphics[width=0.7\textwidth]{sign-up-form.png}
 	 \label{fig:signUpReal}
     }
     \caption{Formularios de registro en Página de inicio}
@@ -279,17 +279,223 @@ El resultado de este prototipo puede verse a continuación:
 
 
 
-\section{Prototipo 2: Grabador y reproductor simples}
-\section{Prototipo 3: Grabador y reproductor basados en documentos}
-\section{Prototipo 4: Respuestas a grabaciones}
-\section{Prototipo 5: Página de perfil}
-\section{Prototipo 6: Formularios dinámicos y complementos}
-\section{Prototipo 7: Organización en Canales}
-\section{Prototipo 8: Organización en Lecciones}
-\section{Prototipo 9: Contactos}
-\section{Prototipo 10: Conversaciones}
-\section{Prototipo 11: Emails e integración de servicios de registro}
-\section{Prototipo 12: Página principal}
-\section{Prototipo 13: Página de inicio, espacio para tutoriales y features}
+\section{Prototipo 2: Grabador y reproductor basados en documentos}
+\paragraph{}
+Este prototipo engloba el diseño y desarrollo del grabador, del reproductor y del recurso en el que se muestran las grabaciones realizadas. 
+\subsection{Grabador}
+\subsubsection{Entidades y colecciones}
+\paragraph{}
+En este momento surgen dos nuevas entidades de la aplicación que son las grabaciones y los documentos. La relación que existe entre éstas y los usuarios viene determinada por el diagrama mostrado en la figura (TAL). Dicho diagrama impone que cualquier usuario puede crear una grabación y que ésta debe estar formada por uno o más documentos. Los documentos no existen independientemente de las grabaciones. Como todas las entidades, éstas se traducen en las colecciones Records y Documents cuyos objetos MongoDB se muestran en \ref{recordMongo} y \ref{documentMongo} respectivamente. Al contrario que la colección Users de Meteor, éstas no se crean por defecto. Por lo que, generamos dos nuevos ficheros javascript: app/lib/collections/records.js y app/lib/collections/documents.js. En cada fichero definimos la colección de la siguiente manera:
+\begin{lstlisting}[language=Javascript]
+	CollectionName = new Mongo.Collection('collectionName');
+	//CollectionName será el nombre de la colección accesible en la aplicación.
+	//collectionName será el nombre de la colección en MongoDB.
+\end{lstlisting}
+\subsubsection{Routing}
+
+\paragraph{}
+Es necesario crear una nueva ruta para el grabador. Esta ruta será /records/submit y estará accesible en todo momento cumpliendo los requisitos gracias a un nuevo diseño del sidebar que incluye un link a la lista de grabaciones y otro al recurso que acabamos de crear como se muestra en la figura \ref{fig:sidebarV2}.
+\paragraph{}
+Incluimos una nueva ruta en /app/lib/router.js:
+\begin{lstlisting}[language=Javascript]
+	Router.route('/records/submit',{
+		name: 'recordSubmit'
+	});
+\end{lstlisting}
+\{\{$>$recordSubmit\}\} será la plantilla para nuestro recurso.
+\subsubsection{Proceso de grabación}
+\begin{figure}[h]
+    \centering
+    \subfigure[Esquema]{
+   	 \includegraphics[width=0.8\textwidth]{recordProcess.png}
+    	\label{fig:recordProcessSched}
+    }
+    \subfigure[Lógica]{
+    	\includegraphics[width=0.8\textwidth]{recordProcessObjects.png}
+	 \label{fig:recordProcessLogic}
+    }
+    \caption{Proceso de grabación}
+    \label{fig:recordProcess}
+\end{figure}
+\paragraph{}
+Puesto que cada grabación tendrá dos componentes (audio y video) el proceso se realiza de forma diferente para cada una como se muestra en la figura \ref{fig:recordProcessSched} de forma esquemática.
+\paragraph{}
+Dicho esquema se traduce en la creación de dos objetos javascript: AudioRecorder y EditorManager. Apreciable en la figura \ref{fig:recordProcessLogic}
+\begin{itemize}
+	\item \textbf{AudioRecorder}: se trata de un constructor que nos permitirá crear un grabador de audio
+	\item \textbf{EditorManager}: se trata de un constructor que nos permitirá crear un manejador de documentos, almacenar y actualizarlos de manera dinámica mientras se producen cambios en el editor. 
+\end{itemize}
+\paragraph{}
+La API de RTCRecorder nos proporciona un grabador proporcionándole como parametros un el Stream del usuario y una serie de configuraciones. Para conseguir el Stream utilizamos el módulo navigator del navegador:
+
+\begin{lstlisting}[language=Javascript]
+	navigator.getUserMedia  = navigator.getUserMedia || 
+						 navigator.webkitGetUserMedia || 
+						 navigator.mozGetUserMedia || 
+						 navigator.msGetUserMedia;
+	var audioConstraints = {audio: true, video: false};
+	navigator.getUserMedia(audioConstraints,function(stream){
+		var settings = {}
+		var recorder = window.RecordRTC(stream,settings);
+		recorder.startRecording();
+	},function(error){
+		throw new Meteor.error(error.reason);
+	});
+\end{lstlisting}
+El código anterior se encuentra dentro de un método (startRecording) del constructor AudioRecorder y la variable recorder se encuentra accesible por todos los métodos del mismo por lo que tenemos accesible el grabador proporcionado por RTCRecorder. 
+\paragraph{}El proceso de grabación sobre el editor se basa en generar una lista de acciones indexadas por marcas de tiempo. Dichas marcas de tiempo corresponderán al instante en el que se produce un cambio en el editor y dicho cambio se traducirá en una acción (método proporcionado por la API de AceEditor) para que en ese instante durante el proceso de reproducción se ejecute dicha acción simulando el cambio que se haya producido durante la grabación.
+\paragraph{}
+Para lo anterior es necesario capturar los cambios del editor, a través de la API de AceEditor, y extraer el instante correspondiente. En el momento que comienza la grabación se ejecuta un callback pasado por parámetro que sirve para arrancar el reloj de la grabación. Dicho reloj será accesible dentro de la plantilla \{\{$>$recordSubmit\}\}. Por lo que la sincronización con los cambios en el editor será perfecta.
+\paragraph{}
+El siguiente código sirve de ejemplo para ilustrar la captura de eventos: 
+\begin{lstlisting}[language=Javascript]
+var editor = ace.editor('#id');
+editor.getSession().on('change', function(e) {
+     switch (e.action) {
+     	case "remove":
+         	var rmRange = {start: e.start, end: e.end};
+          docsManagerRecorder.insertFunctions([{
+                time: new Date() - date,
+                arg: rmRange,
+                toDo: 'editor.getSession().getDocument().remove(arg);'
+           }]);
+           break;
+       }
+});
+\end{lstlisting}
+\paragraph{}
+Como puede verse en el código anterior docsManagerRecorder es nuestro objeto construido mediante EditorManager y mediante su método insertFunctions generamos nuevas acciones que se simularán durante la reproducción en el instante almacenado en su atributo time.
+
+\paragraph{}
+Puesto que una grabación debe estar formada por uno o más documentos, durante la grabación puede producirse la creación de nuevos documentos y del cambio de uno a otro sobre el editor. Estos cambios deben ser visibles durante la reproducción por lo tanto deben ser capturados. La captura se realiza mediante los eventos que se produzcan en la plantilla correspondiente al crearse un nuevo documento o visualizar otro distinto al actual. En el momento que alguno de estos eventos se produzca se generará una nueva acción que insertar en la lista de acciones mediante el método insertFunctions. 
+\paragraph{}
+Los eventos posibles que se traducen en acciones son los siguientes: 
+\begin{itemize}
+	\item Borrar: se borra contenido.
+	\item Insertar: se inserta contenido.
+	\item Selección: cambia la selección del cursor.
+	\item Cursor: cambia la posición del cursor.
+	\item Scroll: cambia la altura del scroll.
+	\item Creación documento: el usuario crea un nuevo documento.
+	\item Cambio de documento: el usuario selecciona otro documento distinto al actual para su visualización.
+\end{itemize}
+
+\subsubsection{Almacenamiento}
+Como podemos observar en la figura \ref{fig:recordProcess}, una vez termina la grabación se deben proporcionar herramientas para su almacenamiento persistente. El almacenamiento de dicha grabación se realizará por separado según sus componentes. Un objeto record compuesto por información sobre la grabación y la lista de acciones (\ref{recordMongo}) se almacenará en la colección Records de MongoDB y el archivo de audio en SoundCloud. 
+\paragraph{}
+Para utilizar la API de SoundCloud es necesaria la instalación de un nuevo paquete: monbro:soundcloud-nodejs-api-wrapper  . Este paquete es un wrapper (envoltorio) del SDK (Software Development Kit) de SoundCloud que permite realizar llamadas REST a la API desde el lado del servidor gracias al objeto SoundCloud que nos proporciona de manera global. 
+\paragraph{}
+Para inicializar dicho objeto necesitaremos un usuario en SoundCloud y crear una aplicación en su espacio para desarrolladores. Dicha aplicación nos proporcionará una serie de credenciales que nos permitirán comunicarnos con la API: identificador de la aplicación, clave secreta de la aplicación. Al crearla necesitaremos proporcionarle una url de redirección para la autenticación mediante el protocolo OAuth. 
+\paragraph{}
+Usando solamente el SDK en el cliente, a la hora de conectar con la API, comenzaría un proceso de autenticación que mostraría un popup que exige interacción con el usuario. Dicho proceso no es transparente al usuario y eso es algo que hemos querido arreglar. La solución es incorporar como parámetro de incialización del SDK un token OAuth (el devuelto tras el proceso de autenticación). El problema está en que dicho token tiene una fecha de expiración y el SDK para Javascript no proporciona herramientas para refrescar el token ya que no tiene método para realizar esa petición REST en cuestión. Pero el paquete mencionado anteriormente sí tiene esa funcionalidad, y es que cada vez que llamamos a su método .getClient(), nos devuelve un cliente con un token completamente nuevo. 
+\paragraph{}
+Por este motivo creamos el fichero /app/server/soundcloud.js en el que inicializar el objeto SoundCloud y crear el method .getClientSC al que podemos llamar desde el cliente y que nos devuelve los parámetros necesarios para incializar el SDK del cliente de forma que se conecte a la API de SoundCloud de forma transparente al usuario.
+\paragraph{}
+El siguiente código ilustra este proceso: 
+\begin{lstlisting}[language=Javascript]
+if (Meteor.isServer()){
+	Soudcloud.setConfig({
+		client_id: CLIENT_ID,
+		client_secret: CLIENT_SECRET,
+		username: USERNAME,
+		password: PASSWORD
+	});
+	
+	Meteor.methods({
+		getClientSC: function(){
+			var client = Soundcloud.getClient();
+			return {
+				client_id: CLIENT_ID,
+				access_token: client.settings.access_token
+			}
+		}
+	});
+}
+if (Meteor.isClient()){
+	$.getScript("https://cdn.WebRTC-Experiment.com/RecordRTC.js",function(){
+		Meteor.call('getClientSC',function(err,res){
+			if (err) throw new Meteor.error(err.reason);
+			if (res){
+				SC.initialize({
+					client_id: res.client_id,
+					oauth_token: res.access_token,
+					scope: 'non-expiring'
+				});
+			}
+		});
+	});
+}
+\end{lstlisting}
+
+\paragraph{}
+Las variables CLIENT\_ID Y CLIENT\_SECRET contienen el id de la aplicación que hemos creado en Soundcloud y su clave secreta respectivamente.
+\paragraph{}
+Una vez que tenemos inicializado el SDK en el cliente podemos realizar la subida del audio de la siguiente manera: 
+\begin{lstlisting}[language=Javascript]
+var recordMongoObject = {};
+SC.connect().then(function(){
+	SC.upload({
+		file: recorder.getAudio(), //Blob
+		title: 'title'
+	}).then(function(track){
+		recordMongoObject.track = {
+			id: track.id,
+			link: track.uri
+		}
+		//llamada al servidor para almacenar el objeto.
+	})
+})
+\end{lstlisting}
+\paragraph{} 
+En el código anterior se muestra cómo se crea una referencia al archivo subido mediante su identificador. Una vez tenemos el objeto completado realizamos la llamada al method insertRecord, creado en el archivo /app/lib/collections/records.js para almacenar la grabación en MongoDB.
+
+
+\subsubsection{Interfaz del grabador}
+La interfaz del grabador está formado por dos espacios: la pantalla en la que se mostrará una plantilla u otra dependiendo de las acciones a realizar y una caja con botones que determinarán dichas acciones. Además, como se graban documentos sobre editor, constará de una pestaña en la que aparecerá el título del documento que está siendo editado y un botón para acceder a la lista de documentos como se muestra en la figura \ref{fig:recorderBase}
+
+\paragraph{}
+El diseño del grabador se compone de las siguientes plantillas: 
+\begin{itemize}
+	\item \textbf{\{\{$<$initial\}\}}: es la que se muestra inicialmente y consta de un botón para mostrar la lista de documentos.
+	\item \textbf{\{\{$<$documentList\}\}}: se muestra como un panel dentro de la pantalla de la interfaz y contiene un botón para mostrar el formulario de creación de documentos y la lista de documentos creados. Al hacer click en cada uno de ellos lo visualizaremos en la pantalla. Cada miniatura de los documentos posee un enlace de edición que muestra el formulario de creación con los datos del propio documento.
+	\item \textbf{\{\{$<$documentForm\}\}}: es el formulario de edición y creación de los documentos. Se deberá introducir un título, un lenguaje de programación y un tema para el editor (estos dos últimos son opcionales).
+	\item \textbf{\{\{$<$editor\}\}}: plantilla en la que se muestra el editor con el contenido de los documentos.
+	\item \textbf{\{\{$<$actions\}\}}: esta plantilla está presente a lo largo de todo el proceso de grabación y determina las acciones a realizar según el estado del mismo (grabar, parar, guardar/cancelar).
+	\item \textbf{\{\{$<$final\}\}}: al finalizar la grabación se muestra en la pantalla de la interfaz un mensaje.
+	\item \textbf{\{\{$<$saveForm\}\}}: es el formulario para guardar nuestra grabación. Se deberá introducir un título y opcionalmente una descripción y una lista de etiquetas mediante un auto-completado de etiquetas que se ha elaborado.
+	\item \textbf{\{\{$<$upload\}\}}:  al hacer click en guardar en la plantilla anterior se mostrará el progreso de subida del audio y cuando termine un mensaje y un enlace a la página de la grabación (reproductor) para reproducir la grabación.
+\end{itemize}
+\paragraph{}
+Tras este análisis hemos encontrado una nueva entidad: etiquetas (Tags) por lo que creamos una nueva colección y un nuevo fichero en /app/lib/collections de forma análoga con las anteriores. Establecemos que una grabación puede tener o no etiquetas y que son globales es decir que la misma etiqueta la pueden tener una o varias grabaciones. Esta relación puede verse en el diagrama (tal).
+\paragraph{}
+El flujo de plantillas se muestra en la figura \ref{fig:grabacionFlujo}
+Las plantillas presentes en la figura anterior corresponden a las figuras: \ref{fig:recorderNoDocs}, \ref{fig:recorderDocsList}, \ref{fig:documentForm}, \ref{fig:recorderEditor}, \ref{fig:recorderFinal} y \ref{fig:uploadProcess} disponibles en el apéndice \ref{appendix:mockupsApendix}.
+\paragraph{}
+Una vez desarrollado el grabador este es el resultado:
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.75\textwidth]{recorder.png}
+	\caption{Grabador}
+	\label{fig:recorder}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.4]{recorderFlow.png}
+	\label{fig:grabacionFlujo}
+	\caption{Flujo de plantillas del grabador}
+\end{figure}
+\subsection{Reproductor}
+\subsection{Lista de grabaciones}
+
+\section{Prototipo 3: Respuestas a grabaciones}
+\section{Prototipo 4: Página de perfil}
+\section{Prototipo 5: Formularios dinámicos y complementos}
+\section{Prototipo 6: Organización en Canales}
+\section{Prototipo 7: Organización en Lecciones}
+\section{Prototipo 8: Contactos}
+\section{Prototipo 9: Conversaciones}
+\section{Prototipo 10: Emails e integración de servicios de registro}
+\section{Prototipo 11: Página principal}
+\section{Prototipo 12: Página de inicio, espacio para tutoriales y features}
 \section{Prototipo Final: Restricciones de acceso y cross-browsing}
 \section{Despliegue y pruebas globales}
