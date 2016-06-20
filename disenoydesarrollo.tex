@@ -466,25 +466,205 @@ El diseño del grabador se compone de las siguientes plantillas:
 	\item \textbf{\{\{$<$upload\}\}}:  al hacer click en guardar en la plantilla anterior se mostrará el progreso de subida del audio y cuando termine un mensaje y un enlace a la página de la grabación (reproductor) para reproducir la grabación.
 \end{itemize}
 \paragraph{}
-Tras este análisis hemos encontrado una nueva entidad: etiquetas (Tags) por lo que creamos una nueva colección y un nuevo fichero en /app/lib/collections de forma análoga con las anteriores. Establecemos que una grabación puede tener o no etiquetas y que son globales es decir que la misma etiqueta la pueden tener una o varias grabaciones. Esta relación puede verse en el diagrama (tal).
+Tras este análisis hemos encontrado una nueva entidad: etiquetas (Tags) por lo que creamos una nueva colección y un nuevo fichero en /app/lib/collections de forma análoga con las anteriores. Establecemos que una grabación puede tener o no etiquetas y que son globales es decir que la misma etiqueta la pueden tener una o varias grabaciones. Esta relación puede verse en el diagrama (tal). Además para tenerlas accesibles desde el formulario debemos crear una publicación a la que se subscribirá el cliente. Como es la primera, creamos el fichero /app/server/publications.js. Será el fichero en el que declararemos todas nuestras publicaciones. La subscripción a esta publicación se hará dinámicamente puesto que se trata de un auto-completado.
 \paragraph{}
 El flujo de plantillas se muestra en la figura \ref{fig:grabacionFlujo}
 Las plantillas presentes en la figura anterior corresponden a las figuras: \ref{fig:recorderNoDocs}, \ref{fig:recorderDocsList}, \ref{fig:documentForm}, \ref{fig:recorderEditor}, \ref{fig:recorderFinal} y \ref{fig:uploadProcess} disponibles en el apéndice \ref{appendix:mockupsApendix}.
 \paragraph{}
 Una vez desarrollado el grabador este es el resultado:
-\begin{figure}[h]
+\begin{figure}[htpb]
 	\centering
 	\includegraphics[width=0.75\textwidth]{recorder.png}
 	\caption{Grabador}
 	\label{fig:recorder}
 \end{figure}
-\begin{figure}[h]
+\begin{figure}[htpb]
 	\centering
 	\includegraphics[scale=0.4]{recorderFlow.png}
 	\label{fig:grabacionFlujo}
 	\caption{Flujo de plantillas del grabador}
 \end{figure}
+\paragraph{}
+\paragraph{}\paragraph{}
 \subsection{Reproductor}
+\subsubsection{Ruta, publicaciones y subscripciones}
+El reproductor es un módulo de la página de cada grabación que se establece en una nueva ruta de nuestro proyecto y la primera que establecemos como detalle (detail). La ruta será /record/:id donde id corresponderá al identificador del objeto grabación almacenado en MongoDB y estará configurada en /app/lib/router.js de la misma forma que las anteriores. 
+\paragraph{}
+La única diferencia es que ahora necesitaremos tener accesible el objeto grabación para realizar las acciones oportunas. Esto se consigue creando publicaciones y subscripciones. 
+
+\begin{lstlisting}[language=Javascript]
+	// app/server/publications.js
+	Meteor.publishComposite('record',function(id){
+		//Publicamos el record y los documentos asociados al mismo. 
+		var sub = {
+			find: function(){
+				return Records.find(id)
+			},
+			children: [{
+				find: function(record){
+					return Documents.find({record_id: record._id});
+				},
+				{...}
+			}];
+		};
+		return sub;
+	});
+\end{lstlisting}
+Las subscripciones se realizarán mediante Iron Router a no ser que sean dinámicas. 
+\begin{lstlisting}[language=Javascript]
+// app/lib/router.js
+
+Router.route('/record/:_id',{
+	name: 'record',
+	data: function(){
+		return Records.findOne(this.params_id);
+	},
+	waitOn: function(){
+		return Meteor.subscribe('record',this.params._id);
+	}
+});
+\end{lstlisting}
+
+De esta manera tendremos accesibles los datos del record y se establecerán como los datos de la plantilla \{\{$<$record\}\}.
+
+\subsubsection{Proceso de reproducción}
+Debido a que cada grabación está compuesta por audio y por vídeo sobre editor, se desarrollan dos procesos paralelos y sincronizados durante la reproducción de la misma (figura \ref{fig:playProcessSched}).
+\begin{itemize}
+	\item \textbf{Audio:} nos conectamos a SoundCloud y realizamos la petición del stream del audio correspondiente.
+	\item \textbf{Vídeo (editor):} a medida que el audio se reproduce, se realiza la simulación de cada evento capturado durante la grabación de forma sincronizada.
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \subfigure[Esquema]{
+   	 \includegraphics[width=0.8\textwidth]{playProcess.png}
+    	\label{fig:playProcessSched}
+    }
+    \subfigure[Lógica]{
+    	\includegraphics[width=0.8\textwidth]{playProcessObjects.png}
+	 \label{fig:playProcessLogic}
+    }
+    \caption{Proceso de reproducción}
+    \label{fig:playProcess}
+\end{figure}
+
+\paragraph{}
+Al igual que durante la grabación, la labor de reproducción de cada una de las componentes recaerá en un objeto Javascript: RecordPlayer (audio) y EditorPlayerManager (editor) en los ficheros /app/client/lib/recordPlayer.js y /app/client/lib/editorPlayerManager.js respectivamente (figura \ref{fig:playProcessLogic}).
+\begin{itemize}
+	\item \textbf{RecordPlayer:} se encarga de ofrecer una interfaz lógica a partir del stream del audio proporcionado en su inicialización. Dicha interfaz recoge los métodos necesarios para la reproducción (.play(), .pause(), .seek(), .setVolume(), .ended()) y otros propios (.updateCover(), .getState(), .destroy()).
+	\item \textbf{EditorPlayerManager:} se encarga de clasificar la lista de acciones capturadas y realizar su simulación. Además se encarga de mantener la integridad de los documentos de la grabación durante el proceso. Este objeto posee los métodos .getDocs(), .getDocActual(), .update() y .seek().
+\end{itemize}
+ 
+
+\subsubsection{Sincronización entre audio y editor}
+
+Al inicializar el objeto RecordPlayer toma como argumento un objeto EditorPlayerManager ya inicializado con el identificador del editor. El método .play del objeto RecordPlayer inicia una llamada a su función .updatePlayer() mediante un Interval de 20. Esto quiere decir que cada 20 mílisegundos se ejecutará esta función que, a su vez, realiza una llamada a la función .update() del objeto EditorPlayerManager pasado como argumento. Por lo que cada 20 mílisegundos se mostrarán cambios en el contenido del editor.
+
+\paragraph{}
+Al llamar al método .pause() de RecordPlayer se destruirá la programación del objeto Interval, con lo que parará de inmediato los cambios sobre el editor. 
+\paragraph{}
+Al saltar entre instantes de la reproducción se llamará al método .seek(). Este método realiza una llamada directa al método .updatePlayer() y por tanto al método .update() de EditorPlayerManager, pasando como parámetro el instante exacto.
+
+\subsubsection{Simulación de eventos sobre editor}
+La simulación se realiza en el método .update() del objeto EditorPlayerManager. El objeto posee la lista de acciones completa, la cual no se alterará en ningún momento. Al inicializarse se realiza una copia en una variable global del objeto. En el momento que se produce la llamada al método .update() dicha lista se filtra (se escogen las acciones cuyo instante de creación sea menor o igual que el instante actual de la reproducción). Después se clasifican estas acciones y se ejecutan en orden. Después se actualiza el valor de la variable donde estaba la copia de las acciones eliminando de esa lista los ya simuladas. 
+
+\begin{lstlisting}[language=Javascript]
+EditorPlayerManager = function(){
+	var RC, listPending, editor;
+	
+	this.initialize = function(params){
+		RC = params.RC;
+		listPending = RC;
+		editor = ace.edit(params.editor);
+	};
+	
+	this.update = function(pos){
+		//filtramos las acciones a ejecutar
+		var listToDo = _(listPending).filter(function(action){
+			return action.time <= pos;
+		});
+		
+		//ejecutamos las acciones que corresponden.
+		_(listToDo).each(function(action){
+			switch(action.type){
+				//ejecución de las funciones guardadas sobre el editor.
+			}
+		});
+		
+		//actualizamos la lista de acciones pedientes.
+		listPending = _(listPending).difference(listToDo);
+	}
+}
+\end{lstlisting}
+
+El anterior código ilustra el proceso descrito.
+
+\subsubsection{Interfaz del recurso grabación}
+\paragraph{}
+Se trata de un recurso de detalle (detail resource) y en este proyecto se ha hecho un diseño base (figura \ref{fig:detailBase}) para este tipo de recurso basado en tres espacios: 
+\begin{itemize}
+	\item {Banner: } este será el espacio dedicado para la presentación de la información relativa al objeto correspondiente al recurso.
+	\item {NavbarTab: } barra de navegación basada en tabs para elegir qué contenido, asociado al objeto, visualizar.
+	\item {tabContent: } espacio en el que se muestran el contenido escogido.
+\end{itemize}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{pageDetailBase.png}
+	\caption{Diseño página de detalle}
+	\label{fig:detailBase}
+\end{figure}
+El banner, en este caso, mostrará la información de la grabación (autor, descripción, título, fecha de creación, contadores y lista de etiquetas), un botón para votar, la plantilla \{\{$<$player\}\} para el reproductor y la plantilla \{\{$<$actions\}\} como se muestra en el diseño (figura \ref{fig:recordBanner}).
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth, height=10cm]{RecordBanner.png}
+	\caption{Diseño banner para una grabación}
+	\label{fig:recordBanner}
+\end{figure}
+
+\subsubsection{Interfaz del reproductor}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{playerV1}
+	\caption{Diseño interfaz del reproductor}
+	\label{fig:playerV1}
+\end{figure}
+La interfaz del reproductor (figura \ref{fig:playerV1})estará compuesta por el editor, una capa superpuesta vinculada a los eventos play y pause y la plantilla \{\{$<$playerActions\}\} en la que se muestra el progreso, el timer, un controlador de volumen y los botones play y pause cuando correspondan. Además en la parte superior aparecerá una pestaña en la que se mostrará información sobre el documento actual (título y lenguaje).
+\subsubsection{Streamming}
+La plantilla \{\{$<$player\}\} se instancia mediante un helper de la plantilla \{\{$<$record\}\} cuyo valor es un objeto Javascript con los datos necesarios para construir e inicializar los objetos RecordPlayer y EditorPlayerManager y el identificador del audio almacenado en SoundCloud. 
+\paragraph{}
+Como se muestra a continuación, en el método .rendered() es necesaria la conexión con SoundCloud para realizar la petición de un stream de audio que poder suministrar al objeto RecordPlayer creado: 
+\begin{lstlisting}[language=Javascript]
+// app/client/modules/record_modules/record/player.js
+
+Template.player.rendered = function(){
+	var self = this.
+	Meteor.call('getClientSC',function(err,res){
+		if (res){
+			SC.initialize ({
+				client_id: res.client_id,
+				auth_token: res.auth_token,
+				scope: 'non-expiring'
+			});
+			SC.connect().then(function(){
+				SC.stream('tracks/' + self.track_id)
+					.then(function(s){
+						this.recordPlayer.initialize(s,
+							this.editorPlayerManager, ...);
+					});
+			});
+		}
+	});
+}
+\end{lstlisting}
+\paragraph{}
+El resultado final del reproductor puede verse en la siguiente figura: 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{record-player.png}
+	\caption{Reproductor}
+	\label{fig:recordPlayerPage}
+\end{figure}
 \subsection{Lista de grabaciones}
 
 \section{Prototipo 3: Respuestas a grabaciones}

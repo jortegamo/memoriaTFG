@@ -174,33 +174,50 @@
 \contentsline {paragraph}{}{66}{section*.138}
 \contentsline {paragraph}{}{66}{section*.139}
 \contentsline {paragraph}{}{66}{section*.140}
+\contentsline {paragraph}{}{66}{section*.141}
+\contentsline {paragraph}{}{66}{section*.142}
+\contentsline {paragraph}{}{68}{section*.143}
 \contentsline {subsection}{\numberline {3.5.2}Reproductor}{68}{subsection.3.5.2}
-\contentsline {subsection}{\numberline {3.5.3}Lista de grabaciones}{68}{subsection.3.5.3}
-\contentsline {section}{\numberline {3.6}Prototipo 3: Respuestas a grabaciones}{68}{section.3.6}
-\contentsline {section}{\numberline {3.7}Prototipo 4: P\'agina de perfil}{68}{section.3.7}
-\contentsline {section}{\numberline {3.8}Prototipo 5: Formularios din\'amicos y complementos}{68}{section.3.8}
-\contentsline {section}{\numberline {3.9}Prototipo 6: Organizaci\'on en Canales}{68}{section.3.9}
-\contentsline {section}{\numberline {3.10}Prototipo 7: Organizaci\'on en Lecciones}{68}{section.3.10}
-\contentsline {section}{\numberline {3.11}Prototipo 8: Contactos}{68}{section.3.11}
-\contentsline {section}{\numberline {3.12}Prototipo 9: Conversaciones}{68}{section.3.12}
-\contentsline {section}{\numberline {3.13}Prototipo 10: Emails e integraci\'on de servicios de registro}{68}{section.3.13}
-\contentsline {section}{\numberline {3.14}Prototipo 11: P\'agina principal}{68}{section.3.14}
-\contentsline {section}{\numberline {3.15}Prototipo 12: P\'agina de inicio, espacio para tutoriales y features}{68}{section.3.15}
-\contentsline {section}{\numberline {3.16}Prototipo Final: Restricciones de acceso y cross-browsing}{68}{section.3.16}
-\contentsline {section}{\numberline {3.17}Despliegue y pruebas globales}{68}{section.3.17}
-\contentsline {chapter}{\numberline {4}Experimentaci\'on}{69}{chapter.4}
-\contentsline {section}{\numberline {4.1}Motivaci\'on}{69}{section.4.1}
-\contentsline {section}{\numberline {4.2}Planteamiento y objetivos}{69}{section.4.2}
-\contentsline {section}{\numberline {4.3}Proceso y realizaci\'on}{69}{section.4.3}
-\contentsline {section}{\numberline {4.4}Resultados}{69}{section.4.4}
-\contentsline {chapter}{\numberline {5}Conclusi\'on}{70}{chapter.5}
-\contentsline {chapter}{Bibliograf\'{\i }a}{71}{section*.141}
-\contentsline {section}{\numberline {5.1}Principales Sitios Web}{72}{section.5.1}
-\contentsline {section}{\numberline {5.2}Libros}{72}{section.5.2}
-\contentsline {section}{\numberline {5.3}Art\IeC {\'\i }culos}{72}{section.5.3}
-\contentsline {section}{\numberline {5.4}Tutoriales}{72}{section.5.4}
-\contentsline {section}{\numberline {5.5}Paquetes}{72}{section.5.5}
-\contentsline {section}{\numberline {5.6}Repositorios}{72}{section.5.6}
-\contentsline {chapter}{Ap\'endices}{73}{section*.143}
-\contentsline {chapter}{\numberline {A}Dise\~no de documentos para Mongo}{74}{appendix.Alph1}
-\contentsline {chapter}{\numberline {B}Dise\~no de Interfaces}{81}{appendix.Alph2}
+\contentsline {subsubsection}{Ruta, publicaciones y subscripciones}{68}{section*.144}
+\contentsline {paragraph}{}{68}{section*.145}
+\contentsline {subsubsection}{Proceso de reproducci\'on}{69}{section*.146}
+\contentsline {paragraph}{}{70}{section*.147}
+\contentsline {subsubsection}{Sincronizaci\'on entre audio y editor}{71}{section*.148}
+\contentsline {paragraph}{}{71}{section*.149}
+\contentsline {paragraph}{}{71}{section*.150}
+\contentsline {subsubsection}{Simulaci\'on de eventos sobre editor}{71}{section*.151}
+\contentsline {subsubsection}{Interfaz del recurso grabaci\'on}{73}{section*.152}
+\contentsline {paragraph}{}{73}{section*.153}
+\contentsline {subsubsection}{Interfaz del reproductor}{74}{section*.154}
+\contentsline {subsubsection}{Streamming}{75}{section*.155}
+\contentsline {paragraph}{}{75}{section*.156}
+\contentsline {paragraph}{}{76}{section*.157}
+\contentsline {subsection}{\numberline {3.5.3}Lista de grabaciones}{78}{subsection.3.5.3}
+\contentsline {section}{\numberline {3.6}Prototipo 3: Respuestas a grabaciones}{78}{section.3.6}
+\contentsline {section}{\numberline {3.7}Prototipo 4: P\'agina de perfil}{78}{section.3.7}
+\contentsline {section}{\numberline {3.8}Prototipo 5: Formularios din\'amicos y complementos}{78}{section.3.8}
+\contentsline {section}{\numberline {3.9}Prototipo 6: Organizaci\'on en Canales}{78}{section.3.9}
+\contentsline {section}{\numberline {3.10}Prototipo 7: Organizaci\'on en Lecciones}{78}{section.3.10}
+\contentsline {section}{\numberline {3.11}Prototipo 8: Contactos}{78}{section.3.11}
+\contentsline {section}{\numberline {3.12}Prototipo 9: Conversaciones}{78}{section.3.12}
+\contentsline {section}{\numberline {3.13}Prototipo 10: Emails e integraci\'on de servicios de registro}{78}{section.3.13}
+\contentsline {section}{\numberline {3.14}Prototipo 11: P\'agina principal}{78}{section.3.14}
+\contentsline {section}{\numberline {3.15}Prototipo 12: P\'agina de inicio, espacio para tutoriales y features}{78}{section.3.15}
+\contentsline {section}{\numberline {3.16}Prototipo Final: Restricciones de acceso y cross-browsing}{78}{section.3.16}
+\contentsline {section}{\numberline {3.17}Despliegue y pruebas globales}{78}{section.3.17}
+\contentsline {chapter}{\numberline {4}Experimentaci\'on}{79}{chapter.4}
+\contentsline {section}{\numberline {4.1}Motivaci\'on}{79}{section.4.1}
+\contentsline {section}{\numberline {4.2}Planteamiento y objetivos}{79}{section.4.2}
+\contentsline {section}{\numberline {4.3}Proceso y realizaci\'on}{79}{section.4.3}
+\contentsline {section}{\numberline {4.4}Resultados}{79}{section.4.4}
+\contentsline {chapter}{\numberline {5}Conclusi\'on}{80}{chapter.5}
+\contentsline {chapter}{Bibliograf\'{\i }a}{81}{section*.158}
+\contentsline {section}{\numberline {5.1}Principales Sitios Web}{82}{section.5.1}
+\contentsline {section}{\numberline {5.2}Libros}{82}{section.5.2}
+\contentsline {section}{\numberline {5.3}Art\IeC {\'\i }culos}{82}{section.5.3}
+\contentsline {section}{\numberline {5.4}Tutoriales}{82}{section.5.4}
+\contentsline {section}{\numberline {5.5}Paquetes}{82}{section.5.5}
+\contentsline {section}{\numberline {5.6}Repositorios}{82}{section.5.6}
+\contentsline {chapter}{Ap\'endices}{83}{section*.160}
+\contentsline {chapter}{\numberline {A}Dise\~no de documentos para Mongo}{84}{appendix.Alph1}
+\contentsline {chapter}{\numberline {B}Dise\~no de Interfaces}{91}{appendix.Alph2}
