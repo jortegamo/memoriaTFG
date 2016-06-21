@@ -666,16 +666,204 @@ El resultado final del reproductor puede verse en la siguiente figura:
 	\label{fig:recordPlayerPage}
 \end{figure}
 \subsection{Lista de grabaciones}
+\subsubsection{Ruta, publicaciones y subscripciones}
+La lista de grabaciones se mostrará en una nueva página o recurso de la aplicación. Dicho recurso corresponde a la ruta /records y a la plantilla \{\{$<$records\}\}. Como en cada nueva ruta es necesario integrarla en /app/lib/router.js y, en este caso, crear las publicaciones y subscripciones necesarias.
+\begin{lstlisting}[language=Javascript]
+// app/server/publications.js
 
+Meteor.publishComposite('records',function(){
+	var sub = {
+		find: function(){
+			return Records.find({},{fields: {RC:0, track: 0, tags: 0}});
+		},
+		children: [{
+			find: function(record){
+				return Meteor.users.find(record.author,
+						{fields: {username: 1, avatar: 1}});
+			}
+		}]
+	}
+});
+
+// app/lib/router.js
+
+Router.route('/records',{
+	name: 'records',
+	waitOn: function(){
+		return Meteor.subscribe('records');
+	}
+});
+\end{lstlisting}
+\paragraph{}
+De esta manera nos subscribimos a las grabaciones y a los usuarios que las han creado. Filtramos los campos innecesarios para agilizar el proceso de renderizado.
+\subsubsection{Interfaz}
+La interfaz es muy sencilla (figura \ref{fig:recordsPage}). Está formada por dos espacios:
+\begin{itemize}
+	\item \textbf{logo:}  en este espacio se muestra el logo, el título de la lista y un enlace al recurso creación correspondiente.
+	\item \textbf{\{\{$<$recordsTabContent\}\}:} este espacio será genérico para la aplicación y es que en cualquier parte de la aplicación que se quieran listar grabaciones se utilizará esta plantilla. Está formada por:
+	\begin{itemize}
+		\item \textbf{\{\{$<$contentNavbar\}\}:} en ella aparecen una serie de filtros (recientes, populares), opciones de visualización y un tab para iniciar el buscador.
+		\item \textbf{\{\{$<$content\}\}:} en esta plantilla se listarán las grabaciones mediante miniaturas (figura \ref{fig:miniaturesRecord}) según el modo de visualización y aparecerá un botón para cargar más ítems.
+	\end{itemize}
+\end{itemize}
+
+Tras el desarrollo de la interfaz el resultado se muestra en la siguiente figura:
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{records.png}
+	\caption{Lista de grabaciones}
+	\label{fig:records}
+\end{figure}
+\paragraph{}
+\paragraph{}
 \section{Prototipo 3: Respuestas a grabaciones}
-\section{Prototipo 4: Página de perfil}
-\section{Prototipo 5: Formularios dinámicos y complementos}
-\section{Prototipo 6: Organización en Canales}
-\section{Prototipo 7: Organización en Lecciones}
-\section{Prototipo 8: Contactos}
-\section{Prototipo 9: Conversaciones}
-\section{Prototipo 10: Emails e integración de servicios de registro}
-\section{Prototipo 11: Página principal}
-\section{Prototipo 12: Página de inicio, espacio para tutoriales y features}
+En este prototipo actualizamos la lógica del grabador y añadimos nuevas acciones para la página de detalle de grabación.
+\subsection{Actualización del grabador}
+Las respuestas a grabaciones se realizan mediante nuevas grabaciones sobre editor según los requisitos de la aplicación. La única diferencia es que esta vez el grabador se debe iniciar con los documentos de la grabación a la que queremos responder. Además el contenido de dichos documentos debe corresponder al instante en el que hemos pausado la reproducción. 
+\paragraph{}
+Para todo lo anterior necesitamos inicializar, con el estado de dichos documentos, al objeto que se encarga de manejarlos durante la grabación (EditorManager).  Pero antes necesitamos extraer dicho estado durante la reproducción. Para esto el objeto recordPlayer cuenta con el método .getState() que devuelve un objeto con el último instante de reproducción y la lista de documentos con su estado actual. Dicho objeto se almacenará en una variable de sesión accesible desde el fichero /app/lib/router.js. 
+\paragraph{}
+Para inicializar el objeto EditorManager como se ha descrito, necesitamos tener esos documentos accesibles desde los datos de la plantilla \{\{$<$recordSubmit\}\}. De esto se encarga Iron Router. La forma de especificar nuestra intención de realizar una grabación respuesta a Iron Router es mediante una query string (cadena de consulta). En ella se especificará el identificador de la grabación a la que queremos responder y la clave será parent\_id.
+\begin{lstlisting}[language=Javascript]
+Router.route('/records/submit',{
+	...
+	data: function(){
+		var data = {}
+		if (this.params.query){ //es una respuesta
+			var playerState = (Session.get(playerState));
+			(playerState)? data.playInstantObject = playerState : null;
+		}
+		return data;
+	},
+	waitOn: function(){
+		if (this.params.query){
+			return Meteor.subscribe('recordDocuments'
+						this.params.query.parent_id);
+		}
+	}
+});
+\end{lstlisting}
+\paragraph{}En el código anterior podemos ver cómo se configuran los datos de la plantilla del grabador y cómo nos subscribimos a los documentos de la grabación padre.
+\paragraph{}
+Hay que tener en cuenta que en el momento que abandonemos la página del grabador, la variable de sesión deberá ser destruida. Esto supone un problema. Si abandonamos la página del grabador y después volvemos a ella, Iron Router interpreta que queremos hacer una grabación respuesta. Esto se debe a que la query string no desaparece. Por este motivo se ha establecido que si volvemos al grabador se comenzará con los documentos en el estado final de la grabación padre. Dichos documentos los tenemos accesibles gracias a la publicación correspondiente y a la subscripción mediante el método waitOn de la ruta descrita en el código mostrado.
+\paragraph{}
+Como se muestra en el objeto (\ref{recordMongo}), cuando almacenemos la respuesta en MongoDB debemos incluir dos campos: isReply y parent\_id. 
+\subsection{Nuevas acciones}
+En la plantilla \{\{$<$actions\}\} de la interfaz de detalle de grabación (figura \ref{fig:recordBanner}) creamos dos botones: uno como enlace al grabador para crear una respuesta (sólo estará disponible si la reproducción se encuentra pausada o finalizada) y otro como enlace a la grabación padre (sólo disponible si se trata de una respuesta).
+\begin{lstlisting}[language=HTML]
+<div id='actions'>
+	{{#if isPosibleToReply}}
+		<button id='reply-button'>reply</button>
+	{{/if}}
+	{{#if isReply}}
+		<button id='go-to-parent-button'>parent</button>
+	{{/if}}
+</div>
+\end{lstlisting}
+
+\begin{lstlisting}[language=Javascript]
+Template.record.events({
+	'click button#reply-button': function(){
+		Session.set('playerState',this.recordPlayer.getState());
+		Router.go('recordSubmit',{},{query: 'parent_id=' + this._id});
+	},
+	'click button#go-to-parent-button': function(){
+		Router.go('record',{_id: this.parent_id});
+	}
+});
+\end{lstlisting}
+
+En el código anterior podemos apreciar la lógica del proceso descrito anteriormente.
+\subsection{Timeline, relacionados y comentarios}
+En este prototipo se han generado las secciones de contenido de la página detalle de una grabación mostradas en la figura \ref{fig:detailBase}: \{\{navbarTab\}\}(figura tal) y \{\{tabContent\}\}. La plantilla \{\{navbarTab\}\} se ha diseñado como componente de manera que pueda ser configurada con las tabs que correspondan para cada página de detalle.
+\paragraph{}
+Para listar las respuestas de una grabación se ha creado un timeline (figura tal). Dicho timeline se muestra al seleccionar la tab Replies del \{\{$<$navbar\}\} de la página de la grabación.
+
+\paragraph{}Además se ha añadido una nueva sección de contenidos para mostrar las grabaciones relacionadas con la grabación actual (figura tal). Para ello se ha modificado la publicación 'record'. Ahora publicará, además de la grabación actual, otras que posean etiquetas similares.
+
+\paragraph{}También se ha creado una nueva sección que contiene un espacio para realizar comentarios (figura tal) y con ello surge una nueva entidad. Dicha entidad se traduce en una nueva colección Comentarios cuyo objeto se muestra en \ref{commentMongo} y su relación con las demás entidades en la figura (tal). Esta sección esta compuesta por una caja para introducir el texto a publicar y la lista de comentarios. Cada comentario está compuesto por el avatar del autor, el texto, una lista de las respuestas a ese comentario y la misma caja de texto mencionada anteriormente responder.
+
+\paragraph{}
+Se ha diseñado el espacio para comentarios de manera que sea genérico, es decir, que se pueda utilizar para todo tipo de contenidos. Tras la implementación el resultado puede verse en las figuras (tal),(tal) y (tal).
+\section{Prototipo 4: Organización en Canales}
+\section{Prototipo 5: Organización en Lecciones}
+\section{Prototipo 6: Página de perfil y Contactos}
+En este prototipo se ha diseñado e implementado la página de perfil del usuario y un espacio para realizar solicitudes de contacto y mostrar esas relaciones entre los distintos usuarios.
+\subsection{Perfil}
+Se trata de un nuevo módulo y recurso cuya ruta será /profile/\_id, donde \_id corresponderá al id del usuario en cuestión. Se crean nuevas publicaciones y subscripciones y se establece la ruta en /app/lib/router.js.
+
+\subsubsection{Interfaz}
+Al tratarse de un recurso de detalle compartirá la misma base que los demás (figura \ref{fig:detailBase}). El \{\{baner\}\} estará formado una cabecera en la que se muestran el avatar del usuario, una imagen de fondo, un botón para acceder al recurso de edición del perfil y una caja con acciones y un cuerpo en el que aparece el nombre de usuario, la descripción y lista de servicios (figura tal). 
+
+\subsubsection{Contenidos}
+Utilizamos el complemento navbarTab y lo configuramos para que tenga las tabs canales, lecciones, grabaciones, conversaciones y contactos que corresponden a las categorías de contenido de la aplicación (figura tal).
+Podemos reutilizar las plantillas  \{\{contentTab\}\} para mostrar las listas de contenido según la categoría que hemos generado para los recursos /records, /channels y /lessons. Sólo aparecerán las del usuario en cuestión, ya que nos hemos subscrito a sus contenidos. Aunque en este caso no existe la opción de iniciar el buscador, sino que se añaden nuevos filtros (figuras \ref{fig:recordsPage}, \ref{fig:lessonsPage} y \ref{fig:channelsPage} ): 
+\begin{itemize}
+	\item \textbf{Subscrito: }muestra los canales o lecciones a los que se ha subscrito el usuario según corresponda.
+	\item \textbf{Historial: }muestra un total de 10 entradas. Dichas entradas serán las 10 últimas reproducciones que el usuario haya visualizado y formarán parte del  \{\{contentTab\}\} para las grabaciones.
+\end{itemize}
+\paragraph{}
+Además se han incluido nuevos enlaces en el sidebar para acceder a los contenidos del perfil de forma directa mediante una query string que establece el contenido a visualizarse al cargar el perfil como puede verse en el diseño MenuTabV4 del sidebar (figura \ref{fig:sidebarVersions})
+\subsubsection{Roles}
+Al visualizar cualquier página de perfil un usuario puede adoptar uno de estos dos roles: 
+\begin{itemize}
+	\item \textbf{Propietario:} lo adoptará el usuario que sea propietario de dicho perfil. Podrá acceder a la lista de servicios y al recurso de edición del perfil, además en cada \{\{contentTab\}\} se le mostrará un enlace al recurso de creación correspondiente. 
+	\item \textbf{Visitante:}  lo adoptará el usuario que no sea propietario de dicho perfil. Podrá acceder a las acciones presentes en la cabecera del banner. Sólo existirá una, de momento: realizar peticiones de contacto.
+\end{itemize}
+\subsubsection{Edición del perfil}
+Al igual que para editar las lecciones o los canales se establece un nuevo recurso para editar el perfil cuya ruta es /profile/:\_id/edit. Como en las otras es necesario declararla en /app/lib/router.js crear una nueva plantilla \{\{$<$profileEdit\}\} en /app/client/modules/profile\_modules/profileEdit/profileEdit.html y subscribirse al usuario correspondiente. Al igual que los demás recursos de edición, éste mantiene el diseño base (figura tal), es decir, que incorpora la plantilla \{\{$<$awesomeForm\}\} la cual, mediante una variable de sesión, carga uno u otro formulario con características comunes. En este caso, el formulario de edición dinámico creado en el prototipo 4. Además incorporamos los componentes avatar, banner y description (figura tal). 
+\subsection{Contactos}
+Al existir usuarios en la aplicación es necesario establecer y denominar las relaciones entre ellos. Dichas relaciones se denominan relaciones de contacto. Con esto surge una nueva entidad (Contactos) que se traduce en una nueva colección Mongo llamada Relations con su fichero correspondiente y cuyo objeto es \ref{relationMongo}
+\subsubsection{Peticiones y lista de contactos}
+Surge una nueva entidad Peticiones que se traduce en la colección llamada Requests cuyo objeto es \ref{requestsMongo} 
+Para el \{\{contentTab\}\} del tab 'contactos' \ del \{\{navbarTab\}\} de la página de perfil se establecen dos nuevas tabs: contactos y peticiones.
+\paragraph{}
+Para la tab contactos activa se mostrará la lista de los contactos (figura tal). Cada miniatura contará con el avatar, el nombre de usuario, la fecha desde la que se inició la relación de contacto, la descripción y acciones (sólo visibles cuando el usuario es el propietario del perfil).
+
+\paragraph{}
+Para la tab peticiones activa se mostrará el espacio para peticiones (figura tal). Dicho espacio esta compuesto por: 
+\begin{itemize}
+	\item Autocompletado: para buscar los usuarios. Cada resultado dispondrá de un botón para enviar la petición. Este botón se sustituirá por iconos de estado si la petición ya ha sido realizada. 
+	\item Bandeja de entrada: se muestran las peticiones recibidas, su estado y acciones relacionadas con su estado.
+	\item Bandeja de salida: se muestran las peticiones enviadas, su estado y acciones relacionadas con su estado.
+\end{itemize}
+
+Las acciones dependiendo del estado y de la bandeja en la que se encuentren se muestran en la tabla \ref{tabla:requestsActions}: 
+
+\begin{table}[htb]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+& \multicolumn{2}{c|}{Acciones} \\
+\hline
+Estado & Recibidas & Enviadas\\
+\hline
+Pendiente & Aceptar o Rechazar & X\\ \hline
+Aceptada & Ok & Ok\\ \hline
+Rechazada & X & Ok o Reenviar \\ \hline
+\end{tabular}
+\caption{Acciones para las peticiones}
+\label{tabla:requestsActions}
+\end{table}
+
+El proceso para establecer la relación de contacto es la siguiente: 
+\begin{enumerate}
+	\item El usuario A envía una solicitud al usuario B y visualiza esta petición como pendiente.
+	\item El usuario B visualiza la petición como pendiente en su bandeja de entrada y puede aceptarla o rechazarla.
+	\item El usuario B acepta la petición y la visualiza como aceptada, pulsa Ok. Se crea la relación.
+	\item El usuario A visualiza la petición como aceptada, pulsa Ok para eliminar la entrada.
+\end{enumerate}
+
+\paragraph{}Si el usuario B rechaza la petición, el usuario A la visualizaría como rechazada y podría pulsar Ok o reenviarla y comenzar el proceso de nuevo.
+
+\paragraph{}Además de realizar las peticiones mediante este espacio, se habilita para los usuarios que tengan el rol de visitante un botón en \{\{actions\}\} como se muestra en la figura (tal).
+
+\paragraph{}La implementación de este prototipo tiene como resultado las figuras (tal tal tal en apéndices).
+
+
+\section{Prototipo 7: Conversaciones}
+\section{Prototipo 8: Emails e integración de servicios de registro}
+\section{Prototipo 9: Página principal}
+\section{Prototipo 10: Página de inicio, espacio para tutoriales y features}
 \section{Prototipo Final: Restricciones de acceso y cross-browsing}
 \section{Despliegue y pruebas globales}

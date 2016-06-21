@@ -1,44 +1,47 @@
 \select@language {spanish}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces jerarqu\IeC {\'\i }a de carpetas}}{19}{figure.1.1}
+\contentsline {figure}{\numberline {1.1}{\ignorespaces jerarqu\IeC {\'\i }a de carpetas}}{20}{figure.1.1}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Esquema metodolog\IeC {\'\i }a de realimentaci\'on}}{37}{figure.2.1}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Esquema metodolog\IeC {\'\i }a de realimentaci\'on}}{38}{figure.2.1}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Patrones de arquitectura}}{41}{figure.3.1}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Patr\'on de arquitectura MVC}}}{41}{figure.3.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Patr\'on de arquitectura MVVM}}}{41}{figure.3.1}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Dise\~no de Layout Full-responsive}}{46}{figure.3.2}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Large layout}}}{46}{figure.3.2}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Small Layout}}}{46}{figure.3.2}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Dise\~no header}}{48}{figure.3.3}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Dise\~no sidebar}}{49}{figure.3.4}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Dise\~no formularios de registro}}{53}{figure.3.5}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Formulario de inicio de sesi\'on}}}{53}{figure.3.5}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Formulario de registro}}}{53}{figure.3.5}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Formularios de registro en P\'agina de inicio}}{55}{figure.3.6}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Formulario de inicio de sesi\'on}}}{55}{figure.3.6}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Formulario de registro}}}{55}{figure.3.6}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Proceso de grabaci\'on}}{58}{figure.3.7}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Esquema}}}{58}{figure.3.7}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {L\'ogica}}}{58}{figure.3.7}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Grabador}}{67}{figure.3.8}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Flujo de plantillas del grabador}}{67}{figure.3.9}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Proceso de reproducci\'on}}{70}{figure.3.10}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Esquema}}}{70}{figure.3.10}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {L\'ogica}}}{70}{figure.3.10}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Dise\~no p\'agina de detalle}}{73}{figure.3.11}
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Dise\~no banner para una grabaci\'on}}{74}{figure.3.12}
-\contentsline {figure}{\numberline {3.13}{\ignorespaces Dise\~no interfaz del reproductor}}{75}{figure.3.13}
-\contentsline {figure}{\numberline {3.14}{\ignorespaces Reproductor}}{76}{figure.3.14}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Patrones de arquitectura}}{42}{figure.3.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Patr\'on de arquitectura MVC}}}{42}{figure.3.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Patr\'on de arquitectura MVVM}}}{42}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Dise\~no de Layout Full-responsive}}{47}{figure.3.2}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Large layout}}}{47}{figure.3.2}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Small Layout}}}{47}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Dise\~no header}}{49}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Dise\~no sidebar}}{50}{figure.3.4}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Dise\~no formularios de registro}}{54}{figure.3.5}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Formulario de inicio de sesi\'on}}}{54}{figure.3.5}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Formulario de registro}}}{54}{figure.3.5}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Formularios de registro en P\'agina de inicio}}{56}{figure.3.6}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Formulario de inicio de sesi\'on}}}{56}{figure.3.6}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Formulario de registro}}}{56}{figure.3.6}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Proceso de grabaci\'on}}{59}{figure.3.7}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Esquema}}}{59}{figure.3.7}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {L\'ogica}}}{59}{figure.3.7}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Grabador}}{68}{figure.3.8}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Flujo de plantillas del grabador}}{68}{figure.3.9}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Proceso de reproducci\'on}}{71}{figure.3.10}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Esquema}}}{71}{figure.3.10}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {L\'ogica}}}{71}{figure.3.10}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Dise\~no p\'agina de detalle}}{74}{figure.3.11}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Dise\~no banner para una grabaci\'on}}{75}{figure.3.12}
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Dise\~no interfaz del reproductor}}{76}{figure.3.13}
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Reproductor}}{77}{figure.3.14}
+\contentsline {figure}{\numberline {3.15}{\ignorespaces Lista de grabaciones}}{80}{figure.3.15}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {B.1}{\ignorespaces Dise\~no sidebar}}{92}{figure.Alph2.1}
-\contentsline {figure}{\numberline {B.2}{\ignorespaces Dise\~no base grabador}}{93}{figure.Alph2.2}
-\contentsline {figure}{\numberline {B.3}{\ignorespaces Dise\~no panel inicial grabador}}{93}{figure.Alph2.3}
-\contentsline {figure}{\numberline {B.4}{\ignorespaces Dise\~no panel documentos en grabador}}{94}{figure.Alph2.4}
-\contentsline {figure}{\numberline {B.5}{\ignorespaces Dise\~no formulario documentos}}{94}{figure.Alph2.5}
-\contentsline {figure}{\numberline {B.6}{\ignorespaces Dise\~no editor en grabador}}{95}{figure.Alph2.6}
-\contentsline {figure}{\numberline {B.7}{\ignorespaces Dise\~no final grabaci\'on}}{96}{figure.Alph2.7}
-\contentsline {figure}{\numberline {B.8}{\ignorespaces Dise\~no proceso de subida}}{97}{figure.Alph2.8}
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Dise\~no sidebar}}{103}{figure.Alph2.1}
+\contentsline {figure}{\numberline {B.2}{\ignorespaces Dise\~no base grabador}}{104}{figure.Alph2.2}
+\contentsline {figure}{\numberline {B.3}{\ignorespaces Dise\~no panel inicial grabador}}{104}{figure.Alph2.3}
+\contentsline {figure}{\numberline {B.4}{\ignorespaces Dise\~no panel documentos en grabador}}{105}{figure.Alph2.4}
+\contentsline {figure}{\numberline {B.5}{\ignorespaces Dise\~no formulario documentos}}{105}{figure.Alph2.5}
+\contentsline {figure}{\numberline {B.6}{\ignorespaces Dise\~no editor en grabador}}{106}{figure.Alph2.6}
+\contentsline {figure}{\numberline {B.7}{\ignorespaces Dise\~no final grabaci\'on}}{107}{figure.Alph2.7}
+\contentsline {figure}{\numberline {B.8}{\ignorespaces Dise\~no proceso de subida}}{108}{figure.Alph2.8}
+\contentsline {figure}{\numberline {B.9}{\ignorespaces Lista de grabaciones}}{109}{figure.Alph2.9}
+\contentsline {figure}{\numberline {B.10}{\ignorespaces Miniatura grabaci\'on}}{110}{figure.Alph2.10}

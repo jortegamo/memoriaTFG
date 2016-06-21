@@ -39,30 +39,33 @@
 \BOOKMARK [2][-]{subsection.3.5.2}{Reproductor}{section.3.5}% 39
 \BOOKMARK [2][-]{subsection.3.5.3}{Lista de grabaciones}{section.3.5}% 40
 \BOOKMARK [1][-]{section.3.6}{Prototipo 3: Respuestas a grabaciones}{chapter.3}% 41
-\BOOKMARK [1][-]{section.3.7}{Prototipo 4: P\341gina de perfil}{chapter.3}% 42
-\BOOKMARK [1][-]{section.3.8}{Prototipo 5: Formularios din\341micos y complementos}{chapter.3}% 43
-\BOOKMARK [1][-]{section.3.9}{Prototipo 6: Organizaci\363n en Canales}{chapter.3}% 44
-\BOOKMARK [1][-]{section.3.10}{Prototipo 7: Organizaci\363n en Lecciones}{chapter.3}% 45
-\BOOKMARK [1][-]{section.3.11}{Prototipo 8: Contactos}{chapter.3}% 46
-\BOOKMARK [1][-]{section.3.12}{Prototipo 9: Conversaciones}{chapter.3}% 47
-\BOOKMARK [1][-]{section.3.13}{Prototipo 10: Emails e integraci\363n de servicios de registro}{chapter.3}% 48
-\BOOKMARK [1][-]{section.3.14}{Prototipo 11: P\341gina principal}{chapter.3}% 49
-\BOOKMARK [1][-]{section.3.15}{Prototipo 12: P\341gina de inicio, espacio para tutoriales y features}{chapter.3}% 50
-\BOOKMARK [1][-]{section.3.16}{Prototipo Final: Restricciones de acceso y cross-browsing}{chapter.3}% 51
-\BOOKMARK [1][-]{section.3.17}{Despliegue y pruebas globales}{chapter.3}% 52
-\BOOKMARK [0][-]{chapter.4}{Experimentaci\363n}{}% 53
-\BOOKMARK [1][-]{section.4.1}{Motivaci\363n}{chapter.4}% 54
-\BOOKMARK [1][-]{section.4.2}{Planteamiento y objetivos}{chapter.4}% 55
-\BOOKMARK [1][-]{section.4.3}{Proceso y realizaci\363n}{chapter.4}% 56
-\BOOKMARK [1][-]{section.4.4}{Resultados}{chapter.4}% 57
-\BOOKMARK [0][-]{chapter.5}{Conclusi\363n}{}% 58
-\BOOKMARK [0][-]{section*.158}{Bibliograf\355a}{}% 59
-\BOOKMARK [1][-]{section.5.1}{Principales Sitios Web}{section*.158}% 60
-\BOOKMARK [1][-]{section.5.2}{Libros}{section*.158}% 61
-\BOOKMARK [1][-]{section.5.3}{Art\355culos}{section*.158}% 62
-\BOOKMARK [1][-]{section.5.4}{Tutoriales}{section*.158}% 63
-\BOOKMARK [1][-]{section.5.5}{Paquetes}{section*.158}% 64
-\BOOKMARK [1][-]{section.5.6}{Repositorios}{section*.158}% 65
-\BOOKMARK [0][-]{section*.160}{Ap\351ndices}{}% 66
-\BOOKMARK [0][-]{appendix.Alph1}{Dise\361o de documentos para Mongo}{}% 67
-\BOOKMARK [0][-]{appendix.Alph2}{Dise\361o de Interfaces}{}% 68
+\BOOKMARK [2][-]{subsection.3.6.1}{Actualizaci\363n del grabador}{section.3.6}% 42
+\BOOKMARK [2][-]{subsection.3.6.2}{Nuevas acciones}{section.3.6}% 43
+\BOOKMARK [2][-]{subsection.3.6.3}{Timeline, relacionados y comentarios}{section.3.6}% 44
+\BOOKMARK [1][-]{section.3.7}{Prototipo 4: Organizaci\363n en Canales}{chapter.3}% 45
+\BOOKMARK [1][-]{section.3.8}{Prototipo 5: Organizaci\363n en Lecciones}{chapter.3}% 46
+\BOOKMARK [1][-]{section.3.9}{Prototipo 6: P\341gina de perfil y Contactos}{chapter.3}% 47
+\BOOKMARK [2][-]{subsection.3.9.1}{Perfil}{section.3.9}% 48
+\BOOKMARK [2][-]{subsection.3.9.2}{Contactos}{section.3.9}% 49
+\BOOKMARK [1][-]{section.3.10}{Prototipo 7: Conversaciones}{chapter.3}% 50
+\BOOKMARK [1][-]{section.3.11}{Prototipo 8: Emails e integraci\363n de servicios de registro}{chapter.3}% 51
+\BOOKMARK [1][-]{section.3.12}{Prototipo 9: P\341gina principal}{chapter.3}% 52
+\BOOKMARK [1][-]{section.3.13}{Prototipo 10: P\341gina de inicio, espacio para tutoriales y features}{chapter.3}% 53
+\BOOKMARK [1][-]{section.3.14}{Prototipo Final: Restricciones de acceso y cross-browsing}{chapter.3}% 54
+\BOOKMARK [1][-]{section.3.15}{Despliegue y pruebas globales}{chapter.3}% 55
+\BOOKMARK [0][-]{chapter.4}{Experimentaci\363n}{}% 56
+\BOOKMARK [1][-]{section.4.1}{Motivaci\363n}{chapter.4}% 57
+\BOOKMARK [1][-]{section.4.2}{Planteamiento y objetivos}{chapter.4}% 58
+\BOOKMARK [1][-]{section.4.3}{Proceso y realizaci\363n}{chapter.4}% 59
+\BOOKMARK [1][-]{section.4.4}{Resultados}{chapter.4}% 60
+\BOOKMARK [0][-]{chapter.5}{Conclusi\363n}{}% 61
+\BOOKMARK [0][-]{section*.183}{Bibliograf\355a}{}% 62
+\BOOKMARK [1][-]{section.5.1}{Principales Sitios Web}{section*.183}% 63
+\BOOKMARK [1][-]{section.5.2}{Libros}{section*.183}% 64
+\BOOKMARK [1][-]{section.5.3}{Art\355culos}{section*.183}% 65
+\BOOKMARK [1][-]{section.5.4}{Tutoriales}{section*.183}% 66
+\BOOKMARK [1][-]{section.5.5}{Paquetes}{section*.183}% 67
+\BOOKMARK [1][-]{section.5.6}{Repositorios}{section*.183}% 68
+\BOOKMARK [0][-]{section*.185}{Ap\351ndices}{}% 69
+\BOOKMARK [0][-]{appendix.Alph1}{Dise\361o de documentos para Mongo}{}% 70
+\BOOKMARK [0][-]{appendix.Alph2}{Dise\361o de Interfaces}{}% 71
