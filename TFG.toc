@@ -210,42 +210,42 @@
 \contentsline {paragraph}{}{83}{section*.168}
 \contentsline {paragraph}{}{84}{section*.169}
 \contentsline {paragraph}{}{84}{section*.170}
-\contentsline {paragraph}{}{84}{section*.171}
-\contentsline {section}{\numberline {3.7}Prototipo 4: Organizaci\'on en Canales}{84}{section.3.7}
-\contentsline {section}{\numberline {3.8}Prototipo 5: Organizaci\'on en Lecciones}{84}{section.3.8}
-\contentsline {section}{\numberline {3.9}Prototipo 6: P\'agina de perfil y Contactos}{84}{section.3.9}
-\contentsline {subsection}{\numberline {3.9.1}Perfil}{85}{subsection.3.9.1}
-\contentsline {subsubsection}{Interfaz}{85}{section*.172}
-\contentsline {subsubsection}{Contenidos}{85}{section*.173}
-\contentsline {paragraph}{}{86}{section*.174}
-\contentsline {subsubsection}{Roles}{86}{section*.175}
-\contentsline {subsubsection}{Edici\'on del perfil}{86}{section*.176}
-\contentsline {subsection}{\numberline {3.9.2}Contactos}{87}{subsection.3.9.2}
-\contentsline {subsubsection}{Peticiones y lista de contactos}{87}{section*.177}
-\contentsline {paragraph}{}{87}{section*.178}
-\contentsline {paragraph}{}{87}{section*.179}
-\contentsline {paragraph}{}{88}{section*.180}
-\contentsline {paragraph}{}{88}{section*.181}
-\contentsline {paragraph}{}{89}{section*.182}
-\contentsline {section}{\numberline {3.10}Prototipo 7: Conversaciones}{89}{section.3.10}
-\contentsline {section}{\numberline {3.11}Prototipo 8: Emails e integraci\'on de servicios de registro}{89}{section.3.11}
-\contentsline {section}{\numberline {3.12}Prototipo 9: P\'agina principal}{89}{section.3.12}
-\contentsline {section}{\numberline {3.13}Prototipo 10: P\'agina de inicio, espacio para tutoriales y features}{89}{section.3.13}
-\contentsline {section}{\numberline {3.14}Prototipo Final: Restricciones de acceso y cross-browsing}{89}{section.3.14}
-\contentsline {section}{\numberline {3.15}Despliegue y pruebas globales}{89}{section.3.15}
-\contentsline {chapter}{\numberline {4}Experimentaci\'on}{90}{chapter.4}
-\contentsline {section}{\numberline {4.1}Motivaci\'on}{90}{section.4.1}
-\contentsline {section}{\numberline {4.2}Planteamiento y objetivos}{90}{section.4.2}
-\contentsline {section}{\numberline {4.3}Proceso y realizaci\'on}{90}{section.4.3}
-\contentsline {section}{\numberline {4.4}Resultados}{90}{section.4.4}
-\contentsline {chapter}{\numberline {5}Conclusi\'on}{91}{chapter.5}
-\contentsline {chapter}{Bibliograf\'{\i }a}{92}{section*.183}
-\contentsline {section}{\numberline {5.1}Principales Sitios Web}{93}{section.5.1}
-\contentsline {section}{\numberline {5.2}Libros}{93}{section.5.2}
-\contentsline {section}{\numberline {5.3}Art\IeC {\'\i }culos}{93}{section.5.3}
-\contentsline {section}{\numberline {5.4}Tutoriales}{93}{section.5.4}
-\contentsline {section}{\numberline {5.5}Paquetes}{93}{section.5.5}
-\contentsline {section}{\numberline {5.6}Repositorios}{93}{section.5.6}
-\contentsline {chapter}{Ap\'endices}{94}{section*.185}
-\contentsline {chapter}{\numberline {A}Dise\~no de documentos para Mongo}{95}{appendix.Alph1}
-\contentsline {chapter}{\numberline {B}Dise\~no de Interfaces}{102}{appendix.Alph2}
+\contentsline {paragraph}{}{86}{section*.171}
+\contentsline {section}{\numberline {3.7}Prototipo 4: Organizaci\'on en Canales}{86}{section.3.7}
+\contentsline {section}{\numberline {3.8}Prototipo 5: Organizaci\'on en Lecciones}{86}{section.3.8}
+\contentsline {section}{\numberline {3.9}Prototipo 6: P\'agina de perfil y Contactos}{86}{section.3.9}
+\contentsline {subsection}{\numberline {3.9.1}Perfil}{86}{subsection.3.9.1}
+\contentsline {subsubsection}{Interfaz}{86}{section*.172}
+\contentsline {subsubsection}{Contenidos}{88}{section*.173}
+\contentsline {paragraph}{}{88}{section*.174}
+\contentsline {subsubsection}{Roles}{88}{section*.175}
+\contentsline {subsubsection}{Edici\'on del perfil}{89}{section*.176}
+\contentsline {subsection}{\numberline {3.9.2}Contactos}{89}{subsection.3.9.2}
+\contentsline {subsubsection}{Peticiones y lista de contactos}{90}{section*.177}
+\contentsline {paragraph}{}{90}{section*.178}
+\contentsline {paragraph}{}{90}{section*.179}
+\contentsline {paragraph}{}{91}{section*.180}
+\contentsline {paragraph}{}{91}{section*.181}
+\contentsline {paragraph}{}{91}{section*.182}
+\contentsline {section}{\numberline {3.10}Prototipo 7: Conversaciones}{92}{section.3.10}
+\contentsline {section}{\numberline {3.11}Prototipo 8: Emails e integraci\'on de servicios de registro}{92}{section.3.11}
+\contentsline {section}{\numberline {3.12}Prototipo 9: P\'agina principal}{92}{section.3.12}
+\contentsline {section}{\numberline {3.13}Prototipo 10: P\'agina de inicio, espacio para tutoriales y features}{92}{section.3.13}
+\contentsline {section}{\numberline {3.14}Prototipo Final: Restricciones de acceso y cross-browsing}{92}{section.3.14}
+\contentsline {section}{\numberline {3.15}Despliegue y pruebas globales}{92}{section.3.15}
+\contentsline {chapter}{\numberline {4}Experimentaci\'on}{93}{chapter.4}
+\contentsline {section}{\numberline {4.1}Motivaci\'on}{93}{section.4.1}
+\contentsline {section}{\numberline {4.2}Planteamiento y objetivos}{93}{section.4.2}
+\contentsline {section}{\numberline {4.3}Proceso y realizaci\'on}{93}{section.4.3}
+\contentsline {section}{\numberline {4.4}Resultados}{93}{section.4.4}
+\contentsline {chapter}{\numberline {5}Conclusi\'on}{94}{chapter.5}
+\contentsline {chapter}{Bibliograf\'{\i }a}{95}{section*.183}
+\contentsline {section}{\numberline {5.1}Principales Sitios Web}{96}{section.5.1}
+\contentsline {section}{\numberline {5.2}Libros}{96}{section.5.2}
+\contentsline {section}{\numberline {5.3}Art\IeC {\'\i }culos}{96}{section.5.3}
+\contentsline {section}{\numberline {5.4}Tutoriales}{96}{section.5.4}
+\contentsline {section}{\numberline {5.5}Paquetes}{96}{section.5.5}
+\contentsline {section}{\numberline {5.6}Repositorios}{96}{section.5.6}
+\contentsline {chapter}{Ap\'endices}{97}{section*.185}
+\contentsline {chapter}{\numberline {A}Dise\~no de documentos para Mongo}{98}{appendix.Alph1}
+\contentsline {chapter}{\numberline {B}Dise\~no de Interfaces}{105}{appendix.Alph2}

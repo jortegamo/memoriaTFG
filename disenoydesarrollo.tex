@@ -775,13 +775,35 @@ Template.record.events({
 
 En el código anterior podemos apreciar la lógica del proceso descrito anteriormente.
 \subsection{Timeline, relacionados y comentarios}
-En este prototipo se han generado las secciones de contenido de la página detalle de una grabación mostradas en la figura \ref{fig:detailBase}: \{\{navbarTab\}\}(figura tal) y \{\{tabContent\}\}. La plantilla \{\{navbarTab\}\} se ha diseñado como componente de manera que pueda ser configurada con las tabs que correspondan para cada página de detalle.
+En este prototipo se han generado las secciones de contenido de la página detalle de una grabación mostradas en la figura \ref{fig:detailBase}: \{\{navbarTab\}\}(figura \ref{fig:navbarTabDesign}) y \{\{tabContent\}\}. La plantilla \{\{navbarTab\}\} se ha diseñado como componente de manera que pueda ser configurada con las tabs que correspondan para cada página de detalle.
+
 \paragraph{}
-Para listar las respuestas de una grabación se ha creado un timeline (figura tal). Dicho timeline se muestra al seleccionar la tab Replies del \{\{$<$navbar\}\} de la página de la grabación.
+Para listar las respuestas de una grabación se ha creado un timeline (figura \ref{fig:repliesTab}). Dicho timeline se muestra al seleccionar la tab Replies del \{\{$<$navbar\}\} de la página de la grabación.
 
-\paragraph{}Además se ha añadido una nueva sección de contenidos para mostrar las grabaciones relacionadas con la grabación actual (figura tal). Para ello se ha modificado la publicación 'record'. Ahora publicará, además de la grabación actual, otras que posean etiquetas similares.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{repliesTab.png}
+	\caption{Diseño de timeline}
+	\label{fig:repliesTab}
+\end{figure}
 
-\paragraph{}También se ha creado una nueva sección que contiene un espacio para realizar comentarios (figura tal) y con ello surge una nueva entidad. Dicha entidad se traduce en una nueva colección Comentarios cuyo objeto se muestra en \ref{commentMongo} y su relación con las demás entidades en la figura (tal). Esta sección esta compuesta por una caja para introducir el texto a publicar y la lista de comentarios. Cada comentario está compuesto por el avatar del autor, el texto, una lista de las respuestas a ese comentario y la misma caja de texto mencionada anteriormente responder.
+\paragraph{}Además se ha añadido una nueva sección de contenidos para mostrar las grabaciones relacionadas con la grabación actual (figura \ref{fig:commentsTab}). Para ello se ha modificado la publicación 'record'. Ahora publicará, además de la grabación actual, otras que posean etiquetas similares.
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=0.7\textwidth]{commentsTab.png}
+	\caption{Diseño del módulo de comentarios}
+	\label{fig:commentsTab}
+\end{figure}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=0.7\textwidth]{relatedTab.png}
+	\caption{Lista de relacionados}
+	\label{fig:relatedTab}
+\end{figure}
+
+\paragraph{}También se ha creado una nueva sección que contiene un espacio para realizar comentarios (figura tal) y con ello surge una nueva entidad. Dicha entidad se traduce en una nueva colección Comentarios cuyo objeto se muestra en \ref{commentMongo} y su relación con las demás entidades en la figura \ref{fig:relatedTab}. Esta sección esta compuesta por una caja para introducir el texto a publicar y la lista de comentarios. Cada comentario está compuesto por el avatar del autor, el texto, una lista de las respuestas a ese comentario y la misma caja de texto mencionada anteriormente responder.
 
 \paragraph{}
 Se ha diseñado el espacio para comentarios de manera que sea genérico, es decir, que se pueda utilizar para todo tipo de contenidos. Tras la implementación el resultado puede verse en las figuras (tal),(tal) y (tal).
@@ -793,10 +815,17 @@ En este prototipo se ha diseñado e implementado la página de perfil del usuario 
 Se trata de un nuevo módulo y recurso cuya ruta será /profile/\_id, donde \_id corresponderá al id del usuario en cuestión. Se crean nuevas publicaciones y subscripciones y se establece la ruta en /app/lib/router.js.
 
 \subsubsection{Interfaz}
-Al tratarse de un recurso de detalle compartirá la misma base que los demás (figura \ref{fig:detailBase}). El \{\{baner\}\} estará formado una cabecera en la que se muestran el avatar del usuario, una imagen de fondo, un botón para acceder al recurso de edición del perfil y una caja con acciones y un cuerpo en el que aparece el nombre de usuario, la descripción y lista de servicios (figura tal). 
+Al tratarse de un recurso de detalle compartirá la misma base que los demás (figura \ref{fig:detailBase}). El \{\{baner\}\} estará formado una cabecera en la que se muestran el avatar del usuario, una imagen de fondo, un botón para acceder al recurso de edición del perfil y una caja con acciones y un cuerpo en el que aparece el nombre de usuario, la descripción y lista de servicios (figura \ref{fig:profileBanner}). 
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=0.9\textwidth]{profileBanner.png}
+	\caption{Diseño banner del perfil}
+	\label{fig:profileBanner}
+\end{figure}
 
 \subsubsection{Contenidos}
-Utilizamos el complemento navbarTab y lo configuramos para que tenga las tabs canales, lecciones, grabaciones, conversaciones y contactos que corresponden a las categorías de contenido de la aplicación (figura tal).
+Utilizamos el complemento navbarTab y lo configuramos para que tenga las tabs canales, lecciones, grabaciones, conversaciones y contactos que corresponden a las categorías de contenido de la aplicación (figura \ref{fig:navbarTabDesign}).
 Podemos reutilizar las plantillas  \{\{contentTab\}\} para mostrar las listas de contenido según la categoría que hemos generado para los recursos /records, /channels y /lessons. Sólo aparecerán las del usuario en cuestión, ya que nos hemos subscrito a sus contenidos. Aunque en este caso no existe la opción de iniciar el buscador, sino que se añaden nuevos filtros (figuras \ref{fig:recordsPage}, \ref{fig:lessonsPage} y \ref{fig:channelsPage} ): 
 \begin{itemize}
 	\item \textbf{Subscrito: }muestra los canales o lecciones a los que se ha subscrito el usuario según corresponda.
@@ -811,17 +840,19 @@ Al visualizar cualquier página de perfil un usuario puede adoptar uno de estos d
 	\item \textbf{Visitante:}  lo adoptará el usuario que no sea propietario de dicho perfil. Podrá acceder a las acciones presentes en la cabecera del banner. Sólo existirá una, de momento: realizar peticiones de contacto.
 \end{itemize}
 \subsubsection{Edición del perfil}
-Al igual que para editar las lecciones o los canales se establece un nuevo recurso para editar el perfil cuya ruta es /profile/:\_id/edit. Como en las otras es necesario declararla en /app/lib/router.js crear una nueva plantilla \{\{$<$profileEdit\}\} en /app/client/modules/profile\_modules/profileEdit/profileEdit.html y subscribirse al usuario correspondiente. Al igual que los demás recursos de edición, éste mantiene el diseño base (figura tal), es decir, que incorpora la plantilla \{\{$<$awesomeForm\}\} la cual, mediante una variable de sesión, carga uno u otro formulario con características comunes. En este caso, el formulario de edición dinámico creado en el prototipo 4. Además incorporamos los componentes avatar, banner y description (figura tal). 
+Al igual que para editar las lecciones o los canales se establece un nuevo recurso para editar el perfil cuya ruta es /profile/:\_id/edit. Como en las otras es necesario declararla en /app/lib/router.js crear una nueva plantilla \{\{$<$profileEdit\}\} en /app/client/modules/profile\_modules/profileEdit/profileEdit.html y subscribirse al usuario correspondiente. Al igual que los demás recursos de edición, éste mantiene el diseño base (figura \ref{fig:editFormBase}), es decir, que incorpora la plantilla \{\{$<$awesomeForm\}\} la cual, mediante una variable de sesión, carga uno u otro formulario con características comunes. En este caso, el formulario de edición dinámico creado en el prototipo 4. Además incorporamos los componentes avatar, banner y description (figuras \ref{fig:profileEdit}, \ref{fig:formEditComplements}). 
 \subsection{Contactos}
 Al existir usuarios en la aplicación es necesario establecer y denominar las relaciones entre ellos. Dichas relaciones se denominan relaciones de contacto. Con esto surge una nueva entidad (Contactos) que se traduce en una nueva colección Mongo llamada Relations con su fichero correspondiente y cuyo objeto es \ref{relationMongo}
+
+
 \subsubsection{Peticiones y lista de contactos}
 Surge una nueva entidad Peticiones que se traduce en la colección llamada Requests cuyo objeto es \ref{requestsMongo} 
 Para el \{\{contentTab\}\} del tab 'contactos' \ del \{\{navbarTab\}\} de la página de perfil se establecen dos nuevas tabs: contactos y peticiones.
 \paragraph{}
-Para la tab contactos activa se mostrará la lista de los contactos (figura tal). Cada miniatura contará con el avatar, el nombre de usuario, la fecha desde la que se inició la relación de contacto, la descripción y acciones (sólo visibles cuando el usuario es el propietario del perfil).
+Para la tab contactos activa se mostrará la lista de los contactos (figura \ref{fig:contactsTab}). Cada miniatura contará con el avatar, el nombre de usuario, la fecha desde la que se inició la relación de contacto, la descripción y acciones (sólo visibles cuando el usuario es el propietario del perfil).
 
 \paragraph{}
-Para la tab peticiones activa se mostrará el espacio para peticiones (figura tal). Dicho espacio esta compuesto por: 
+Para la tab peticiones activa se mostrará el espacio para peticiones (figura \ref{fig:requestsTab}). Dicho espacio esta compuesto por: 
 \begin{itemize}
 	\item Autocompletado: para buscar los usuarios. Cada resultado dispondrá de un botón para enviar la petición. Este botón se sustituirá por iconos de estado si la petición ya ha sido realizada. 
 	\item Bandeja de entrada: se muestran las peticiones recibidas, su estado y acciones relacionadas con su estado.
@@ -856,7 +887,7 @@ El proceso para establecer la relación de contacto es la siguiente:
 
 \paragraph{}Si el usuario B rechaza la petición, el usuario A la visualizaría como rechazada y podría pulsar Ok o reenviarla y comenzar el proceso de nuevo.
 
-\paragraph{}Además de realizar las peticiones mediante este espacio, se habilita para los usuarios que tengan el rol de visitante un botón en \{\{actions\}\} como se muestra en la figura (tal).
+\paragraph{}Además de realizar las peticiones mediante este espacio, se habilita para los usuarios que tengan el rol de visitante un botón en \{\{actions\}\} como se muestra en la figura (\ref{fig:profileBanner}).
 
 \paragraph{}La implementación de este prototipo tiene como resultado las figuras (tal tal tal en apéndices).
 
