@@ -807,15 +807,205 @@ Para listar las respuestas de una grabación se ha creado un timeline (figura \re
 
 \paragraph{}
 Se ha diseñado el espacio para comentarios de manera que sea genérico, es decir, que se pueda utilizar para todo tipo de contenidos. Tras la implementación el resultado puede verse en las figuras (tal),(tal) y (tal).
+
+
+
+
 \section{Prototipo 4: Organización en Canales}
+En este prototipo aparece por primera vez el concepto de organización en canales. La implementación de este concepto deberá cumplir todos los requisitos establecidos en \ref{sec:requisitos} correspondientes. 
+
+\subsection{Concepto, entidades y modificaciones}
+Un canal es un espacio público en el que crear grabaciones. Al ser público cualquier usuario puede acceder a sus contenidos de forma inmediata. También ofrece la posibilidad de crear comentarios, subscribirse y de votar. 
+\paragraph{}
+Con esta descripción surgen dos nuevas entidades: canales y subscripciones. Dichas entidades se traducen, al igual que las anteriores, en las colecciones Channels y UsersEnrolled respectivamente, cuyos objetos MongoDB son \ref{channelMongo} y \ref{userEnrolledMongo}. Para cada colección se crea un fichero en /app/lib/collections de la misma forma que para las anteriores. La relación entre entidades se muestra en la figura (tal)
+\paragraph{}
+Puesto que el contenido del canal se constituye en base a las grabaciones, esa relación deberá reflejarse en los objetos de las mismas. Para ello contarán con el atributo channel\_id las grabaciones pertenecientes a los canales como puede verse en \ref{recordMongo}. Como se describió en el proceso de grabación, una vez terminada la grabación y completado el proceso de uploading a SoundCloud se procedía con la creación de un objeto grabación. En esta fase habrá que determinar si la grabación que se ha realizado pertenece a un canal o es independiente. Para ello utilizamos query strings o cadenas de consulta que incluimos en la url del recurso grabador. En este caso la query será channel\_id$=$idValue. A modo de ejemplo y siendo el identificador del canal en el que queremos crear una nueva grabación la cadena QwIJOpIsAXzc la url del recurso grabador sería /records/submit?channel\_id$=$QwIJOpIsAXzc. Iron Router provee herramientas que permiten realizar esta función de forma sencilla.
+\begin{lstlisting}[language=Javascript]
+//app/client/modules/channels_module/channel.js
+Template.channel.events({
+	'click button#create-recording': function(){
+		Router.go('recordSubmit',{},{query: 'channel_id=' + this._id});
+	}
+});
+
+//app/lib/router.js
+
+Router.route('/records/submit',{
+	...
+	data: function(){
+		var data = {};
+		(this.params.query.channel_id)? data.channel_id = this.params.query.channel_id : null;
+		return data;
+	}
+})
+
+//app/client/modules/records_module/recordSubmit/recordSubmit.js
+
+SC.upload(audio).then(function(){
+	var object = {};
+	if (this.data.channel_id){
+		object.channel_id = this.data.channel_id;
+	}
+	Meteor.call('insertRecording',object,function(err,result){});
+});
+\end{lstlisting}
+En el código anterior se muestra un ejemplo de implementación del proceso descrito.
+\subsection{Rutas y subscripciones}
+Los canales, al ser un contenido más en la aplicación deberán de tener un recurso de creación y su propio recurso. Además contarán con un recurso de edición para cambiar la configuración del mismo.
+Estos recursos serán: /channels, /channels/submit, /channel/:\_id y /channel/:\_id/edit. 
+\paragraph{}
+Tanto en el recurso de edición como en el propio del canal necesitaremos subscribirnos a los contenidos del canal correspondientes. Por esto creamos una nueva publicación en /app/server/publications.js compuesta por todos los contenidos. A saber: el propio canal, los usuarios subscritos y las grabaciones y comentarios del mismo. Para el recurso de edición sólo es necesario algunos campos del objeto MongoDB del canal. Por lo que creamos una nueva publicación para esta información. En el recurso /channels necesitaremos subscribirnos a los datos informativos de todos los canales del sitio. Para ello crearemos otra publicación compuesta.
+\subsection{Diseño de interfaces e implementación}
+\subsubsection{Creación de un canal}
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=0.7\textwidth]{createChannel.png}
+	\caption{Formulario de creación para un canal.}
+	\label{fig:createChannel}
+\end{figure}
+La información básica de un canal estará formada por un título, una descripción y una lista de etiquetas. La interfaz de creación de un canal deberá permitir la introducción de dicha información (figura \ref{fig:createChannel}). Utilizamos el sistema de formularios dinámicos basados en variables de sesión que describimos en el prototipo 1 y el complemento de etiquetas que diseñamos en el prototipo 2 para la plantilla \{\{$<$saveForm\}\}. Además creamos un nuevo method en el servidor al que llamaremos desde el cliente para almacenar el objeto canal una vez introducida la información necesaria.
+\begin{lstlisting}[language=Javascript]
+//app/lib/collections/channels.js
+Meteor.methods({
+	insertChannel: function(channelObj){
+		return Channels.insert(channelObj);
+	}
+});
+
+//app/client/modules/channels_module/channelSubmit.js
+Template.channelSubmit.events({
+	'submit form': function(e,template){
+		var obj = {};
+		obj.title = template.find('[name=title]').value();
+		obj.description = template.find('[name=description]').value();
+		obj.tags = Session.get('tagsChosen');
+		Meteor.call('insertChannel',obj,function(err,res){
+			if (err) throw new Meteor.Error('ERROR insertChannel');
+			if (res) console.log('channel inserted with id: ' + res);
+ 		});
+	}
+});
+\end{lstlisting}
+\subsubsection{Página de canales}
+Este es la página correspondiente al recurso /channels y en ella los usuarios podrán navegar por la lista de canales del sitio. Su diseño (figura \ref{fig:channelsPage}) es equivalente al diseño de la lista de grabaciones y se compone de un logo, un enlace al recurso de creación y un sistema de tabs para realizar filtros y mostrar resultados.
+\subsubsection{Página del canal}
+Al tratarse de un recurso de detalle, el diseño base de la interfaz será el mostrado en la figura \ref{fig:detailBase}. En el \{\{banner\}\} aparecerá el título del canal, su descripción, la lista de etiquetas, un logo, una imagen de fondo, un enlace al recurso de edición y una caja en la que se mostrará la información de su creador. Además incorporará la plantilla \{\{actions\}\} que permitirá subscribirse o cancelar la subscripción y votar dicho canal (figura \ref{fig:channelBanner}).
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=0.7\textwidth]{ChannelBanner.png}
+	\caption{Diseño del banner de un canal}
+	\label{fig:channelBanner}
+\end{figure}
+\paragraph{}
+El \{\{navbarTab\}\} contendrá las tabs (figura \ref{fig:navbarTabDesign}): 
+\begin{itemize}
+	\item \textbf{Recordings:} si se selecciona se mostrarán en \{\{contentTab\}\} las grabaciones pertenecientes al canal. Dichas grabaciones podrán ser filtradas por los filtros recientes y populares. Además aparecerá un enlace al recurso de creación para una grabación.
+	\item \textbf{Comments:} mostrará la lista de comentarios realizados.
+	\item \textbf{Users:} mostrará la lista de usuarios subscritos.
+\end{itemize} 
+\subsubsection{Edición de un canal}
+En este recurso se podrá editar la descripción, el logo, la imagen de fondo y la lista de etiquetas del canal. Utilizamos el sistema de formularios dinámicos mediante la inclusión de la plantilla \{\{$<$awesomeForm\}\}. Al tratarse del primer recurso de edición que nos encontramos en el proyecto, diseñamos una plantilla base (figura \ref{fig:editFormBase}) que podremos reutilizar en cada recurso de este tipo. Dicha plantilla se basa en la incorporación dinámica de complementos o componentes que desarrollaremos para cada tipo de información y que nos permitirá editarlos. 
+\paragraph{}
+La entrada y la salida de datos de dicho formulario será una variable de sesión que configuraremos en la plantilla del recurso de edición correspondiente. El valor de dicha variable será un objeto con la información actual del objeto a editar y con una serie de configuraciones que hará que se muestren unos complementos u otros. En este momento se desarrollan los siguientes complementos: 
+\begin {itemize}
+	\item \textbf{AvatarEdit: } permitirá la edición de cualquier tipo de imagen. Las opciones serán establecer una por defecto, escoger una desde el disco o introducir una url.
+	\item \textbf{DescriptionEdit: } con este complemento editaremos cualquier información basada en texto mediante un textarea.
+	\item \textbf{TagsEdit: } con este complemento editaremos la lista de etiquetas. Además incorpora el sistema búsqueda de etiquetas ya desarrollado.
+\end {itemize}
+\paragraph{}
+El diseño de estos complementos y el del formulario pueden verse en las figuras \ref{fig:formEditComplements} y \ref{fig:channelEdit} correspondientemente.
+
+
+
 \section{Prototipo 5: Organización en Lecciones}
+En este prototipo aparece por primera vez el concepto de organización en lecciones. La implementación de este concepto deberá cumplir los requisitos establecidos en \ref{sec:requisitos}.
+
+\subsection{Concepto, entidades y modificaciones}
+Una lección es un espacio privado en el que crear grabaciones. Esta privación se traduce en que la creación de contenido inmediato para cada lección recae en la figura del usuario creador y que el contenido es privado para los usuarios que no estén subscritos a la misma. Además la estructuración del contenido de cada lección estará basada en secciones.
+\paragraph{}
+Con la anterior descripción surgen dos nuevas entidades: lecciones y secciones. Estas entidades se traducen en las colecciones Lessons y Sections cuyos objetos son \ref{lessonMongo} y \ref{sectionMongo} respectivamente. Se crean los ficheros /app/lib/collections/lessons.js y /app/lib/collections/sections.js en los que se declararán las colecciones y se implementarán los methods para gestionar sus modificaciones. Su relación con las demás entidades se muestra en la figura (tal).
+\paragraph{}
+Cada sección estará compuesta de grabaciones. Por lo que dichas grabaciones harán referencia a la sección y a la lección que pertenecen, además de indicar el orden dentro de la sección. Cada sección poseerá también un orden dentro de cada lección. Estos parámetros serán necesarios a la hora de editar las listas en el recurso de edición de la lección. Al igual que para las grabaciones pertenecientes a un canal, informamos al grabador de que se trata de una grabación perteneciente a una lección mediante la url. Esta vez formada por varias query string: lesson\_id, section\_id y order (\ref{recordMongo}). 
+\begin{lstlisting}[language=Javascript]
+//app/lib/router.js
+Router.route('record/submit',{
+	...
+	data: function(){
+		var data = {};
+		....
+		(this.params.query.lesson_id)? data.lesson_id = this.params.query.lesson_id : null;
+		(this.params.query.section_id)? data.section_id = this.params.query.section_id : null;
+		(this.params.query.order)? data.order = this.params.query.order : null;
+	}
+});
+
+//app/client/modules/record_modules/recordSubmit/recordSubmit.js
+SC.upload(file).then(function(){
+	var obj = {}
+	if (this.data.lesson_id){
+		obj.lesson_id = this.data.lesson_id;
+		obj.section_id = this.data.section_id;
+		obj.order = this.data.order;
+	}
+	Meteor.call('insertRecord',obj,function(err,res){});
+});
+\end{lstlisting}
+\subsection{Rutas y subscripciones}
+Los recursos que se establecen para este contenido son: /lessons/submit, /lessons, /lesson/:\_id y /lesson/:\_id/edit (creación, listado, propio y creación).
+\paragraph{}
+Creamos una publicación compuesta para el recurso detalle, una publicación simple para el recurso de edición y otra compuesta para el recurso de listado a las que nos subscribiremos mediante el método .waitOn de cada ruta establecida en /app/lib/router.js para cada recurso.
+\subsection{Lista de reproducción y opciones}
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=0.7\textwidth]{playlist.png}
+	\caption{Diseño lista de reproducción}
+	\label{fig:playlist}
+\end{figure}
+Debido a que el contenido de las lecciones se estructura en secciones que no son más que una lista de grabaciones, introducimos el concepto de lista de reproducción para el proyecto. Esto es, cuando reproduzcamos una grabación perteneciente a una lección, el reproductor mostrará la lista de grabaciones de la sección a la que pertenece. Además permitirá la navegación por ella y establecer las opciones de reproducción y repetición automática. 
+Estas configuraciones se realizarán en el objeto del usuario mediante los atributos: auto\_play y auto\_repeat. Las funciones son las siguientes: 
+\begin {itemize}
+	\item \textbf{Reproducción automática: } al terminar la reproducción de cada elemento de la lista se comienza con la del siguiente.
+	\item \textbf{Repetición automática: } convierte la lista de grabaciones en una lista circular. El elemento siguiente del último es el elemento primero y el elemento anterior al primero es el último.
+\end{itemize}
+\paragraph{}
+Si se da el caso de que ambas funciones están activadas, la reproducción de la lista de grabaciones de una sección es infinita.
+El diseño de la misma puede verse en la figura \ref {fig:playlist}
+\subsection{Diseño de interfaces e implementación}
+\subsubsection{Creación de una lección}
+La información básica de una lección está formada por un titulo, una descripción y una lista de tags. Para su implementación utilizamos el sistema de formularios dinámicos mediante variables de sesión e integramos en la plantilla del formulario (figura \ref{fig:createChannel}) los complementos que permitan la introducción de dicha información (los mismos que para el recurso de creación de un canal).
+\subsubsection{Página de lecciones}
+En esta página los usuarios podrán explorar las lecciones del sitio. Su diseño (figura \ref{fig:lessonsPage}) esta formado por un logo, un enlace al recurso de creación para las lecciones y un sistema de tabs. Este sistema de tabs es el mismo que hemos desarrollado para la página de las grabaciones. 
+\subsubsection{Página de una lección}
+\begin {figure}[htpb]
+	\centering
+	\includegraphics[width=0.7\textwidth]{LessonBanner.png}
+	\caption{Diseño del banner de una lección}
+	\label{fig:lessonBanner}
+\end{figure}
+Al tratarse de un recurso de detalle, tendrá el mismo diseño base que con los que comparte dicha clasificación (figura \ref{fig:detailBase}). En el \{\{banner\}\} aparecerá el título de la lección, el logo, la descripción, un apartado con la información sobre el autor y los contadores de la lección, la lista de etiquetas y la plantilla \{\{actions\}\} que permitirá a los usuarios realizar determinadas acciones según su rol: 
+\begin{itemize}
+	\item \textbf{Autor: } podrá votar y acceder al recurso de edición.
+	\item \textbf{Visitante: } si está subscrito podrá votar y cancelar su subscripción y, si por el contrario, no lo está, podrá subscribirse.
+\end{itemize}
+\paragraph{}
+El \{\{navbarTab\}\} contendrá las tabs (figura \ref{fig:navbarTabDesign}):
+\begin{itemize}
+	\item \textbf{Sections: } si se encuentra seleccionada, en \{\{contentTab\}\} se mostrará el listado de las secciones y un botón para acceder a un modal con el formulario para crear las mismas.
+	\item \textbf{Comments: } lista de comentarios de la lección.
+	\item \textbf{Users: } lista de usuarios subscritos.
+\end{itemize}
+\paragraph{}
+Cada ítem sección estará formado por una cabecera y por un sistema de tabs implementado mediante un collapsible de Bootstrap. Ciertas acciones sobre estos elementos serán accesibles o no dependiendo del rol del usuario basándonos en los requisitos establecidos. Esto se refleja en la figura \ref{fig:sectionsTab}. Cada ítem en su cabecera mostrará el número de grabaciones, un botón para eliminar la sección, un botón para reproducir los contenidos y un enlace al recurso de creación de las grabaciones (grabador). El sistema de tabs estará formado por dos pestañas. En una aparecerá la lista de grabaciones (enlaces al reproductor) y en la otra la lista de grabaciones con botones para editar el orden dentro de la sección. Todas las acciones que pretendan crear, modificar o borrar están suprimidas para los usuarios con el rol de visitante.
+\subsubsection{Edición de una lección}
+Al tratarse de un recurso de edición, utilizamos el diseño implementado anteriormente. La plantilla \{\{$<$awesomeForm\}\} para cargar el formulario base mostrado en la figura \ref{fig:editFormBase} y a dicho formulario integramos los componentes \ref{fig:formEditComplements} avatarEdit, descriptionEdit, tagsEdit y además creamos uno nuevo para poder editar el orden de las secciones. El diseño se muestra en la figura \ref{fig:lessonEdit} 
+
 \section{Prototipo 6: Página de perfil y Contactos}
 En este prototipo se ha diseñado e implementado la página de perfil del usuario y un espacio para realizar solicitudes de contacto y mostrar esas relaciones entre los distintos usuarios.
 \subsection{Perfil}
 Se trata de un nuevo módulo y recurso cuya ruta será /profile/\_id, donde \_id corresponderá al id del usuario en cuestión. Se crean nuevas publicaciones y subscripciones y se establece la ruta en /app/lib/router.js.
 
 \subsubsection{Interfaz}
-Al tratarse de un recurso de detalle compartirá la misma base que los demás (figura \ref{fig:detailBase}). El \{\{baner\}\} estará formado una cabecera en la que se muestran el avatar del usuario, una imagen de fondo, un botón para acceder al recurso de edición del perfil y una caja con acciones y un cuerpo en el que aparece el nombre de usuario, la descripción y lista de servicios (figura \ref{fig:profileBanner}). 
+Al tratarse de un recurso de detalle compartirá la misma base que los demás (figura \ref{fig:detailBase}). El \{\{banner\}\} estará formado una cabecera en la que se muestran el avatar del usuario, una imagen de fondo, un botón para acceder al recurso de edición del perfil y una caja con acciones y un cuerpo en el que aparece el nombre de usuario, la descripción y lista de servicios (figura \ref{fig:profileBanner}). 
 
 \begin{figure}[htpb]
 	\centering
