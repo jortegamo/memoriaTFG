@@ -1310,11 +1310,89 @@ La implementación de este módulo integra una plantilla llamada \{\{<smartSearch\
 \paragraph{}
 La interfaz puede verse en la figura (tal).
 \section{Prototipo 10: Página de inicio y módulos adicionales}
+En este prototipo se ha implementado el apartado descriptivo de la aplicación. Este comprende el desarrollo de la página de inicio, los espacios para tutoriales y features y un módulo de ayuda. El resultado de esta implementación puede verse en las figuras tal tal tal y tal.
 \subsection{Página de inicio}
+Se ha querido que la página de inicio sea lo más descriptiva posible en lo que respecta a las características de la aplicación y su funcionalidad. Por lo que se ha diseñado en secciones. En cada sección se introducirá una característica y se mostrará un enlace al recurso /features correspondiente a la misma. También se ha creado una sección introductoria a los tutoriales con un enlace al recurso /tutorials.
 \subsection{Espacio para tutoriales}
+No es necesario que los usuarios estén autenticados en el sitio para tener acceso a este espacio. Se ha creado un recurso /tutorials cuya layout es similar al principal. Está formado por un sidebar y un header. El sidebar tiene sólo un menu. El menú está estructurado en secciones y cada sección contiene una lista de tutoriales. Los tutoriales serán videos que explicarán cómo realizar diversas funciones dentro de la aplicación. Además, para que sea más accesible, cada tutorial tendrá una url. Esto se ha hecho mediante query strings que indican la sección y el tutorial concreto que se desea visualizar. Se ha habilitado también un enlace en el sidebar de la aplicación para acceder a este recurso en una nueva pestaña.
 \subsection{Espacio para features}
+En este espacio se resumirán todas las características y funcionalidades de la aplicación. Al igual que para el espacio de tutoriales se crea un recurso /features que será accesible para todos los usuarios y el layout es idéntico. Aunque el contenido varía. El contenido de cada feature está formado por una cabecera en la que aparece una imagen descriptiva y el título y un cuerpo en el que se muestra una galería de imágenes. Al hacer click en cada imagen podremos visualizarla en pantalla completa, leer su descripción y navegar por las que conforman la galería. También se ha habilitado un enlace a este recurso en el sidebar de la aplicación.
 \subsection{Módulo de ayuda flexible}
+Este módulo está formado por un botón y un collapsible de Bootstrap. Al hacer click en el botón se despliega una lista de preguntas frequentes que podemos editar y configurar vía javascript para poder adaptar las preguntas al contexto de la página en la que incluyamos dicho módulo. Cada pregunta es un enlace a uno de los tutoriales. 
 \section{Prototipo Final: Notificaciones y restricciones de acceso}
+En este prototipo se ha implementado el módulo de notificaciones y las plantillas \{\{notFound\}\} y \{\{accessDenied\}\}.
 \subsection{Notificaciones}
-\subsection{Restricciones de acceso}
-\section{Despliegue y pruebas globales}
+Partiendo del requisito de que los usuarios deben estar informados en todo momento de cualquier cambio de su interés dentro de la aplicación surge la entidad de Notificaciones y con ella la colección Notifications (/app/lib/collections/notifications.js) cuyo objeto MongoDB será el mostrado en \ref{notificationMongo}.
+\paragraph{}
+Las notificaciones se visualizarán en una pestaña del sidebar como se muestra en la figura \ref{fig:sidebarNotifications}
+
+
+Las notificaciones en el sidebar estarán categorizadas por: canales, lecciones, grabaciones, conversations y contactos. Cada categoría se mostrará como un desplegable con la lista de las notificaciones correspondientes. Éstas podrán borrarse todas de una vez o independientemente. Al hacer click en cualquiera de ellas la aplicación navegará al contexto de la misma y la eliminará de la base de datos. Puesto que es un contenido accesible en todo momento, incluiremos la subscripción a la publicación que hemos desarrollado a la configuración global de Iron Router:
+
+\begin{lstlisting}[language=Javascript]
+Router.configure({
+	waitOn: function(){
+		var subs = [
+			Meteor.subscribe('conversationAlerts',Meteor.userId()),
+			Meteor.subscribe('notifications',Meteor.userId())
+		];
+		return subs;
+	}
+})
+\end{lstlisting}
+\paragraph{} 
+Para la creación de las notificaciones se ha desarrollado el constructor NotificationsCreator (/app/client/lib/notificationsCreator.js) del cual se genera una instancia nada más arrancar el cliente. Este objeto posee el método público .createNotification que acepta los parámetros necesarios para su correcta creación. Según su tipo y su contexto generará un mensaje distinto. 
+\paragraph{}
+Las notificaciones cubren la mayoría de eventos en la aplicación entre los que destacan: el voto a los contenidos, los comentarios, la creación de contenido en canales y lecciones a los que el usuario se ha subscrito, cambios de usuarios en una conversación, creación de respuestas a grabaciones y peticiones de contacto.
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=0.7\textwidth]{sidebarNotifications.png}
+	\caption{Diseño de la pestaña de notificaciones en el sidebar}
+	\label{fig:sidebarNotifications}
+\end{figure}
+
+\subsection{Recursos de error}
+\subsubsection{404}
+El error 404 es devuelto por el servidor cuando los datos a los que intentamos acceder no existen. Esto puede deberse al acceso mediante url de algún recurso que ya no exista. Debe controlarse y se hace creando la plantilla \{\{$<$notFound\}\} (figura tal). Necesitamos utilizarla en dos posibles situaciones: 
+\begin{itemize}
+	\item El usuario accede a un recurso que cuyos datos han sido borrados, pero el recurso es válido.
+	\item El usuario accede a un recurso inválido.
+\end{itemize}
+Los casos anteriores pueden ser controlados mediante Iron Router. El primero mediante el plugin 'dataNotFound' y el segundo mediante una nueva ruta colocada al final de todas las creadas y que acepte cualquier recurso. El siguiente código ilustra la configuración mencionada: 
+\begin{lstlisting}[language=Javascript]
+Router.plugin('dataNotFound',{template: 'notFound'});
+Router.route('/(.*)',{name: 'notFound'});
+\end{lstlisting}
+\subsubsection{Access Denied}
+Si bien la aplicación no permite el acceso a contenidos privados para el usuario mediante el flujo diseñado, si que es posible alterar las urls para navegar al recurso privado, por lo que esto debe de controlarse.
+\paragraph{}
+Para ello se ha creado la plantilla \{\{$<$accessDenied\}\} (figura tal), la cual se muestra cuando un usuario intenta editar algún recurso detalle del cual no es autor. Esto se consigue mediante los hooks de Iron Router, en concreto el hook beforeAction. He aquí un ejemplo: 
+\begin{lstlisting}[language=Javascript]
+Router.route('/profile/:_id/edit',{
+	...
+	beforeAction: function(){
+		if (Meteor.userId() !== this.params.id){
+			this.render('accessDenied');
+		}else{
+			this.next();
+		}
+	}
+});
+\end{lstlisting}
+
+\section{Despliegue}
+El despliegue se ha llevado a cabo mediante el sistema de Hosting de Heroku. 
+
+\subsection{Primeros pasos}
+Para realizar este despliegue el primer paso ha sido crear una cuenta en heroku y descargar el CLI para poder desplegar nuestra aplicación de forma remota. El despliegue en Heroku se basa en una idea muy simple. El despliegue es tan sencillo como almacenar una nueva versión de tu repositorio local en el repositorio remoto en github. El siguiente paso, una vez autenticado mediante el comando del CLI heroku login, creamos una aplicación a la que damos el nombre de duckflight. Acto seguido nos devuelve dos urls que corresponden a dos repositorios remotos de github. Esa url la añadiremos como repositorio remoto al actual.
+\paragraph{}
+Ahora necesitamos una base de datos remota, ya que hasta ahora habíamos trabajado con la base de datos que nos creaba Meteor. Para ello creamos un sandbox en mlab mediante el CLI de heroku. Esto nos devolverá la url de la base de datos que deberemos atribuir como parámetro global a la aplicación duckflight. 
+\paragraph{}
+Finalmente necesitamos un paquete constructor que se encargue de identificar que se trata de una aplicación de Meteor y de generarla en la url en la que se hará el despliegue. Dicho paquete es jordansissel:heroku-buildpack-meteor y se configura mediante el comando heroku create --buildpack <buildpack>. 
+\paragraph{}
+Una vez seguidos estos pasos, procedemos al despliegue de la aplicación mediante el comando git push heroku master.
+\subsection{Proceso}
+En el momento que ejecutamos el comando anterior se crea una copia de nuestro repositorio local en el repositorio remoto heroku. Acto seguido el buildpack o paquete constructor se encarga de generar nuestra aplicación y de arrancarla en la url correspondiente.
+\subsection{Pruebas globales}
+Una vez realizado el despliegue se han llevado ha explotado la funcionalidad de la aplicación de forma que se han probado todas las características de la misma. El resultado de estas pruebas ha sido satisfactorio.

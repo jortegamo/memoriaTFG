@@ -298,31 +298,43 @@
 \contentsline {paragraph}{}{120}{section*.233}
 \contentsline {paragraph}{}{121}{section*.234}
 \contentsline {paragraph}{}{121}{section*.235}
-\contentsline {section}{\numberline {3.13}Prototipo 10: P\'agina de inicio y m\'odulos adicionales}{122}{section.3.13}
-\contentsline {subsection}{\numberline {3.13.1}P\'agina de inicio}{122}{subsection.3.13.1}
+\contentsline {section}{\numberline {3.13}Prototipo 10: P\'agina de inicio y m\'odulos adicionales}{121}{section.3.13}
+\contentsline {subsection}{\numberline {3.13.1}P\'agina de inicio}{121}{subsection.3.13.1}
 \contentsline {subsection}{\numberline {3.13.2}Espacio para tutoriales}{122}{subsection.3.13.2}
 \contentsline {subsection}{\numberline {3.13.3}Espacio para features}{122}{subsection.3.13.3}
 \contentsline {subsection}{\numberline {3.13.4}M\'odulo de ayuda flexible}{122}{subsection.3.13.4}
-\contentsline {section}{\numberline {3.14}Prototipo Final: Notificaciones y restricciones de acceso}{122}{section.3.14}
-\contentsline {subsection}{\numberline {3.14.1}Notificaciones}{122}{subsection.3.14.1}
-\contentsline {subsection}{\numberline {3.14.2}Restricciones de acceso}{122}{subsection.3.14.2}
-\contentsline {section}{\numberline {3.15}Despliegue y pruebas globales}{122}{section.3.15}
-\contentsline {chapter}{\numberline {4}Experimentaci\'on}{123}{chapter.4}
-\contentsline {section}{\numberline {4.1}Motivaci\'on}{123}{section.4.1}
-\contentsline {section}{\numberline {4.2}Planteamiento y objetivos}{123}{section.4.2}
+\contentsline {section}{\numberline {3.14}Prototipo Final: Notificaciones y restricciones de acceso}{123}{section.3.14}
+\contentsline {subsection}{\numberline {3.14.1}Notificaciones}{123}{subsection.3.14.1}
 \contentsline {paragraph}{}{123}{section*.236}
 \contentsline {paragraph}{}{124}{section*.237}
 \contentsline {paragraph}{}{124}{section*.238}
-\contentsline {section}{\numberline {4.3}Proceso y realizaci\'on}{124}{section.4.3}
-\contentsline {section}{\numberline {4.4}Resultados y an\'alisis}{124}{section.4.4}
-\contentsline {chapter}{\numberline {5}Conclusi\'on}{125}{chapter.5}
-\contentsline {chapter}{Bibliograf\'{\i }a}{126}{section*.239}
-\contentsline {section}{\numberline {5.1}Principales Sitios Web}{127}{section.5.1}
-\contentsline {section}{\numberline {5.2}Libros}{127}{section.5.2}
-\contentsline {section}{\numberline {5.3}Art\IeC {\'\i }culos}{127}{section.5.3}
-\contentsline {section}{\numberline {5.4}Tutoriales}{127}{section.5.4}
-\contentsline {section}{\numberline {5.5}Paquetes}{127}{section.5.5}
-\contentsline {section}{\numberline {5.6}Repositorios}{127}{section.5.6}
-\contentsline {chapter}{Ap\'endices}{128}{section*.241}
-\contentsline {chapter}{\numberline {A}Dise\~no de documentos para Mongo}{129}{appendix.Alph1}
-\contentsline {chapter}{\numberline {B}Dise\~no de Interfaces}{136}{appendix.Alph2}
+\contentsline {subsection}{\numberline {3.14.2}Recursos de error}{124}{subsection.3.14.2}
+\contentsline {subsubsection}{404}{124}{section*.239}
+\contentsline {subsubsection}{Access Denied}{126}{section*.240}
+\contentsline {paragraph}{}{126}{section*.241}
+\contentsline {section}{\numberline {3.15}Despliegue}{127}{section.3.15}
+\contentsline {subsection}{\numberline {3.15.1}Primeros pasos}{127}{subsection.3.15.1}
+\contentsline {paragraph}{}{127}{section*.242}
+\contentsline {paragraph}{}{127}{section*.243}
+\contentsline {paragraph}{}{127}{section*.244}
+\contentsline {subsection}{\numberline {3.15.2}Proceso}{128}{subsection.3.15.2}
+\contentsline {subsection}{\numberline {3.15.3}Pruebas globales}{128}{subsection.3.15.3}
+\contentsline {chapter}{\numberline {4}Experimentaci\'on}{129}{chapter.4}
+\contentsline {section}{\numberline {4.1}Motivaci\'on}{129}{section.4.1}
+\contentsline {section}{\numberline {4.2}Planteamiento y objetivos}{129}{section.4.2}
+\contentsline {paragraph}{}{129}{section*.245}
+\contentsline {paragraph}{}{130}{section*.246}
+\contentsline {paragraph}{}{130}{section*.247}
+\contentsline {section}{\numberline {4.3}Proceso y realizaci\'on}{130}{section.4.3}
+\contentsline {section}{\numberline {4.4}Resultados y an\'alisis}{130}{section.4.4}
+\contentsline {chapter}{\numberline {5}Conclusi\'on}{131}{chapter.5}
+\contentsline {chapter}{Bibliograf\'{\i }a}{132}{section*.248}
+\contentsline {section}{\numberline {5.1}Principales Sitios Web}{133}{section.5.1}
+\contentsline {section}{\numberline {5.2}Libros}{133}{section.5.2}
+\contentsline {section}{\numberline {5.3}Art\IeC {\'\i }culos}{133}{section.5.3}
+\contentsline {section}{\numberline {5.4}Tutoriales}{133}{section.5.4}
+\contentsline {section}{\numberline {5.5}Paquetes}{133}{section.5.5}
+\contentsline {section}{\numberline {5.6}Repositorios}{133}{section.5.6}
+\contentsline {chapter}{Ap\'endices}{134}{section*.250}
+\contentsline {chapter}{\numberline {A}Dise\~no de documentos para Mongo}{135}{appendix.Alph1}
+\contentsline {chapter}{\numberline {B}Dise\~no de Interfaces}{142}{appendix.Alph2}

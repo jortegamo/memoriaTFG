@@ -72,21 +72,24 @@
 \BOOKMARK [2][-]{subsection.3.13.4}{M\363dulo de ayuda flexible}{section.3.13}% 72
 \BOOKMARK [1][-]{section.3.14}{Prototipo Final: Notificaciones y restricciones de acceso}{chapter.3}% 73
 \BOOKMARK [2][-]{subsection.3.14.1}{Notificaciones}{section.3.14}% 74
-\BOOKMARK [2][-]{subsection.3.14.2}{Restricciones de acceso}{section.3.14}% 75
-\BOOKMARK [1][-]{section.3.15}{Despliegue y pruebas globales}{chapter.3}% 76
-\BOOKMARK [0][-]{chapter.4}{Experimentaci\363n}{}% 77
-\BOOKMARK [1][-]{section.4.1}{Motivaci\363n}{chapter.4}% 78
-\BOOKMARK [1][-]{section.4.2}{Planteamiento y objetivos}{chapter.4}% 79
-\BOOKMARK [1][-]{section.4.3}{Proceso y realizaci\363n}{chapter.4}% 80
-\BOOKMARK [1][-]{section.4.4}{Resultados y an\341lisis}{chapter.4}% 81
-\BOOKMARK [0][-]{chapter.5}{Conclusi\363n}{}% 82
-\BOOKMARK [0][-]{section*.239}{Bibliograf\355a}{}% 83
-\BOOKMARK [1][-]{section.5.1}{Principales Sitios Web}{section*.239}% 84
-\BOOKMARK [1][-]{section.5.2}{Libros}{section*.239}% 85
-\BOOKMARK [1][-]{section.5.3}{Art\355culos}{section*.239}% 86
-\BOOKMARK [1][-]{section.5.4}{Tutoriales}{section*.239}% 87
-\BOOKMARK [1][-]{section.5.5}{Paquetes}{section*.239}% 88
-\BOOKMARK [1][-]{section.5.6}{Repositorios}{section*.239}% 89
-\BOOKMARK [0][-]{section*.241}{Ap\351ndices}{}% 90
-\BOOKMARK [0][-]{appendix.Alph1}{Dise\361o de documentos para Mongo}{}% 91
-\BOOKMARK [0][-]{appendix.Alph2}{Dise\361o de Interfaces}{}% 92
+\BOOKMARK [2][-]{subsection.3.14.2}{Recursos de error}{section.3.14}% 75
+\BOOKMARK [1][-]{section.3.15}{Despliegue}{chapter.3}% 76
+\BOOKMARK [2][-]{subsection.3.15.1}{Primeros pasos}{section.3.15}% 77
+\BOOKMARK [2][-]{subsection.3.15.2}{Proceso}{section.3.15}% 78
+\BOOKMARK [2][-]{subsection.3.15.3}{Pruebas globales}{section.3.15}% 79
+\BOOKMARK [0][-]{chapter.4}{Experimentaci\363n}{}% 80
+\BOOKMARK [1][-]{section.4.1}{Motivaci\363n}{chapter.4}% 81
+\BOOKMARK [1][-]{section.4.2}{Planteamiento y objetivos}{chapter.4}% 82
+\BOOKMARK [1][-]{section.4.3}{Proceso y realizaci\363n}{chapter.4}% 83
+\BOOKMARK [1][-]{section.4.4}{Resultados y an\341lisis}{chapter.4}% 84
+\BOOKMARK [0][-]{chapter.5}{Conclusi\363n}{}% 85
+\BOOKMARK [0][-]{section*.248}{Bibliograf\355a}{}% 86
+\BOOKMARK [1][-]{section.5.1}{Principales Sitios Web}{section*.248}% 87
+\BOOKMARK [1][-]{section.5.2}{Libros}{section*.248}% 88
+\BOOKMARK [1][-]{section.5.3}{Art\355culos}{section*.248}% 89
+\BOOKMARK [1][-]{section.5.4}{Tutoriales}{section*.248}% 90
+\BOOKMARK [1][-]{section.5.5}{Paquetes}{section*.248}% 91
+\BOOKMARK [1][-]{section.5.6}{Repositorios}{section*.248}% 92
+\BOOKMARK [0][-]{section*.250}{Ap\351ndices}{}% 93
+\BOOKMARK [0][-]{appendix.Alph1}{Dise\361o de documentos para Mongo}{}% 94
+\BOOKMARK [0][-]{appendix.Alph2}{Dise\361o de Interfaces}{}% 95
