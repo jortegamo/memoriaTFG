@@ -1,281 +1,328 @@
 \select@language {spanish}
-\contentsline {chapter}{\numberline {1}Introducci\'on}{8}{chapter.1}
-\contentsline {paragraph}{}{8}{section*.3}
-\contentsline {section}{\numberline {1.1}Desarrollo Web}{8}{section.1.1}
-\contentsline {paragraph}{}{8}{section*.4}
-\contentsline {paragraph}{}{8}{section*.5}
-\contentsline {paragraph}{}{9}{section*.6}
-\contentsline {paragraph}{}{9}{section*.7}
-\contentsline {paragraph}{}{9}{section*.8}
-\contentsline {section}{\numberline {1.2}Tecnolog\IeC {\'\i }as Web}{10}{section.1.2}
-\contentsline {paragraph}{}{10}{section*.9}
-\contentsline {subsection}{\numberline {1.2.1}Frameworks}{10}{subsection.1.2.1}
-\contentsline {paragraph}{}{11}{section*.10}
-\contentsline {subsubsection}{AngularJS}{11}{section*.11}
-\contentsline {paragraph}{}{11}{section*.12}
-\contentsline {paragraph}{}{11}{section*.13}
-\contentsline {subsubsection}{EmberJS}{11}{section*.14}
-\contentsline {paragraph}{}{11}{section*.15}
-\contentsline {subsubsection}{Django}{12}{section*.16}
-\contentsline {paragraph}{}{12}{section*.17}
-\contentsline {subsubsection}{ReactJS}{12}{section*.18}
-\contentsline {paragraph}{}{12}{section*.19}
-\contentsline {subsubsection}{MeteorJS}{12}{section*.20}
-\contentsline {paragraph}{}{12}{section*.21}
-\contentsline {paragraph}{}{13}{section*.22}
-\contentsline {subsubsection}{BackboneJS}{13}{section*.23}
-\contentsline {paragraph}{}{13}{section*.24}
-\contentsline {subsubsection}{ExpressJS}{13}{section*.25}
-\contentsline {paragraph}{}{13}{section*.26}
-\contentsline {subsubsection}{Bootstrap \cite {baz8}}{13}{section*.27}
-\contentsline {paragraph}{}{13}{section*.28}
-\contentsline {subsection}{\numberline {1.2.2}Librer\IeC {\'\i }as}{14}{subsection.1.2.2}
-\contentsline {paragraph}{}{14}{section*.29}
-\contentsline {subsubsection}{JQuery}{14}{section*.30}
-\contentsline {paragraph}{}{14}{section*.31}
-\contentsline {subsubsection}{UnderscoreJS \cite {baz13}}{14}{section*.32}
-\contentsline {paragraph}{}{14}{section*.33}
-\contentsline {subsection}{\numberline {1.2.3}Lenguajes}{15}{subsection.1.2.3}
-\contentsline {paragraph}{}{15}{section*.34}
-\contentsline {subsubsection}{HTML5}{15}{section*.35}
-\contentsline {paragraph}{}{15}{section*.36}
-\contentsline {paragraph}{}{15}{section*.37}
-\contentsline {paragraph}{}{15}{section*.38}
-\contentsline {paragraph}{}{16}{section*.39}
-\contentsline {subsubsection}{CSS3}{16}{section*.40}
-\contentsline {paragraph}{}{16}{section*.41}
-\contentsline {subsubsection}{Javascript \cite {baz9}}{16}{section*.42}
-\contentsline {paragraph}{}{16}{section*.43}
-\contentsline {paragraph}{}{16}{section*.44}
-\contentsline {paragraph}{}{16}{section*.45}
-\contentsline {section}{\numberline {1.3}MeteorJS}{17}{section.1.3}
-\contentsline {paragraph}{}{17}{section*.46}
-\contentsline {subsection}{\numberline {1.3.1}Reactividad}{17}{subsection.1.3.1}
-\contentsline {paragraph}{}{17}{section*.47}
-\contentsline {paragraph}{}{18}{section*.48}
-\contentsline {subsection}{\numberline {1.3.2}Sistema de plantillas reactivas}{18}{subsection.1.3.2}
-\contentsline {paragraph}{}{18}{section*.49}
-\contentsline {subsection}{\numberline {1.3.3}Comunicaci\'on con el servidor}{18}{subsection.1.3.3}
-\contentsline {paragraph}{}{18}{section*.50}
-\contentsline {paragraph}{}{19}{section*.51}
-\contentsline {paragraph}{}{19}{section*.52}
-\contentsline {paragraph}{}{19}{section*.54}
-\contentsline {paragraph}{}{20}{section*.55}
-\contentsline {paragraph}{}{20}{section*.56}
-\contentsline {paragraph}{}{21}{section*.57}
-\contentsline {section}{\numberline {1.4}MongoDB}{21}{section.1.4}
-\contentsline {paragraph}{}{22}{section*.58}
-\contentsline {subsection}{\numberline {1.4.1}MongoDB y MeteorJS}{22}{subsection.1.4.1}
-\contentsline {paragraph}{}{22}{section*.59}
-\contentsline {paragraph}{}{22}{section*.60}
-\contentsline {paragraph}{}{23}{section*.61}
-\contentsline {subsection}{\numberline {1.4.2}Publicaciones y Subscripciones}{23}{subsection.1.4.2}
-\contentsline {paragraph}{}{23}{section*.62}
-\contentsline {section}{\numberline {1.5}HTML5 Media}{24}{section.1.5}
-\contentsline {subsection}{\numberline {1.5.1}WebRTC}{24}{subsection.1.5.1}
-\contentsline {subsection}{\numberline {1.5.2}RTCRecorder}{24}{subsection.1.5.2}
-\contentsline {section}{\numberline {1.6}AceEditor}{25}{section.1.6}
-\contentsline {paragraph}{}{25}{section*.63}
-\contentsline {section}{\numberline {1.7}Tecnolog\IeC {\'\i }as Cloud}{25}{section.1.7}
-\contentsline {paragraph}{}{25}{section*.64}
-\contentsline {paragraph}{}{25}{section*.65}
-\contentsline {subsection}{\numberline {1.7.1}API Soundcloud}{25}{subsection.1.7.1}
-\contentsline {paragraph}{}{26}{section*.66}
-\contentsline {paragraph}{}{26}{section*.67}
-\contentsline {section}{\numberline {1.8}Herramientas para trabajo en equipo}{26}{section.1.8}
-\contentsline {paragraph}{}{26}{section*.68}
-\contentsline {subsection}{\numberline {1.8.1}Git y GitHub}{27}{subsection.1.8.1}
-\contentsline {paragraph}{}{27}{section*.69}
-\contentsline {paragraph}{}{27}{section*.70}
-\contentsline {subsection}{\numberline {1.8.2}PivotalTracker}{27}{subsection.1.8.2}
-\contentsline {paragraph}{}{27}{section*.71}
-\contentsline {subsection}{\numberline {1.8.3}Slack}{28}{subsection.1.8.3}
-\contentsline {chapter}{\numberline {2}Objetivos y metodolog\IeC {\'\i }a}{29}{chapter.2}
-\contentsline {section}{\numberline {2.1}Motivaci\'on}{29}{section.2.1}
-\contentsline {paragraph}{}{29}{section*.72}
-\contentsline {paragraph}{}{29}{section*.73}
-\contentsline {paragraph}{}{30}{section*.74}
-\contentsline {section}{\numberline {2.2}Requisitos}{30}{section.2.2}
-\contentsline {paragraph}{}{30}{section*.75}
-\contentsline {paragraph}{}{30}{section*.76}
-\contentsline {section}{\numberline {2.3}Metodolog\IeC {\'\i }a y plan de trabajo}{38}{section.2.3}
-\contentsline {paragraph}{}{38}{section*.77}
-\contentsline {paragraph}{}{38}{section*.78}
-\contentsline {paragraph}{}{39}{section*.79}
-\contentsline {chapter}{\numberline {3}Dise\~no y desarrollo de la aplicaci\'on}{41}{chapter.3}
-\contentsline {section}{\numberline {3.1}Tipo de Arquitectura}{41}{section.3.1}
-\contentsline {paragraph}{}{41}{section*.80}
-\contentsline {paragraph}{}{41}{section*.81}
-\contentsline {paragraph}{}{41}{section*.82}
-\contentsline {section}{\numberline {3.2}B\'usqueda de herramientas}{43}{section.3.2}
-\contentsline {paragraph}{}{43}{section*.83}
-\contentsline {subsubsection}{Aplicaci\'on en tiempo real y prototipado r\'apido}{43}{section*.84}
-\contentsline {paragraph}{}{43}{section*.85}
-\contentsline {paragraph}{}{43}{section*.86}
-\contentsline {paragraph}{}{43}{section*.87}
-\contentsline {subsubsection}{Grabaciones de audio}{44}{section*.88}
-\contentsline {paragraph}{}{44}{section*.89}
-\contentsline {subsubsection}{Hosting o Almacenamiento}{44}{section*.90}
-\contentsline {paragraph}{}{44}{section*.91}
-\contentsline {subsubsection}{Interfaz con UX como par\'ametro de dise\~no fundamental}{44}{section*.92}
-\contentsline {paragraph}{}{44}{section*.93}
-\contentsline {section}{\numberline {3.3}Composici\'on Inicial y entorno de desarrollo}{45}{section.3.3}
-\contentsline {paragraph}{}{45}{section*.94}
-\contentsline {subsection}{\numberline {3.3.1}Primeros pasos}{45}{subsection.3.3.1}
-\contentsline {paragraph}{}{45}{section*.95}
-\contentsline {paragraph}{}{45}{section*.96}
-\contentsline {paragraph}{}{45}{section*.97}
-\contentsline {subsection}{\numberline {3.3.2}Mixins}{46}{subsection.3.3.2}
-\contentsline {paragraph}{}{46}{section*.98}
-\contentsline {paragraph}{}{46}{section*.99}
-\contentsline {section}{\numberline {3.4}Prototipo 1: Registro de usuarios y layout principal}{47}{section.3.4}
-\contentsline {paragraph}{}{47}{section*.100}
-\contentsline {subsection}{\numberline {3.4.1}Layout principal}{47}{subsection.3.4.1}
-\contentsline {paragraph}{}{48}{section*.101}
-\contentsline {subsubsection}{Sidebar y header}{49}{section*.102}
-\contentsline {paragraph}{}{49}{section*.103}
-\contentsline {paragraph}{}{49}{section*.104}
-\contentsline {subsubsection}{Configuraci\'on de Iron Router}{51}{section*.105}
-\contentsline {paragraph}{}{51}{section*.106}
-\contentsline {paragraph}{}{51}{section*.107}
-\contentsline {subsection}{\numberline {3.4.2}Registro de usuarios}{51}{subsection.3.4.2}
-\contentsline {paragraph}{}{51}{section*.108}
-\contentsline {subsubsection}{Formulario de inicio de sesi\'on}{53}{section*.109}
-\contentsline {subsubsection}{Formulario de registro}{53}{section*.110}
-\contentsline {section}{\numberline {3.5}Prototipo 2: Grabador y reproductor basados en documentos}{57}{section.3.5}
-\contentsline {paragraph}{}{57}{section*.111}
-\contentsline {subsection}{\numberline {3.5.1}Grabador}{57}{subsection.3.5.1}
-\contentsline {subsubsection}{Entidades y colecciones}{57}{section*.112}
-\contentsline {paragraph}{}{57}{section*.113}
-\contentsline {subsubsection}{Routing}{58}{section*.114}
-\contentsline {paragraph}{}{58}{section*.115}
-\contentsline {paragraph}{}{58}{section*.116}
-\contentsline {subsubsection}{Proceso de grabaci\'on}{58}{section*.117}
-\contentsline {paragraph}{}{58}{section*.118}
-\contentsline {paragraph}{}{58}{section*.119}
-\contentsline {paragraph}{}{59}{section*.120}
-\contentsline {paragraph}{}{60}{section*.121}
-\contentsline {paragraph}{}{60}{section*.122}
-\contentsline {paragraph}{}{60}{section*.123}
-\contentsline {paragraph}{}{61}{section*.124}
-\contentsline {paragraph}{}{61}{section*.125}
-\contentsline {paragraph}{}{61}{section*.126}
-\contentsline {subsubsection}{Almacenamiento}{62}{section*.127}
-\contentsline {paragraph}{}{62}{section*.128}
-\contentsline {paragraph}{}{62}{section*.129}
-\contentsline {paragraph}{}{63}{section*.130}
-\contentsline {paragraph}{}{63}{section*.131}
-\contentsline {paragraph}{}{63}{section*.132}
-\contentsline {paragraph}{}{65}{section*.133}
-\contentsline {paragraph}{}{65}{section*.134}
-\contentsline {paragraph}{}{65}{section*.135}
-\contentsline {subsubsection}{Interfaz del grabador}{65}{section*.136}
-\contentsline {paragraph}{}{66}{section*.137}
-\contentsline {paragraph}{}{67}{section*.138}
-\contentsline {paragraph}{}{67}{section*.139}
-\contentsline {paragraph}{}{67}{section*.140}
-\contentsline {paragraph}{}{67}{section*.141}
-\contentsline {paragraph}{}{67}{section*.142}
-\contentsline {paragraph}{}{69}{section*.143}
-\contentsline {subsection}{\numberline {3.5.2}Reproductor}{69}{subsection.3.5.2}
-\contentsline {subsubsection}{Ruta, publicaciones y subscripciones}{69}{section*.144}
-\contentsline {paragraph}{}{69}{section*.145}
-\contentsline {subsubsection}{Proceso de reproducci\'on}{70}{section*.146}
-\contentsline {paragraph}{}{71}{section*.147}
-\contentsline {subsubsection}{Sincronizaci\'on entre audio y editor}{72}{section*.148}
-\contentsline {paragraph}{}{72}{section*.149}
-\contentsline {paragraph}{}{72}{section*.150}
-\contentsline {subsubsection}{Simulaci\'on de eventos sobre editor}{72}{section*.151}
-\contentsline {subsubsection}{Interfaz del recurso grabaci\'on}{74}{section*.152}
-\contentsline {paragraph}{}{74}{section*.153}
-\contentsline {subsubsection}{Interfaz del reproductor}{75}{section*.154}
-\contentsline {subsubsection}{Streamming}{76}{section*.155}
-\contentsline {paragraph}{}{76}{section*.156}
-\contentsline {paragraph}{}{77}{section*.157}
-\contentsline {subsection}{\numberline {3.5.3}Lista de grabaciones}{78}{subsection.3.5.3}
-\contentsline {subsubsection}{Ruta, publicaciones y subscripciones}{78}{section*.158}
-\contentsline {paragraph}{}{79}{section*.159}
-\contentsline {subsubsection}{Interfaz}{79}{section*.160}
-\contentsline {paragraph}{}{79}{section*.161}
-\contentsline {paragraph}{}{79}{section*.162}
-\contentsline {section}{\numberline {3.6}Prototipo 3: Respuestas a grabaciones}{80}{section.3.6}
-\contentsline {subsection}{\numberline {3.6.1}Actualizaci\'on del grabador}{80}{subsection.3.6.1}
-\contentsline {paragraph}{}{80}{section*.163}
-\contentsline {paragraph}{}{81}{section*.164}
-\contentsline {paragraph}{}{82}{section*.165}
-\contentsline {paragraph}{}{82}{section*.166}
-\contentsline {paragraph}{}{82}{section*.167}
-\contentsline {subsection}{\numberline {3.6.2}Nuevas acciones}{82}{subsection.3.6.2}
-\contentsline {subsection}{\numberline {3.6.3}Timeline, relacionados y comentarios}{83}{subsection.3.6.3}
-\contentsline {paragraph}{}{83}{section*.168}
-\contentsline {paragraph}{}{84}{section*.169}
-\contentsline {paragraph}{}{84}{section*.170}
-\contentsline {paragraph}{}{86}{section*.171}
-\contentsline {section}{\numberline {3.7}Prototipo 4: Organizaci\'on en Canales}{86}{section.3.7}
-\contentsline {subsection}{\numberline {3.7.1}Concepto, entidades y modificaciones}{86}{subsection.3.7.1}
-\contentsline {paragraph}{}{86}{section*.172}
-\contentsline {paragraph}{}{86}{section*.173}
-\contentsline {subsection}{\numberline {3.7.2}Rutas y subscripciones}{88}{subsection.3.7.2}
-\contentsline {paragraph}{}{88}{section*.174}
-\contentsline {subsection}{\numberline {3.7.3}Dise\~no de interfaces e implementaci\'on}{89}{subsection.3.7.3}
-\contentsline {subsubsection}{Creaci\'on de un canal}{89}{section*.175}
-\contentsline {subsubsection}{P\'agina de canales}{90}{section*.176}
-\contentsline {subsubsection}{P\'agina del canal}{91}{section*.177}
-\contentsline {paragraph}{}{91}{section*.178}
-\contentsline {subsubsection}{Edici\'on de un canal}{92}{section*.179}
-\contentsline {paragraph}{}{92}{section*.180}
-\contentsline {paragraph}{}{93}{section*.181}
-\contentsline {section}{\numberline {3.8}Prototipo 5: Organizaci\'on en Lecciones}{93}{section.3.8}
-\contentsline {subsection}{\numberline {3.8.1}Concepto, entidades y modificaciones}{93}{subsection.3.8.1}
-\contentsline {paragraph}{}{93}{section*.182}
-\contentsline {paragraph}{}{93}{section*.183}
-\contentsline {subsection}{\numberline {3.8.2}Rutas y subscripciones}{95}{subsection.3.8.2}
-\contentsline {paragraph}{}{95}{section*.184}
-\contentsline {subsection}{\numberline {3.8.3}Lista de reproducci\'on y opciones}{95}{subsection.3.8.3}
-\contentsline {paragraph}{}{96}{section*.185}
-\contentsline {subsection}{\numberline {3.8.4}Dise\~no de interfaces e implementaci\'on}{96}{subsection.3.8.4}
-\contentsline {subsubsection}{Creaci\'on de una lecci\'on}{96}{section*.186}
-\contentsline {subsubsection}{P\'agina de lecciones}{97}{section*.187}
-\contentsline {subsubsection}{P\'agina de una lecci\'on}{97}{section*.188}
-\contentsline {paragraph}{}{98}{section*.189}
-\contentsline {paragraph}{}{98}{section*.190}
-\contentsline {subsubsection}{Edici\'on de una lecci\'on}{99}{section*.191}
-\contentsline {section}{\numberline {3.9}Prototipo 6: P\'agina de perfil y Contactos}{99}{section.3.9}
-\contentsline {subsection}{\numberline {3.9.1}Perfil}{99}{subsection.3.9.1}
-\contentsline {subsubsection}{Interfaz}{99}{section*.192}
+\contentsline {chapter}{\numberline {1}Introducci\'on}{9}{chapter.1}
+\contentsline {paragraph}{}{9}{section*.3}
+\contentsline {section}{\numberline {1.1}Desarrollo Web}{9}{section.1.1}
+\contentsline {paragraph}{}{9}{section*.4}
+\contentsline {paragraph}{}{9}{section*.5}
+\contentsline {paragraph}{}{10}{section*.6}
+\contentsline {paragraph}{}{10}{section*.7}
+\contentsline {paragraph}{}{10}{section*.8}
+\contentsline {section}{\numberline {1.2}Tecnolog\IeC {\'\i }as Web}{11}{section.1.2}
+\contentsline {paragraph}{}{11}{section*.9}
+\contentsline {subsection}{\numberline {1.2.1}Frameworks}{11}{subsection.1.2.1}
+\contentsline {paragraph}{}{12}{section*.10}
+\contentsline {subsubsection}{AngularJS}{12}{section*.11}
+\contentsline {paragraph}{}{12}{section*.12}
+\contentsline {paragraph}{}{12}{section*.13}
+\contentsline {subsubsection}{EmberJS}{12}{section*.14}
+\contentsline {paragraph}{}{12}{section*.15}
+\contentsline {subsubsection}{Django}{13}{section*.16}
+\contentsline {paragraph}{}{13}{section*.17}
+\contentsline {subsubsection}{ReactJS}{13}{section*.18}
+\contentsline {paragraph}{}{13}{section*.19}
+\contentsline {subsubsection}{MeteorJS}{13}{section*.20}
+\contentsline {paragraph}{}{13}{section*.21}
+\contentsline {paragraph}{}{14}{section*.22}
+\contentsline {subsubsection}{BackboneJS}{14}{section*.23}
+\contentsline {paragraph}{}{14}{section*.24}
+\contentsline {subsubsection}{ExpressJS}{14}{section*.25}
+\contentsline {paragraph}{}{14}{section*.26}
+\contentsline {subsubsection}{Bootstrap \cite {baz8}}{14}{section*.27}
+\contentsline {paragraph}{}{14}{section*.28}
+\contentsline {subsection}{\numberline {1.2.2}Librer\IeC {\'\i }as}{15}{subsection.1.2.2}
+\contentsline {paragraph}{}{15}{section*.29}
+\contentsline {subsubsection}{JQuery}{15}{section*.30}
+\contentsline {paragraph}{}{15}{section*.31}
+\contentsline {subsubsection}{UnderscoreJS \cite {baz13}}{15}{section*.32}
+\contentsline {paragraph}{}{15}{section*.33}
+\contentsline {subsection}{\numberline {1.2.3}Lenguajes}{16}{subsection.1.2.3}
+\contentsline {paragraph}{}{16}{section*.34}
+\contentsline {subsubsection}{HTML5}{16}{section*.35}
+\contentsline {paragraph}{}{16}{section*.36}
+\contentsline {paragraph}{}{16}{section*.37}
+\contentsline {paragraph}{}{16}{section*.38}
+\contentsline {paragraph}{}{17}{section*.39}
+\contentsline {subsubsection}{CSS3}{17}{section*.40}
+\contentsline {paragraph}{}{17}{section*.41}
+\contentsline {subsubsection}{Javascript \cite {baz9}}{17}{section*.42}
+\contentsline {paragraph}{}{17}{section*.43}
+\contentsline {paragraph}{}{17}{section*.44}
+\contentsline {paragraph}{}{17}{section*.45}
+\contentsline {section}{\numberline {1.3}MeteorJS}{18}{section.1.3}
+\contentsline {paragraph}{}{18}{section*.46}
+\contentsline {subsection}{\numberline {1.3.1}Reactividad}{18}{subsection.1.3.1}
+\contentsline {paragraph}{}{18}{section*.47}
+\contentsline {paragraph}{}{19}{section*.48}
+\contentsline {subsection}{\numberline {1.3.2}Sistema de plantillas reactivas}{19}{subsection.1.3.2}
+\contentsline {paragraph}{}{19}{section*.49}
+\contentsline {subsection}{\numberline {1.3.3}Comunicaci\'on con el servidor}{19}{subsection.1.3.3}
+\contentsline {paragraph}{}{19}{section*.50}
+\contentsline {paragraph}{}{20}{section*.51}
+\contentsline {paragraph}{}{20}{section*.52}
+\contentsline {paragraph}{}{20}{section*.54}
+\contentsline {paragraph}{}{21}{section*.55}
+\contentsline {paragraph}{}{21}{section*.56}
+\contentsline {paragraph}{}{22}{section*.57}
+\contentsline {section}{\numberline {1.4}MongoDB}{22}{section.1.4}
+\contentsline {paragraph}{}{23}{section*.58}
+\contentsline {subsection}{\numberline {1.4.1}MongoDB y MeteorJS}{23}{subsection.1.4.1}
+\contentsline {paragraph}{}{23}{section*.59}
+\contentsline {paragraph}{}{23}{section*.60}
+\contentsline {paragraph}{}{24}{section*.61}
+\contentsline {subsection}{\numberline {1.4.2}Publicaciones y Subscripciones}{24}{subsection.1.4.2}
+\contentsline {paragraph}{}{24}{section*.62}
+\contentsline {section}{\numberline {1.5}HTML5 Media}{25}{section.1.5}
+\contentsline {subsection}{\numberline {1.5.1}WebRTC}{25}{subsection.1.5.1}
+\contentsline {subsection}{\numberline {1.5.2}RTCRecorder}{25}{subsection.1.5.2}
+\contentsline {section}{\numberline {1.6}AceEditor}{26}{section.1.6}
+\contentsline {paragraph}{}{26}{section*.63}
+\contentsline {section}{\numberline {1.7}Tecnolog\IeC {\'\i }as Cloud}{26}{section.1.7}
+\contentsline {paragraph}{}{26}{section*.64}
+\contentsline {paragraph}{}{26}{section*.65}
+\contentsline {subsection}{\numberline {1.7.1}API Soundcloud}{26}{subsection.1.7.1}
+\contentsline {paragraph}{}{27}{section*.66}
+\contentsline {paragraph}{}{27}{section*.67}
+\contentsline {section}{\numberline {1.8}Herramientas para trabajo en equipo}{27}{section.1.8}
+\contentsline {paragraph}{}{27}{section*.68}
+\contentsline {subsection}{\numberline {1.8.1}Git y GitHub}{28}{subsection.1.8.1}
+\contentsline {paragraph}{}{28}{section*.69}
+\contentsline {paragraph}{}{28}{section*.70}
+\contentsline {subsection}{\numberline {1.8.2}PivotalTracker}{28}{subsection.1.8.2}
+\contentsline {paragraph}{}{28}{section*.71}
+\contentsline {subsection}{\numberline {1.8.3}Slack}{29}{subsection.1.8.3}
+\contentsline {chapter}{\numberline {2}Objetivos y metodolog\IeC {\'\i }a}{30}{chapter.2}
+\contentsline {section}{\numberline {2.1}Motivaci\'on}{30}{section.2.1}
+\contentsline {paragraph}{}{30}{section*.72}
+\contentsline {paragraph}{}{30}{section*.73}
+\contentsline {paragraph}{}{31}{section*.74}
+\contentsline {section}{\numberline {2.2}Requisitos}{31}{section.2.2}
+\contentsline {paragraph}{}{31}{section*.75}
+\contentsline {paragraph}{}{31}{section*.76}
+\contentsline {section}{\numberline {2.3}Metodolog\IeC {\'\i }a y plan de trabajo}{39}{section.2.3}
+\contentsline {paragraph}{}{39}{section*.77}
+\contentsline {paragraph}{}{39}{section*.78}
+\contentsline {paragraph}{}{40}{section*.79}
+\contentsline {chapter}{\numberline {3}Dise\~no y desarrollo de la aplicaci\'on}{42}{chapter.3}
+\contentsline {section}{\numberline {3.1}Tipo de Arquitectura}{42}{section.3.1}
+\contentsline {paragraph}{}{42}{section*.80}
+\contentsline {paragraph}{}{42}{section*.81}
+\contentsline {paragraph}{}{42}{section*.82}
+\contentsline {section}{\numberline {3.2}B\'usqueda de herramientas}{44}{section.3.2}
+\contentsline {paragraph}{}{44}{section*.83}
+\contentsline {subsubsection}{Aplicaci\'on en tiempo real y prototipado r\'apido}{44}{section*.84}
+\contentsline {paragraph}{}{44}{section*.85}
+\contentsline {paragraph}{}{44}{section*.86}
+\contentsline {paragraph}{}{44}{section*.87}
+\contentsline {subsubsection}{Grabaciones de audio}{45}{section*.88}
+\contentsline {paragraph}{}{45}{section*.89}
+\contentsline {subsubsection}{Hosting o Almacenamiento}{45}{section*.90}
+\contentsline {paragraph}{}{45}{section*.91}
+\contentsline {subsubsection}{Interfaz con UX como par\'ametro de dise\~no fundamental}{45}{section*.92}
+\contentsline {paragraph}{}{45}{section*.93}
+\contentsline {section}{\numberline {3.3}Composici\'on Inicial y entorno de desarrollo}{46}{section.3.3}
+\contentsline {paragraph}{}{46}{section*.94}
+\contentsline {subsection}{\numberline {3.3.1}Primeros pasos}{46}{subsection.3.3.1}
+\contentsline {paragraph}{}{46}{section*.95}
+\contentsline {paragraph}{}{46}{section*.96}
+\contentsline {paragraph}{}{46}{section*.97}
+\contentsline {subsection}{\numberline {3.3.2}Mixins}{47}{subsection.3.3.2}
+\contentsline {paragraph}{}{47}{section*.98}
+\contentsline {paragraph}{}{47}{section*.99}
+\contentsline {section}{\numberline {3.4}Prototipo 1: Registro de usuarios y layout principal}{48}{section.3.4}
+\contentsline {paragraph}{}{48}{section*.100}
+\contentsline {subsection}{\numberline {3.4.1}Layout principal}{48}{subsection.3.4.1}
+\contentsline {paragraph}{}{49}{section*.101}
+\contentsline {subsubsection}{Sidebar y header}{50}{section*.102}
+\contentsline {paragraph}{}{50}{section*.103}
+\contentsline {paragraph}{}{50}{section*.104}
+\contentsline {subsubsection}{Configuraci\'on de Iron Router}{52}{section*.105}
+\contentsline {paragraph}{}{52}{section*.106}
+\contentsline {paragraph}{}{52}{section*.107}
+\contentsline {subsection}{\numberline {3.4.2}Registro de usuarios}{52}{subsection.3.4.2}
+\contentsline {paragraph}{}{52}{section*.108}
+\contentsline {subsubsection}{Formulario de inicio de sesi\'on}{54}{section*.109}
+\contentsline {subsubsection}{Formulario de registro}{54}{section*.110}
+\contentsline {section}{\numberline {3.5}Prototipo 2: Grabador y reproductor basados en documentos}{58}{section.3.5}
+\contentsline {paragraph}{}{58}{section*.111}
+\contentsline {subsection}{\numberline {3.5.1}Grabador}{58}{subsection.3.5.1}
+\contentsline {subsubsection}{Entidades y colecciones}{58}{section*.112}
+\contentsline {paragraph}{}{58}{section*.113}
+\contentsline {subsubsection}{Routing}{59}{section*.114}
+\contentsline {paragraph}{}{59}{section*.115}
+\contentsline {paragraph}{}{59}{section*.116}
+\contentsline {subsubsection}{Proceso de grabaci\'on}{59}{section*.117}
+\contentsline {paragraph}{}{59}{section*.118}
+\contentsline {paragraph}{}{59}{section*.119}
+\contentsline {paragraph}{}{60}{section*.120}
+\contentsline {paragraph}{}{61}{section*.121}
+\contentsline {paragraph}{}{61}{section*.122}
+\contentsline {paragraph}{}{61}{section*.123}
+\contentsline {paragraph}{}{62}{section*.124}
+\contentsline {paragraph}{}{62}{section*.125}
+\contentsline {paragraph}{}{62}{section*.126}
+\contentsline {subsubsection}{Almacenamiento}{63}{section*.127}
+\contentsline {paragraph}{}{63}{section*.128}
+\contentsline {paragraph}{}{63}{section*.129}
+\contentsline {paragraph}{}{64}{section*.130}
+\contentsline {paragraph}{}{64}{section*.131}
+\contentsline {paragraph}{}{64}{section*.132}
+\contentsline {paragraph}{}{66}{section*.133}
+\contentsline {paragraph}{}{66}{section*.134}
+\contentsline {paragraph}{}{66}{section*.135}
+\contentsline {subsubsection}{Interfaz del grabador}{66}{section*.136}
+\contentsline {paragraph}{}{67}{section*.137}
+\contentsline {paragraph}{}{68}{section*.138}
+\contentsline {paragraph}{}{68}{section*.139}
+\contentsline {paragraph}{}{68}{section*.140}
+\contentsline {paragraph}{}{68}{section*.141}
+\contentsline {paragraph}{}{68}{section*.142}
+\contentsline {paragraph}{}{70}{section*.143}
+\contentsline {subsection}{\numberline {3.5.2}Reproductor}{70}{subsection.3.5.2}
+\contentsline {subsubsection}{Ruta, publicaciones y subscripciones}{70}{section*.144}
+\contentsline {paragraph}{}{70}{section*.145}
+\contentsline {subsubsection}{Proceso de reproducci\'on}{71}{section*.146}
+\contentsline {paragraph}{}{72}{section*.147}
+\contentsline {subsubsection}{Sincronizaci\'on entre audio y editor}{73}{section*.148}
+\contentsline {paragraph}{}{73}{section*.149}
+\contentsline {paragraph}{}{73}{section*.150}
+\contentsline {subsubsection}{Simulaci\'on de eventos sobre editor}{73}{section*.151}
+\contentsline {subsubsection}{Interfaz del recurso grabaci\'on}{75}{section*.152}
+\contentsline {paragraph}{}{75}{section*.153}
+\contentsline {subsubsection}{Interfaz del reproductor}{76}{section*.154}
+\contentsline {subsubsection}{Streamming}{77}{section*.155}
+\contentsline {paragraph}{}{77}{section*.156}
+\contentsline {paragraph}{}{78}{section*.157}
+\contentsline {subsection}{\numberline {3.5.3}Lista de grabaciones}{79}{subsection.3.5.3}
+\contentsline {subsubsection}{Ruta, publicaciones y subscripciones}{79}{section*.158}
+\contentsline {paragraph}{}{80}{section*.159}
+\contentsline {subsubsection}{Interfaz}{80}{section*.160}
+\contentsline {paragraph}{}{80}{section*.161}
+\contentsline {paragraph}{}{80}{section*.162}
+\contentsline {section}{\numberline {3.6}Prototipo 3: Respuestas a grabaciones}{81}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Actualizaci\'on del grabador}{81}{subsection.3.6.1}
+\contentsline {paragraph}{}{81}{section*.163}
+\contentsline {paragraph}{}{82}{section*.164}
+\contentsline {paragraph}{}{83}{section*.165}
+\contentsline {paragraph}{}{83}{section*.166}
+\contentsline {paragraph}{}{83}{section*.167}
+\contentsline {subsection}{\numberline {3.6.2}Nuevas acciones}{83}{subsection.3.6.2}
+\contentsline {subsection}{\numberline {3.6.3}Timeline, relacionados y comentarios}{84}{subsection.3.6.3}
+\contentsline {paragraph}{}{84}{section*.168}
+\contentsline {paragraph}{}{85}{section*.169}
+\contentsline {paragraph}{}{85}{section*.170}
+\contentsline {paragraph}{}{87}{section*.171}
+\contentsline {section}{\numberline {3.7}Prototipo 4: Organizaci\'on en Canales}{87}{section.3.7}
+\contentsline {subsection}{\numberline {3.7.1}Concepto, entidades y modificaciones}{87}{subsection.3.7.1}
+\contentsline {paragraph}{}{87}{section*.172}
+\contentsline {paragraph}{}{87}{section*.173}
+\contentsline {subsection}{\numberline {3.7.2}Rutas y subscripciones}{89}{subsection.3.7.2}
+\contentsline {paragraph}{}{89}{section*.174}
+\contentsline {subsection}{\numberline {3.7.3}Dise\~no de interfaces e implementaci\'on}{90}{subsection.3.7.3}
+\contentsline {subsubsection}{Creaci\'on de un canal}{90}{section*.175}
+\contentsline {subsubsection}{P\'agina de canales}{91}{section*.176}
+\contentsline {subsubsection}{P\'agina del canal}{92}{section*.177}
+\contentsline {paragraph}{}{93}{section*.178}
+\contentsline {subsubsection}{Edici\'on de un canal}{93}{section*.179}
+\contentsline {paragraph}{}{93}{section*.180}
+\contentsline {paragraph}{}{94}{section*.181}
+\contentsline {section}{\numberline {3.8}Prototipo 5: Organizaci\'on en Lecciones}{94}{section.3.8}
+\contentsline {subsection}{\numberline {3.8.1}Concepto, entidades y modificaciones}{94}{subsection.3.8.1}
+\contentsline {paragraph}{}{94}{section*.182}
+\contentsline {paragraph}{}{95}{section*.183}
+\contentsline {subsection}{\numberline {3.8.2}Rutas y subscripciones}{96}{subsection.3.8.2}
+\contentsline {paragraph}{}{96}{section*.184}
+\contentsline {subsection}{\numberline {3.8.3}Lista de reproducci\'on y opciones}{96}{subsection.3.8.3}
+\contentsline {paragraph}{}{97}{section*.185}
+\contentsline {subsection}{\numberline {3.8.4}Dise\~no de interfaces e implementaci\'on}{98}{subsection.3.8.4}
+\contentsline {subsubsection}{Creaci\'on de una lecci\'on}{98}{section*.186}
+\contentsline {subsubsection}{P\'agina de lecciones}{98}{section*.187}
+\contentsline {subsubsection}{P\'agina de una lecci\'on}{98}{section*.188}
+\contentsline {paragraph}{}{100}{section*.189}
+\contentsline {paragraph}{}{100}{section*.190}
+\contentsline {subsubsection}{Edici\'on de una lecci\'on}{100}{section*.191}
+\contentsline {section}{\numberline {3.9}Prototipo 6: P\'agina de perfil y Contactos}{101}{section.3.9}
+\contentsline {subsection}{\numberline {3.9.1}Perfil}{101}{subsection.3.9.1}
+\contentsline {subsubsection}{Interfaz}{101}{section*.192}
 \contentsline {subsubsection}{Contenidos}{101}{section*.193}
-\contentsline {paragraph}{}{101}{section*.194}
-\contentsline {subsubsection}{Roles}{101}{section*.195}
-\contentsline {subsubsection}{Edici\'on del perfil}{102}{section*.196}
-\contentsline {subsection}{\numberline {3.9.2}Contactos}{102}{subsection.3.9.2}
-\contentsline {subsubsection}{Peticiones y lista de contactos}{103}{section*.197}
-\contentsline {paragraph}{}{103}{section*.198}
-\contentsline {paragraph}{}{103}{section*.199}
-\contentsline {paragraph}{}{104}{section*.200}
-\contentsline {paragraph}{}{104}{section*.201}
-\contentsline {paragraph}{}{104}{section*.202}
-\contentsline {section}{\numberline {3.10}Prototipo 7: Conversaciones}{105}{section.3.10}
-\contentsline {section}{\numberline {3.11}Prototipo 8: Emails e integraci\'on de servicios de registro}{105}{section.3.11}
-\contentsline {section}{\numberline {3.12}Prototipo 9: P\'agina principal}{105}{section.3.12}
-\contentsline {section}{\numberline {3.13}Prototipo 10: P\'agina de inicio, espacio para tutoriales y features}{105}{section.3.13}
-\contentsline {section}{\numberline {3.14}Prototipo Final: Restricciones de acceso y cross-browsing}{105}{section.3.14}
-\contentsline {section}{\numberline {3.15}Despliegue y pruebas globales}{105}{section.3.15}
-\contentsline {chapter}{\numberline {4}Experimentaci\'on}{106}{chapter.4}
-\contentsline {section}{\numberline {4.1}Motivaci\'on}{106}{section.4.1}
-\contentsline {section}{\numberline {4.2}Planteamiento y objetivos}{106}{section.4.2}
-\contentsline {paragraph}{}{106}{section*.203}
+\contentsline {paragraph}{}{103}{section*.194}
+\contentsline {subsubsection}{Roles}{103}{section*.195}
+\contentsline {subsubsection}{Edici\'on del perfil}{103}{section*.196}
+\contentsline {subsection}{\numberline {3.9.2}Contactos}{104}{subsection.3.9.2}
+\contentsline {subsubsection}{Peticiones y lista de contactos}{104}{section*.197}
+\contentsline {paragraph}{}{104}{section*.198}
+\contentsline {paragraph}{}{105}{section*.199}
+\contentsline {paragraph}{}{106}{section*.200}
+\contentsline {paragraph}{}{106}{section*.201}
+\contentsline {paragraph}{}{106}{section*.202}
+\contentsline {section}{\numberline {3.10}Prototipo 7: Conversaciones y alertas}{106}{section.3.10}
+\contentsline {subsection}{\numberline {3.10.1}Conversaciones}{106}{subsection.3.10.1}
+\contentsline {subsubsection}{Entidades, Rutas, subscripciones y publicaciones}{106}{section*.203}
 \contentsline {paragraph}{}{107}{section*.204}
 \contentsline {paragraph}{}{107}{section*.205}
-\contentsline {section}{\numberline {4.3}Proceso y realizaci\'on}{107}{section.4.3}
-\contentsline {section}{\numberline {4.4}Resultados y an\'alisis}{107}{section.4.4}
-\contentsline {chapter}{\numberline {5}Conclusi\'on}{108}{chapter.5}
-\contentsline {chapter}{Bibliograf\'{\i }a}{109}{section*.206}
-\contentsline {section}{\numberline {5.1}Principales Sitios Web}{110}{section.5.1}
-\contentsline {section}{\numberline {5.2}Libros}{110}{section.5.2}
-\contentsline {section}{\numberline {5.3}Art\IeC {\'\i }culos}{110}{section.5.3}
-\contentsline {section}{\numberline {5.4}Tutoriales}{110}{section.5.4}
-\contentsline {section}{\numberline {5.5}Paquetes}{110}{section.5.5}
-\contentsline {section}{\numberline {5.6}Repositorios}{110}{section.5.6}
-\contentsline {chapter}{Ap\'endices}{111}{section*.208}
-\contentsline {chapter}{\numberline {A}Dise\~no de documentos para Mongo}{112}{appendix.Alph1}
-\contentsline {chapter}{\numberline {B}Dise\~no de Interfaces}{119}{appendix.Alph2}
+\contentsline {subsubsection}{Roles}{107}{section*.206}
+\contentsline {subsubsection}{Creaci\'on de una conversaci\'on}{107}{section*.207}
+\contentsline {subsubsection}{P\'agina de conversaci\'on}{108}{section*.208}
+\contentsline {paragraph}{}{108}{section*.209}
+\contentsline {paragraph}{}{108}{section*.210}
+\contentsline {paragraph}{}{109}{section*.211}
+\contentsline {subsubsection}{Edici\'on de una conversaci\'on}{109}{section*.212}
+\contentsline {subsection}{\numberline {3.10.2}Alertas}{109}{subsection.3.10.2}
+\contentsline {subsubsection}{Concepto y entidades}{109}{section*.213}
+\contentsline {paragraph}{}{110}{section*.214}
+\contentsline {paragraph}{}{110}{section*.215}
+\contentsline {subsubsection}{Proceso}{110}{section*.216}
+\contentsline {paragraph}{}{110}{section*.217}
+\contentsline {section}{\numberline {3.11}Prototipo 8: Emails e integraci\'on de servicios de registro}{111}{section.3.11}
+\contentsline {subsection}{\numberline {3.11.1}Verificaci\'on de Email, cambio y recuperaci\'on de contrase\~na}{112}{subsection.3.11.1}
+\contentsline {subsubsection}{Proceso de verificaci\'on}{112}{section*.218}
+\contentsline {paragraph}{}{112}{section*.219}
+\contentsline {paragraph}{}{112}{section*.220}
+\contentsline {paragraph}{}{113}{section*.221}
+\contentsline {subsubsection}{Proceso de cambio de contrase\~na}{114}{section*.222}
+\contentsline {paragraph}{}{114}{section*.223}
+\contentsline {subsubsection}{Proceso de recuperaci\'on de contrase\~na}{115}{section*.224}
+\contentsline {paragraph}{}{115}{section*.225}
+\contentsline {subsection}{\numberline {3.11.2}Distribuidor y par\'ametros globales}{115}{subsection.3.11.2}
+\contentsline {paragraph}{}{116}{section*.226}
+\contentsline {subsection}{\numberline {3.11.3}Env\IeC {\'\i }o de emails desde la aplicaci\'on}{116}{subsection.3.11.3}
+\contentsline {subsubsection}{Proceso de env\IeC {\'\i }o}{116}{section*.227}
+\contentsline {paragraph}{}{116}{section*.228}
+\contentsline {subsection}{\numberline {3.11.4}Integraci\'on de servicios de registro}{117}{subsection.3.11.4}
+\contentsline {paragraph}{}{117}{section*.229}
+\contentsline {section}{\numberline {3.12}Prototipo 9: P\'agina principal y sistema de b\'usqueda}{118}{section.3.12}
+\contentsline {subsection}{\numberline {3.12.1}Estructura}{118}{subsection.3.12.1}
+\contentsline {paragraph}{}{118}{section*.230}
+\contentsline {paragraph}{}{118}{section*.231}
+\contentsline {subsection}{\numberline {3.12.2}Sistema de b\'usqueda basado en modificadores}{120}{subsection.3.12.2}
+\contentsline {paragraph}{}{120}{section*.232}
+\contentsline {paragraph}{}{120}{section*.233}
+\contentsline {paragraph}{}{121}{section*.234}
+\contentsline {paragraph}{}{121}{section*.235}
+\contentsline {section}{\numberline {3.13}Prototipo 10: P\'agina de inicio y m\'odulos adicionales}{122}{section.3.13}
+\contentsline {subsection}{\numberline {3.13.1}P\'agina de inicio}{122}{subsection.3.13.1}
+\contentsline {subsection}{\numberline {3.13.2}Espacio para tutoriales}{122}{subsection.3.13.2}
+\contentsline {subsection}{\numberline {3.13.3}Espacio para features}{122}{subsection.3.13.3}
+\contentsline {subsection}{\numberline {3.13.4}M\'odulo de ayuda flexible}{122}{subsection.3.13.4}
+\contentsline {section}{\numberline {3.14}Prototipo Final: Notificaciones y restricciones de acceso}{122}{section.3.14}
+\contentsline {subsection}{\numberline {3.14.1}Notificaciones}{122}{subsection.3.14.1}
+\contentsline {subsection}{\numberline {3.14.2}Restricciones de acceso}{122}{subsection.3.14.2}
+\contentsline {section}{\numberline {3.15}Despliegue y pruebas globales}{122}{section.3.15}
+\contentsline {chapter}{\numberline {4}Experimentaci\'on}{123}{chapter.4}
+\contentsline {section}{\numberline {4.1}Motivaci\'on}{123}{section.4.1}
+\contentsline {section}{\numberline {4.2}Planteamiento y objetivos}{123}{section.4.2}
+\contentsline {paragraph}{}{123}{section*.236}
+\contentsline {paragraph}{}{124}{section*.237}
+\contentsline {paragraph}{}{124}{section*.238}
+\contentsline {section}{\numberline {4.3}Proceso y realizaci\'on}{124}{section.4.3}
+\contentsline {section}{\numberline {4.4}Resultados y an\'alisis}{124}{section.4.4}
+\contentsline {chapter}{\numberline {5}Conclusi\'on}{125}{chapter.5}
+\contentsline {chapter}{Bibliograf\'{\i }a}{126}{section*.239}
+\contentsline {section}{\numberline {5.1}Principales Sitios Web}{127}{section.5.1}
+\contentsline {section}{\numberline {5.2}Libros}{127}{section.5.2}
+\contentsline {section}{\numberline {5.3}Art\IeC {\'\i }culos}{127}{section.5.3}
+\contentsline {section}{\numberline {5.4}Tutoriales}{127}{section.5.4}
+\contentsline {section}{\numberline {5.5}Paquetes}{127}{section.5.5}
+\contentsline {section}{\numberline {5.6}Repositorios}{127}{section.5.6}
+\contentsline {chapter}{Ap\'endices}{128}{section*.241}
+\contentsline {chapter}{\numberline {A}Dise\~no de documentos para Mongo}{129}{appendix.Alph1}
+\contentsline {chapter}{\numberline {B}Dise\~no de Interfaces}{136}{appendix.Alph2}
