@@ -1,13 +1,13 @@
 \chapter{Pruebas de Validación}
-En este capítulo se representa la fase de experimentación del proyecto. Esta fase se basa en la realización de una prueba en la que se ha medido la utilidad de la aplicación y su rendimiento en un entorno real.
+En este capítulo se representa la fase de experimentación del proyecto. Esta fase se basa en la realización de una prueba en la que se ha medido la utilidad de la aplicación y su rendimiento en un entorno real. Se ha presentado la aplicación a 5 usuarios desarrolladores al azar entre alumnos de 4º del grado de Tecnologías de la Telecomunicación con experiencia en el desarrollo de aplicaciones Web y potenciales interesados en tratar a esta aplicación como herramienta de trabajo. Esta operación ha sido de manera anónima.
 \section{Motivación}
 La principal motivación de este experimento es analizar el comportamiento de la aplicación en la realidad. Dicho comportamiento deberá cumplir estrictamente los requisitos propuestos en la sección \ref{sec:requisitos}.
 \section{Planteamiento y objetivos}
-Una vez desplegada la aplicación en Heroku \cite{baz14} y realizadas las pruebas globales oportunas se ha procedido a generar contenido en la misma y a plantear el experimento. 
+Una vez desplegada la aplicación en Heroku \cite{baz14} se ha procedido a generar contenido en la misma y a plantear el experimento. 
 \paragraph{}
 El experimento consistirá en hacer accesible la aplicación a un grupo de alumnos mediante la difusión de la url donde ha sido alojada. Dichos alumnos, siguiendo la guía de uso elaborada para esta fase del proyecto, explotarán todas las características de la aplicación y su funcionalidad. Por otra parte se ha integrado a la aplicación el servicio de Google Analytics \footnote{\url{https://analytics.google.com}} para controlar y analizar el flujo de usuarios dentro de la aplicación.
 \paragraph{}
-Los objetivos perseguidos se han resumido en las siguientes características:
+Los objetivos perseguidos se han resumido en los principales objetivos del la aplicación expuestos en la sección \ref{sec:objetivos}:
 \begin{itemize}
 	\item \textbf{Funcional:} la aplicación debe cumplir todos los requisitos establecidos.
 	\item \textbf{Atractiva e intuitiva:} que los alumnos aprecien el atractivo de las interfaces y el flujo de la aplicación.
@@ -19,4 +19,63 @@ Para medir y analizar el cumplimiento de los objetivos marcados se ha desarrolla
 \section{Proceso y realización}
 El proceso y la realización ha sido muy sencilla, Se han habilitado los recursos necesarios (guía y formulario) de forma remota y se ha procedido al envío de dichos enlaces a un grupo de alumnos.
 \section{Resultados y análisis}
+\subsection{Análisis de la encuesta}
 Una vez que los alumnos han probado la aplicación y han rellenado la encuesta se ha procedido al análisis de los resultados. 
+\paragraph{}
+Para ello se ha recopilado información sobre la puntuación individual sobre cada pregunta de forma que por superposición podemos visualizarla en el gráfico mostrado en la figura \ref{fig:respuestasAlumnos}. El análisis de este gráfico aporta una valoración media de \textbf{8.57} a la aplicación y se trata de una buena aproximación. 
+\paragraph{}
+Para un análisis más verídico hemos clasificado las preguntas dentro de los cuatro objetivos perseguidos en este experimento. El porcentaje de las preguntas cubierto en cada objetivo es: 
+\begin{itemize}
+	\item Funcional: 66.7\%.
+	\item Atractiva e intuitiva: 72.23\%.
+	\item Fluída y óptima: 36.12\%.
+	\item Útil: 58.39\%.
+\end{itemize} 
+\paragraph{}
+La puntuación media para cada uno se muestra en la figura \ref{fig:puntuacionesCaracteristicas}. Analizando este gráfico podemos extraer una valoración media de \textbf{8.725}. Este dato nos proporciona un resultado más veraz con respecto a la realización de este experimento.
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=.9\textwidth]{respuestasAlumnos.png}
+	\caption{Puntuaciones de los usuarios}
+	\label{fig:respuestasAlumnos}
+\end{figure}
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=.9\textwidth]{puntuacionesCaracteristicas.png}
+	\caption{Puntuaciones medias para los objetivos}
+	\label{fig:puntuacionesCaracteristicas}
+\end{figure}
+\paragraph{}
+\paragraph{}
+\subsection{Análisis de navegación}
+Mediante Google Analytics se ha realizado un estudio de navegación por el sitio. En él se miden los parámetros: 
+\begin{itemize}
+\item \textbf{Sesiones: } mide el número de usuarios que ha visualizado el sitio.
+\item \textbf{Usuarios: } mide el número de usuarios que se han registrado en el sitio.
+\item \textbf{Visitas: } mide el número de visitas al sitio
+\item \textbf{Páginas/sesión: } páginas visitadas por sesión.
+\item \textbf{Duración de la sesión:} mide el tiempo medio que los usuarios permanecen en el sitio.
+\item \textbf{Porcentaje de rebote: } mide el porcentaje de las ocasiones en la que el usuario no interactúa con la página.
+\item \textbf{Nuevas sesiones: } mide el porcentaje de creación de usuarios.
+\end{itemize}
+
+Las mediciones realizadas en el estudio se muestran en la siguiente tabla:.
+\begin{table}[htpb]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+Sesiones & Usuarios & Visitas & Páginas/sessión & Tiempo/sessión & Rebote & Nuevas sesiones\\
+\hline
+61 & 37 & 688 & 11.28 & 00:10:56 & 47.54\% & 60.66\%\\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+Si analizamos estas medidas podemos concluir que: 
+\begin {itemize}
+\item Sólo 37 de los 61 usuarios que han accedido a la aplicación se han registrado (aproximadamente un 60.65\%). Este es el porcentaje correspondiente al parámetro nuevas sesiones. 
+\item El sitio ha tenido 688 visitas y sólo lo han visualizado 61 usuarios. Esto hace que se hayan repetido 627 visitas por lo que el porcentaje de vuelta a la aplicación por usuario es del 68.8\% (cada usuario ha vuelto al sitio 10 veces en promedio).
+\item Un usuario emplea aproximadamente 1 minuto de su tiempo en cada página y el 47.54\% de las ocasiones no interactúa en la misma. 
+\end{itemize}
+
+Con este análisis podemos deducir que el sitio tiene un índice alto de visitas y de nuevos usuarios. En lo que respecta al rebote, las páginas más visitadas corresponden a la reproducción de las grabaciones y, además, el contenido del sitio se encuentra en el sidebar por lo que el usuario pocas veces interactúa con la página para navegar por el sitio. Por lo que no es un resultado desalentador sino todo lo contrario.

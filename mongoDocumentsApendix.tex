@@ -1,4 +1,13 @@
-\chapter{Diseño de documentos para Mongo}\label{appendix:documentsdesign}
+\chapter{Diseño de la base de datos y documentos para MongoDB}
+En este apéndice se muestra el esquema Entidad Relación y los objetos BSON diseñados para cada una de las entidades.
+\label{appendix:documentsdesign}
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=0.9\textwidth]{ERdesign.png}
+	\caption{Esquema entidad relación}
+	\label{fig:ERdesign}
+\end{figure}
+\vspace{1cm}
 \begin{lstlisting}[language=javascript, caption=Diseño de documento para una grabación, label={recordMongo}]
 var record = {
     _id: //idMongo,
@@ -24,6 +33,7 @@ var record = {
     track: //{_id: 'id del track en SoundCloud', link: 'link SoundCloud'}
 }; 
 \end{lstlisting}
+\vspace{1cm}
 \begin{lstlisting}[caption=Diseño de documento para los documentos de cada grabación, label={documentMongo}]
 var doc = {
     _id: //idMongo,
@@ -39,6 +49,7 @@ var doc = {
 };
 
 \end{lstlisting}
+\vspace{1cm}
 \begin{lstlisting}[caption=Diseño de documento para un canal, label={channelMongo}]
 var channel = {
     _id: //idMongo,
@@ -55,6 +66,7 @@ var channel = {
     users_count: //contador para los usuarios que se subscriban
 };
 \end{lstlisting}
+\vspace{1cm}
 \begin{lstlisting}[caption=Diseño de documento para una lección, label={lessonMongo}]
 var lesson = {
     _id: //idMongo,
@@ -70,6 +82,7 @@ var lesson = {
     users_count: //contador para los usuarios que se apunten
 }; 
 \end{lstlisting}
+\vspace{1cm}
 \begin{lstlisting}[caption=Diseño de documento para una sección, label={sectionMongo}]
 var section = {
     _id: //idMongo,
@@ -79,7 +92,8 @@ var section = {
     lesson_id: //id de la lección a la que pertenece.
     order: //orden de la sección.
 }; 
-\end{lstlisting}		
+\end{lstlisting}
+\vspace{1cm}		
 \begin{lstlisting}[caption=Diseño de documento para cada subscripción de un usuario, label={userEnrolledMongo}]
 var userEnrolled = {
     _id: //idMongo,
@@ -87,12 +101,14 @@ var userEnrolled = {
     user_id: //id del usuario
 };
 \end{lstlisting}
+\vspace{1cm}
 \begin{lstlisting}[caption=Diseño de documento para una etiqueta, label={tagMongo}]
 var tag = {
     _id: //idMongo,
     name: //nombre para la etiqueta
 };
 \end{lstlisting}
+\vspace{1cm}
 \begin{lstlisting}[caption=Diseño de documento para una conversación, label={conversationMongo}]
 var conversation = {
     _id: //idMongo,
@@ -104,6 +120,7 @@ var conversation = {
     messages_count: //contador para los mensajes
 };
 \end{lstlisting}
+\vspace{1cm}
 \begin{lstlisting}[caption=Diseño de documento para los mensajes, label={messageMongo}]
 var message = {
     _id: //idMongo,
@@ -113,6 +130,7 @@ var message = {
     conversation_id: //id de la conversación a la que pertenece.
 }
 \end{lstlisting}
+\vspace{1cm}
 \begin{lstlisting}[caption=Diseño de documento para una alerta de conversación, label={conversationAlertMongo}]
 var conversationAlert = {
     _id: //idMongo,
@@ -122,6 +140,7 @@ var conversationAlert = {
     alerts_count: //contador de alertas
 };
 \end{lstlisting}
+\vspace{1cm}
 \begin{lstlisting}[caption=Diseño de documento para cada usuario, label={userMongo}]
 var user = {
     _id: //idMongo,
@@ -134,6 +153,7 @@ var user = {
     ... //otros campos establecidos por meteor-accounts.
 };
 \end{lstlisting}
+\vspace{1cm}
 \begin{lstlisting}[caption=Diseño de documento para las peticiones de contacto, label={requestsMongo}]
 var request = {
     _id: //idMongo,
@@ -142,6 +162,7 @@ var request = {
     status: //(string) 'pending', 'accepted', 'refused'
 };
 \end{lstlisting}
+\vspace{1cm}
 \begin{lstlisting}[caption=Diseño de documento para establecer la relación de contacto, label={relationMongo}]
 var relation = {
     _id: //idMongo,
@@ -149,6 +170,7 @@ var relation = {
     users: //[id_user_requested, id_user_applicant],
 };
 \end{lstlisting}
+\vspace{1cm}
 \begin{lstlisting}[caption=Diseño de documento para los comentarios, label={commentMongo}]
 var comment = {
     _id: //idMongo,
@@ -159,6 +181,7 @@ var comment = {
     message: //contenido del mensaje
 };
 \end{lstlisting}
+\vspace{1cm}
 \begin{lstlisting}[caption=Diseño de documento para una notificación, label={notificationMongo}]
 var notification = {
     _id: //idMongo,

@@ -1,4 +1,5 @@
 \chapter{Objetivos y metodología}\label{ch:metodologia}
+En este capítulo se expone el problema que impulsa la motivación de realizar este proyecto, los objetivos y requisitos marcados, la metodología elegida para su desarrollo y el plan de trabajo llevado a cabo adoptando dicha metodología. Además se enumeran tecnologías que sirven de inspiración al mismo.
 \section{Motivación}
 \paragraph{}
 En la actualidad existen distintas aplicaciones y sitios web destinados a facilitar la labor del desarrollador. Sitios como PivotalTracker, Github, \textbf{GitBucket}, \textbf{CodePen}, \textbf{Codecademy}, \textbf{StackOverflow} o \textbf{StackExchange}\footnote{\url{http://stackexchange.com/}}. Estos sitios proporcionan herramientas para un correcto desarrollo de cualquier proyecto. En el caso de Github o GitBucket facilitan la creación de repositorios remotos con un sistema de control de versiones. PivotalTracker permite organizar las tareas de un proyecto y CodePen, Codecademy y StackOverflow son sitios web para el aprendizaje y compartir conocimientos. 
@@ -8,14 +9,21 @@ Es precisamente el \emph{aprender y compartir} lo que mueve el mundo del desarro
 También existen otros sitios web cuya finalidad es la de compartir conocimientos y aprender de forma interactiva como \textbf{Mediathread}\footnote{\url{http://mediathread.ccnmtl.columbia.edu/accounts/login/?next=/}}, \textbf{YourTalk}\footnote{\url{http://urtalk.com/about/}} y \textbf{KhanAcademy}\footnote{\url{https://www.khanacademy.org/computing/computer-programming/html-css-js/html-js-dom-animation/p/animating-dom-with-setinterval}}. Este proyecto intenta emular dicha funcionalidad e ir un paso más allá.
 \paragraph{}
 De esta necesidad surge la motivación de crear una \textbf{aplicación web} que sirva de \textbf{plataforma para todos los desarrolladores}. Una plataforma donde puedan \textbf{aprender} rápidamente, \textbf{intercambiar} conocimientos de manera \textbf{interactiva} y que permita la \textbf{comunicación} entre sus usuarios. Puesto que la información debería ser lo más visual e interactiva posible el formato se basará en \textbf{grabaciones de código y audio sobre un editor}. Además Cada grabación podrá pausarse y crear una nueva a modo de respuesta a partir de ese instante.
-
+\section{Objetivos}\label{sec:objetivos}
+Como resultado del análisis motivación descrita, podemos extraer una serie de objetivos generales que deben de cumplirse en la implementación de este proyecto. Estos objetivos son: 
+\begin{enumerate}
+\item Desarrollar una aplicación funcional y que sirva de herramienta para los desarrolladores en tiempo real.
+\item La aplicación debe ser atractiva al usuario e intuitiva atendiendo a las bases UX (User Experience) más importantes.
+\item La aplicación debe ser fluida y estar optimizada. 
+\item La aplicación debe constituir una herramienta didáctica cuyo elemento de información base sea visual e interactivo.
+\end{enumerate}
 \section{Requisitos}\label{sec:requisitos}
 \paragraph{} 
 Con la motivación surge el proceso de pensar en las necesidades que tendrá el usuario al utilizar la aplicación. Estas necesidades se traducen en requisitos que debe cumplir la aplicación y que hay que tener presentes en todo momento del diseño y del desarrollo. Tanto nuestro concepto de la aplicación como las necesidades del usuario pueden verse alteradas durante el desarrollo del proyecto por lo tanto pueden surgir nuevos requisitos y verse alterados los ya establecidos.
 \paragraph{}
 A continuación se exponen todos los requisitos que debería cumplir nuestra aplicación y que se han ido extrayendo a lo largo de la realización del proyecto:
  \begin{itemize}
- \item \textbf{Experiencia: }
+ \item \textbf{Experiencia: }\label{rExp}
 	\begin{enumerate}
 		\item \label{r19} Para una mejor experiencia es necesario que el usuario conozca lo que sucede dentro de aplicación para ello debe existir un módulo que permita crear notificaciones personalizadas y de interés para el usuario. 
 		\item \label{r20} El usuario deberá tener acceso rápido a las listas de contenido.
@@ -30,7 +38,7 @@ A continuación se exponen todos los requisitos que debería cumplir nuestra aplic
 		\item \label{r65} Es necesario que los usuarios puedan aprender cómo usar la aplicación para ello se debe crear un espacio con tutoriales.
 		\item \label{r69} Es necesario que los usuarios puedan recibir notificaciones de nuevos mensajes de sus conversaciones abiertas cuando no estén visualizando dicha conversación.
 	\end{enumerate}
- \item \textbf{Registro: }
+ \item \textbf{Registro: }\label{rReg}
  	\begin{enumerate}
 	 	\item \label{r1} Se deberá proporcionar una interfaz de inicio para que el usuario pueda explorar las características de la aplicación, aprender, y poder crear un usuario para acceder a la misma.
 		\item \label{r2} Los usuarios deben ser autenticados para poder acceder a la mayoría de la funcionalidad de la aplicación.
@@ -41,13 +49,13 @@ Facebook, Github y Google+.
 		\item \label{r5} Un usuario podrá recuperar su contraseña siempre que tenga asociado un correo electrónico y éste haya sido verificado y puede estar autenticado o no.
 	\end{enumerate}
 
- \item \textbf{Servicios: }
+ \item \textbf{Servicios: }\label{rServ}
  	\begin{enumerate}
 		\item \label{r4} Es necesario proporcionar al usuario un proceso de validación o verificación de email, un proceso de cambio de contraseña y otro de recuperación de la misma.
 		\item \label{r89} Los emails no son entidades dentro de la aplicación. No se guarda registro de ellos. Simplemente se proporciona una herramienta que permite su redacción y envío.
 	\end{enumerate}
 
- \item \textbf{Perfil: }
+ \item \textbf{Perfil: }\label{rProf}
  	\begin{enumerate}
 		\item \label{r8} Un usuario podrá realizar peticiones de contacto a otros usuarios para añadirlos a su lista de contactos.
 		\item \label{r9} Un usuario podrá aceptar o rechazar peticiones. 
@@ -72,7 +80,7 @@ Facebook, Github y Google+.
 		\item \label{r78} Se debe crear un espacio para realizar solicitudes de contacto que lo componga un buscador (autocompletado de usuarios) y listas de peticiones recibidas y enviadas y su estado.
 	\end{enumerate}
 
- \item \textbf{Contenidos:}
+ \item \textbf{Contenidos:}\label{rCont}
  	\begin{enumerate}
 		\item \label{r7} Un usuario podrá crear canales, lecciones, grabaciones y conversaciones.
 		\item \label{r12} Cualquier contenido se podrá etiquetar para facilitar la recomendación y búsqueda del mismo, con la excepcion de las conversaciones.
@@ -97,7 +105,7 @@ Facebook, Github y Google+.
 		\item \label{r68} Las búsquedas en la aplicación serán dinámicas y con un sistema de etiquetas que se irán sugiriendo de manera automámica.
 	\end{enumerate}
 	
-\item \textbf{Grabaciones: }
+\item \textbf{Grabaciones: }\label{rRec}
  	\begin{enumerate}
 		\item \label{r24} Las grabaciones serán grabaciones de código y audio sobre editor.
 
@@ -130,7 +138,7 @@ Facebook, Github y Google+.
 		\item \label{r38} El usuario podrá cambiar el instante de la reproducción, pausarla o reanudarla.
 	\end{enumerate}
 	
-\item \textbf{Canales: }
+\item \textbf{Canales: }\label{rChan}
  	\begin{enumerate}
 		\item \label{r39} Un usuario podrá crear canales.
 
@@ -147,7 +155,7 @@ Facebook, Github y Google+.
 
  
 
- \item \textbf{Lecciones: }
+ \item \textbf{Lecciones: }\label{rLess}
  	\begin{enumerate}
 		\item \label{r45} Un usuario podrá crear lecciones.
 
@@ -181,7 +189,7 @@ Facebook, Github y Google+.
 
 		\item \label{r60} Las secciones podrán ser borradas por el creador en cualquier momento, siempre que no tengan contenido.
 	\end{enumerate}
-\item \textbf{Conversaciones: }
+\item \textbf{Conversaciones: }\label{rConv}
 	\begin{enumerate}
 		\item \label{r11} Un usuario podrá crear conversaciones con otros usuarios que estén en su lista de contactos.
 		\item \label{r79} Una conversación debe incluir al menos 2 contactos en el momento de creación. 
@@ -237,6 +245,8 @@ El plan de trabajo se ha desarrollado en las siguientes fases:
 \item \textbf{Fase 3 - Final:} una vez implementado el prototipo final se ha procedido a la fase final del proyecto que corresponde a la mejora global y su despliegue. El despliegue implica también la introducción de licencias para preservar los derechos de autor y convertir el código en código libre.
 \end{itemize}
 
+\paragraph{}
+En el siguiente capítulo se describe detalladamente el diseño y desarrollo de cada uno de los prototipos que se han implementado a lo largo del proyecto.
 
 
 

@@ -1,5 +1,6 @@
 \chapter{Diseño y desarrollo de la aplicación}
-\section{Tipo de Arquitectura}
+En este capítulo se describe detalladamente el proceso de diseño e implementación de la aplicación. Las tres primeras secciones están a modo de introducción y describen el tipo de arquitectura de software escogida, el proceso de búsqueda de herramientas de desarrollo, la composición inicial y el entorno y, por último, la tecnología utilizada para el despliegue. En las secciones sucesivas se detalla el diseño y desarrollo de cada uno de los prototipos de los que se compone esta aplicación.
+\section{Arquitectura de Software utilizada}
 \paragraph{}
 El modelo de arquitectura más habitual es el \textbf{MVC} (Modelo Vista Controlador) (figura \ref{fig:mvcpattern}). El modelo correspondería con la arquitectura de base de datos y el diseño de la misma, la vista son las interfaces o plantillas que se muestran al usuario y el controlador es el encargado de dotar a la aplicación de lógica y funcionalidad. Existen otros tipos de arquitectura tales como \textbf{MVVM} (figura \ref{fig:mvvmpattern}), donde el controlador del patrón MVC se sustituye por VM o \emph{ViewModel} que establece que cada vista posee lógica y un sistema de \emph{data-binding} entre plantillas.
 
@@ -18,7 +19,7 @@ El modelo de arquitectura más habitual es el \textbf{MVC} (Modelo Vista Controla
 \end{figure}
 
 \paragraph{}
-La elección del patrón de arquitectura a usar es importante puesto que esa decisión nos limitará a la hora de usar determinadas herramientas.
+La elección del patrón de arquitectura a usar es importante puesto que esa decisión nos limitará a la hora de usar determinadas herramientas. El patrón MVVM está presente en cada uno de los frameworks con data-binding que se conocen (Angular, Meteor, etc). Debido a que este data-binding va a ser útil para cumplir con el objetivo de que la aplicación debe funcionar en tiempo real y poseer un renderizado rápido y óptimo, el patrón a usar para esta aplicación será el MVVM.
 \paragraph{}
 
 \section{Búsqueda de herramientas}
@@ -81,9 +82,29 @@ SASS nos permite crear reglas dinámicas de estilos que poder incluir en cualquie
 \paragraph{}
 Creamos un fichero con el nombre de \_mixins.scss dentro de la carpeta client al nivel del fichero index.html. El carácter \_ indica al preprocesador que esta hoja de estilos no la debe procesar. El procesado lo realizará en el momento que la importemos a otra hoja de estilos e incluyamos algún mixin.
 Los mixins más utilizados en este proyecto serán los siguientes: border-radius, flexbox (flex, flex-direction, flex-wrap, etc), opacity, transition, animation y gradient. El archivo está disponible en el repositorio de GitHub\cite{bazGitRepo}.
+\section{Despliegue}
+El despliegue se ha llevado a cabo mediante el sistema de Hosting de Heroku \cite{bazHeroku}, basado en un respositorio remoto de GitHub y un paquete constructor que genera la aplicación a partir del estado de ese repositorio. 
+
+\subsection{Proceso}
+Para realizar este despliegue ha sido necesario crear una cuenta en heroku y descargar el CLI para poder desplegar nuestra aplicación de forma remota. El despliegue en Heroku se basa en una idea muy simple. El despliegue es tan sencillo como almacenar una nueva versión de tu repositorio local en el repositorio remoto en github. Una vez autenticado mediante el comando del CLI heroku login, creamos una aplicación a la que damos el nombre de duckflight. Acto seguido nos devuelve dos urls que corresponden a dos repositorios remotos de github. Esa url la añadiremos como repositorio remoto al actual.
+\paragraph{}
+Ahora necesitamos una base de datos remota, ya que hasta ahora habíamos trabajado con la base de datos que nos creaba Meteor. Para ello creamos un sandbox en \textbf{mlab} mediante el CLI de heroku. Esto nos devolverá la url de la base de datos que deberemos atribuir como parámetro global a la aplicación duckflight. 
+\paragraph{}
+Finalmente necesitamos un paquete constructor que se encargue de identificar que se trata de una aplicación de Meteor y de generarla en la url en la que se hará el despliegue. Dicho paquete es \textbf{jordansissel:heroku-buildpack-meteor} y se configura mediante el comando \emph{heroku create --buildpack <buildpack>}. 
+\paragraph{}
+Una vez seguidos estos pasos, procedemos al despliegue de la aplicación mediante el comando \emph{git push heroku master}.
+\paragraph{}
+En el momento que ejecutamos el comando anterior se crea una copia de nuestro repositorio local en el repositorio remoto heroku. Acto seguido el \textbf{buildpack} o paquete constructor se encarga de generar nuestra aplicación y de arrancarla en la url correspondiente.
+
+\subsection{Licencias}
+Un requisito indispensable a la hora de realizar el despliegue de manera pública es el de incluir licencias al código que preserven los derechos de autor y conviertan el código, en este caso, en código libre o abierto. 
+\paragraph{}
+Para el código fuente se ha utilizado la licencia libre y gratuita de \textbf{GNU APGL}\footnote{\url{https://www.gnu.org/licenses/why-affero-gpl.html}} creando un fichero /app/license.txt que contiene las bases e integrando referencias a dicha licencia en cada uno de los ficheros de código fuente de la aplicación. 
+\paragraph{}
+Para el producto visible se ha utilizado una licencia \textbf{Creative Commons}\footnote{\url{http://es.creativecommons.org/blog/licencias/}} que deniega cualquier uso comercial de la aplicación y derivados. Se ha incluido en el sitio mediante una etiqueta en documento HTML de la página de inicio.
 \section{Prototipo 1: Registro de usuarios y layout principal}
 \paragraph{}
-Este es el primer prototipo de la aplicación y se corresponde con el layout principal de la aplicación y con el registro de usuarios. 
+Este es el primer prototipo de la aplicación y se corresponde con el layout principal de la aplicación y con el registro de usuarios. La extracción de requisitos se corresponde con los enumerados en \ref{rReg}.
 \subsection{Layout principal}
 \begin{figure}[htbp]
     \centering
@@ -255,7 +276,7 @@ if(Meteor.isServer){
 };
 \end{lstlisting}
 \vspace{0.5cm}
-En el momento que el cliente realiza la llamada con los datos suministrados por el usuario, se deberá verificar que los datos son correctos y que cumplen una serie de reglas. (Validación de nuevo usuario). Una vez verificado se creará un objeto usuario en la colección disponible en Meteor.users cuya estructura es la mostrada en la figura \ref{userMongo}. En este momento ya tenemos definida la primera entidad de la aplicación (Usuarios).
+En el momento que el cliente realiza la llamada con los datos suministrados por el usuario, se deberá verificar que los datos son correctos y que cumplen una serie de reglas. (Validación de nuevo usuario). Una vez verificado se creará un objeto usuario en la colección disponible en Meteor.users cuya estructura es la mostrada en la figura \ref{userMongo}. En este momento ya tenemos definida la primera entidad de la aplicación: Usuarios. Su relación con otras futuras entidades se muestra en la figura \ref{fig:ERdesign}.
 
 El resultado de este prototipo puede verse en las capturas de pantalla de la figura \ref{fig:signFormsReal}
 
@@ -264,11 +285,11 @@ El resultado de este prototipo puede verse en las capturas de pantalla de la fig
 
 \section{Prototipo 2: Grabador y reproductor basados en documentos}
 \paragraph{}
-Este prototipo engloba el diseño y desarrollo del grabador, del reproductor y del recurso en el que se muestran las grabaciones realizadas. 
+Este prototipo engloba el diseño y desarrollo del grabador, del reproductor y del recurso en el que se muestran las grabaciones realizadas. Los requisitos extraídos en este prototipo son los mostrados en \ref{rRec}.
 \subsection{Grabador}
 \subsubsection{Entidades y colecciones}
 \paragraph{}
-En este momento surgen dos nuevas entidades de la aplicación que son las \textbf{grabaciones} y los \textbf{documentos}. La relación que existe entre éstas y los usuarios viene determinada por el diagrama mostrado en la figura (TAL). Dicho diagrama impone que cualquier usuario puede crear una grabación y que ésta debe estar formada por uno o más documentos. Los documentos no existen independientemente de las grabaciones. Como todas las entidades, éstas se traducen en las colecciones \textbf{Recordings} y \textbf{Documents} cuyos objetos MongoDB se muestran en \ref{recordMongo} y \ref{documentMongo} respectivamente. Al contrario que la colección Users de Meteor, éstas no se crean por defecto. Por lo que, generamos dos nuevos ficheros javascript: \emph{app/lib/collections/records.js} y \emph{app/lib/collections/documents.js}. En cada fichero definimos la colección de la siguiente manera:
+En este momento surgen dos nuevas entidades de la aplicación que son las \textbf{grabaciones} y los \textbf{documentos}. La relación que existe entre éstas y los usuarios viene determinada por el diagrama mostrado en la figura \ref{fig:ERdesign}. Dicho diagrama impone que cualquier usuario puede crear una grabación y que ésta debe estar formada por uno o más documentos. Los documentos no existen independientemente de las grabaciones. Como todas las entidades, éstas se traducen en las colecciones \textbf{Recordings} y \textbf{Documents} cuyos objetos MongoDB se muestran en \ref{recordMongo} y \ref{documentMongo} respectivamente. Al contrario que la colección Users de Meteor, éstas no se crean por defecto. Por lo que, generamos dos nuevos ficheros javascript: \emph{app/lib/collections/records.js} y \emph{app/lib/collections/documents.js}. En cada fichero definimos la colección de la siguiente manera:
 \begin{lstlisting}[language=Javascript]
 	CollectionName = new Mongo.Collection('collectionName');
 	//CollectionName será el nombre de la colección accesible en la aplicación.
@@ -384,7 +405,7 @@ El diseño del grabador se compone de las siguientes plantillas:
 	\item \textbf{\{\{$<$upload\}\}}:  al hacer click en guardar en la plantilla anterior se mostrará el progreso de subida del audio y cuando termine un mensaje y un enlace a la página de la grabación (reproductor) para reproducir la grabación.
 \end{itemize}
 \paragraph{}
-Tras este análisis hemos encontrado una nueva entidad: \textbf{etiquetas} (Tags) por lo que creamos una nueva colección y un nuevo fichero en \emph{/app/lib/collections/tags.js} de forma análoga con las anteriores. Establecemos que una grabación puede tener o no etiquetas y que son globales es decir que la misma etiqueta la pueden tener una o varias grabaciones. Esta relación puede verse en el diagrama (tal). Además para tenerlas accesibles desde el formulario debemos crear una publicación a la que se subscribirá el cliente. Como es la primera, creamos el fichero \emph{/app/server/publications.js}. Será el fichero en el que declararemos todas nuestras publicaciones. La subscripción a esta publicación se hará dinámicamente puesto que se trata de un \textbf{auto-completado}.
+Tras este análisis hemos encontrado una nueva entidad: \textbf{etiquetas} (Tags) por lo que creamos una nueva colección y un nuevo fichero en \emph{/app/lib/collections/tags.js} de forma análoga con las anteriores. Establecemos que una grabación puede tener o no etiquetas y que son globales es decir que la misma etiqueta la pueden tener una o varias grabaciones. Esta relación puede verse en el diagrama \ref{fig:ERdesign}. Además para tenerlas accesibles desde el formulario debemos crear una publicación a la que se subscribirá el cliente. Como es la primera, creamos el fichero \emph{/app/server/publications.js}. Será el fichero en el que declararemos todas nuestras publicaciones. La subscripción a esta publicación se hará dinámicamente puesto que se trata de un \textbf{auto-completado}.
 \paragraph{}
 El flujo de plantillas se muestra en la figura \ref{fig:grabacionFlujo}
 Las plantillas presentes en la figura anterior corresponden a las figuras: \ref{fig:recorderNoDocs}, \ref{fig:recorderDocsList}, \ref{fig:documentForm}, \ref{fig:recorderEditor}, \ref{fig:recorderFinal} y \ref{fig:uploadProcess} disponibles en el apéndice \ref{appendix:mockupsApendix}.
@@ -490,7 +511,7 @@ Tras el desarrollo de la interfaz el resultado se muestra en la figura \ref{fig:
 \paragraph{}
 \paragraph{}
 \section{Prototipo 3: Respuestas a grabaciones}
-En este prototipo actualizamos la lógica del grabador y añadimos nuevas acciones para la página de detalle de grabación.
+En este prototipo actualizamos la lógica del grabador y añadimos nuevas acciones para la página de detalle de grabación. En este prototipo se ha realizado la extracción de los requisitos expuestos en \ref{rRec}
 \subsection{Actualización del grabador}
 Las respuestas a grabaciones se realizan mediante nuevas grabaciones sobre editor según los requisitos de la aplicación. La única diferencia es que esta vez el grabador se debe iniciar con los documentos de la grabación a la que queremos responder. Además el contenido de dichos documentos debe corresponder al instante en el que hemos pausado la reproducción. 
 \paragraph{}
@@ -545,18 +566,18 @@ Para listar las respuestas de una grabación se ha creado un timeline (figura \re
 \paragraph{}Además se ha añadido una nueva sección de contenidos para mostrar las grabaciones relacionadas con la grabación actual (figura \ref{fig:relatedTab}). Para ello se ha modificado la publicación 'record'. Ahora publicará, además de la grabación actual, otras que posean etiquetas similares.
 
 
-\paragraph{}También se ha creado una nueva sección que contiene un espacio para realizar comentarios (figura \ref{fig:commentsTab}) y con ello surge una nueva entidad. Dicha entidad se traduce en una nueva colección Comentarios cuyo objeto se muestra en \ref{commentMongo} y su relación con las demás entidades en la figura (tal). Esta sección esta compuesta por una caja para introducir el texto a publicar y la lista de comentarios. Cada comentario está compuesto por el avatar del autor, el texto, una lista de las respuestas a ese comentario y la misma caja de texto mencionada anteriormente responder.
+\paragraph{}También se ha creado una nueva sección que contiene un espacio para realizar comentarios (figura \ref{fig:commentsTab}) y con ello surge una nueva entidad. Dicha entidad se traduce en una nueva colección Comentarios cuyo objeto se muestra en \ref{commentMongo} y su relación con las demás entidades en la figura \ref{fig:ERdesign}. Esta sección esta compuesta por una caja para introducir el texto a publicar y la lista de comentarios. Cada comentario está compuesto por el avatar del autor, el texto, una lista de las respuestas a ese comentario y la misma caja de texto mencionada anteriormente responder.
 
 \paragraph{}
 Se ha diseñado el espacio para comentarios de manera que sea genérico, es decir, que se pueda utilizar para todo tipo de contenidos. Tras la implementación el resultado puede verse en las figuras \ref{fig:replies-tab} y  \ref{fig:comments-module}.
 
 \section{Prototipo 4: Organización en Canales}
-En este prototipo aparece por primera vez el concepto de organización en canales. La implementación de este concepto deberá cumplir todos los requisitos establecidos en \ref{sec:requisitos} correspondientes. 
+En este prototipo aparece por primera vez el concepto de organización en canales. La implementación de este concepto deberá cumplir todos los requisitos establecidos en \ref{rChan} correspondientes. 
 
 \subsection{Concepto, entidades y modificaciones}
 Un canal es un espacio público en el que crear grabaciones. Al ser público cualquier usuario puede acceder a sus contenidos de forma inmediata. También ofrece la posibilidad de crear comentarios, subscribirse y de votar. 
 \paragraph{}
-Con esta descripción surgen dos nuevas entidades: canales y subscripciones. Dichas entidades se traducen, al igual que las anteriores, en las colecciones Channels y UsersEnrolled respectivamente, cuyos objetos MongoDB son \ref{channelMongo} y \ref{userEnrolledMongo}. Para cada colección se crea un fichero en \emph{/app/lib/collections} de la misma forma que para las anteriores. La relación entre entidades se muestra en la figura (tal).
+Con esta descripción surgen dos nuevas entidades: canales y subscripciones. Dichas entidades se traducen, al igual que las anteriores, en las colecciones Channels y UsersEnrolled respectivamente, cuyos objetos MongoDB son \ref{channelMongo} y \ref{userEnrolledMongo}. Para cada colección se crea un fichero en \emph{/app/lib/collections} de la misma forma que para las anteriores. La relación entre entidades se muestra en la figura \ref{fig:ERdesign}.
 \paragraph{}
 Puesto que el contenido del canal se constituye en base a las grabaciones, esa relación deberá reflejarse en los objetos de las mismas. Para ello contarán con el atributo channel\_id las grabaciones pertenecientes a los canales como puede verse en \ref{recordMongo}. Como se describió en el proceso de grabación, una vez terminada la grabación y completado el proceso de uploading a SoundCloud se procedía con la creación de un objeto grabación. En esta fase habrá que determinar si la grabación que se ha realizado pertenece a un canal o es independiente. Para ello utilizamos query strings o cadenas de consulta que incluimos en la url del recurso grabador. En este caso la query será \emph{channel\_id$=$idValue}. A modo de ejemplo y siendo el identificador del canal en el que queremos crear una nueva grabación la cadena \emph{QwIJOpIsAXzc} la url del recurso grabador sería \emph{/records/submit?channel\_id$=$QwIJOpIsAXzc}. Iron Router provee herramientas que permiten realizar esta función de forma sencilla (código de ejemplo \ref{code:createChannelRecordingByQuery}).
 \subsection{Rutas y subscripciones}
@@ -605,12 +626,12 @@ El diseño de estos complementos y el del formulario pueden verse en las figuras 
 
 
 \section{Prototipo 5: Organización en Lecciones}
-En este prototipo aparece por primera vez el concepto de organización en lecciones. La implementación de este concepto deberá cumplir los requisitos establecidos en \ref{sec:requisitos}.
+En este prototipo aparece por primera vez el concepto de organización en lecciones. La implementación de este concepto deberá cumplir los requisitos establecidos en \ref{rLess}.
 
 \subsection{Concepto, entidades y modificaciones}
 Una lección es un espacio privado en el que crear grabaciones. Esta privación se traduce en que la creación de contenido inmediato para cada lección recae en la figura del usuario creador y que el contenido es privado para los usuarios que no estén subscritos a la misma. Además la estructuración del contenido de cada lección estará basada en secciones.
 \paragraph{}
-Con la anterior descripción surgen dos nuevas entidades: \textbf{lecciones} y \textbf{secciones}. Estas entidades se traducen en las colecciones Lessons y Sections cuyos objetos son \ref{lessonMongo} y \ref{sectionMongo} respectivamente. Se crean los ficheros \emph{/app/lib/collections/lessons.js} y \emph{/app/lib/collections/sections.js} en los que se declararán las colecciones y se implementarán los methods para gestionar sus modificaciones. Su relación con las demás entidades se muestra en la figura (tal).
+Con la anterior descripción surgen dos nuevas entidades: \textbf{lecciones} y \textbf{secciones}. Estas entidades se traducen en las colecciones Lessons y Sections cuyos objetos son \ref{lessonMongo} y \ref{sectionMongo} respectivamente. Se crean los ficheros \emph{/app/lib/collections/lessons.js} y \emph{/app/lib/collections/sections.js} en los que se declararán las colecciones y se implementarán los methods para gestionar sus modificaciones. Su relación con las demás entidades se muestra en la figura \ref{fig:ERdesign}.
 \paragraph{}
 Cada sección estará compuesta de grabaciones. Por lo que dichas grabaciones harán referencia a la sección y a la lección que pertenecen, además de indicar el orden dentro de la sección. Cada sección poseerá también un orden dentro de cada lección. Estos parámetros serán necesarios a la hora de editar las listas en el recurso de edición de la lección. Al igual que para las grabaciones pertenecientes a un canal, informamos al grabador de que se trata de una grabación perteneciente a una lección mediante la url. Esta vez formada por varias query string: \emph{lesson\_id}, \emph{section\_id} y \emph{order} (\ref{recordMongo} y código de ejemplo \ref{code:createRecordingFromLesson}). 
 
@@ -664,7 +685,7 @@ Cada ítem sección estará formado por una cabecera y por un sistema de tabs imple
 Al tratarse de un recurso de edición, utilizamos el diseño implementado anteriormente. La plantilla \{\{$<$awesomeForm\}\} para cargar el formulario base mostrado en la figura \ref{fig:editFormBase} y a dicho formulario integramos los componentes (figura \ref{fig:formEditComplements}) avatarEdit, descriptionEdit, tagsEdit y además creamos uno nuevo para poder editar el orden de las secciones. El diseño se muestra en la figura \ref{fig:lessonEdit} 
 
 \section{Prototipo 6: Página de perfil y Contactos}
-En este prototipo se ha diseñado e implementado la página de perfil del usuario y un espacio para realizar solicitudes de contacto y mostrar esas relaciones entre los distintos usuarios.
+En este prototipo se ha diseñado e implementado la página de perfil del usuario y un espacio para realizar solicitudes de contacto y mostrar esas relaciones entre los distintos usuarios. Los requisitos extraídos se corresponden con los mostrados en \ref{rProf}.
 \subsection{Perfil}
 Se trata de un nuevo módulo y recurso cuya ruta será \emph{/profile/\_id}, donde \emph{\_id} corresponderá al id del usuario en cuestión. Se crean nuevas publicaciones y subscripciones y se establece la ruta en \emph{/app/lib/router.js}.
 
@@ -696,7 +717,7 @@ Al visualizar cualquier página de perfil un usuario puede adoptar uno de estos d
 \subsubsection{Edición del perfil}
 Al igual que para editar las lecciones o los canales se establece un nuevo recurso para editar el perfil cuya ruta es \emph{/profile/:\_id/edit}. Como en las otras es necesario declararla en \emph{/app/lib/router.js} crear una nueva plantilla \{\{$<$profileEdit\}\} en \emph{/app/client/modules/profile\_modules/profileEdit/profileEdit.html} y subscribirse al usuario correspondiente. Al igual que los demás recursos de edición, éste mantiene el diseño base (figura \ref{fig:editFormBase}), es decir, que incorpora la plantilla \{\{$<$awesomeForm\}\} la cual, mediante una variable de sesión, carga uno u otro formulario con características comunes. En este caso, el formulario de edición dinámico creado en el prototipo 4. Además incorporamos los componentes avatar, banner y description (figuras \ref{fig:profileEdit}, \ref{fig:formEditComplements}). 
 \subsection{Contactos}
-Al existir usuarios en la aplicación es necesario establecer y denominar las relaciones entre ellos. Dichas relaciones se denominan relaciones de contacto. Con esto surge una nueva entidad (\textbf{Contactos}) que se traduce en una nueva colección Mongo llamada \textbf{Relations} con su fichero correspondiente y cuyo objeto es \ref{relationMongo}. La relación con las demás entidades se muestra en la figura (TAL).
+Al existir usuarios en la aplicación es necesario establecer y denominar las relaciones entre ellos. Dichas relaciones se denominan relaciones de contacto. Con esto surge una nueva entidad (\textbf{Contactos}) que se traduce en una nueva colección Mongo llamada \textbf{Relations} con su fichero correspondiente y cuyo objeto es \ref{relationMongo}. La relación con las demás entidades se muestra en la figura \ref{fig:ERdesign}.
 
 
 \subsubsection{Peticiones y lista de contactos}
@@ -747,12 +768,12 @@ El proceso para establecer la relación de contacto es la siguiente:
 
 
 \section{Prototipo 7: Conversaciones y alertas}
-En este prototipo se ha diseñado y desarrollado el módulo de comunicaciones interno de la aplicación basado en conversaciones o chats. También el sistema de alertas y avisos de nuevos mensajes.
+En este prototipo se ha diseñado y desarrollado el módulo de comunicaciones interno de la aplicación basado en conversaciones o chats. También el sistema de alertas y avisos de nuevos mensajes. La implementación se ha realizado partiendo de los requisitos \ref{rConv}.
 \subsection{Conversaciones}
 \subsubsection{Entidades, Rutas, subscripciones y publicaciones}
 Se trata de otra categoría de contenidos dentro de la aplicación por lo que tendrá un recurso de creación, de detalle y de edición: \emph{/conversation/submit}, \emph{/conversation/:\_id} y \emph{/conversation/:\_id/edit}. El acceso a las conversaciones es privada, es decir, sólo los miembros pueden visualizarlas. Esto se traduce en que el listado de las mismas está disponible como contenido dentro del recurso perfil de cada usuario y sólo será visible si el usuario tiene el rol de propietario.
 \paragraph{}
-Con la aparición de esta nueva categoría surgen las nueva entidades \textbf{Conversaciones} y \textbf{Mensajes} que se traducen en las colecciónes \textbf{Conversations} (\emph{/app/lib/collections/conversations.js}) y \textbf{Messages} (\emph{/app/lib/collections/messages.js}) y cuyos objetos se definen en \ref{conversationMongo} y \ref{messageMongo}. La relación de éstas con las demás entidades queda reflejada en la figura (TAL).
+Con la aparición de esta nueva categoría surgen las nueva entidades \textbf{Conversaciones} y \textbf{Mensajes} que se traducen en las colecciónes \textbf{Conversations} (\emph{/app/lib/collections/conversations.js}) y \textbf{Messages} (\emph{/app/lib/collections/messages.js}) y cuyos objetos se definen en \ref{conversationMongo} y \ref{messageMongo}. La relación de éstas con las demás entidades queda reflejada en la figura \ref{fig:ERdesign}.
 \paragraph{}
 Al igual que para las anteriores categorías, se han creado las publicaciones necesarias a las que nos subscribiremos mediante Iron Router en las rutas establecidas a los recursos de detalle y de edición.
 \subsubsection{Roles}
@@ -762,10 +783,10 @@ Los roles en las conversaciones serán importantes a la hora de ofrecer a los usu
 	\item \textbf{Invitados: } éstos tendrán acceso a las mismas funciones que el líder a excepción de expulsar usuarios y de cambiar el asunto.
 \end{itemize}
 \subsubsection{Creación de una conversación}
-Puesto que las conversaciones son privadas, el único medio para acceder a su recurso de creación es desde el recurso perfil. Al igual que los anteriores, este recurso utiliza la plantilla \{\{$<$awesomeForm\}\} que mediante la variable de sesión 'typeForm' incluirá la plantilla base para un formulario de edición. Esta plantilla incorporará los componentes correspondientes para la introducción de la información necesaria. Estos son una caja de texto para el asunto y dos complementos que se han implementado para la introducción de miembros y del primer mensaje (figura createConversation).
+Puesto que las conversaciones son privadas, el único medio para acceder a su recurso de creación es desde el recurso perfil. Al igual que los anteriores, este recurso utiliza la plantilla \{\{$<$awesomeForm\}\} que mediante la variable de sesión 'typeForm' incluirá la plantilla base para un formulario de edición. Esta plantilla incorporará los componentes correspondientes para la introducción de la información necesaria. Estos son una caja de texto para el asunto y dos complementos que se han implementado para la introducción de miembros y del primer mensaje (figura \ref{fig:createConversation}).
 
 \subsubsection{Página de conversación}
-Este será el primer y único recurso de detalle que no compartirá con los demás el diseño base formado por un \{\{banner\}\}, \{\{navbarTab\}\} y \{\{contentTab\}\}. El diseño corresponderá al mostrado en la figura (conversationPage) que se compone de tres espacios: 
+Este será el primer y único recurso de detalle que no compartirá con los demás el diseño base formado por un \{\{banner\}\}, \{\{navbarTab\}\} y \{\{contentTab\}\}. El diseño corresponderá al mostrado en la figura \ref{fig:conversationDesign} que se compone de tres espacios: 
 \begin{itemize}
 	\item \textbf{Cabecera: } aquí se mostrará toda la información relevante de la conversación (asunto, lista de miembros, contadores), botones para para visualizar el panel de miembros, el panel de opciones y acceder al recurso de edición.
 	\item \textbf{Cuerpo: } corresponde a la lista de mensajes de la conversación. Los escritos por el usuario actual aparecerán a la derecha y los de los demás miembros a la izquierda. Cada mensaje poseerá información sobre su autor (nombre de usuario y avatar) y la fecha en la que se escribió.
@@ -778,27 +799,27 @@ El panel de opciones se adaptará al rol del usuario correspondiente. Las accione
 \paragraph{}
 Partiendo del hecho de que las conversaciones deben tener un líder, si un usuario con este rol decide dejar la conversación deberá delegar su rol a otro miembro y después salir.
 \subsubsection{Edición de una conversación}
-Para este recurso se utilizará el mismo diseño de plantillas que para los anteriores recursos de edición. El formulario diseñado para este recurso (figura tal) integrará nuevos componentes: 
+Para este recurso se utilizará el mismo diseño de plantillas que para los anteriores recursos de edición. El formulario diseñado para este recurso (figura \ref{fig:conversationEdit}) integrará nuevos componentes: 
 \begin{itemize}
 	\item \textbf{\{\{subjectEdit\}\}: } complemento para editar el asunto.
 	\item \textbf{\{\{leaderEdit\}\}: } permite escoger entre los miembros de la conversación al nuevo líder.
 	\item \textbf{\{\{membersEdit\}\}: } permite editar los miembros (añadir y borrar).
 \end{itemize}
-El diseño de estos componentes o complementos puede verse en la figura (tal).
+El diseño de estos componentes o complementos y de los paneles de la conversación pueden verse en las figuras \ref{fig:conversationComplements} y \ref{fig:conversationPanels} respectivamente.
 \subsection{Alertas}
 \subsubsection{Concepto y entidades}
 Partiendo del requisito de que los usuarios deben estar informados en todo momento de lo que ocurre en las conversaciones, se ha desarrollado un módulo de alertas de conversación. Estas alertas se generarán en el momento que se introduzca un nuevo mensaje en cualquier conversación y se mostrarán a todos aquellos usuarios miembro que no se encuentren visualizando la página de dicha conversación. El espacio dedicado a la visualización de las distintas alertas será una pestaña del sidebar (figura \ref{fig:sidebarConversations}). De este modo los usuarios podrán visualizarlas en cualquier momento. 
 \paragraph{}
-Este concepto supone una nueva entidad llamada Alertas de Conversación que se traduce en la colección conversationAlerts (\emph{/app/lib/collections/conversationAlerts.js}) cuyo objeto MongoDB se muestra en \ref{conversationAlertMongo}. La relación de esta entidad con las anteriores puede verse en el esquema de la figura (TAL). 
+Este concepto supone una nueva entidad llamada Alertas de Conversación que se traduce en la colección conversationAlerts (\emph{/app/lib/collections/conversationAlerts.js}) cuyo objeto MongoDB se muestra en \ref{conversationAlertMongo}. La relación de esta entidad con las anteriores puede verse en el esquema de la figura \ref{fig:ERdesign}. 
 
 \subsubsection{Proceso}
 Al crearse una conversación se generan tantas alertas como miembros posea y su atributo \emph{alertsAllow} tendrá un valor inicial de \emph{true}. 
 En el momento que un miembro accede a la conversación ese atributo se tornará a false. Creamos una publicación a la que los usuarios estarán subscritos en todo momento. Se basa en publicar las alertas de conversación que tengan el atributo alertsAllow a true. Además contará con la referencia a la conversación de la que proceden por lo que para cada alerta se mostrará el último mensaje (código de ejemplo \ref{code:conversationAlerts}). 
 \paragraph{}
-El resultado de la implementación de este prototipo puede verse en las capturas tal tal y tal.
+El resultado de la implementación de este prototipo puede verse en las capturas \ref{fig:conversation-create}, \ref{fig:conversation-page} Y \ref{fig:conversation-edit}.
 
 \section{Prototipo 8: Emails e integración de servicios de registro}
-En este prototipo se ha implementado un módulo de mensajería, los procesos de verificación de email, cambio y recuperación de contraseña para los usuarios y se han introducido nuevos servicios con los que realizar el registro en la aplicación partiendo de los requisitos correspondientes (ver \ref{sec:requisitos}).
+En este prototipo se ha implementado un módulo de mensajería, los procesos de verificación de email, cambio y recuperación de contraseña para los usuarios y se han introducido nuevos servicios con los que realizar el registro en la aplicación partiendo de los requisitos correspondientes (ver \ref{rServ}).
 \subsection{Verificación de Email, cambio y recuperación de contraseña}
 \subsubsection{Proceso de verificación}
 Este servicio será exclusivo para los usuarios que posean un email asociado a su cuenta y será accesible desde el perfil como puede verse en la figura \ref{fig:profileBanner}.
@@ -809,21 +830,21 @@ Para enviar el mensaje utilizamos el método .sendVerificationEmail() al que le p
 \paragraph{}
 En el momento que el usuario explore su bandeja de entrada y pinche en el link de verificación se llamará al método .verifyEmail() de Accounts en el lado del cliente. El único parámetro que necesita es el token del link que lo tiene accesible gracias a Iron Router que lo ha incluido como datos de la plantilla (código de ejemplo \ref{code:verificationEmail}).
 \paragraph{}
-La implementación se muestra en la captura (tal).
+La implementación se muestra en la captura \ref{fig:verifications-page}.
 
 \subsubsection{Proceso de cambio de contraseña}
 Este servicio será exclusivo para los usuarios que se hayan registrado mediante un nombre de usuario y contraseña y estará accesible desde el perfil como puede verse en la figura \ref{fig:profileBanner}.
 \paragraph{}
 El proceso es muy sencillo. Primero el usuario deberá introducir su contraseña actual (si la ha olvidado podrá iniciar el proceso de recuperación a través de un enlace). Después de comprobar que es correcta, el usuario podrá introducir una nueva contraseña y actualizarla. Mediante el paquete Accounts podremos utilizar los métodos .checkPassword() (desde el servidor) y .changePassword() (desde el cliente) para este proceso (código de ejemplo \ref{code:changePassword}).
 \paragraph{}
-La implementación de este proceso se muestran en la figuras (tal)
+La implementación de este proceso se muestra en la figura \ref{fig:change-password}.
 
 \subsubsection{Proceso de recuperación de contraseña}
 Este servicio al igual que el de cambio de contraseña será exclusivo de los usuarios registrados con contraseña. Será accesible desde el proceso de cambio de contraseña y desde el formulario de inicio de sesión (figura \ref{fig:signIn}).
 \paragraph{}
 El proceso es similar al de verificación de email sólo que los métodos son: .sendResetPasswordEmail (en el lado del servidor) y resetPassword (en el lado del cliente). Como el proceso requiere el envío de un email habrá que establecer la configuración de su plantilla de la misma forma que para el proceso de verificación.
 
-La implementación puede verse en la figuras (tal).
+La implementación puede verse en la figura \ref{fig:forgot-password-form}.
 
 
 \subsection{Distribuidor y parámetros globales}
@@ -844,7 +865,7 @@ El proceso sigue dos fases: elección del correo a utilizar como origen y la comp
 \paragraph{}
 Si el usuario no tiene ningún email verificado aparecerá un enlace al recurso de verificación de emails. 
 Para la introducción de las direcciones de destino utilizamos el complemento diseñado para introducir los miembros de una conversación en el recurso de creación y de edición de la misma. 
-Para la composición del cuerpo del mensaje hemos utilizado un editor de textos enriquecido llamado \textbf{froalaEditor}\footnote{\url{https://www.froala.com/wysiwyg-editor}} y que lo tenemos disponible como paquete Meteor (\textbf{froala:editor}). El resultado de la implementación de este proceso se muestra en la captura (tal)
+Para la composición del cuerpo del mensaje hemos utilizado un editor de textos enriquecido llamado \textbf{froalaEditor}\footnote{\url{https://www.froala.com/wysiwyg-editor}} y que lo tenemos disponible como paquete Meteor (\textbf{froala:editor}). El resultado de la implementación de este proceso se muestra en las capturas \ref{fig:email-sender} y \ref{fig:email-writter}
 \subsection{Integración de servicios de registro}
 Para este proyecto vamos a incluir además del sistema de registro basado en nombre de usuario y contraseña, otros servicios como el de registro mediante Google, Github y Facebook.
 \paragraph{}
@@ -859,12 +880,12 @@ Para cada uno de los anteriores ha sido necesaria la creación de una app en el e
 		redirect_uri: '//url de redirección'.
 	});
 \end{lstlisting}
-Para cada uno de los servicios incluimos los paquetes \textbf{accounts-<service>}. Esto hará que tengamos el método .loginWith<service>() disponible en el paquete Accounts.
+Para cada uno de los servicios incluimos los paquetes \textbf{accounts-$<$service$>$}. Esto hará que tengamos el método .loginWith$<$service$>$() disponible en el paquete Accounts.
 
 Por último añadimos botones al formulario de inicio de sesión para ofrecer la posibilidad de registrarse a través de estos servicios (\ref{fig:signIn}).
 
 \section{Prototipo 9: Página principal y sistema de búsqueda}
-En este prototipo se diseñará e implementará el contenido de la página principal de la aplicación y el sistema de búsqueda desarrollado.
+En este prototipo se diseñará e implementará el contenido de la página principal de la aplicación y el sistema de búsqueda desarrollado partiendo de los requisitos \ref{rCont}.
 \subsection{Estructura}
 En esta página según los requisitos debe existir un espacio para recomendaciones y otro para mostrar los contenidos más populares o votados. Por lo que esta va a se la estructura de la información de la página. 
 \paragraph{}
@@ -876,6 +897,7 @@ El contenido principal se estructura en tres bloques:
 	\item \textbf{Relacionados:} este espacio estará categorizado según los tres grandes categorías de contenido de la aplicación (grabaciones,canales y lecciones). Los contenidos se mostrarán como un carousel de miniaturas. Se mostrarán los contenidos que compartan las tags que posean los contenidos votados por el usuario. De esta forma se oferta contenido relacionado a los gustos del usuario.
 	\item \textbf{Populares:} aquí se muestran los contenidos más populares del momento. Su representación es idéntica que la del espacio anterior.
 \end{itemize}
+La implementación puede verse en \ref{fig:main-page}
 
 \subsection{Sistema de búsqueda basado en modificadores}
 Para hacer las búsquedas más rápidas y precisas se ha implementado un sistema de búsqueda basado en modificadores. De manera que con solo introducir el carácter + en el cuadro de búsqueda el sistema nos sugiera modificadores.
@@ -894,9 +916,9 @@ Los resultados se clasifican según las categorías en un sistema de tabs. Para ca
 \paragraph{}
 La implementación de este módulo integra una plantilla llamada \{\{$<$smartSearch\}\} que utiliza un objeto creado mediante el constructor \textbf{SearchParamsManager} creado en \emph{/app/client/lib/searchParamsManager.js}. Dicho objeto se encarga traducir los actuales modificadores introducidos en parámetros de búsqueda o de subscripción para Mongo. Una vez traducidos procede a la subscripción de las publicaciones correspondientes. En este caso se han creado tres, una por categoría y mediante el valor del modificador \emph{+category} filtra las subscripciones. Además se han creado plantillas de auto-completado para los modificadores y para la lista de sugerencias de cada uno.
 \paragraph{}
-La implementación puede verse en la figura (tal).
+La implementación puede verse en la figura \ref{fig:search}.
 \section{Prototipo 10: Página de inicio y módulos adicionales}
-En este prototipo se ha implementado el apartado descriptivo de la aplicación. Este comprende el desarrollo de la página de inicio, los espacios para tutoriales y features y un módulo de ayuda. El resultado de esta implementación puede verse en las figuras tal tal tal y tal.
+En este prototipo se ha implementado el apartado descriptivo de la aplicación partiendo algunos de los requisitos de \ref{rExp}. Este comprende el desarrollo de la página de inicio, los espacios para tutoriales y features y un módulo de ayuda.
 \subsection{Página de inicio}
 Se ha querido que la página de inicio sea lo más descriptiva posible en lo que respecta a las características de la aplicación y su funcionalidad. Por lo que se ha diseñado en secciones. En cada sección se introducirá una característica y se mostrará un enlace al recurso \emph{/features} correspondiente a la misma. También se ha creado una sección introductoria a los tutoriales con un enlace al recurso \emph{/tutorials}.
 \subsection{Espacio para tutoriales}
@@ -906,10 +928,10 @@ En este espacio se resumirán todas las características y funcionalidades de la a
 \subsection{Módulo de ayuda flexible}
 Este módulo está formado por un botón y un \emph{collapsible} de Bootstrap. Al hacer click en el botón se despliega una lista de preguntas frequentes (FAQs) que podemos editar y configurar vía javascript para poder adaptar las preguntas al contexto de la página en la que incluyamos dicho módulo. Cada pregunta es un enlace a uno de los tutoriales. 
 \paragraph{}
-El resultado de la implementación de este prototipo puede apreciarse en las figuras (tal, tal y tal)
+El resultado de la implementación de este prototipo puede apreciarse en las figuras \ref{fig:start-page}, \ref{fig:tutorials} y \ref{fig:features}.
 
 \section{Prototipo Final: Notificaciones y restricciones de acceso}
-En este prototipo se ha implementado el módulo de notificaciones y las plantillas \{\{notFound\}\} y \{\{accessDenied\}\}.
+En este prototipo se ha implementado el módulo de notificaciones y las plantillas \{\{notFound\}\} y \{\{accessDenied\}\} partiendo de los requisitos mostrados en \ref{rExp}.
 \subsection{Notificaciones}
 Partiendo del requisito de que los usuarios deben estar informados en todo momento de cualquier cambio de su interés dentro de la aplicación surge la entidad de \textbf{Notificaciones} y con ella la colección \textbf{Notifications} (\emph{/app/lib/collections/notifications.js}) cuyo objeto MongoDB será el mostrado en \ref{notificationMongo}.
 \paragraph{}
@@ -937,7 +959,7 @@ Las notificaciones cubren la mayoría de eventos en la aplicación entre los que d
 
 \subsection{Recursos de error}
 \subsubsection{404}
-El error 404 es devuelto por el servidor cuando los datos a los que intentamos acceder no existen. Esto puede deberse al acceso mediante url de algún recurso que ya no exista. Debe controlarse y se hace creando la plantilla \{\{$<$notFound\}\} (figura tal). Necesitamos utilizarla en dos posibles situaciones: 
+El error 404 es devuelto por el servidor cuando los datos a los que intentamos acceder no existen. Esto puede deberse al acceso mediante url de algún recurso que ya no exista. Debe controlarse y se hace creando la plantilla \{\{$<$notFound\}\} (figura \ref{fig:notFound}). Necesitamos utilizarla en dos posibles situaciones: 
 \begin{itemize}
 	\item El usuario accede a un recurso que cuyos datos han sido borrados, pero el recurso es válido.
 	\item El usuario accede a un recurso inválido.
@@ -951,7 +973,7 @@ Router.route('/(.*)',{name: 'notFound'});
 \subsubsection{Access Denied}
 Si bien la aplicación no permite el acceso a contenidos privados para el usuario mediante el flujo diseñado, si que es posible alterar las urls para navegar al recurso privado, por lo que esto debe de controlarse.
 \paragraph{}
-Para ello se ha creado la plantilla \{\{$<$accessDenied\}\} (figura tal), la cual se muestra cuando un usuario intenta editar algún recurso detalle del cual no es autor. Esto se consigue mediante los \textbf{hooks} de Iron Router, en concreto el hook .beforeAction(). He aquí un ejemplo: 
+Para ello se ha creado la plantilla \{\{$<$accessDenied\}\} (figura \ref{fig:accessDenied}), la cual se muestra cuando un usuario intenta editar algún recurso detalle del cual no es autor. Esto se consigue mediante los \textbf{hooks} de Iron Router, en concreto el hook .beforeAction(). He aquí un ejemplo: 
 \vspace{0.5cm}
 \begin{lstlisting}[language=Javascript]
 Router.route('/profile/:_id/edit',{
@@ -965,25 +987,5 @@ Router.route('/profile/:_id/edit',{
 	}
 });
 \end{lstlisting}
-
-\section{Despliegue}
-El despliegue se ha llevado a cabo mediante el sistema de Hosting de Heroku \cite{bazHeroku}. 
-
-\subsection{Primeros pasos}
-Para realizar este despliegue el primer paso ha sido crear una cuenta en heroku y descargar el CLI para poder desplegar nuestra aplicación de forma remota. El despliegue en Heroku se basa en una idea muy simple. El despliegue es tan sencillo como almacenar una nueva versión de tu repositorio local en el repositorio remoto en github. El siguiente paso, una vez autenticado mediante el comando del CLI heroku login, creamos una aplicación a la que damos el nombre de duckflight. Acto seguido nos devuelve dos urls que corresponden a dos repositorios remotos de github. Esa url la añadiremos como repositorio remoto al actual.
 \paragraph{}
-Ahora necesitamos una base de datos remota, ya que hasta ahora habíamos trabajado con la base de datos que nos creaba Meteor. Para ello creamos un sandbox en \textbf{mlab} mediante el CLI de heroku. Esto nos devolverá la url de la base de datos que deberemos atribuir como parámetro global a la aplicación duckflight. 
-\paragraph{}
-Finalmente necesitamos un paquete constructor que se encargue de identificar que se trata de una aplicación de Meteor y de generarla en la url en la que se hará el despliegue. Dicho paquete es \textbf{jordansissel:heroku-buildpack-meteor} y se configura mediante el comando \emph{heroku create --buildpack <buildpack>}. 
-\paragraph{}
-Una vez seguidos estos pasos, procedemos al despliegue de la aplicación mediante el comando \emph{git push heroku master}.
-\subsection{Proceso}
-En el momento que ejecutamos el comando anterior se crea una copia de nuestro repositorio local en el repositorio remoto heroku. Acto seguido el \textbf{buildpack} o paquete constructor se encarga de generar nuestra aplicación y de arrancarla en la url correspondiente.
-\subsection{Pruebas globales}
-Una vez realizado el despliegue se han llevado ha explotado la funcionalidad de la aplicación de forma que se han probado todas las características de la misma. El resultado de estas pruebas ha sido satisfactorio.
-\subsection{Licencias}
-Un requisito indispensable a la hora de realizar el despliegue de manera pública es el de incluir licencias al código que preserven los derechos de autor y conviertan el código, en este caso, en código libre o abierto. 
-\paragraph{}
-Para el código fuente se ha utilizado la licencia libre y gratuita de \textbf{GNU APGL}\footnote{\url{https://www.gnu.org/licenses/why-affero-gpl.html}} creando un fichero /app/license.txt que contiene las bases e integrando referencias a dicha licencia en cada uno de los ficheros de código fuente de la aplicación. 
-\paragraph{}
-Para el producto visible se ha utilizado una licencia \textbf{Creative Commons}\footnote{\url{http://es.creativecommons.org/blog/licencias/}} que deniega cualquier uso comercial de la aplicación y derivados. Se ha incluido en el sitio mediante una etiqueta en documento HTML de la página de inicio.
+En el siguiente capítulo se expondrán las pruebas de validación correspondientes realizadas tras el despliegue de la aplicación.

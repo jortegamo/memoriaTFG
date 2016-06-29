@@ -1,18 +1,20 @@
-\chapter{Conclusión}
+\chapter{Conclusiones}
 En los capítulos anteriores se ha presentado la descripción del problema y la motivación de realización de este proyecto. También se ha desarrollado la solución al mismo y analizado su comportamiento en un entorno real. En este capítulo se presentarán las conclusiones tras el trabajo realizado, un estudio del producto y posibles mejoras y trabajos futuros de desarrollo.
 
 \section{Conclusiones}
-Tras la realización de las pruebas de validación del proyecto y el análisis de los resultados obtenidos podemos concluir que la solución desarrollada cubre el problema y motivación presentados. 
+Tras la realización de las pruebas de validación del proyecto y el análisis de los resultados obtenidos podemos concluir que la solución desarrollada cubre el problema y motivación presentados en promedio. 
 \paragraph{}
 Se ha desarrollado una plataforma para desarrolladores cuyos pilares son el aprendizaje y el intercambio de conocimientos de forma interactiva y visual. Este objetivo lo hemos alcanzado desarrollando una unidad de información basada en grabaciones de código y audio sobre un editor. Además dichas grabaciones soportan un sistema de respuestas basado en nuevas grabaciones a partir de cualquier instante de su reproducción. La posibilidad de extender la funcionalidad de este módulo no tiene límites y supone una buena línea de explotación para trabajos futuros.
 \paragraph{}
 Se ha organizado la información de manera que la navegación por el sitio sea lo más intuitiva posible. Además se ha cuidado satisfactoriamente el apartado estético de la aplicación para que los usuarios la consideren atractiva y despierte curiosidad a la hora de usarla.
 \paragraph{}
-En resumen, podemos concluir que los objetivos y requisitos marcados (\ref{sec:requisitos}) se han alcanzado y cubierto con éxito.
+La elaboración de este proyecto ha representado un desafío al que nunca había tenido oportunidad de enfrentarme. Además ha disuelto mis dudas en lo que a vocación se refiere y ha hecho que explore y explote capacidades y aptitudes cuya existencia había ignorado durante toda mi proyección como alumno y estudiante. Por este motivo estoy agradecido de haber tenido la oportunidad de llevarlo a cabo.
+\paragraph{}
+En resumen, podemos concluir que los objetivos (\ref{sec:requisitos}) y requisitos marcados (\ref{sec:requisitos}) se han alcanzado y cubierto con éxito.
 \section{Productos de Software}
-En esta sección se ha incluido un estudio que refleja la magnitud del proyecto y la documentación que se ha creado para el producto desarrollado.
-\subsection{Estudio de magnitud}
-En todo entorno corporativo en el momento que finaliza un proyecto es necesario un análisis de magnitud basado en la medición del tiempo y esfuerzo que ha requerido la implementación de cada una de sus fases. Esta medición utiliza las unidades meses/hombre (un hombre trabajando 8 horas al día durante un mes) y líneas de código.
+En esta sección se ha incluido un estudio del software desarrollado y la documentación que se ha creado para el mismo.
+\subsection{Listado}
+En todo entorno corporativo en el momento que finaliza un proyecto es necesario un análisis de los productos sofware basado en la medición del tiempo y esfuerzo que ha requerido su implementación individual y de manera global en el proyecto. Esta medición utiliza las unidades meses/hombre (un hombre trabajando 8 horas al día durante un mes), líneas de código, número de ficheros y entidades traducibles a colecciones (tablas) creadas en la base de datos.
 
 \begin{table}[htpb]
 \begin{center}
@@ -20,18 +22,18 @@ En todo entorno corporativo en el momento que finaliza un proyecto es necesario 
 \hline
 Prototipos & JS (sloc) & HTML (sloc) & CSS (sloc) & Meses/hombre & Ficheros & Entidades\\
 \hline \hline
-1 & 704 & 467 & 1124 & 0.5 & 22 & 0\\ \hline
-2 & 2122 & 594 & 1195 & 3 & 28 & 2\\ \hline
-3 & 521 & 244 & 166 & 0.5 & 4 & 1\\ \hline
+1 & 704 & 467 & 1124 & 0.5 & 22 & 1\\ \hline
+2 & 2122 & 594 & 1195 & 3 & 28 & 5\\ \hline
+3 & 521 & 244 & 166 & 0.5 & 4 & 0\\ \hline
 4 & 793 & 1047 & 480 & 1 & 10 & 2\\ \hline
 5 & 1038 & 617 & 409 & 2 & 11 & 2\\ \hline
 6 & 1481 & 979 & 357 & 1.5 & 10 & 2\\ \hline
-7 & 891 & 440 & 391 & 1 & 9 & 2\\ \hline
+7 & 891 & 440 & 391 & 1 & 9 & 3\\ \hline
 8 & 707 & 488 & 342 & 0.5 & 13 & 0\\ \hline
 9 & 1141 & 310 & 370 & 1 & 7 & 0\\ \hline
 10 & 796 & 524 & 632 & 0.5 & 17 & 0\\ \hline
 11 & 297 & 25 & 60 & 0.5 & 7 & 1\\ \hline
-TOTAL & 10491 & 5735 & 5117 & 12 & 138 & 12\\ \hline
+TOTAL & 10491 & 5735 & 5117 & 12 & 138 & 16\\ \hline
 \end{tabular}
 \caption{Mediciones de magnitud del proyecto}
 \label{tabla:magnitudAll}
@@ -40,12 +42,12 @@ TOTAL & 10491 & 5735 & 5117 & 12 & 138 & 12\\ \hline
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=.7\textwidth]{MagnitudGraphic.png}
-	\caption{Gráfico magnitud global del proyecto}
+	\caption{Gráfico productos de software del proyecto}
 	\label{fig:magnitudGlobal}
 \end{figure} 
 
 \paragraph{}
-Las mediciones realizadas en este proyecto se reflejan en la tabla \ref{tabla:magnitudAll}. Una vez realizadas las mediciones es necesario su análisis que aportará una idea global de la magnitud del proyecto (figura \ref{fig:magnitudGlobal}).
+Las mediciones realizadas en este proyecto se reflejan en la tabla \ref{tabla:magnitudAll}. Una vez realizadas las mediciones es necesario su análisis para poder visualizar una idea global del producto desarrollado (figura \ref{fig:magnitudGlobal}).
 \paragraph{}
 El análisis refleja lo siguiente: 
 \begin{itemize}
@@ -59,9 +61,9 @@ La documentación realizada para el producto se basa en una serie de vídeos expli
 \section{Trabajos futuros}
 Explorando otros sitios similares como KhanAcademy\footnote{url{https://es.khanacademy.org/welcome}} y Codepen\footnote{\url{http://codepen.io/}} y ahondando más en las necesidades de los desarrolladores, podemos explotar nuevas vías de desarrollo con el fin de dotar de más funcionalidad al sitio:
 \begin{itemize}
-	\item \textbf{Flujo continuo de reproducción: } se trata de una nueva forma de interactuar con la reproducción de las grabaciones (padres) y sus respuestas (hijos). Supondría un avance para el apartado de visualización y flexibilidad de la reproducción si el usuario pudiera escoger entre un modo de reproducción estándar o continuo. El estandar corresponde al desarrollado en este proyecto. El continuo se basa en lo siguiente: la reproducción de los hijos es automática, es decir, en el momento en que el instante de la reproducción de la grabación padre corresponde con el inicio del hijo, su reproducción se realice de forma automática. Cuando la reproducción del hijo es finalizada, la del padre es retomada desde el instante inicial del hijo. Se trata de un proceso de reproducción recursivo.
-	\item \textbf{Comentarios con código editable: } expone la posibilidad de crear comentarios con código a partir del código de la grabación o completamente nuevo y editable para comentarios futuros.
-	\item \textbf{Espacio para desarrollo de proyectos: } esta nueva funcionalidad supondría un nuevo espacio en la aplicación y la posibilidad de crear equipos de desarrollo. Se generarían proyectos enlazados con el sistema de control de versiones de git y con repositorios remotos en GitHub. Existiría comunicación a través de video llamada y chat y la posibilidad de generar, borrar y editar nuevos ficheros de forma conjunta.
+	\item \textbf{Flujo continuo de reproducción: } se trata de una nueva forma de interactuar con la reproducción de las grabaciones (padres) y sus respuestas (hijos). Supondría un avance para el apartado de visualización y flexibilidad de la reproducción si el usuario pudiera escoger entre un modo de reproducción estándar o continuo. El estándar corresponde al desarrollado en este proyecto. El continuo se basa en lo siguiente: la reproducción de los hijos es automática, es decir, en el momento en que el instante de la reproducción actual del padre corresponde con el instante inicial del hijo, comenzará la reproducción del último. Cuando dicha reproducción es finalizada, se continuaría con la reproducción del padre desde el instante en que se abandonó. Se trata de un proceso de reproducción recursivo.
+	\item \textbf{Comentarios con código editable: } expone la posibilidad de crear comentarios con código a partir del código de la grabación o completamente nuevo y editable para comentarios futuros. Los usuarios podrían incluir código en sus comentarios de forma que fueran más específicos.
+	\item \textbf{Espacio para desarrollo de proyectos: } esta nueva funcionalidad supondría un nuevo espacio en la aplicación y la posibilidad de crear equipos de desarrollo. Se generarían proyectos enlazados con el sistema de control de versiones de git y con repositorios remotos en GitHub. Existiría comunicación a través de video llamada y chat y la posibilidad de generar, borrar y editar nuevos ficheros de forma conjunta y en tiempo real.
 	\item \textbf{Previsualización: } esta nueva funcionalidad expone la previsualización de la grabación en el momento anterior al proceso de uploading.
 \end{itemize}
 
