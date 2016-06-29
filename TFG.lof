@@ -1,77 +1,78 @@
 \select@language {spanish}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces jerarqu\IeC {\'\i }a de carpetas}}{17}{figure.1.1}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Esquema metodolog\IeC {\'\i }a de realimentaci\'on}}{31}{figure.2.1}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Gr\'afico magnitud global del proyecto}}{32}{figure.2.2}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces jerarqu\IeC {\'\i }a de carpetas}}{17}{figure.2.1}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Patrones de arquitectura}}{34}{figure.3.1}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Patr\'on de arquitectura MVC}}}{34}{figure.3.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Patr\'on de arquitectura MVVM}}}{34}{figure.3.1}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Dise\~no de Layout Full-responsive}}{37}{figure.3.2}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Large layout}}}{37}{figure.3.2}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Small Layout}}}{37}{figure.3.2}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Dise\~no header}}{39}{figure.3.3}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Dise\~no formularios de registro}}{42}{figure.3.4}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Formulario de inicio de sesi\'on}}}{42}{figure.3.4}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Formulario de registro}}}{42}{figure.3.4}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Proceso de grabaci\'on}}{44}{figure.3.5}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Esquema}}}{44}{figure.3.5}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {L\'ogica}}}{44}{figure.3.5}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Proceso de reproducci\'on}}{50}{figure.3.6}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Esquema}}}{50}{figure.3.6}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {L\'ogica}}}{50}{figure.3.6}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Dise\~no banner para una grabaci\'on}}{52}{figure.3.7}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Dise\~no interfaz del reproductor}}{52}{figure.3.8}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Dise\~no de timeline}}{56}{figure.3.9}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Formulario de creaci\'on para un canal.}}{58}{figure.3.10}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Dise\~no del banner de un canal}}{59}{figure.3.11}
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Dise\~no lista de reproducci\'on}}{62}{figure.3.12}
-\contentsline {figure}{\numberline {3.13}{\ignorespaces Dise\~no del banner de una lecci\'on}}{63}{figure.3.13}
-\contentsline {figure}{\numberline {3.14}{\ignorespaces Dise\~no banner del perfil}}{65}{figure.3.14}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Esquema metodolog\IeC {\'\i }a de realimentaci\'on}}{29}{figure.3.1}
 \addvspace {10\p@ }
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Patrones de arquitectura}}{32}{figure.4.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Patr\'on de arquitectura MVC}}}{32}{figure.4.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Patr\'on de arquitectura MVVM}}}{32}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Dise\~no de Layout Full-responsive}}{35}{figure.4.2}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Large layout}}}{35}{figure.4.2}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Small Layout}}}{35}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Dise\~no header}}{37}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Dise\~no formularios de registro}}{39}{figure.4.4}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Formulario de inicio de sesi\'on}}}{39}{figure.4.4}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Formulario de registro}}}{39}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Proceso de grabaci\'on}}{42}{figure.4.5}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Esquema}}}{42}{figure.4.5}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {L\'ogica}}}{42}{figure.4.5}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Proceso de reproducci\'on}}{47}{figure.4.6}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Esquema}}}{47}{figure.4.6}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {L\'ogica}}}{47}{figure.4.6}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Dise\~no banner para una grabaci\'on}}{49}{figure.4.7}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Dise\~no interfaz del reproductor}}{49}{figure.4.8}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Dise\~no de timeline}}{53}{figure.4.9}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Formulario de creaci\'on para un canal.}}{55}{figure.4.10}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Dise\~no del banner de un canal}}{56}{figure.4.11}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Dise\~no lista de reproducci\'on}}{58}{figure.4.12}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Dise\~no del banner de una lecci\'on}}{60}{figure.4.13}
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Dise\~no banner del perfil}}{62}{figure.4.14}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Gr\'afico magnitud global del proyecto}}{80}{figure.6.1}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {C.1}{\ignorespaces Dise\~no sidebar}}{102}{figure.Alph3.1}
-\contentsline {figure}{\numberline {C.2}{\ignorespaces Dise\~no pesta\~na notificaciones para el sidebar}}{103}{figure.Alph3.2}
-\contentsline {figure}{\numberline {C.3}{\ignorespaces Dise\~no pesta\~na conversaciones para el sidebar}}{104}{figure.Alph3.3}
-\contentsline {figure}{\numberline {C.4}{\ignorespaces Dise\~no base grabador}}{105}{figure.Alph3.4}
-\contentsline {figure}{\numberline {C.5}{\ignorespaces Dise\~no panel inicial grabador}}{105}{figure.Alph3.5}
-\contentsline {figure}{\numberline {C.6}{\ignorespaces Dise\~no panel documentos en grabador}}{106}{figure.Alph3.6}
-\contentsline {figure}{\numberline {C.7}{\ignorespaces Dise\~no formulario documentos}}{106}{figure.Alph3.7}
-\contentsline {figure}{\numberline {C.8}{\ignorespaces Dise\~no editor en grabador}}{107}{figure.Alph3.8}
-\contentsline {figure}{\numberline {C.9}{\ignorespaces Dise\~no final grabaci\'on}}{108}{figure.Alph3.9}
-\contentsline {figure}{\numberline {C.10}{\ignorespaces Dise\~no proceso de subida}}{109}{figure.Alph3.10}
-\contentsline {figure}{\numberline {C.11}{\ignorespaces Lista de grabaciones}}{110}{figure.Alph3.11}
-\contentsline {figure}{\numberline {C.12}{\ignorespaces Lista de lecciones}}{111}{figure.Alph3.12}
-\contentsline {figure}{\numberline {C.13}{\ignorespaces Lista de canales}}{112}{figure.Alph3.13}
-\contentsline {figure}{\numberline {C.14}{\ignorespaces Miniatura grabaci\'on}}{113}{figure.Alph3.14}
-\contentsline {figure}{\numberline {C.15}{\ignorespaces Dise\~no de navbarTab}}{114}{figure.Alph3.15}
-\contentsline {figure}{\numberline {C.16}{\ignorespaces Dise\~no base para el formulario de edici\'on}}{114}{figure.Alph3.16}
-\contentsline {figure}{\numberline {C.17}{\ignorespaces Dise\~no componentes del formulario de edici\'on}}{115}{figure.Alph3.17}
-\contentsline {figure}{\numberline {C.18}{\ignorespaces Formulario de edici\'on del perfil}}{116}{figure.Alph3.18}
-\contentsline {figure}{\numberline {C.19}{\ignorespaces Dise\~no p\'agina de detalle}}{116}{figure.Alph3.19}
-\contentsline {figure}{\numberline {C.20}{\ignorespaces Formulario de edici\'on de un canal}}{117}{figure.Alph3.20}
-\contentsline {figure}{\numberline {C.21}{\ignorespaces Formulario de edici\'on de una lecci\'on}}{118}{figure.Alph3.21}
-\contentsline {figure}{\numberline {C.22}{\ignorespaces Dise\~no de la pesta\~na de secciones}}{119}{figure.Alph3.22}
-\contentsline {figure}{\numberline {C.23}{\ignorespaces Lista de contactos}}{120}{figure.Alph3.23}
-\contentsline {figure}{\numberline {C.24}{\ignorespaces Peticiones de contacto}}{121}{figure.Alph3.24}
-\contentsline {figure}{\numberline {C.25}{\ignorespaces Espacio para comentarios}}{122}{figure.Alph3.25}
-\contentsline {figure}{\numberline {C.26}{\ignorespaces Lista de relacionados}}{123}{figure.Alph3.26}
-\contentsline {figure}{\numberline {C.27}{\ignorespaces Dise\~no de la p\'agina principal}}{124}{figure.Alph3.27}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {D.1}{\ignorespaces Formularios de registro en P\'agina de inicio}}{125}{figure.Alph4.1}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Formulario de inicio de sesi\'on}}}{125}{figure.Alph4.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Formulario de registro}}}{125}{figure.Alph4.1}
-\contentsline {figure}{\numberline {D.2}{\ignorespaces Grabador}}{126}{figure.Alph4.2}
-\contentsline {figure}{\numberline {D.3}{\ignorespaces Flujo de plantillas del grabador}}{126}{figure.Alph4.3}
-\contentsline {figure}{\numberline {D.4}{\ignorespaces Reproductor}}{127}{figure.Alph4.4}
-\contentsline {figure}{\numberline {D.5}{\ignorespaces Lista de grabaciones}}{127}{figure.Alph4.5}
-\contentsline {figure}{\numberline {D.6}{\ignorespaces Timeline de respuestas}}{127}{figure.Alph4.6}
-\contentsline {figure}{\numberline {D.7}{\ignorespaces Espacio para comentarios}}{128}{figure.Alph4.7}
-\contentsline {figure}{\numberline {D.8}{\ignorespaces P\'agina del perfil}}{128}{figure.Alph4.8}
-\contentsline {figure}{\numberline {D.9}{\ignorespaces P\'agina de edici\'on del perfil}}{129}{figure.Alph4.9}
-\contentsline {figure}{\numberline {D.10}{\ignorespaces Espacio para peticiones de contacto}}{129}{figure.Alph4.10}
-\contentsline {figure}{\numberline {D.11}{\ignorespaces Lista de contactos}}{130}{figure.Alph4.11}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {C.1}{\ignorespaces Dise\~no sidebar}}{99}{figure.Alph3.1}
+\contentsline {figure}{\numberline {C.2}{\ignorespaces Dise\~no pesta\~na notificaciones para el sidebar}}{100}{figure.Alph3.2}
+\contentsline {figure}{\numberline {C.3}{\ignorespaces Dise\~no pesta\~na conversaciones para el sidebar}}{101}{figure.Alph3.3}
+\contentsline {figure}{\numberline {C.4}{\ignorespaces Dise\~no base grabador}}{102}{figure.Alph3.4}
+\contentsline {figure}{\numberline {C.5}{\ignorespaces Dise\~no panel inicial grabador}}{102}{figure.Alph3.5}
+\contentsline {figure}{\numberline {C.6}{\ignorespaces Dise\~no panel documentos en grabador}}{103}{figure.Alph3.6}
+\contentsline {figure}{\numberline {C.7}{\ignorespaces Dise\~no formulario documentos}}{103}{figure.Alph3.7}
+\contentsline {figure}{\numberline {C.8}{\ignorespaces Dise\~no editor en grabador}}{104}{figure.Alph3.8}
+\contentsline {figure}{\numberline {C.9}{\ignorespaces Dise\~no final grabaci\'on}}{105}{figure.Alph3.9}
+\contentsline {figure}{\numberline {C.10}{\ignorespaces Dise\~no proceso de subida}}{106}{figure.Alph3.10}
+\contentsline {figure}{\numberline {C.11}{\ignorespaces Lista de grabaciones}}{107}{figure.Alph3.11}
+\contentsline {figure}{\numberline {C.12}{\ignorespaces Lista de lecciones}}{108}{figure.Alph3.12}
+\contentsline {figure}{\numberline {C.13}{\ignorespaces Lista de canales}}{109}{figure.Alph3.13}
+\contentsline {figure}{\numberline {C.14}{\ignorespaces Miniatura grabaci\'on}}{110}{figure.Alph3.14}
+\contentsline {figure}{\numberline {C.15}{\ignorespaces Dise\~no de navbarTab}}{110}{figure.Alph3.15}
+\contentsline {figure}{\numberline {C.16}{\ignorespaces Dise\~no base para el formulario de edici\'on}}{111}{figure.Alph3.16}
+\contentsline {figure}{\numberline {C.17}{\ignorespaces Dise\~no componentes del formulario de edici\'on}}{111}{figure.Alph3.17}
+\contentsline {figure}{\numberline {C.18}{\ignorespaces Formulario de edici\'on del perfil}}{112}{figure.Alph3.18}
+\contentsline {figure}{\numberline {C.19}{\ignorespaces Dise\~no p\'agina de detalle}}{112}{figure.Alph3.19}
+\contentsline {figure}{\numberline {C.20}{\ignorespaces Formulario de edici\'on de un canal}}{113}{figure.Alph3.20}
+\contentsline {figure}{\numberline {C.21}{\ignorespaces Formulario de edici\'on de una lecci\'on}}{114}{figure.Alph3.21}
+\contentsline {figure}{\numberline {C.22}{\ignorespaces Dise\~no de la pesta\~na de secciones}}{115}{figure.Alph3.22}
+\contentsline {figure}{\numberline {C.23}{\ignorespaces Lista de contactos}}{116}{figure.Alph3.23}
+\contentsline {figure}{\numberline {C.24}{\ignorespaces Peticiones de contacto}}{117}{figure.Alph3.24}
+\contentsline {figure}{\numberline {C.25}{\ignorespaces Espacio para comentarios}}{118}{figure.Alph3.25}
+\contentsline {figure}{\numberline {C.26}{\ignorespaces Lista de relacionados}}{118}{figure.Alph3.26}
+\contentsline {figure}{\numberline {C.27}{\ignorespaces Dise\~no de la p\'agina principal}}{119}{figure.Alph3.27}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {D.1}{\ignorespaces Formularios de registro en P\'agina de inicio}}{120}{figure.Alph4.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Formulario de inicio de sesi\'on}}}{120}{figure.Alph4.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Formulario de registro}}}{120}{figure.Alph4.1}
+\contentsline {figure}{\numberline {D.2}{\ignorespaces Grabador}}{121}{figure.Alph4.2}
+\contentsline {figure}{\numberline {D.3}{\ignorespaces Flujo de plantillas del grabador}}{121}{figure.Alph4.3}
+\contentsline {figure}{\numberline {D.4}{\ignorespaces Reproductor}}{122}{figure.Alph4.4}
+\contentsline {figure}{\numberline {D.5}{\ignorespaces Lista de grabaciones}}{122}{figure.Alph4.5}
+\contentsline {figure}{\numberline {D.6}{\ignorespaces Timeline de respuestas}}{122}{figure.Alph4.6}
+\contentsline {figure}{\numberline {D.7}{\ignorespaces Espacio para comentarios}}{123}{figure.Alph4.7}
+\contentsline {figure}{\numberline {D.8}{\ignorespaces P\'agina del perfil}}{123}{figure.Alph4.8}
+\contentsline {figure}{\numberline {D.9}{\ignorespaces P\'agina de edici\'on del perfil}}{123}{figure.Alph4.9}
+\contentsline {figure}{\numberline {D.10}{\ignorespaces Espacio para peticiones de contacto}}{124}{figure.Alph4.10}
+\contentsline {figure}{\numberline {D.11}{\ignorespaces Lista de contactos}}{124}{figure.Alph4.11}

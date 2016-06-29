@@ -8,7 +8,7 @@
 \graphicspath{ {images/} }
 \usepackage[latin1]{inputenc}			% TeX will automatically convert eps --> pdf in pdflatex		
 \usepackage{amssymb}
-\usepackage{hyperref}
+\usepackage[hyperfootnotes=false]{hyperref}
 \usepackage{setspace}
 \usepackage{enumerate} 
 \usepackage{appendix}
@@ -23,6 +23,7 @@
  left=25mm,
  right=20mm,
  top=20mm,
+ bottom=20mm
  }
 
 \renewcommand{\appendixname}{Apéndices}
@@ -95,6 +96,7 @@ frame=single,
 \listoffigures
 
 \setstretch{1.2}
+\include{resumen}
 \include{introduccion}
 \include{metodologia}
 \include{disenoydesarrollo}
