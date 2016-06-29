@@ -16,7 +16,14 @@
 \spacing{1.5}
 \usepackage{wrapfig}
 \usepackage{color}
+\usepackage{lipsum}
 \usepackage{multirow}
+\geometry{
+ a4paper,
+ left=25mm,
+ right=20mm,
+ top=20mm,
+ }
 
 \renewcommand{\appendixname}{Apéndices}
 \renewcommand{\appendixtocname}{Apéndices}
@@ -87,6 +94,7 @@ frame=single,
 \tableofcontents
 \listoffigures
 
+\setstretch{1.2}
 \include{introduccion}
 \include{metodologia}
 \include{disenoydesarrollo}

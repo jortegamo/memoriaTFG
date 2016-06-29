@@ -25,71 +25,77 @@
 \BOOKMARK [1][-]{section.2.1}{Motivaci\363n}{chapter.2}% 25
 \BOOKMARK [1][-]{section.2.2}{Requisitos}{chapter.2}% 26
 \BOOKMARK [1][-]{section.2.3}{Metodolog\355a y plan de trabajo}{chapter.2}% 27
-\BOOKMARK [0][-]{chapter.3}{Dise\361o y desarrollo de la aplicaci\363n}{}% 28
-\BOOKMARK [1][-]{section.3.1}{Tipo de Arquitectura}{chapter.3}% 29
-\BOOKMARK [1][-]{section.3.2}{B\372squeda de herramientas}{chapter.3}% 30
-\BOOKMARK [1][-]{section.3.3}{Composici\363n Inicial y entorno de desarrollo}{chapter.3}% 31
-\BOOKMARK [2][-]{subsection.3.3.1}{Primeros pasos}{section.3.3}% 32
-\BOOKMARK [2][-]{subsection.3.3.2}{Mixins}{section.3.3}% 33
-\BOOKMARK [1][-]{section.3.4}{Prototipo 1: Registro de usuarios y layout principal}{chapter.3}% 34
-\BOOKMARK [2][-]{subsection.3.4.1}{Layout principal}{section.3.4}% 35
-\BOOKMARK [2][-]{subsection.3.4.2}{Registro de usuarios}{section.3.4}% 36
-\BOOKMARK [1][-]{section.3.5}{Prototipo 2: Grabador y reproductor basados en documentos}{chapter.3}% 37
-\BOOKMARK [2][-]{subsection.3.5.1}{Grabador}{section.3.5}% 38
-\BOOKMARK [2][-]{subsection.3.5.2}{Reproductor}{section.3.5}% 39
-\BOOKMARK [2][-]{subsection.3.5.3}{Lista de grabaciones}{section.3.5}% 40
-\BOOKMARK [1][-]{section.3.6}{Prototipo 3: Respuestas a grabaciones}{chapter.3}% 41
-\BOOKMARK [2][-]{subsection.3.6.1}{Actualizaci\363n del grabador}{section.3.6}% 42
-\BOOKMARK [2][-]{subsection.3.6.2}{Nuevas acciones}{section.3.6}% 43
-\BOOKMARK [2][-]{subsection.3.6.3}{Timeline, relacionados y comentarios}{section.3.6}% 44
-\BOOKMARK [1][-]{section.3.7}{Prototipo 4: Organizaci\363n en Canales}{chapter.3}% 45
-\BOOKMARK [2][-]{subsection.3.7.1}{Concepto, entidades y modificaciones}{section.3.7}% 46
-\BOOKMARK [2][-]{subsection.3.7.2}{Rutas y subscripciones}{section.3.7}% 47
-\BOOKMARK [2][-]{subsection.3.7.3}{Dise\361o de interfaces e implementaci\363n}{section.3.7}% 48
-\BOOKMARK [1][-]{section.3.8}{Prototipo 5: Organizaci\363n en Lecciones}{chapter.3}% 49
-\BOOKMARK [2][-]{subsection.3.8.1}{Concepto, entidades y modificaciones}{section.3.8}% 50
-\BOOKMARK [2][-]{subsection.3.8.2}{Rutas y subscripciones}{section.3.8}% 51
-\BOOKMARK [2][-]{subsection.3.8.3}{Lista de reproducci\363n y opciones}{section.3.8}% 52
-\BOOKMARK [2][-]{subsection.3.8.4}{Dise\361o de interfaces e implementaci\363n}{section.3.8}% 53
-\BOOKMARK [1][-]{section.3.9}{Prototipo 6: P\341gina de perfil y Contactos}{chapter.3}% 54
-\BOOKMARK [2][-]{subsection.3.9.1}{Perfil}{section.3.9}% 55
-\BOOKMARK [2][-]{subsection.3.9.2}{Contactos}{section.3.9}% 56
-\BOOKMARK [1][-]{section.3.10}{Prototipo 7: Conversaciones y alertas}{chapter.3}% 57
-\BOOKMARK [2][-]{subsection.3.10.1}{Conversaciones}{section.3.10}% 58
-\BOOKMARK [2][-]{subsection.3.10.2}{Alertas}{section.3.10}% 59
-\BOOKMARK [1][-]{section.3.11}{Prototipo 8: Emails e integraci\363n de servicios de registro}{chapter.3}% 60
-\BOOKMARK [2][-]{subsection.3.11.1}{Verificaci\363n de Email, cambio y recuperaci\363n de contrase\361a}{section.3.11}% 61
-\BOOKMARK [2][-]{subsection.3.11.2}{Distribuidor y par\341metros globales}{section.3.11}% 62
-\BOOKMARK [2][-]{subsection.3.11.3}{Env\355o de emails desde la aplicaci\363n}{section.3.11}% 63
-\BOOKMARK [2][-]{subsection.3.11.4}{Integraci\363n de servicios de registro}{section.3.11}% 64
-\BOOKMARK [1][-]{section.3.12}{Prototipo 9: P\341gina principal y sistema de b\372squeda}{chapter.3}% 65
-\BOOKMARK [2][-]{subsection.3.12.1}{Estructura}{section.3.12}% 66
-\BOOKMARK [2][-]{subsection.3.12.2}{Sistema de b\372squeda basado en modificadores}{section.3.12}% 67
-\BOOKMARK [1][-]{section.3.13}{Prototipo 10: P\341gina de inicio y m\363dulos adicionales}{chapter.3}% 68
-\BOOKMARK [2][-]{subsection.3.13.1}{P\341gina de inicio}{section.3.13}% 69
-\BOOKMARK [2][-]{subsection.3.13.2}{Espacio para tutoriales}{section.3.13}% 70
-\BOOKMARK [2][-]{subsection.3.13.3}{Espacio para features}{section.3.13}% 71
-\BOOKMARK [2][-]{subsection.3.13.4}{M\363dulo de ayuda flexible}{section.3.13}% 72
-\BOOKMARK [1][-]{section.3.14}{Prototipo Final: Notificaciones y restricciones de acceso}{chapter.3}% 73
-\BOOKMARK [2][-]{subsection.3.14.1}{Notificaciones}{section.3.14}% 74
-\BOOKMARK [2][-]{subsection.3.14.2}{Recursos de error}{section.3.14}% 75
-\BOOKMARK [1][-]{section.3.15}{Despliegue}{chapter.3}% 76
-\BOOKMARK [2][-]{subsection.3.15.1}{Primeros pasos}{section.3.15}% 77
-\BOOKMARK [2][-]{subsection.3.15.2}{Proceso}{section.3.15}% 78
-\BOOKMARK [2][-]{subsection.3.15.3}{Pruebas globales}{section.3.15}% 79
-\BOOKMARK [0][-]{chapter.4}{Experimentaci\363n}{}% 80
-\BOOKMARK [1][-]{section.4.1}{Motivaci\363n}{chapter.4}% 81
-\BOOKMARK [1][-]{section.4.2}{Planteamiento y objetivos}{chapter.4}% 82
-\BOOKMARK [1][-]{section.4.3}{Proceso y realizaci\363n}{chapter.4}% 83
-\BOOKMARK [1][-]{section.4.4}{Resultados y an\341lisis}{chapter.4}% 84
-\BOOKMARK [0][-]{chapter.5}{Conclusi\363n}{}% 85
-\BOOKMARK [0][-]{section*.248}{Bibliograf\355a}{}% 86
-\BOOKMARK [1][-]{section.5.1}{Principales Sitios Web}{section*.248}% 87
-\BOOKMARK [1][-]{section.5.2}{Libros}{section*.248}% 88
-\BOOKMARK [1][-]{section.5.3}{Art\355culos}{section*.248}% 89
-\BOOKMARK [1][-]{section.5.4}{Tutoriales}{section*.248}% 90
-\BOOKMARK [1][-]{section.5.5}{Paquetes}{section*.248}% 91
-\BOOKMARK [1][-]{section.5.6}{Repositorios}{section*.248}% 92
-\BOOKMARK [0][-]{section*.250}{Ap\351ndices}{}% 93
-\BOOKMARK [0][-]{appendix.Alph1}{Dise\361o de documentos para Mongo}{}% 94
-\BOOKMARK [0][-]{appendix.Alph2}{Dise\361o de Interfaces}{}% 95
+\BOOKMARK [2][-]{subsection.2.3.1}{Metodolog\355a}{section.2.3}% 28
+\BOOKMARK [2][-]{subsection.2.3.2}{Plan de trabajo}{section.2.3}% 29
+\BOOKMARK [2][-]{subsection.2.3.3}{Magnitud del proyecto}{section.2.3}% 30
+\BOOKMARK [0][-]{chapter.3}{Dise\361o y desarrollo de la aplicaci\363n}{}% 31
+\BOOKMARK [1][-]{section.3.1}{Tipo de Arquitectura}{chapter.3}% 32
+\BOOKMARK [1][-]{section.3.2}{B\372squeda de herramientas}{chapter.3}% 33
+\BOOKMARK [1][-]{section.3.3}{Composici\363n Inicial y entorno de desarrollo}{chapter.3}% 34
+\BOOKMARK [2][-]{subsection.3.3.1}{Primeros pasos}{section.3.3}% 35
+\BOOKMARK [2][-]{subsection.3.3.2}{Mixins}{section.3.3}% 36
+\BOOKMARK [1][-]{section.3.4}{Prototipo 1: Registro de usuarios y layout principal}{chapter.3}% 37
+\BOOKMARK [2][-]{subsection.3.4.1}{Layout principal}{section.3.4}% 38
+\BOOKMARK [2][-]{subsection.3.4.2}{Registro de usuarios}{section.3.4}% 39
+\BOOKMARK [1][-]{section.3.5}{Prototipo 2: Grabador y reproductor basados en documentos}{chapter.3}% 40
+\BOOKMARK [2][-]{subsection.3.5.1}{Grabador}{section.3.5}% 41
+\BOOKMARK [2][-]{subsection.3.5.2}{Reproductor}{section.3.5}% 42
+\BOOKMARK [2][-]{subsection.3.5.3}{Lista de grabaciones}{section.3.5}% 43
+\BOOKMARK [1][-]{section.3.6}{Prototipo 3: Respuestas a grabaciones}{chapter.3}% 44
+\BOOKMARK [2][-]{subsection.3.6.1}{Actualizaci\363n del grabador}{section.3.6}% 45
+\BOOKMARK [2][-]{subsection.3.6.2}{Nuevas acciones}{section.3.6}% 46
+\BOOKMARK [2][-]{subsection.3.6.3}{Timeline, relacionados y comentarios}{section.3.6}% 47
+\BOOKMARK [1][-]{section.3.7}{Prototipo 4: Organizaci\363n en Canales}{chapter.3}% 48
+\BOOKMARK [2][-]{subsection.3.7.1}{Concepto, entidades y modificaciones}{section.3.7}% 49
+\BOOKMARK [2][-]{subsection.3.7.2}{Rutas y subscripciones}{section.3.7}% 50
+\BOOKMARK [2][-]{subsection.3.7.3}{Dise\361o de interfaces e implementaci\363n}{section.3.7}% 51
+\BOOKMARK [1][-]{section.3.8}{Prototipo 5: Organizaci\363n en Lecciones}{chapter.3}% 52
+\BOOKMARK [2][-]{subsection.3.8.1}{Concepto, entidades y modificaciones}{section.3.8}% 53
+\BOOKMARK [2][-]{subsection.3.8.2}{Rutas y subscripciones}{section.3.8}% 54
+\BOOKMARK [2][-]{subsection.3.8.3}{Lista de reproducci\363n y opciones}{section.3.8}% 55
+\BOOKMARK [2][-]{subsection.3.8.4}{Dise\361o de interfaces e implementaci\363n}{section.3.8}% 56
+\BOOKMARK [1][-]{section.3.9}{Prototipo 6: P\341gina de perfil y Contactos}{chapter.3}% 57
+\BOOKMARK [2][-]{subsection.3.9.1}{Perfil}{section.3.9}% 58
+\BOOKMARK [2][-]{subsection.3.9.2}{Contactos}{section.3.9}% 59
+\BOOKMARK [1][-]{section.3.10}{Prototipo 7: Conversaciones y alertas}{chapter.3}% 60
+\BOOKMARK [2][-]{subsection.3.10.1}{Conversaciones}{section.3.10}% 61
+\BOOKMARK [2][-]{subsection.3.10.2}{Alertas}{section.3.10}% 62
+\BOOKMARK [1][-]{section.3.11}{Prototipo 8: Emails e integraci\363n de servicios de registro}{chapter.3}% 63
+\BOOKMARK [2][-]{subsection.3.11.1}{Verificaci\363n de Email, cambio y recuperaci\363n de contrase\361a}{section.3.11}% 64
+\BOOKMARK [2][-]{subsection.3.11.2}{Distribuidor y par\341metros globales}{section.3.11}% 65
+\BOOKMARK [2][-]{subsection.3.11.3}{Env\355o de emails desde la aplicaci\363n}{section.3.11}% 66
+\BOOKMARK [2][-]{subsection.3.11.4}{Integraci\363n de servicios de registro}{section.3.11}% 67
+\BOOKMARK [1][-]{section.3.12}{Prototipo 9: P\341gina principal y sistema de b\372squeda}{chapter.3}% 68
+\BOOKMARK [2][-]{subsection.3.12.1}{Estructura}{section.3.12}% 69
+\BOOKMARK [2][-]{subsection.3.12.2}{Sistema de b\372squeda basado en modificadores}{section.3.12}% 70
+\BOOKMARK [1][-]{section.3.13}{Prototipo 10: P\341gina de inicio y m\363dulos adicionales}{chapter.3}% 71
+\BOOKMARK [2][-]{subsection.3.13.1}{P\341gina de inicio}{section.3.13}% 72
+\BOOKMARK [2][-]{subsection.3.13.2}{Espacio para tutoriales}{section.3.13}% 73
+\BOOKMARK [2][-]{subsection.3.13.3}{Espacio para features}{section.3.13}% 74
+\BOOKMARK [2][-]{subsection.3.13.4}{M\363dulo de ayuda flexible}{section.3.13}% 75
+\BOOKMARK [1][-]{section.3.14}{Prototipo Final: Notificaciones y restricciones de acceso}{chapter.3}% 76
+\BOOKMARK [2][-]{subsection.3.14.1}{Notificaciones}{section.3.14}% 77
+\BOOKMARK [2][-]{subsection.3.14.2}{Recursos de error}{section.3.14}% 78
+\BOOKMARK [1][-]{section.3.15}{Despliegue}{chapter.3}% 79
+\BOOKMARK [2][-]{subsection.3.15.1}{Primeros pasos}{section.3.15}% 80
+\BOOKMARK [2][-]{subsection.3.15.2}{Proceso}{section.3.15}% 81
+\BOOKMARK [2][-]{subsection.3.15.3}{Pruebas globales}{section.3.15}% 82
+\BOOKMARK [2][-]{subsection.3.15.4}{Licencias}{section.3.15}% 83
+\BOOKMARK [0][-]{chapter.4}{Experimentaci\363n}{}% 84
+\BOOKMARK [1][-]{section.4.1}{Motivaci\363n}{chapter.4}% 85
+\BOOKMARK [1][-]{section.4.2}{Planteamiento y objetivos}{chapter.4}% 86
+\BOOKMARK [1][-]{section.4.3}{Proceso y realizaci\363n}{chapter.4}% 87
+\BOOKMARK [1][-]{section.4.4}{Resultados y an\341lisis}{chapter.4}% 88
+\BOOKMARK [0][-]{chapter.5}{Conclusi\363n}{}% 89
+\BOOKMARK [0][-]{section*.247}{Bibliograf\355a}{}% 90
+\BOOKMARK [1][-]{section.5.1}{Principales Sitios Web}{section*.247}% 91
+\BOOKMARK [1][-]{section.5.2}{Libros}{section*.247}% 92
+\BOOKMARK [1][-]{section.5.3}{Art\355culos}{section*.247}% 93
+\BOOKMARK [1][-]{section.5.4}{Tutoriales}{section*.247}% 94
+\BOOKMARK [1][-]{section.5.5}{Paquetes}{section*.247}% 95
+\BOOKMARK [1][-]{section.5.6}{Repositorios}{section*.247}% 96
+\BOOKMARK [0][-]{section*.249}{Ap\351ndices}{}% 97
+\BOOKMARK [0][-]{appendix.Alph1}{Dise\361o de documentos para Mongo}{}% 98
+\BOOKMARK [0][-]{appendix.Alph2}{Ejemplos de c\363digo}{}% 99
+\BOOKMARK [0][-]{appendix.Alph3}{Dise\361o de Interfaces}{}% 100
+\BOOKMARK [0][-]{appendix.Alph4}{Capturas de pantalla}{}% 101

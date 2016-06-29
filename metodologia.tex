@@ -1,201 +1,215 @@
-\chapter{Objetivos y metodología}\label(ch:metodologia)
+\chapter{Objetivos y metodología}\label{ch:metodologia}
 \section{Motivación}
 \paragraph{}
-En la actualidad existen distintas aplicaciones y sitios web destinados a facilitar la labor del desarrollador. Sitios como PivotalTracker, Github, GitBucket, CodePen, Codecademy o StackOverflow. Estos sitios proporcionan herramientas para un correcto desarrollo de cualquier proyecto. En el caso de Github o GitBucket facilitan la creación de repositorios remotos con un sistema de control de versiones. PivotalTracker permite organizar las tareas de un proyecto y CodePen, Codecademy y StackOverflow son sitios web para el aprendizaje y compartir conocimientos. 
+En la actualidad existen distintas aplicaciones y sitios web destinados a facilitar la labor del desarrollador. Sitios como PivotalTracker, Github, \textbf{GitBucket}, \textbf{CodePen}, \textbf{Codecademy}, \textbf{StackOverflow} o \textbf{StackExchange}\footnote{\url{http://stackexchange.com/}}. Estos sitios proporcionan herramientas para un correcto desarrollo de cualquier proyecto. En el caso de Github o GitBucket facilitan la creación de repositorios remotos con un sistema de control de versiones. PivotalTracker permite organizar las tareas de un proyecto y CodePen, Codecademy y StackOverflow son sitios web para el aprendizaje y compartir conocimientos. 
 \paragraph{}
-Es precisamente el aprender y compartir lo que mueve el mundo del desarrollo. Cualquier desarrollador utiliza ideas propias y de otros desarrolladores para realizar cualquier proyecto. Pero muchas veces esas ideas no son muy intuitivas o fáciles de aprender a partir de un artículo o un fichero de código completado. Por esto muchas veces recurrimos a plataformas de difusión de video para poder aprender rápidamente. 
+Es precisamente el \emph{aprender y compartir} lo que mueve el mundo del desarrollo. Cualquier desarrollador utiliza ideas propias y de otros desarrolladores para realizar cualquier proyecto. Pero muchas veces esas ideas no son muy intuitivas o fáciles de aprender a partir de un artículo o un fichero de código completado. Por esto muchas veces recurrimos a \emph{plataformas de difusión de video} para poder aprender rápidamente. 
 \paragraph{}
-De esta necesidad surge la motivación de crear una aplicación web que sirva de plataforma para todos los desarrolladores. Una plataforma donde puedan aprender rápidamente, intercambiar conocimientos de manera interactiva y que permita la comunicación entre sus usuarios. Puesto que la información debería ser lo más visual e interactiva posible el formato se basará en grabaciones de código y audio sobre un editor. 
+También existen otros sitios web cuya finalidad es la de compartir conocimientos y aprender de forma interactiva como \textbf{Mediathread}\footnote{\url{http://mediathread.ccnmtl.columbia.edu/accounts/login/?next=/}}, \textbf{YourTalk}\footnote{\url{http://urtalk.com/about/}} y \textbf{KhanAcademy}\footnote{\url{https://www.khanacademy.org/computing/computer-programming/html-css-js/html-js-dom-animation/p/animating-dom-with-setinterval}}. Este proyecto intenta emular dicha funcionalidad e ir un paso más allá.
+\paragraph{}
+De esta necesidad surge la motivación de crear una \textbf{aplicación web} que sirva de \textbf{plataforma para todos los desarrolladores}. Una plataforma donde puedan \textbf{aprender} rápidamente, \textbf{intercambiar} conocimientos de manera \textbf{interactiva} y que permita la \textbf{comunicación} entre sus usuarios. Puesto que la información debería ser lo más visual e interactiva posible el formato se basará en \textbf{grabaciones de código y audio sobre un editor}. Además Cada grabación podrá pausarse y crear una nueva a modo de respuesta a partir de ese instante.
 
 \section{Requisitos}\label{sec:requisitos}
 \paragraph{} 
 Con la motivación surge el proceso de pensar en las necesidades que tendrá el usuario al utilizar la aplicación. Estas necesidades se traducen en requisitos que debe cumplir la aplicación y que hay que tener presentes en todo momento del diseño y del desarrollo. Tanto nuestro concepto de la aplicación como las necesidades del usuario pueden verse alteradas durante el desarrollo del proyecto por lo tanto pueden surgir nuevos requisitos y verse alterados los ya establecidos.
 \paragraph{}
 A continuación se exponen todos los requisitos que debería cumplir nuestra aplicación y que se han ido extrayendo a lo largo de la realización del proyecto:
- \begin{enumerate}
- \item \label{r1} Se deberá proporcionar una interfaz de inicio para que el usuario pueda explorar las características de la aplicación, aprender, y poder crear un usuario para acceder a la misma.
+ \begin{itemize}
+ \item \textbf{Experiencia: }
+	\begin{enumerate}
+		\item \label{r19} Para una mejor experiencia es necesario que el usuario conozca lo que sucede dentro de aplicación para ello debe existir un módulo que permita crear notificaciones personalizadas y de interés para el usuario. 
+		\item \label{r20} El usuario deberá tener acceso rápido a las listas de contenido.
+		\item \label{r23} La aplicación deberá ser óptima y precisa y proporcionar al usuario una interfaz cuidada e intuitiva.
+		\item \label{r61} Para una mejor experiencia es necesario realizar al usuario recomendaciones de contenido basadas en sus gustos y su recorrido dentro de la aplicación.
 
-\item \label{r2} Los usuarios deben ser autenticados para poder acceder a la mayoría de la funcionalidad de la aplicación.
+		\item \label{r62} Para una mejor experiencia es necesario mostrar al usuario las tendencias o el contenido más popular dentro de la aplicación.
 
-\item \label{r3} Un usuario podrá registrarse introduciendo un nombre de usuario, un correo electrónico y una contraseña o bien mediante los servicios integrados de 
+		\item \label{r63} Para una mejor experiencia es necesario aportar al usuario un mini tutorial compuesto por tareas básicas que le ayude a dar sus primeros pasos en la aplicación.
+		\item \label{r64} Es necesario que los usuarios puedan explorar una descripción de las características de la aplicación para ello se debe crear un espacio en el que el usuario las conozca.
+
+		\item \label{r65} Es necesario que los usuarios puedan aprender cómo usar la aplicación para ello se debe crear un espacio con tutoriales.
+		\item \label{r69} Es necesario que los usuarios puedan recibir notificaciones de nuevos mensajes de sus conversaciones abiertas cuando no estén visualizando dicha conversación.
+	\end{enumerate}
+ \item \textbf{Registro: }
+ 	\begin{enumerate}
+	 	\item \label{r1} Se deberá proporcionar una interfaz de inicio para que el usuario pueda explorar las características de la aplicación, aprender, y poder crear un usuario para acceder a la misma.
+		\item \label{r2} Los usuarios deben ser autenticados para poder acceder a la mayoría de la funcionalidad de la aplicación.
+
+		\item \label{r3} Un usuario podrá registrarse introduciendo un nombre de usuario, un correo electrónico y una contraseña o bien mediante los servicios integrados de 
 Facebook, Github y Google+.
+		\item \label{r6} Un usuario podrá acceder a la aplicación introduciendo su nombre de usuario o email asociado y su contraseña.
+		\item \label{r5} Un usuario podrá recuperar su contraseña siempre que tenga asociado un correo electrónico y éste haya sido verificado y puede estar autenticado o no.
+	\end{enumerate}
 
-\item \label{r4} Es necesario proporcionar al usuario un proceso de validación o verificación de email, un proceso de cambio de contraseña y otro de recuperación de la misma.
+ \item \textbf{Servicios: }
+ 	\begin{enumerate}
+		\item \label{r4} Es necesario proporcionar al usuario un proceso de validación o verificación de email, un proceso de cambio de contraseña y otro de recuperación de la misma.
+		\item \label{r89} Los emails no son entidades dentro de la aplicación. No se guarda registro de ellos. Simplemente se proporciona una herramienta que permite su redacción y envío.
+	\end{enumerate}
 
-\item \label{r5} Un usuario podrá recuperar su contraseña siempre que tenga asociado un correo electrónico y éste haya sido verificado y puede estar autenticado o no.
+ \item \textbf{Perfil: }
+ 	\begin{enumerate}
+		\item \label{r8} Un usuario podrá realizar peticiones de contacto a otros usuarios para añadirlos a su lista de contactos.
+		\item \label{r9} Un usuario podrá aceptar o rechazar peticiones. 
 
-\item \label{r6} Un usuario podrá acceder a la aplicación introduciendo su nombre de usuario o email asociado y su contraseña.
+		\item \label{r10} Un usuario podrá reenviar una solicitud de contacto que haya sido rechazada.
+		\item \label{r70} Cada usuario deberá poder acceder a toda su información y contenido. Para ello se les proporcionará un enlace en todo momento a su perfil y un acceso a sus contenidos principales.
 
-\item \label{r7} Un usuario podrá crear canales, lecciones, grabaciones y conversaciones.
+		\item \label{r71} Cada usuario podrá visualizar la lista de sus contenidos, sus subscripciones, sus conversaciones, una lista con las últimas reproducciones y sus contactos.
 
-\item \label{r8} Un usuario podrá realizar peticiones de contacto a otros usuarios para añadirlos a su lista de contactos.
+		\item \label{r72} Cada usuario podrá editar su perfil a saber: su avatar, el banner, su descripción y sus emails.
 
-\item \label{r9} Un usuario podrá aceptar o rechazar peticiones. 
+		\item \label{r73} Los perfiles podrán ser vistos por todos los usuarios por lo que se establecen dos roles: propietario, visitante.
 
-\item \label{r10} Un usuario podrá reenviar una solicitud de contacto que haya sido rechazada.
+		\item \label{r74} Un visitante ya sea contacto o no del propietario podrá visualizar todo su contenido a excepción de sus conversaciones.
 
-\item \label{r11} Un usuario podrá crear conversaciones con otros usuarios que estén en su lista de contactos.
+		\item \label{r75} Un visitante ya sea contacto o no del propietario podrá acceder al perfil asociado al servicio integrado en el caso de que el propietario se haya registrado mediante dicho servicio.
 
-\item \label{r12} Cualquier contenido se podrá etiquetar para facilitar la recomendación y búsqueda del mismo, con la excepcion de las conversaciones.
+		\item \label{r76} Un visitante que sea contacto del propietario podrá iniciar una conversación o redactar un email al email del propietario en el caso de que éste tenga configurado y verificado algún correo.
 
-\item \label{r13} Cualquier contenido se podrá votar y comentar con la excepción de las conversaciones.
+		\item \label{r77} Un visitante que no sea contacto podrá enviar una solicitud de contacto al propietario.
 
-\item \label{r14} Se podrán crear respuestas a los comentarios.
+		\item \label{r78} Se debe crear un espacio para realizar solicitudes de contacto que lo componga un buscador (autocompletado de usuarios) y listas de peticiones recibidas y enviadas y su estado.
+	\end{enumerate}
 
-\item \label{r15} Todo contenido deberá mostar contadores de votos, subcontenidos y usuarios subscritos (cuando proceda).
+ \item \textbf{Contenidos:}
+ 	\begin{enumerate}
+		\item \label{r7} Un usuario podrá crear canales, lecciones, grabaciones y conversaciones.
+		\item \label{r12} Cualquier contenido se podrá etiquetar para facilitar la recomendación y búsqueda del mismo, con la excepcion de las conversaciones.
 
-\item \label{r16} Todo contenido podrá ser editado.
+		\item \label{r13} Cualquier contenido se podrá votar y comentar con la excepción de las conversaciones.
 
-\item \label{r17} Todos los contenidos podrán ser borrados a excepción de las conversaciones.
+		\item \label{r14} Se podrán crear respuestas a los comentarios.
 
-\item \label{r18} No se podrá borrar ningun contenido con subcontenidos.
+		\item \label{r15} Todo contenido deberá mostar contadores de votos, subcontenidos y usuarios subscritos (cuando proceda).
 
-\item \label{r19} Para una mejor experiencia es necesario que el usuario conozca lo que sucede dentro de aplicación para ello debe existir un módulo que permita crear notificaciones personalizadas y de interés para el usuario. 
+		\item \label{r16} Todo contenido podrá ser editado.
 
-\item \label{r20} El usuario deberá tener acceso rápido a las listas de contenido.
+		\item \label{r17} Todos los contenidos podrán ser borrados a excepción de las conversaciones.
 
-\item \label{r21} Todas las listas de contenido podrán ser filtradas por dos tipos de filtros: más recientes y más populares.
+		\item \label{r18} No se podrá borrar ningún contenido con subcontenidos.
+		\item \label{r21} Todas las listas de contenido podrán ser filtradas por dos tipos de filtros: más recientes y más populares.
+		\item \label{r22} Para todo tipo de contenido existen dos roles con un tipo de acceso diferente a las funcionalidades propias del mismo.
+		\item \label{r66} Es necesario que los contenidos puedan mostrarse en listas para su navegación. Para ello cada contenido debe poseer una miniatura asociada que muestre la información más relevante para cada tipo de contenido.
 
-\item \label{r22} Para todo tipo de contenido existen dos roles con un tipo de acceso diferente a las funcionalidades propias del mismo.
+		\item \label{r67} Es necesaria la presencia de un buscador de contenido dentro de la aplicación.
 
-\item \label{r23} La aplicación deberá ser óptima y precisa y proporcionar al usuario una interfaz cuidada e intuitiva.
+		\item \label{r68} Las búsquedas en la aplicación serán dinámicas y con un sistema de etiquetas que se irán sugiriendo de manera automámica.
+	\end{enumerate}
+	
+\item \textbf{Grabaciones: }
+ 	\begin{enumerate}
+		\item \label{r24} Las grabaciones serán grabaciones de código y audio sobre editor.
 
-\item \label{r24} Las grabaciones serán grabaciones de código y audio sobre editor.
+		\item \label{r25} Las grabaciones serán el elemento atómico en lo que respecta a contenido dentro de la aplicación.
 
-\item \label{r25} Las grabaciones serán el elemento atómico en lo que respecta a contenido dentro de la aplicación.
+		\item \label{r26} El objeto de cada grabación será grabar documentos de código. 
 
-\item \label{r26} El objeto de cada grabación será grabar documentos de código. 
+		\item \label{r27} Cada grabación podrá tener 1 o más documentos.
 
-\item \label{r27} Cada grabación podrá tener 1 o más documentos.
+		\item \label{r28} Los documentos tendrán un titulo único dentro de cada grabación, un modo (lenguaje en el que están programados) y un tema (aspecto en el editor).
 
-\item \label{r28} Los documentos tendrán un titulo único dentro de cada grabación, un modo (lenguaje en el que están programados) y un tema (aspecto en el editor).
+		\item \label{r29} Un usuario podrá crear grabaciones.
 
-\item \label{r29} Un usuario podrá crear grabaciones.
+		\item \label{r30} Un usuario podrá crear respuestas sobre cualquier grabación a partir de cualquier instante de su reproducción.
 
-\item \label{r30} Un usuario podrá crear respuestas sobre cualquier grabación a partir de cualquier instante de su reproducción.
+		\item \label{r31} Las grabaciones podrán ser aisladas o pertenecer a un canal o lección.
 
-\item \label{r31} Las grabaciones podrán ser aisladas o pertenecer a un canal o lección.
+		\item \label{r32} El usuario podrá navegar, visualizar y reproducir cualquier grabación.
 
-\item \label{r32} El usuario podrá navegar, visualizar y reproducir cualquier grabación.
+		\item \label{r33} El usuario podrá acceder al padre de una grabación (respuesta) desde la página de visualización de la misma.
 
-\item \label{r33} El usuario podrá acceder al padre de una grabación (respuesta) desde la página de visualización de la misma.
+		\item \label{r34} El usuario podrá visualizar tanto las respuestas a una grabación cómo grabaciones relacionadas a la misma.
 
-\item \label{r34} El usuario podrá visualizar tanto las respuestas a una grabación cómo grabaciones relacionadas a la misma.
+		\item \label{r35} El usuario podrá acceder al canal o lección a la que pertenece cualquier grabación.
 
-\item \label{r35} El usuario podrá acceder al canal o lección a la que pertenece cualquier grabación.
+		\item \label{r36} Las grabaciones no tienen porqué poseer un título único, pero sí deben tener uno. Opcionalmente tendrán una descripción y una lista de etiquetas.
 
-\item \label{r36} Las grabaciones no tienen porqué poseer un título único, pero sí deben tener uno. Opcionalmente tendrán una descripción y una lista de etiquetas.
+		\item \label{r37} Las grabaciones podrán ser editadas mediante una respuesta.
 
-\item \label{r37} Las grabaciones podrán ser editadas mediante una respuesta.
+		\item \label{r38} El usuario podrá cambiar el instante de la reproducción, pausarla o reanudarla.
+	\end{enumerate}
+	
+\item \textbf{Canales: }
+ 	\begin{enumerate}
+		\item \label{r39} Un usuario podrá crear canales.
 
-\item \label{r38} El usuario podrá cambiar el instante de la reproducción, pausarla o reanudarla.
+		\item \label{r40} Un usuario podrá subscribirse a cualquier canal que no haya sido creado por él mismo para recibir notificaciones relevantes.
 
-\item \label{r39} Un usuario podrá crear canales.
+		\item \label{r41} El contenido de los canales estará formado por una lista de grabaciones.
 
-\item \label{r40} Un usuario podrá subscribirse a cualquier canal que no haya sido creado por él mismo para recibir notificaciones relevantes.
+		\item \label{r42} La creación de contenido no está restringida para los canales. Todos los usuarios podrán generar contenido dentro de cualquier canal.
 
-\item \label{r41} El contenido de los canales estará formado por una lista de grabaciones.
+		\item \label{r43} Cualquier usuario podrá votar y comentar canales y sus contenidos.
 
-\item \label{r42} La creación de contenido no está restringida para los canales. Todos los usuarios podrán generar contenido dentro de cualquier canal.
+		\item \label{r44} Cada canal podrá ser editado por el creador.
+	\end{enumerate}
 
-\item \label{r43} Cualquier usuario podrá votar y comentar canales y sus contenidos.
+ 
 
-\item \label{r44} Cada canal podrá ser editado por el creador.
+ \item \textbf{Lecciones: }
+ 	\begin{enumerate}
+		\item \label{r45} Un usuario podrá crear lecciones.
 
-\item \label{r45} Un usuario podrá crear lecciones.
+		\item \label{r46} El contenido de las lecciones serán secciones formadas por una lista de grabaciones.
 
-\item \label{r46} El contenido de las lecciones serán secciones formadas por una lista de grabaciones.
+		\item \label{r47} La creación de contenido estará restringida para las lecciones. Sólo el creador de la lección puede crear contenido directo a las mismas a saber: secciones y grabaciones.
 
-\item \label{r47} La creación de contenido estará restringida para las lecciones. Sólo el creador de la lección puede crear contenido directo a las mismas a saber: secciones y grabaciones.
+		\item \label{r48} Un usuario podrá subscribirse a cualquier lección que no haya sido creada por él mismo para poder acceder a su contenido y recibir las notificaciones relevantes.
 
-\item \label{r48} Un usuario podrá subscribirse a cualquier lección que no haya sido creada por él mismo para poder acceder a su contenido y recibir las notificaciones relevantes.
+		\item \label{r49} Cualquier usuario subscrito a una lección podrá crear respuestas a todas las grabaciones que existan dentro de la misma.
 
-\item \label{r49} Cualquier usuario subscrito a una lección podrá crear respuestas a todas las grabaciones que existan dentro de la misma.
+		\item \label{r50} El contenido de una sección se reproducirá mediante el concepto de lista de reproducción. 
 
-\item \label{r50} El contenido de una sección se reproducirá mediante el concepto de lista de reproducción. 
+		\item \label{r51}  El reproductor deberá identificar si la grabación procede de una lección y si forma parte de una lista de reproducción. Si es el caso deberá proporcionar una interfaz para navegar por la lista de reproducción y establecer opciones tipo: reproducción y repetición automática.
 
-\item \label{r51}  El reproductor deberá identificar si la grabación procede de una lección y si forma parte de una lista de reproducción. Si es el caso deberá proporcionar una interfaz para navegar por la lista de reproducción y establecer opciones tipo: reproducción y repetición automática.
+		\item \label{r52} Las opciones reproducción y repetición automática estarán asociadas al usuario no a la sección.
 
-\item \label{r52} Las opciones reproducción y repetición automática estarán asociadas al usuario no a la sección.
+		\item \label{r53} La reproducción automática provocará que se reproduzca la siguiente grabación de la lista al finalizar la actual.
 
-\item \label{r53} La reproducción automática provocará que se reproduzca la siguiente grabación de la lista al finalizar la actual.
+		\item \label{r54} La repetición automática provocará que la reproducción de la lista sea circular (ni principio ni fin).
 
-\item \label{r54} La repetición automática provocará que la reproducción de la lista sea circular (ni principio ni fin).
+		\item \label{r55} Cualquier usuario que esté subscrito a una lección podrá votar a la misma y a sus contenidos (grabaciones).
 
-\item \label{r55} Cualquier usuario que esté subscrito a una lección podrá votar a la misma y a sus contenidos (grabaciones).
+		\item \label{r56} Cualquier usuario que esté subscrito a una lección podrá comentar la misma y sus contenidos (grabaciones).
 
-\item \label{r56} Cualquier usuario que esté subscrito a una lección podrá comentar la misma y sus contenidos (grabaciones).
+		\item \label{r57} Cada lección podrá ser editada por el creador. 
 
-\item \label{r57} Cada lección podrá ser editada por el creador. 
+		\item \label{r58} El orden de las secciones podrá ser cambiado por el creador.
 
-\item \label{r58} El orden de las secciones podrá ser cambiado por el creador.
+		\item \label{r59}  El orden de las grabaciones que forman una sección podrá ser cambiado por el creador.
 
-\item \label{r59}  El orden de las grabaciones que forman una sección podrá ser cambiado por el creador.
+		\item \label{r60} Las secciones podrán ser borradas por el creador en cualquier momento, siempre que no tengan contenido.
+	\end{enumerate}
+\item \textbf{Conversaciones: }
+	\begin{enumerate}
+		\item \label{r11} Un usuario podrá crear conversaciones con otros usuarios que estén en su lista de contactos.
+		\item \label{r79} Una conversación debe incluir al menos 2 contactos en el momento de creación. 
 
-\item \label{r60} Las secciones podrán ser borradas por el creador en cualquier momento, siempre que no tengan contenido.
+		\item \label{r80} Cada conversación podrá ser editada por todos los miembros. 
 
-\item \label{r61} Para una mejor experiencia es necesario realizar al usuario recomendaciones de contenido basadas en sus gustos y su recorrido dentro de la aplicación.
+		\item \label{r81} Las opciones de edición de cada conversación están restringidas según roles: creador o líder, invitados.
 
-\item \label{r62} Para una mejor experiencia es necesario mostrar al usuario las tendencias o el contenido más popular dentro de la aplicación.
+		\item \label{r82} Sólo el líder de la conversación puede cambiar el asunto y expulsar a miembros de la misma.
 
-\item \label{r63} Para una mejor experiencia es necesario aportar al usuario un mini tutorial compuesto por tareas básicas que le ayude a dar sus primeros pasos en la aplicación.
+		\item \label{r83} El líder sólo podrá dejar la conversación si antes ha nombrado como nuevo líder a alguno de los miembros invitados.
 
-\item \label{r64} Es necesario que los usuarios puedan explorar una descripción de las características de la aplicación para ello se debe crear un espacio en el que el usuario las conozca.
+		\item \label{r84} Todos los invitados podrán dejar la conversación en el momento que deseen.
 
-\item \label{r65} Es necesario que los usuarios puedan aprender cómo usar la aplicación para ello se debe crear un espacio con tutoriales.
+		\item \label{r85} Todos los miembros podrán eliminar el historial de mensajes.
 
-\item \label{r66} Es necesario que los contenidos puedan mostrarse en listas para su navegación. Para ello cada contenido debe poseer una miniatura asociada que muestre la información más relevante para cada tipo de contenido.
+		\item \label{r86} Todos los miembros podrán invitar a la conversación a usuarios que sean sus contactos.
 
-\item \label{r67} Es necesaria la presencia de un buscador de contenido dentro de la aplicación.
+		\item \label{r87} Todos los miembros podrán cambiar el fondo de la conversación y dicha configuración estará asociada a dicho usuario.
 
-\item \label{r68} Las búsquedas en la aplicación serán dinámicas y con un sistema de etiquetas que se irán sugiriendo de manera automámica.
+		\item \label{r88} Las conversaciones son privadas, es decir, ningún usuario puede acceder a ninguna conversación de la que no sea miembro aunque alguno de sus contactos sea miembro.
+	\end{enumerate}
+\end{itemize}
 
-\item \label{r69} Es necesario que los usuarios puedan recibir notificaciones de nuevos mensajes de sus conversaciones abiertas cuando no estén visualizando dicha conversación.
-
-\item \label{r70} Cada usuario deberá poder acceder a toda su información y contenido. Para ello se les proporcionará un enlace en todo momento a su perfil y un acceso a sus contenidos principales.
-
-\item \label{r71} Cada usuario podrá visualizar la lista de sus contenidos, sus subscripciones, sus conversaciones, una lista con las últimas reproducciones y sus contactos.
-
-\item \label{r72} Cada usuario podrá editar su perfil a saber: su avatar, el banner, su descripción y sus emails.
-
-\item \label{r73} Los perfiles podrán ser vistos por todos los usuarios por lo que se establecen dos roles: propietario, visitante.
-
-\item \label{r74} Un visitante ya sea contacto o no del propietario podrá visualizar todo su contenido a excepción de sus conversaciones.
-
-\item \label{r75} Un visitante ya sea contacto o no del propietario podrá acceder al perfil asociado al servicio integrado en el caso de que el propietario se haya registrado mediante dicho servicio.
-
-\item \label{r76} Un visitante que sea contacto del propietario podrá iniciar una conversación o redactar un email al email del propietario en el caso de que éste tenga configurado y verificado algún correo.
-
-\item \label{r77} Un visitante que no sea contacto podrá enviar una solicitud de contacto al propietario.
-
-\item \label{r78} Se debe crear un espacio para realizar solicitudes de contacto que lo componga un buscador (autocompletado de usuarios) y listas de peticiones recibidas y enviadas y su estado.
-
-\item \label{r79} Una conversación debe incluir al menos 2 contactos en el momento de creación. 
-
-\item \label{r80} Cada conversación podrá ser editada por todos los miembros. 
-
-\item \label{r81} Las opciones de edición de cada conversación están restringidas según roles: creador o líder, invitados.
-
-\item \label{r82} Sólo el líder de la conversación puede cambiar el asunto y expulsar a miembros de la misma.
-
-\item \label{r83} El líder sólo podrá dejar la conversación si antes ha nombrado como nuevo líder a alguno de los miembros invitados.
-
-\item \label{r84} Todos los invitados podrán dejar la conversación en el momento que deseen.
-
-\item \label{r85} Todos los miembros podrán eliminar el historial de mensajes.
-
-\item \label{r86} Todos los miembros podrán invitar a la conversación a usuarios que sean sus contactos.
-
-\item \label{r87} Todos los miembros podrán cambiar el fondo de la conversación y dicha configuración estará asociada a dicho usuario.
-
-\item \label{r88} Las conversaciones son privadas, es decir, ningún usuario puede acceder a ninguna conversación de la que no sea miembro aunque alguno de sus contactos sea miembro.
-
-\item \label{r89} Los emails no son entidades dentro de la aplicación. No se guarda registro de ellos. Simplemente se proporciona una herramienta que permite su redacción y envío.
- \end{enumerate}
  
 \section{Metodología y plan de trabajo}
-\paragraph{}
-En este Trabajo Fin de Grado hemos seguido una metodología de realimentación o feedback basada en la metodología ágil SCRUM. Se basa en que el producto final es el resultado de una serie de prototipos los cuales han sido implementados en cada iteración del proceso. Podemos ver las etapas de cada iteración en la figura \ref{fig:metodologia} a saber: extracción de requisitos, aprendizaje, etapa de diseño, etapa de desarrollo, realización de pruebas y evaluación del producto.
+\subsection{Metodología}
+En este Trabajo Fin de Grado hemos seguido una metodología de \textbf{realimentación} o \textbf{feedback} basada en la metodología ágil \textbf{SCRUM}. Se basa en que el producto final es el resultado de una serie de \textbf{prototipos} los cuales han sido implementados en cada \emph{iteración} del proceso. Podemos ver las etapas de cada iteración en la figura \ref{fig:metodologia} a saber: extracción de requisitos, aprendizaje, etapa de diseño, etapa de desarrollo, realización de pruebas y evaluación del producto.
 
 \begin{figure}[h]
 \centering
@@ -203,8 +217,10 @@ En este Trabajo Fin de Grado hemos seguido una metodología de realimentación o f
 \caption{Esquema metodología de realimentación}
 \label{fig:metodologia}
 \end{figure}
-\paragraph{}
-El código fuente de este TFG está disponible en un repositorio público en GitHub y se ha ido documentando en la Wiki del mismo. La documentación incluye manuales de uso de los módulos principales desarrollados, diseño de los objetos en la base de datos y un historial descriptivo de las reuniones realizadas con el tutor. La comunicación con el tutor se ha realizado mediante la plataforma Slack y mediante PivotalTracker se han ido estableciendo y completando las diferentes tareas de cada fase del desarrollo del proyecto.
+
+
+\subsection{Plan de trabajo}
+El código fuente de este TFG está disponible en un repositorio público en GitHub \cite{bazGitRepo} y se ha ido documentando en la Wiki \cite{bazWikiProyect} del mismo. La documentación incluye manuales de uso de los módulos principales desarrollados, diseño de los objetos en la base de datos y un historial descriptivo de las reuniones realizadas con el tutor. La comunicación con el tutor se ha realizado mediante la plataforma Slack y a través de PivotalTracker se han ido estableciendo y completando las diferentes tareas de cada fase del desarrollo del proyecto.
 \paragraph{}
 El plan de trabajo se ha desarrollado en las siguientes fases:  
 \begin{itemize}
@@ -218,6 +234,49 @@ El plan de trabajo se ha desarrollado en las siguientes fases:
 	\item Desarrollo de Interfaces
 	\item Pruebas y evaluación
 \end{enumerate}
-\item \textbf{Fase 3 - Final:} una vez implementado el prototipo final se ha procedido a la fase final del proyecto que corresponde a la mejora global y su despliegue.
+\item \textbf{Fase 3 - Final:} una vez implementado el prototipo final se ha procedido a la fase final del proyecto que corresponde a la mejora global y su despliegue. El despliegue implica también la introducción de licencias para preservar los derechos de autor y convertir el código en código libre.
 \end{itemize}
+
+\subsection{Magnitud del proyecto}
+En todo entorno corporativo en el momento que finaliza un proyecto es necesario un análisis de magnitud basado en la medición del tiempo y esfuerzo que ha requerido la implementación de cada una de sus fases. Esta medición utiliza las unidades meses/hombre (un hombre trabajando 8 horas al día durante un mes) y líneas de código.
+
+\paragraph{}
+Las mediciones realizadas en este proyecto se reflejan en la tabla \ref{tabla:magnitudAll}. Una vez realizadas las mediciones es necesario su análisis que aportará una idea global de la magnitud del proyecto (figura \ref{fig:magnitudGlobal}).
+
+\begin{table}[htpb]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Prototipos & JS (sloc) & HTML (sloc) & CSS (sloc) & Meses/hombre & Ficheros\\
+\hline \hline
+1 & 704 & 467 & 1124 & 0.5 & 22\\ \hline
+2 & 2122 & 594 & 1195 & 3 & 28\\ \hline
+3 & 521 & 244 & 166 & 0.5 & 4\\ \hline
+4 & 793 & 1047 & 480 & 1 & 10\\ \hline
+5 & 1038 & 617 & 409 & 2 & 11\\ \hline
+6 & 1481 & 979 & 357 & 1.5 & 10\\ \hline
+7 & 891 & 440 & 391 & 1 & 9\\ \hline
+8 & 707 & 488 & 342 & 0.5 & 13\\ \hline
+9 & 1141 & 310 & 370 & 1 & 7\\ \hline
+10 & 796 & 524 & 632 & 0.5 & 17\\ \hline
+11 & 297 & 25 & 60 & 0.5 & 7\\ \hline
+TOTAL & 10491 & 5735 & 5117 & 12 & 138\\ \hline
+\end{tabular}
+\caption{Mediciones de magnitud del proyecto}
+\label{tabla:magnitudAll}
+\end{center}
+\end{table}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=.7\textwidth]{MagnitudGraphic.png}
+	\caption{Gráfico magnitud global del proyecto}
+	\label{fig:magnitudGlobal}
+\end{figure} 
+
+
+
+
+
+
 

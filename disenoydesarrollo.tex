@@ -6,11 +6,11 @@ El modelo de arquitectura más habitual es el \textbf{MVC} (Modelo Vista Controla
 \begin{figure}[htbp]
     \centering
     \subfigure[Patrón de arquitectura MVC]{
-   	 \includegraphics[width=1\textwidth]{mvc.png}
+   	 \includegraphics[width=.8\textwidth]{mvc.png}
     	\label{fig:mvcpattern}
     }
     \subfigure[Patrón de arquitectura MVVM]{
-    	\includegraphics[width=1\textwidth]{mvvm.png}
+    	\includegraphics[width=.8\textwidth]{mvvm.png}
 	 \label{fig:mvvmpattern}
     }
     \caption{Patrones de arquitectura}
@@ -23,15 +23,15 @@ La elección del patrón de arquitectura a usar es importante puesto que esa decis
 
 \section{Búsqueda de herramientas}
 \paragraph{}
-Partiendo de los requisitos establecidos que caracterizarán la aplicación podemos afirmar que necesitamos encontrar herramientas que nos permitan construir una aplicación en tiempo real, realizar grabaciones de audio, una interfaz con UX (User eXperience) como parámetro fundamental y que trabaje de manera óptima.
+Partiendo de los requisitos establecidos que caracterizarán la aplicación podemos afirmar que necesitamos encontrar herramientas que nos permitan construir una aplicación en \emph{tiempo real}, realizar \emph{grabaciones de audio}, una interfaz con \textbf{UX} (User eXperience) como parámetro fundamental y que trabaje de manera óptima.
 
 \subsubsection{Aplicación en tiempo real y prototipado rápido}
 \paragraph{}
 Necesitamos algún framework o plataforma que trabaje con el concepto de reactividad o que lo simule. Elegimos MeteorJS por su flexibilidad, su asombroso concepto de reactividad y por su patrón de trabajo que engloba el desarrollo del cliente y del servidor. Debido a esta elección utilizaremos MongoDB como tecnología de base de datos y MVVM como patrón de arquitectura de la aplicación.
 \paragraph{}
-Para el enrutamiento es precisa otra herramienta que nos proporcione la funcionalidad de especificar a qué recurso pertenece una plantilla y que datos asociamos a ella. Para ello existen varios paquetes para Meteor que realizan este proceso como IronRouter o FlowRouter. Ambos igual de válidos pero para este proyecto se ha optado por IronRouter, ya que dispone de mayor documentación.
+Para el \textbf{enrutamiento} es precisa otra herramienta que nos proporcione la funcionalidad de especificar a qué recurso pertenece una plantilla y que datos asociamos a ella. Para ello se ha optado por el paquete para Meteor \textbf{IronRouter}.
 \paragraph{}
-Para el concepto de publicaciones y subscripciones de Meteor usaremos publishComposite, un paquete que permite realizar publicaciones compuestas (varias colecciones con relación de dependencia reactiva) y que siguen manteniendo el principio de reactividad y optimizando nuestro sistema de subscripciones. Sin este paquete realizar esta labor es más compleja. 
+Para el concepto de \textbf{publicaciones} y \textbf{subscripciones} de Meteor usaremos \textbf{publishComposite}, un paquete que permite realizar \emph{publicaciones compuestas} (varias colecciones con relación de dependencia reactiva) y que siguen manteniendo el principio de reactividad y optimizando nuestro sistema de \emph{subscripciones}. Sin este paquete realizar esta labor es más compleja. 
 
 \subsubsection{Grabaciones de audio}
 \paragraph{}
@@ -39,16 +39,16 @@ Existen numerosas formas de grabar audio vía web y algunas API de sitios como So
 
 \subsubsection{Hosting o Almacenamiento}
 \paragraph{}
-Utilizaremos el servicio de hosting de SoundCloud para almacenar el audio de nuestras grabaciones. No es lo más sensato para una aplicación real y comercializable puesto que existen restricciones en lo que corresponde a capacidad, pero para nuestra aplicación es más que suficiente. 
+Utilizaremos el servicio de hosting de SoundCloud para almacenar el audio de nuestras grabaciones. No es lo más sensato para una aplicación real y comercializable puesto que existen restricciones en lo referente a capacidad, pero para nuestra aplicación es más que suficiente. 
 
 \subsubsection{Interfaz con UX como parámetro de diseño fundamental}
 \paragraph{}
-Partiendo del requisito de que la aplicación debe ser atractiva al usuario y no sólo en términos visuales sino en eficacia a la hora de gestionar acciones, en este proyecto nos hemos decantado por el framework front-end Bootstrap para la maquetación y por la tecnología Flexbox para dotar de flexibilidad a las plantillas. Además utilizaremos SASS como preprocesador de CSS con el fin de optimizar nuestra arquitectura de estilos mediante un paquete para Meteor.
+Partiendo del requisito de que la aplicación debe ser atractiva al usuario y no sólo en términos visuales sino en \emph{eficacia} a la hora de gestionar acciones, en este proyecto nos hemos decantado por el framework front-end \textbf{Bootstrap} para la maquetación y por la tecnología \textbf{Flexbox} para dotar de flexibilidad a las plantillas. Además utilizaremos \textbf{SASS} como preprocesador de CSS con el fin de optimizar nuestra arquitectura de estilos mediante un paquete para Meteor.
 
 
 \section{Composición Inicial y entorno de desarrollo}
 \paragraph{}
-Una vez realizada la búsqueda de herramientas comenzamos a componer el entorno de nuestra aplicación. Para este proyecto utilizaremos el programa WebStorm de JetBrains. Incorpora herramientas de búsqueda y sustitución avanzada, terminal para comandos, integración con sistema de control de versiones Git y plugins que facilitan la labor de desarrollo como elmet.
+Una vez realizada la búsqueda de herramientas comenzamos a componer el entorno de nuestra aplicación. Para este proyecto utilizaremos el programa \textbf{WebStorm}\footnote{\url{https://www.jetbrains.com/webstorm/}} de \emph{JetBrains}. Incorpora herramientas de búsqueda y sustitución avanzada, terminal para comandos, integración con sistema de control de versiones Git y plugins que facilitan la labor de desarrollo como \textbf{emmet}\footnote{\url{https://www.jetbrains.com/help/webstorm/2016.1/emmet.html}}.
 \subsection{Primeros pasos}
 \paragraph{}
 Gracias al CLI de Meteor generamos nuestra aplicación mediante el comando: \emph{meteor create $<$AppName$>$}. Esto nos genera una carpeta con tres ficheros: index.html, index.js e index.css. En este momento ya tenemos nuestra aplicación Meteor creada. 
@@ -56,7 +56,7 @@ Gracias al CLI de Meteor generamos nuestra aplicación mediante el comando: \emph
 Ahora debemos estructurar nuestra aplicación según la jerarquía mostrada en la figura \ref{fig:hierarchyFolders} creando los ficheros y carpetas necesarios.
 
 \paragraph{}
-Una vez estructurada la aplicación instalamos los paquetes iniciales mediante el comando: \emph{meteor add $<$ PackageName$>$}. La lista de paquetes iniciales es la siguiente: 
+Una vez estructurada la aplicación instalamos los paquetes iniciales mediante el comando: \emph{meteor add $<$PackageName$>$}. La lista de paquetes iniciales es la siguiente: 
 \begin{itemize}
 \item \textbf{accounts-base:} paquete base para cuentas de usuario.
 \item \textbf{accounts-password:} contraseña como servicio de registro de usuarios.
@@ -80,7 +80,7 @@ SASS nos permite crear reglas dinámicas de estilos que poder incluir en cualquie
 \end{lstlisting}
 \paragraph{}
 Creamos un fichero con el nombre de \_mixins.scss dentro de la carpeta client al nivel del fichero index.html. El carácter \_ indica al preprocesador que esta hoja de estilos no la debe procesar. El procesado lo realizará en el momento que la importemos a otra hoja de estilos e incluyamos algún mixin.
-Los mixins más utilizados en este proyecto serán los siguientes: border-radius, flexbox (flex, flex-direction, flex-wrap, etc), opacity, transition, animation y gradient. El archivo está disponible en el repositorio de GitHub.
+Los mixins más utilizados en este proyecto serán los siguientes: border-radius, flexbox (flex, flex-direction, flex-wrap, etc), opacity, transition, animation y gradient. El archivo está disponible en el repositorio de GitHub\cite{bazGitRepo}.
 \section{Prototipo 1: Registro de usuarios y layout principal}
 \paragraph{}
 Este es el primer prototipo de la aplicación y se corresponde con el layout principal de la aplicación y con el registro de usuarios. 
@@ -110,6 +110,7 @@ Partiendo del requisito de que los usuarios deben estar autenticados para accede
 \item  Si el usuario no está autenticado el layout estará compuesto solamente por la plantilla \{\{$<$yield\}\} que corresponderá a la plantilla \{\{$<$mainPage\}\}.
 \end{itemize}
 El siguiente código muestra el fichero HTML de la plantilla \{\{layout\}\}:
+\vspace{0.5cm}
 \begin{lstlisting}[language=HTML]
 <template name="layout">
     <div id="main-wrapper">
@@ -126,35 +127,32 @@ El siguiente código muestra el fichero HTML de la plantilla \{\{layout\}\}:
     </div>
 </template>
 \end{lstlisting}
+\vspace{0.5cm}
 El ayudante (helper) currentUser que proporciona Meteor proporciona una función cuyo valor de retorno es un objeto javascript si el usuario está autenticado o null si no lo está. Por lo que gracias a Spacebars y sus flujos de control (\{\{if\}\},\{\{else\}\}\,{\{/if\}\}) podemos realizar este diseño de forma sencilla.
 
 \subsubsection{Sidebar y header}
 \paragraph{}
 Uno de los requisitos de la aplicación es que debe ser full-responsive. Esto es que se adapte a cualquier tamaño de pantalla. Por lo que es necesario un diseño adaptativo para cada pantalla de la aplicación en la que el layout no es excepción. Como se muestra en la figura \ref{fig:layoutFR}, la plantilla \{\{$<$sidebar\}\} se ocultará para pantallas estrechas y aparecerá la plantilla \{\{$<$header\}\}. Ésta constará de una serie de botones que al hacer click en cada uno de ellos hará que se se muestre el sidebar con el contenido correspondiente. El diseño del header puede verse siguiente figura: 
 \begin{figure}[hb]
-	\includegraphics[width=\textwidth]{header}
+	\centering
+	\includegraphics[width=0.8\textwidth]{header}
 	\label{fig:header}
 	\caption{Diseño header}
 \end{figure}
 
 \paragraph{}
-El sidebar está compuesta por tres espacios diferenciados (figura \ref{fig:sidMenuV1}):
+El sidebar está compuesta por tres espacios diferenciados como pueede apreciarse en sidebarV1 de la figura \ref{fig:sidebarVersions}:
 \begin{itemize}
 	\item \textbf{Caja Principal:} en ella aparecerá el logo de la aplicación y el nombre que serán enlaces al recurso raíz (/).
 	\item \textbf{Contenido:} el contenido del sidebar se organiza mediante un menú de tabs. 
 	\item \textbf{Caja de usuario:} en ella aparecerá el avatar y el nombre de usuario que serán enlaces al recurso perfil y un botón para cerrar sesión.
 \end{itemize}
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[height=0.72\textheight]{sidebarMenuVersion1}
-	\label{fig:sidMenuV1}
-	\caption{Diseño sidebar}
-\end{figure}
 \subsubsection{Configuración de Iron Router}
 \paragraph{}
 Iron Router permite establecer una configuración genérica para todas las plantillas especificando la plantilla de carga, el layout, plantilla notFound y subscripciones a las colecciones que necesitemos tener accesibles en todo momento. En este prototipo establecemos solamente la plantilla layout.
 \paragraph{}
 Puesto que acabamos de hablar del primer recurso de la aplicación debemos establecer una ruta para el mismo especificando qué plantilla ha de mostrarse de la siguiente manera:
+\vspace{0.5cm}
 \begin{lstlisting}[language=Javascript]
 Router.configure({
 	layoutTemplate: 'layout'
@@ -164,11 +162,11 @@ Router.route({'/',
 	name: 'mainPage'
 });
 \end{lstlisting}
-
+\vspace{0.5cm}
 \subsection{Registro de usuarios}
 \paragraph{}
-Para el registro de usuarios creamos una plantilla llamada \{\{>loginModal\}\} que será un Modal de bootstrap y que mediante una variable de sesión de Meteor mostrará un formulario para que los usuarios puedan registrarse u otro para que puedan iniciar sesión. Esta variable de sesión podría ser global y podría ser utilizada para crear un formulario dinámico que dependiera del valor de dicha sesión. Por lo que creamos una plantilla genérica para formularios y después incluimos el que correspondiera según el valor de la variable como sigue:
-
+Para el registro de usuarios creamos una plantilla llamada \{\{$<$loginModal\}\} que será un Modal de bootstrap y que mediante una variable de sesión de Meteor mostrará un formulario para que los usuarios puedan registrarse u otro para que puedan iniciar sesión. Esta variable de sesión podría ser global y podría ser utilizada para crear un formulario dinámico que dependiera del valor de dicha sesión. Por lo que creamos una plantilla genérica para formularios y después incluimos el que correspondiera según el valor de la variable como sigue:
+\vspace{0.5cm}
 \begin{lstlisting}[language=HTML]
 <template name=loginModal>
 	<!-- bootstrap modal-->
@@ -186,7 +184,7 @@ Para el registro de usuarios creamos una plantilla llamada \{\{>loginModal\}\} q
 	<button></button>
 </template>
 \end{lstlisting}
-
+\vspace{0.5cm}
 \begin{lstlisting}[language=Javascript]
 //Cuando el modal se renderiza en el DOM, se establece el valor por defecto
 //que es que se muestre el formulario para iniciar sesión.
@@ -208,7 +206,7 @@ Template.signUpForm.events({
 	'click button': function(){Session.set('formTemplate','signInForm')}
 });
 \end{lstlisting}
-
+\vspace{0.5cm}
 
 \subsubsection{Formulario de inicio de sesión}
 Atendiendo a los requisitos los usuarios para iniciar sesión deberán rellenar un formulario con dos campos (figura \ref{fig:signIn}):
@@ -216,9 +214,10 @@ Atendiendo a los requisitos los usuarios para iniciar sesión deberán rellenar un
 	\item \textbf{usuario}: nombre de usuario o email.
 	\item \textbf{contraseña}: contraseña del usuario.
 \end{itemize}
-El inicio de sesión en Meteor se realiza mediante una llamada desde el cliente a la función loginWithPassword proporcionada por el paquete accounts-password pasando como argumento el nombre de usuario o email y la contraseña.
+El inicio de sesión en Meteor se realiza mediante una llamada desde el cliente a la función \emph{.loginWithPassword} proporcionada por el paquete \textbf{accounts-password} pasando como argumento el nombre de usuario o email y la contraseña.
 \subsubsection{Formulario de registro}
 Atendiendo a los requisitos los usuarios para registrarse deberán suministrar un nombre de usuario, una contraseña y opcionalmente un email (figura \ref{fig:signUp}). El email servirá para la verificación del usuario y para acciones y gestiones que exploraremos más adelante. 
+
 \begin{figure}[htbp]
     \centering
     \subfigure[Formulario de inicio de sesión]{
@@ -232,16 +231,14 @@ Atendiendo a los requisitos los usuarios para registrarse deberán suministrar un
     \caption{Diseño formularios de registro}
     \label{fig:signForms}
 \end{figure}
-El registro de usuarios en meteor se realiza mediante una llamada en el servidor a la función createUser que proporciona accounts-base. Puesto que el evento asociado al click del botón se encuentra en el cliente se necesita establecer un method en el servidor que sirva de enlace para el cliente. El cliente llamará al method y éste se ejecutará en el servidor llamando a la función createUser. De forma orientativa se muestra el siguiente código:
-
+El registro de usuarios en meteor se realiza mediante una llamada en el servidor a la función \emph{.createUser} que proporciona \textbf{accounts-base}. Puesto que el evento asociado al click del botón se encuentra en el cliente se necesita establecer un \emph{method} en el servidor que sirva de enlace para el cliente. El cliente llamará al method y éste se ejecutará en el servidor llamando a la función createUser. De forma orientativa se muestra el siguiente código:
+\vspace{0.5cm}
 \begin{lstlisting}[language=Javascript]
 if (Meteor.isClient){
 	Template.signUpForm.events({
 		'click button': function(e){
 			var paramsUser; //extraemos los valores de los campos.
-			Meteor.call('signUpMethod',paramsUser,function(err,res){
-				if (err) throw new Meteor.error('Error al crear el usuario');
-				if (res) console.log(usuario creado con id: res);
+			Meteor.call('signUpMethod',paramsUser,function(err,res){					if (res) console.log(usuario creado con id: res);
 			});
 		}
 	});
@@ -252,29 +249,15 @@ if(Meteor.isServer){
 		'signUpMethod': function(paramsUser){
 			if (userIsValid(paramsUser)){
 				return Accounts.createUser(paramsUser,callback)
-			}else
-				return false;
 			}
+			return false;
 	})
 };
 \end{lstlisting}
-
+\vspace{0.5cm}
 En el momento que el cliente realiza la llamada con los datos suministrados por el usuario, se deberá verificar que los datos son correctos y que cumplen una serie de reglas. (Validación de nuevo usuario). Una vez verificado se creará un objeto usuario en la colección disponible en Meteor.users cuya estructura es la mostrada en la figura \ref{userMongo}. En este momento ya tenemos definida la primera entidad de la aplicación (Usuarios).
 
-El resultado de este prototipo puede verse a continuación:
-\begin{figure}[htbp]
-    \centering
-    \subfigure[Formulario de inicio de sesión]{
-   	 \includegraphics[width=0.7\textwidth]{sign-in-form.png}
-    	\label{fig:signInReal}
-    }
-    \subfigure[Formulario de registro]{
-    	\includegraphics[width=0.7\textwidth]{sign-up-form.png}
-	 \label{fig:signUpReal}
-    }
-    \caption{Formularios de registro en Página de inicio}
-    \label{fig:signFormsReal}
-\end{figure}
+El resultado de este prototipo puede verse en las capturas de pantalla de la figura \ref{fig:signFormsReal}
 
 
 
@@ -285,7 +268,7 @@ Este prototipo engloba el diseño y desarrollo del grabador, del reproductor y de
 \subsection{Grabador}
 \subsubsection{Entidades y colecciones}
 \paragraph{}
-En este momento surgen dos nuevas entidades de la aplicación que son las grabaciones y los documentos. La relación que existe entre éstas y los usuarios viene determinada por el diagrama mostrado en la figura (TAL). Dicho diagrama impone que cualquier usuario puede crear una grabación y que ésta debe estar formada por uno o más documentos. Los documentos no existen independientemente de las grabaciones. Como todas las entidades, éstas se traducen en las colecciones Records y Documents cuyos objetos MongoDB se muestran en \ref{recordMongo} y \ref{documentMongo} respectivamente. Al contrario que la colección Users de Meteor, éstas no se crean por defecto. Por lo que, generamos dos nuevos ficheros javascript: app/lib/collections/records.js y app/lib/collections/documents.js. En cada fichero definimos la colección de la siguiente manera:
+En este momento surgen dos nuevas entidades de la aplicación que son las \textbf{grabaciones} y los \textbf{documentos}. La relación que existe entre éstas y los usuarios viene determinada por el diagrama mostrado en la figura (TAL). Dicho diagrama impone que cualquier usuario puede crear una grabación y que ésta debe estar formada por uno o más documentos. Los documentos no existen independientemente de las grabaciones. Como todas las entidades, éstas se traducen en las colecciones \textbf{Recordings} y \textbf{Documents} cuyos objetos MongoDB se muestran en \ref{recordMongo} y \ref{documentMongo} respectivamente. Al contrario que la colección Users de Meteor, éstas no se crean por defecto. Por lo que, generamos dos nuevos ficheros javascript: \emph{app/lib/collections/records.js} y \emph{app/lib/collections/documents.js}. En cada fichero definimos la colección de la siguiente manera:
 \begin{lstlisting}[language=Javascript]
 	CollectionName = new Mongo.Collection('collectionName');
 	//CollectionName será el nombre de la colección accesible en la aplicación.
@@ -294,9 +277,9 @@ En este momento surgen dos nuevas entidades de la aplicación que son las grabaci
 \subsubsection{Routing}
 
 \paragraph{}
-Es necesario crear una nueva ruta para el grabador. Esta ruta será /records/submit y estará accesible en todo momento cumpliendo los requisitos gracias a un nuevo diseño del sidebar que incluye un link a la lista de grabaciones y otro al recurso que acabamos de crear como se muestra en la figura \ref{fig:sidebarV2}.
+Es necesario crear una nueva ruta para el grabador. Esta ruta será \emph{/records/submit} y estará accesible en todo momento cumpliendo los requisitos gracias a un nuevo diseño del sidebar que incluye un link a la lista de grabaciones y otro al recurso que acabamos de crear como se muestra en la figura \ref{fig:sidebarVersions}.
 \paragraph{}
-Incluimos una nueva ruta en /app/lib/router.js:
+Incluimos una nueva ruta en \emph{/app/lib/router.js}:
 \begin{lstlisting}[language=Javascript]
 	Router.route('/records/submit',{
 		name: 'recordSubmit'
@@ -320,54 +303,25 @@ Incluimos una nueva ruta en /app/lib/router.js:
 \paragraph{}
 Puesto que cada grabación tendrá dos componentes (audio y video) el proceso se realiza de forma diferente para cada una como se muestra en la figura \ref{fig:recordProcessSched} de forma esquemática.
 \paragraph{}
-Dicho esquema se traduce en la creación de dos objetos javascript: AudioRecorder y EditorManager. Apreciable en la figura \ref{fig:recordProcessLogic}
+Dicho esquema se traduce en la creación de dos objetos javascript: \textbf{AudioRecorder} y \textbf{EditorManager}. Apreciable en la figura \ref{fig:recordProcessLogic}
 \begin{itemize}
 	\item \textbf{AudioRecorder}: se trata de un constructor que nos permitirá crear un grabador de audio
 	\item \textbf{EditorManager}: se trata de un constructor que nos permitirá crear un manejador de documentos, almacenar y actualizarlos de manera dinámica mientras se producen cambios en el editor. 
 \end{itemize}
 \paragraph{}
-La API de RTCRecorder nos proporciona un grabador proporcionándole como parametros un el Stream del usuario y una serie de configuraciones. Para conseguir el Stream utilizamos el módulo navigator del navegador:
+La API de \textbf{RTCRecorder} nos proporciona un grabador proporcionándole como parámetros un el Stream del usuario y una serie de configuraciones. Para conseguir el Stream utilizamos el módulo \textbf{navigator} del navegador (código de ejemplo \ref{code:navigator})
 
-\begin{lstlisting}[language=Javascript]
-	navigator.getUserMedia  = navigator.getUserMedia || 
-						 navigator.webkitGetUserMedia || 
-						 navigator.mozGetUserMedia || 
-						 navigator.msGetUserMedia;
-	var audioConstraints = {audio: true, video: false};
-	navigator.getUserMedia(audioConstraints,function(stream){
-		var settings = {}
-		var recorder = window.RecordRTC(stream,settings);
-		recorder.startRecording();
-	},function(error){
-		throw new Meteor.error(error.reason);
-	});
-\end{lstlisting}
+\paragraph{}
 El código anterior se encuentra dentro de un método (startRecording) del constructor AudioRecorder y la variable recorder se encuentra accesible por todos los métodos del mismo por lo que tenemos accesible el grabador proporcionado por RTCRecorder. 
-\paragraph{}El proceso de grabación sobre el editor se basa en generar una lista de acciones indexadas por marcas de tiempo. Dichas marcas de tiempo corresponderán al instante en el que se produce un cambio en el editor y dicho cambio se traducirá en una acción (método proporcionado por la API de AceEditor) para que en ese instante durante el proceso de reproducción se ejecute dicha acción simulando el cambio que se haya producido durante la grabación.
+\paragraph{}El proceso de grabación sobre el editor se basa en generar una lista de \emph{acciones indexadas por marcas de tiempo}. Dichas marcas de tiempo corresponderán al instante en el que se produce un cambio en el editor y dicho cambio se traducirá en una acción (método proporcionado por la API de \textbf{AceEditor}) para que en ese instante durante el proceso de reproducción se ejecute dicha acción simulando el cambio que se haya producido durante la grabación.
 \paragraph{}
-Para lo anterior es necesario capturar los cambios del editor, a través de la API de AceEditor, y extraer el instante correspondiente. En el momento que comienza la grabación se ejecuta un callback pasado por parámetro que sirve para arrancar el reloj de la grabación. Dicho reloj será accesible dentro de la plantilla \{\{$>$recordSubmit\}\}. Por lo que la sincronización con los cambios en el editor será perfecta.
-\paragraph{}
-El siguiente código sirve de ejemplo para ilustrar la captura de eventos: 
-\begin{lstlisting}[language=Javascript]
-var editor = ace.editor('#id');
-editor.getSession().on('change', function(e) {
-     switch (e.action) {
-     	case "remove":
-         	var rmRange = {start: e.start, end: e.end};
-          docsManagerRecorder.insertFunctions([{
-                time: new Date() - date,
-                arg: rmRange,
-                toDo: 'editor.getSession().getDocument().remove(arg);'
-           }]);
-           break;
-       }
-});
-\end{lstlisting}
-\paragraph{}
-Como puede verse en el código anterior docsManagerRecorder es nuestro objeto construido mediante EditorManager y mediante su método insertFunctions generamos nuevas acciones que se simularán durante la reproducción en el instante almacenado en su atributo time.
+Para lo anterior es necesario capturar los cambios del editor, a través de la API de AceEditor, y extraer el instante correspondiente. En el momento que comienza la grabación se ejecuta un callback pasado por parámetro que sirve para arrancar el reloj de la grabación. Dicho reloj será accesible dentro de la plantilla \{\{$>$recordSubmit\}\}. Por lo que la sincronización con los cambios en el editor será perfecta. El proceso puede verse en el código de ejemplo \ref{code:eventsEditor}
 
 \paragraph{}
-Puesto que una grabación debe estar formada por uno o más documentos, durante la grabación puede producirse la creación de nuevos documentos y del cambio de uno a otro sobre el editor. Estos cambios deben ser visibles durante la reproducción por lo tanto deben ser capturados. La captura se realiza mediante los eventos que se produzcan en la plantilla correspondiente al crearse un nuevo documento o visualizar otro distinto al actual. En el momento que alguno de estos eventos se produzca se generará una nueva acción que insertar en la lista de acciones mediante el método insertFunctions. 
+Como puede verse en el código anterior, docsManagerRecorder es nuestro objeto construido mediante EditorManager y mediante su método .insertFunctions() generamos nuevas acciones que se simularán durante la reproducción en el instante almacenado en su atributo \emph{time}.
+
+\paragraph{}
+Puesto que una grabación debe estar formada por uno o más documentos, durante la grabación puede producirse la creación de nuevos documentos y del cambio de uno a otro sobre el editor. Estos cambios deben ser visibles durante la reproducción por lo tanto deben ser capturados. La captura se realiza mediante los eventos que se produzcan en la plantilla correspondiente al crearse un nuevo documento o visualizar otro distinto al actual. En el momento que alguno de estos eventos se produzca se generará una nueva acción que insertar en la lista de acciones mediante el método .insertFunctions(). 
 \paragraph{}
 Los eventos posibles que se traducen en acciones son los siguientes: 
 \begin{itemize}
@@ -383,49 +337,13 @@ Los eventos posibles que se traducen en acciones son los siguientes:
 \subsubsection{Almacenamiento}
 Como podemos observar en la figura \ref{fig:recordProcess}, una vez termina la grabación se deben proporcionar herramientas para su almacenamiento persistente. El almacenamiento de dicha grabación se realizará por separado según sus componentes. Un objeto record compuesto por información sobre la grabación y la lista de acciones (\ref{recordMongo}) se almacenará en la colección Records de MongoDB y el archivo de audio en SoundCloud. 
 \paragraph{}
-Para utilizar la API de SoundCloud es necesaria la instalación de un nuevo paquete: monbro:soundcloud-nodejs-api-wrapper  . Este paquete es un wrapper (envoltorio) del SDK (Software Development Kit) de SoundCloud que permite realizar llamadas REST a la API desde el lado del servidor gracias al objeto SoundCloud que nos proporciona de manera global. 
+Para utilizar la API de SoundCloud es necesaria la instalación de un nuevo paquete: \textbf{monbro:soundcloud-nodejs-api-wrapper}  . Este paquete es un wrapper (envoltorio) del \textbf{SDK} (Software Development Kit) de SoundCloud que permite realizar llamadas REST a la API desde el lado del servidor gracias al objeto SoundCloud que nos proporciona de manera global. 
 \paragraph{}
-Para inicializar dicho objeto necesitaremos un usuario en SoundCloud y crear una aplicación en su espacio para desarrolladores. Dicha aplicación nos proporcionará una serie de credenciales que nos permitirán comunicarnos con la API: identificador de la aplicación, clave secreta de la aplicación. Al crearla necesitaremos proporcionarle una url de redirección para la autenticación mediante el protocolo OAuth. 
+Para inicializar dicho objeto necesitaremos un usuario en SoundCloud y crear una aplicación en su espacio para desarrolladores. Dicha aplicación nos proporcionará una serie de credenciales que nos permitirán comunicarnos con la API: identificador de la aplicación, clave secreta de la aplicación. Al crearla necesitaremos proporcionarle una url de redirección para la autenticación mediante el protocolo \textbf{OAuth}. 
 \paragraph{}
-Usando solamente el SDK en el cliente, a la hora de conectar con la API, comenzaría un proceso de autenticación que mostraría un popup que exige interacción con el usuario. Dicho proceso no es transparente al usuario y eso es algo que hemos querido arreglar. La solución es incorporar como parámetro de incialización del SDK un token OAuth (el devuelto tras el proceso de autenticación). El problema está en que dicho token tiene una fecha de expiración y el SDK para Javascript no proporciona herramientas para refrescar el token ya que no tiene método para realizar esa petición REST en cuestión. Pero el paquete mencionado anteriormente sí tiene esa funcionalidad, y es que cada vez que llamamos a su método .getClient(), nos devuelve un cliente con un token completamente nuevo. 
+Usando solamente el SDK en el cliente, a la hora de conectar con la API, comenzaría un proceso de autenticación que mostraría un popup que exige interacción con el usuario. Dicho proceso no es transparente al usuario y eso es algo que hemos querido arreglar. La solución es incorporar como parámetro de incialización del SDK un \textbf{token} OAuth (el devuelto tras el proceso de autenticación). El problema está en que dicho token tiene una fecha de expiración y el SDK para Javascript no proporciona herramientas para refrescar el token ya que no tiene método para realizar esa petición REST en cuestión. Pero el paquete mencionado anteriormente sí tiene esa funcionalidad, y es que cada vez que llamamos a su método .getClient(), nos devuelve un cliente con un token completamente nuevo. 
 \paragraph{}
-Por este motivo creamos el fichero /app/server/soundcloud.js en el que inicializar el objeto SoundCloud y crear el method .getClientSC al que podemos llamar desde el cliente y que nos devuelve los parámetros necesarios para incializar el SDK del cliente de forma que se conecte a la API de SoundCloud de forma transparente al usuario.
-\paragraph{}
-El siguiente código ilustra este proceso: 
-\begin{lstlisting}[language=Javascript]
-if (Meteor.isServer()){
-	Soudcloud.setConfig({
-		client_id: CLIENT_ID,
-		client_secret: CLIENT_SECRET,
-		username: USERNAME,
-		password: PASSWORD
-	});
-	
-	Meteor.methods({
-		getClientSC: function(){
-			var client = Soundcloud.getClient();
-			return {
-				client_id: CLIENT_ID,
-				access_token: client.settings.access_token
-			}
-		}
-	});
-}
-if (Meteor.isClient()){
-	$.getScript("https://cdn.WebRTC-Experiment.com/RecordRTC.js",function(){
-		Meteor.call('getClientSC',function(err,res){
-			if (err) throw new Meteor.error(err.reason);
-			if (res){
-				SC.initialize({
-					client_id: res.client_id,
-					oauth_token: res.access_token,
-					scope: 'non-expiring'
-				});
-			}
-		});
-	});
-}
-\end{lstlisting}
+Por este motivo creamos el fichero \emph{/app/server/soundcloud.js} en el que inicializar el objeto SoundCloud y crear el method .getClientSC() al que podemos llamar desde el cliente y que nos devuelve los parámetros necesarios para incializar el SDK del cliente de forma que se conecte a la API de SoundCloud de forma transparente al usuario (código de ejemplo \ref{code:SCSettings}).
 
 \paragraph{}
 Las variables CLIENT\_ID Y CLIENT\_SECRET contienen el id de la aplicación que hemos creado en Soundcloud y su clave secreta respectivamente.
@@ -447,7 +365,7 @@ SC.connect().then(function(){
 })
 \end{lstlisting}
 \paragraph{} 
-En el código anterior se muestra cómo se crea una referencia al archivo subido mediante su identificador. Una vez tenemos el objeto completado realizamos la llamada al method insertRecord, creado en el archivo /app/lib/collections/records.js para almacenar la grabación en MongoDB.
+En el código anterior se muestra cómo se crea una referencia al archivo subido mediante su identificador. Una vez tenemos el objeto completado realizamos la llamada al method insertRecord, creado en el archivo \emph{/app/lib/collections/records.js} para almacenar la grabación en MongoDB.
 
 
 \subsubsection{Interfaz del grabador}
@@ -466,66 +384,18 @@ El diseño del grabador se compone de las siguientes plantillas:
 	\item \textbf{\{\{$<$upload\}\}}:  al hacer click en guardar en la plantilla anterior se mostrará el progreso de subida del audio y cuando termine un mensaje y un enlace a la página de la grabación (reproductor) para reproducir la grabación.
 \end{itemize}
 \paragraph{}
-Tras este análisis hemos encontrado una nueva entidad: etiquetas (Tags) por lo que creamos una nueva colección y un nuevo fichero en /app/lib/collections de forma análoga con las anteriores. Establecemos que una grabación puede tener o no etiquetas y que son globales es decir que la misma etiqueta la pueden tener una o varias grabaciones. Esta relación puede verse en el diagrama (tal). Además para tenerlas accesibles desde el formulario debemos crear una publicación a la que se subscribirá el cliente. Como es la primera, creamos el fichero /app/server/publications.js. Será el fichero en el que declararemos todas nuestras publicaciones. La subscripción a esta publicación se hará dinámicamente puesto que se trata de un auto-completado.
+Tras este análisis hemos encontrado una nueva entidad: \textbf{etiquetas} (Tags) por lo que creamos una nueva colección y un nuevo fichero en \emph{/app/lib/collections/tags.js} de forma análoga con las anteriores. Establecemos que una grabación puede tener o no etiquetas y que son globales es decir que la misma etiqueta la pueden tener una o varias grabaciones. Esta relación puede verse en el diagrama (tal). Además para tenerlas accesibles desde el formulario debemos crear una publicación a la que se subscribirá el cliente. Como es la primera, creamos el fichero \emph{/app/server/publications.js}. Será el fichero en el que declararemos todas nuestras publicaciones. La subscripción a esta publicación se hará dinámicamente puesto que se trata de un \textbf{auto-completado}.
 \paragraph{}
 El flujo de plantillas se muestra en la figura \ref{fig:grabacionFlujo}
 Las plantillas presentes en la figura anterior corresponden a las figuras: \ref{fig:recorderNoDocs}, \ref{fig:recorderDocsList}, \ref{fig:documentForm}, \ref{fig:recorderEditor}, \ref{fig:recorderFinal} y \ref{fig:uploadProcess} disponibles en el apéndice \ref{appendix:mockupsApendix}.
 \paragraph{}
-Una vez desarrollado el grabador este es el resultado:
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=0.75\textwidth]{recorder.png}
-	\caption{Grabador}
-	\label{fig:recorder}
-\end{figure}
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[scale=0.4]{recorderFlow.png}
-	\label{fig:grabacionFlujo}
-	\caption{Flujo de plantillas del grabador}
-\end{figure}
-\paragraph{}
-\paragraph{}\paragraph{}
+Una vez desarrollado el grabador el resultado puede verse en la figura \ref{fig:recorder}.
+
 \subsection{Reproductor}
 \subsubsection{Ruta, publicaciones y subscripciones}
 El reproductor es un módulo de la página de cada grabación que se establece en una nueva ruta de nuestro proyecto y la primera que establecemos como detalle (detail). La ruta será /record/:id donde id corresponderá al identificador del objeto grabación almacenado en MongoDB y estará configurada en /app/lib/router.js de la misma forma que las anteriores. 
 \paragraph{}
-La única diferencia es que ahora necesitaremos tener accesible el objeto grabación para realizar las acciones oportunas. Esto se consigue creando publicaciones y subscripciones. 
-
-\begin{lstlisting}[language=Javascript]
-	// app/server/publications.js
-	Meteor.publishComposite('record',function(id){
-		//Publicamos el record y los documentos asociados al mismo. 
-		var sub = {
-			find: function(){
-				return Records.find(id)
-			},
-			children: [{
-				find: function(record){
-					return Documents.find({record_id: record._id});
-				},
-				{...}
-			}];
-		};
-		return sub;
-	});
-\end{lstlisting}
-Las subscripciones se realizarán mediante Iron Router a no ser que sean dinámicas. 
-\begin{lstlisting}[language=Javascript]
-// app/lib/router.js
-
-Router.route('/record/:_id',{
-	name: 'record',
-	data: function(){
-		return Records.findOne(this.params_id);
-	},
-	waitOn: function(){
-		return Meteor.subscribe('record',this.params._id);
-	}
-});
-\end{lstlisting}
-
-De esta manera tendremos accesibles los datos del record y se establecerán como los datos de la plantilla \{\{$<$record\}\}.
+La única diferencia es que ahora necesitaremos tener accesible el objeto grabación para realizar las acciones oportunas. Esto se consigue creando publicaciones y subscripciones (ejemplos de código \ref{code:publishcomposite} y \ref{code:subscription}). De esta manera tendremos accesibles los datos del record y se establecerán como los datos de la plantilla \{\{$<$record\}\}.
 
 \subsubsection{Proceso de reproducción}
 Debido a que cada grabación está compuesta por audio y por vídeo sobre editor, se desarrollan dos procesos paralelos y sincronizados durante la reproducción de la misma (figura \ref{fig:playProcessSched}).
@@ -549,7 +419,7 @@ Debido a que cada grabación está compuesta por audio y por vídeo sobre editor, s
 \end{figure}
 
 \paragraph{}
-Al igual que durante la grabación, la labor de reproducción de cada una de las componentes recaerá en un objeto Javascript: RecordPlayer (audio) y EditorPlayerManager (editor) en los ficheros /app/client/lib/recordPlayer.js y /app/client/lib/editorPlayerManager.js respectivamente (figura \ref{fig:playProcessLogic}).
+Al igual que durante la grabación, la labor de reproducción de cada una de las componentes recaerá en un objeto Javascript: \textbf{RecordPlayer} (audio) y \textbf{EditorPlayerManager} (editor) en los ficheros \emph{/app/client/lib/recordPlayer.js} y \emph{/app/client/lib/editorPlayerManager.js} respectivamente (figura \ref{fig:playProcessLogic}).
 \begin{itemize}
 	\item \textbf{RecordPlayer:} se encarga de ofrecer una interfaz lógica a partir del stream del audio proporcionado en su inicialización. Dicha interfaz recoge los métodos necesarios para la reproducción (.play(), .pause(), .seek(), .setVolume(), .ended()) y otros propios (.updateCover(), .getState(), .destroy()).
 	\item \textbf{EditorPlayerManager:} se encarga de clasificar la lista de acciones capturadas y realizar su simulación. Además se encarga de mantener la integridad de los documentos de la grabación durante el proceso. Este objeto posee los métodos .getDocs(), .getDocActual(), .update() y .seek().
@@ -558,7 +428,7 @@ Al igual que durante la grabación, la labor de reproducción de cada una de las c
 
 \subsubsection{Sincronización entre audio y editor}
 
-Al inicializar el objeto RecordPlayer toma como argumento un objeto EditorPlayerManager ya inicializado con el identificador del editor. El método .play del objeto RecordPlayer inicia una llamada a su función .updatePlayer() mediante un Interval de 20. Esto quiere decir que cada 20 mílisegundos se ejecutará esta función que, a su vez, realiza una llamada a la función .update() del objeto EditorPlayerManager pasado como argumento. Por lo que cada 20 mílisegundos se mostrarán cambios en el contenido del editor.
+Al inicializar el objeto RecordPlayer toma como argumento un objeto EditorPlayerManager ya inicializado con el identificador del editor. El método .play del objeto RecordPlayer inicia una llamada a su función .updatePlayer() mediante un Interval de 20. Esto quiere decir que cada 20 milisegundos se ejecutará esta función que, a su vez, realiza una llamada a la función .update() del objeto EditorPlayerManager pasado como argumento. Por lo que cada 20 milisegundos se mostrarán cambios en el contenido del editor.
 
 \paragraph{}
 Al llamar al método .pause() de RecordPlayer se destruirá la programación del objeto Interval, con lo que parará de inmediato los cambios sobre el editor. 
@@ -566,38 +436,7 @@ Al llamar al método .pause() de RecordPlayer se destruirá la programación del ob
 Al saltar entre instantes de la reproducción se llamará al método .seek(). Este método realiza una llamada directa al método .updatePlayer() y por tanto al método .update() de EditorPlayerManager, pasando como parámetro el instante exacto.
 
 \subsubsection{Simulación de eventos sobre editor}
-La simulación se realiza en el método .update() del objeto EditorPlayerManager. El objeto posee la lista de acciones completa, la cual no se alterará en ningún momento. Al inicializarse se realiza una copia en una variable global del objeto. En el momento que se produce la llamada al método .update() dicha lista se filtra (se escogen las acciones cuyo instante de creación sea menor o igual que el instante actual de la reproducción). Después se clasifican estas acciones y se ejecutan en orden. Después se actualiza el valor de la variable donde estaba la copia de las acciones eliminando de esa lista los ya simuladas. 
-
-\begin{lstlisting}[language=Javascript]
-EditorPlayerManager = function(){
-	var RC, listPending, editor;
-	
-	this.initialize = function(params){
-		RC = params.RC;
-		listPending = RC;
-		editor = ace.edit(params.editor);
-	};
-	
-	this.update = function(pos){
-		//filtramos las acciones a ejecutar
-		var listToDo = _(listPending).filter(function(action){
-			return action.time <= pos;
-		});
-		
-		//ejecutamos las acciones que corresponden.
-		_(listToDo).each(function(action){
-			switch(action.type){
-				//ejecución de las funciones guardadas sobre el editor.
-			}
-		});
-		
-		//actualizamos la lista de acciones pedientes.
-		listPending = _(listPending).difference(listToDo);
-	}
-}
-\end{lstlisting}
-
-El anterior código ilustra el proceso descrito.
+La simulación se realiza en el método .update() del objeto EditorPlayerManager. El objeto posee la lista de acciones completa, la cual no se alterará en ningún momento. Al inicializarse se realiza una copia en una variable global del objeto. En el momento que se produce la llamada al método .update() dicha lista se filtra (se escogen las acciones cuyo instante de creación sea menor o igual que el instante actual de la reproducción). Después se clasifican estas acciones y se ejecutan en orden. Después se actualiza el valor de la variable donde estaba la copia de las acciones eliminando de esa lista los ya simuladas. Este proceso se ilustra en el código de ejemplo \ref{code:sincroEditor}. 
 
 \subsubsection{Interfaz del recurso grabación}
 \paragraph{}
@@ -607,15 +446,9 @@ Se trata de un recurso de detalle (detail resource) y en este proyecto se ha hec
 	\item {NavbarTab: } barra de navegación basada en tabs para elegir qué contenido, asociado al objeto, visualizar.
 	\item {tabContent: } espacio en el que se muestran el contenido escogido.
 \end{itemize}
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.5\textwidth]{pageDetailBase.png}
-	\caption{Diseño página de detalle}
-	\label{fig:detailBase}
-\end{figure}
 El banner, en este caso, mostrará la información de la grabación (autor, descripción, título, fecha de creación, contadores y lista de etiquetas), un botón para votar, la plantilla \{\{$<$player\}\} para el reproductor y la plantilla \{\{$<$actions\}\} como se muestra en el diseño (figura \ref{fig:recordBanner}).
 
-\begin{figure}[h]
+\begin{figure}[htpb]
 	\centering
 	\includegraphics[width=0.6\textwidth, height=10cm]{RecordBanner.png}
 	\caption{Diseño banner para una grabación}
@@ -623,7 +456,7 @@ El banner, en este caso, mostrará la información de la grabación (autor, descrip
 \end{figure}
 
 \subsubsection{Interfaz del reproductor}
-\begin{figure}[h]
+\begin{figure}[htpb]
 	\centering
 	\includegraphics[width=0.7\textwidth]{playerV1}
 	\caption{Diseño interfaz del reproductor}
@@ -633,69 +466,14 @@ La interfaz del reproductor (figura \ref{fig:playerV1})estará compuesta por el e
 \subsubsection{Streamming}
 La plantilla \{\{$<$player\}\} se instancia mediante un helper de la plantilla \{\{$<$record\}\} cuyo valor es un objeto Javascript con los datos necesarios para construir e inicializar los objetos RecordPlayer y EditorPlayerManager y el identificador del audio almacenado en SoundCloud. 
 \paragraph{}
-Como se muestra a continuación, en el método .rendered() es necesaria la conexión con SoundCloud para realizar la petición de un stream de audio que poder suministrar al objeto RecordPlayer creado: 
-\begin{lstlisting}[language=Javascript]
-// app/client/modules/record_modules/record/player.js
+Como se muestra en el código de ejemplo \ref{code:SCConnection}, en el método .rendered() es necesaria la conexión con SoundCloud para realizar la petición de un stream de audio que poder suministrar al objeto RecordPlayer creado.
 
-Template.player.rendered = function(){
-	var self = this.
-	Meteor.call('getClientSC',function(err,res){
-		if (res){
-			SC.initialize ({
-				client_id: res.client_id,
-				auth_token: res.auth_token,
-				scope: 'non-expiring'
-			});
-			SC.connect().then(function(){
-				SC.stream('tracks/' + self.track_id)
-					.then(function(s){
-						this.recordPlayer.initialize(s,
-							this.editorPlayerManager, ...);
-					});
-			});
-		}
-	});
-}
-\end{lstlisting}
 \paragraph{}
-El resultado final del reproductor puede verse en la siguiente figura: 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.8\textwidth]{record-player.png}
-	\caption{Reproductor}
-	\label{fig:recordPlayerPage}
-\end{figure}
+El resultado final del reproductor puede verse en la siguiente figura \ref{fig:recordPlayerPage}.
+
 \subsection{Lista de grabaciones}
 \subsubsection{Ruta, publicaciones y subscripciones}
-La lista de grabaciones se mostrará en una nueva página o recurso de la aplicación. Dicho recurso corresponde a la ruta /records y a la plantilla \{\{$<$records\}\}. Como en cada nueva ruta es necesario integrarla en /app/lib/router.js y, en este caso, crear las publicaciones y subscripciones necesarias.
-\begin{lstlisting}[language=Javascript]
-// app/server/publications.js
-
-Meteor.publishComposite('records',function(){
-	var sub = {
-		find: function(){
-			return Records.find({},{fields: {RC:0, track: 0, tags: 0}});
-		},
-		children: [{
-			find: function(record){
-				return Meteor.users.find(record.author,
-						{fields: {username: 1, avatar: 1}});
-			}
-		}]
-	}
-});
-
-// app/lib/router.js
-
-Router.route('/records',{
-	name: 'records',
-	waitOn: function(){
-		return Meteor.subscribe('records');
-	}
-});
-\end{lstlisting}
-\paragraph{}
-De esta manera nos subscribimos a las grabaciones y a los usuarios que las han creado. Filtramos los campos innecesarios para agilizar el proceso de renderizado.
+La lista de grabaciones se mostrará en una nueva página o recurso de la aplicación. Dicho recurso corresponde a la ruta /records y a la plantilla \{\{$<$records\}\}. Como en cada nueva ruta es necesario integrarla en \emph{/app/lib/router.js} y, en este caso, crear las publicaciones y subscripciones necesarias.
 \subsubsection{Interfaz}
 La interfaz es muy sencilla (figura \ref{fig:recordsPage}). Está formada por dos espacios:
 \begin{itemize}
@@ -707,13 +485,8 @@ La interfaz es muy sencilla (figura \ref{fig:recordsPage}). Está formada por dos
 	\end{itemize}
 \end{itemize}
 
-Tras el desarrollo de la interfaz el resultado se muestra en la siguiente figura:
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.8\textwidth]{records.png}
-	\caption{Lista de grabaciones}
-	\label{fig:records}
-\end{figure}
+Tras el desarrollo de la interfaz el resultado se muestra en la figura \ref{fig:records}.
+
 \paragraph{}
 \paragraph{}
 \section{Prototipo 3: Respuestas a grabaciones}
@@ -721,35 +494,17 @@ En este prototipo actualizamos la lógica del grabador y añadimos nuevas acciones
 \subsection{Actualización del grabador}
 Las respuestas a grabaciones se realizan mediante nuevas grabaciones sobre editor según los requisitos de la aplicación. La única diferencia es que esta vez el grabador se debe iniciar con los documentos de la grabación a la que queremos responder. Además el contenido de dichos documentos debe corresponder al instante en el que hemos pausado la reproducción. 
 \paragraph{}
-Para todo lo anterior necesitamos inicializar, con el estado de dichos documentos, al objeto que se encarga de manejarlos durante la grabación (EditorManager).  Pero antes necesitamos extraer dicho estado durante la reproducción. Para esto el objeto recordPlayer cuenta con el método .getState() que devuelve un objeto con el último instante de reproducción y la lista de documentos con su estado actual. Dicho objeto se almacenará en una variable de sesión accesible desde el fichero /app/lib/router.js. 
+Para todo lo anterior necesitamos inicializar, con el estado de dichos documentos, al objeto que se encarga de manejarlos durante la grabación (EditorManager).  Pero antes necesitamos extraer dicho estado durante la reproducción. Para esto el objeto recordPlayer cuenta con el método .getState() que devuelve un objeto con el último instante de reproducción y la lista de documentos con su estado actual. Dicho objeto se almacenará en una variable de sesión accesible desde el fichero \emph{/app/lib/router.js}. 
 \paragraph{}
-Para inicializar el objeto EditorManager como se ha descrito, necesitamos tener esos documentos accesibles desde los datos de la plantilla \{\{$<$recordSubmit\}\}. De esto se encarga Iron Router. La forma de especificar nuestra intención de realizar una grabación respuesta a Iron Router es mediante una query string (cadena de consulta). En ella se especificará el identificador de la grabación a la que queremos responder y la clave será parent\_id.
-\begin{lstlisting}[language=Javascript]
-Router.route('/records/submit',{
-	...
-	data: function(){
-		var data = {}
-		if (this.params.query){ //es una respuesta
-			var playerState = (Session.get(playerState));
-			(playerState)? data.playInstantObject = playerState : null;
-		}
-		return data;
-	},
-	waitOn: function(){
-		if (this.params.query){
-			return Meteor.subscribe('recordDocuments'
-						this.params.query.parent_id);
-		}
-	}
-});
-\end{lstlisting}
+Para inicializar el objeto EditorManager como se ha descrito, necesitamos tener esos documentos accesibles desde los datos de la plantilla \{\{$<$recordSubmit\}\}. De esto se encarga Iron Router. La forma de especificar nuestra intención de realizar una grabación respuesta a Iron Router es mediante una \textbf{query string} (cadena de consulta). En ella se especificará el identificador de la grabación a la que queremos responder y la clave será \emph{parent\_id} (código de ejemplo \ref{code:dataByQuery}).
 \paragraph{}En el código anterior podemos ver cómo se configuran los datos de la plantilla del grabador y cómo nos subscribimos a los documentos de la grabación padre.
 \paragraph{}
-Hay que tener en cuenta que en el momento que abandonemos la página del grabador, la variable de sesión deberá ser destruida. Esto supone un problema. Si abandonamos la página del grabador y después volvemos a ella, Iron Router interpreta que queremos hacer una grabación respuesta. Esto se debe a que la query string no desaparece. Por este motivo se ha establecido que si volvemos al grabador se comenzará con los documentos en el estado final de la grabación padre. Dichos documentos los tenemos accesibles gracias a la publicación correspondiente y a la subscripción mediante el método waitOn de la ruta descrita en el código mostrado.
+Hay que tener en cuenta que en el momento que abandonemos la página del grabador, la variable de sesión deberá ser destruida. Esto supone un problema. Si abandonamos la página del grabador y después volvemos a ella, Iron Router interpreta que queremos hacer una grabación respuesta. Esto se debe a que la query string no desaparece. Por este motivo se ha establecido que si volvemos al grabador se comenzará con los documentos en el estado final de la grabación padre. Dichos documentos los tenemos accesibles gracias a la publicación correspondiente y a la subscripción mediante el método .waitOn() de la ruta descrita en el código.
 \paragraph{}
-Como se muestra en el objeto (\ref{recordMongo}), cuando almacenemos la respuesta en MongoDB debemos incluir dos campos: isReply y parent\_id. 
+Como se muestra en el objeto (\ref{recordMongo}), cuando almacenemos la respuesta en MongoDB debemos incluir dos campos: \emph{isReply} y \emph{parent\_id}. 
 \subsection{Nuevas acciones}
 En la plantilla \{\{$<$actions\}\} de la interfaz de detalle de grabación (figura \ref{fig:recordBanner}) creamos dos botones: uno como enlace al grabador para crear una respuesta (sólo estará disponible si la reproducción se encuentra pausada o finalizada) y otro como enlace a la grabación padre (sólo disponible si se trata de una respuesta).
+\vspace{0.5cm}
 \begin{lstlisting}[language=HTML]
 <div id='actions'>
 	{{#if isPosibleToReply}}
@@ -760,7 +515,7 @@ En la plantilla \{\{$<$actions\}\} de la interfaz de detalle de grabación (figur
 	{{/if}}
 </div>
 \end{lstlisting}
-
+\vspace{0.5cm}
 \begin{lstlisting}[language=Javascript]
 Template.record.events({
 	'click button#reply-button': function(){
@@ -787,29 +542,13 @@ Para listar las respuestas de una grabación se ha creado un timeline (figura \re
 	\label{fig:repliesTab}
 \end{figure}
 
-\paragraph{}Además se ha añadido una nueva sección de contenidos para mostrar las grabaciones relacionadas con la grabación actual (figura \ref{fig:commentsTab}). Para ello se ha modificado la publicación 'record'. Ahora publicará, además de la grabación actual, otras que posean etiquetas similares.
+\paragraph{}Además se ha añadido una nueva sección de contenidos para mostrar las grabaciones relacionadas con la grabación actual (figura \ref{fig:relatedTab}). Para ello se ha modificado la publicación 'record'. Ahora publicará, además de la grabación actual, otras que posean etiquetas similares.
 
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=0.7\textwidth]{commentsTab.png}
-	\caption{Diseño del módulo de comentarios}
-	\label{fig:commentsTab}
-\end{figure}
 
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=0.7\textwidth]{relatedTab.png}
-	\caption{Lista de relacionados}
-	\label{fig:relatedTab}
-\end{figure}
-
-\paragraph{}También se ha creado una nueva sección que contiene un espacio para realizar comentarios (figura tal) y con ello surge una nueva entidad. Dicha entidad se traduce en una nueva colección Comentarios cuyo objeto se muestra en \ref{commentMongo} y su relación con las demás entidades en la figura \ref{fig:relatedTab}. Esta sección esta compuesta por una caja para introducir el texto a publicar y la lista de comentarios. Cada comentario está compuesto por el avatar del autor, el texto, una lista de las respuestas a ese comentario y la misma caja de texto mencionada anteriormente responder.
+\paragraph{}También se ha creado una nueva sección que contiene un espacio para realizar comentarios (figura \ref{fig:commentsTab}) y con ello surge una nueva entidad. Dicha entidad se traduce en una nueva colección Comentarios cuyo objeto se muestra en \ref{commentMongo} y su relación con las demás entidades en la figura (tal). Esta sección esta compuesta por una caja para introducir el texto a publicar y la lista de comentarios. Cada comentario está compuesto por el avatar del autor, el texto, una lista de las respuestas a ese comentario y la misma caja de texto mencionada anteriormente responder.
 
 \paragraph{}
-Se ha diseñado el espacio para comentarios de manera que sea genérico, es decir, que se pueda utilizar para todo tipo de contenidos. Tras la implementación el resultado puede verse en las figuras (tal),(tal) y (tal).
-
-
-
+Se ha diseñado el espacio para comentarios de manera que sea genérico, es decir, que se pueda utilizar para todo tipo de contenidos. Tras la implementación el resultado puede verse en las figuras \ref{fig:replies-tab} y  \ref{fig:comments-module}.
 
 \section{Prototipo 4: Organización en Canales}
 En este prototipo aparece por primera vez el concepto de organización en canales. La implementación de este concepto deberá cumplir todos los requisitos establecidos en \ref{sec:requisitos} correspondientes. 
@@ -817,44 +556,14 @@ En este prototipo aparece por primera vez el concepto de organización en canales
 \subsection{Concepto, entidades y modificaciones}
 Un canal es un espacio público en el que crear grabaciones. Al ser público cualquier usuario puede acceder a sus contenidos de forma inmediata. También ofrece la posibilidad de crear comentarios, subscribirse y de votar. 
 \paragraph{}
-Con esta descripción surgen dos nuevas entidades: canales y subscripciones. Dichas entidades se traducen, al igual que las anteriores, en las colecciones Channels y UsersEnrolled respectivamente, cuyos objetos MongoDB son \ref{channelMongo} y \ref{userEnrolledMongo}. Para cada colección se crea un fichero en /app/lib/collections de la misma forma que para las anteriores. La relación entre entidades se muestra en la figura (tal)
+Con esta descripción surgen dos nuevas entidades: canales y subscripciones. Dichas entidades se traducen, al igual que las anteriores, en las colecciones Channels y UsersEnrolled respectivamente, cuyos objetos MongoDB son \ref{channelMongo} y \ref{userEnrolledMongo}. Para cada colección se crea un fichero en \emph{/app/lib/collections} de la misma forma que para las anteriores. La relación entre entidades se muestra en la figura (tal).
 \paragraph{}
-Puesto que el contenido del canal se constituye en base a las grabaciones, esa relación deberá reflejarse en los objetos de las mismas. Para ello contarán con el atributo channel\_id las grabaciones pertenecientes a los canales como puede verse en \ref{recordMongo}. Como se describió en el proceso de grabación, una vez terminada la grabación y completado el proceso de uploading a SoundCloud se procedía con la creación de un objeto grabación. En esta fase habrá que determinar si la grabación que se ha realizado pertenece a un canal o es independiente. Para ello utilizamos query strings o cadenas de consulta que incluimos en la url del recurso grabador. En este caso la query será channel\_id$=$idValue. A modo de ejemplo y siendo el identificador del canal en el que queremos crear una nueva grabación la cadena QwIJOpIsAXzc la url del recurso grabador sería /records/submit?channel\_id$=$QwIJOpIsAXzc. Iron Router provee herramientas que permiten realizar esta función de forma sencilla.
-\begin{lstlisting}[language=Javascript]
-//app/client/modules/channels_module/channel.js
-Template.channel.events({
-	'click button#create-recording': function(){
-		Router.go('recordSubmit',{},{query: 'channel_id=' + this._id});
-	}
-});
-
-//app/lib/router.js
-
-Router.route('/records/submit',{
-	...
-	data: function(){
-		var data = {};
-		(this.params.query.channel_id)? data.channel_id = this.params.query.channel_id : null;
-		return data;
-	}
-})
-
-//app/client/modules/records_module/recordSubmit/recordSubmit.js
-
-SC.upload(audio).then(function(){
-	var object = {};
-	if (this.data.channel_id){
-		object.channel_id = this.data.channel_id;
-	}
-	Meteor.call('insertRecording',object,function(err,result){});
-});
-\end{lstlisting}
-En el código anterior se muestra un ejemplo de implementación del proceso descrito.
+Puesto que el contenido del canal se constituye en base a las grabaciones, esa relación deberá reflejarse en los objetos de las mismas. Para ello contarán con el atributo channel\_id las grabaciones pertenecientes a los canales como puede verse en \ref{recordMongo}. Como se describió en el proceso de grabación, una vez terminada la grabación y completado el proceso de uploading a SoundCloud se procedía con la creación de un objeto grabación. En esta fase habrá que determinar si la grabación que se ha realizado pertenece a un canal o es independiente. Para ello utilizamos query strings o cadenas de consulta que incluimos en la url del recurso grabador. En este caso la query será \emph{channel\_id$=$idValue}. A modo de ejemplo y siendo el identificador del canal en el que queremos crear una nueva grabación la cadena \emph{QwIJOpIsAXzc} la url del recurso grabador sería \emph{/records/submit?channel\_id$=$QwIJOpIsAXzc}. Iron Router provee herramientas que permiten realizar esta función de forma sencilla (código de ejemplo \ref{code:createChannelRecordingByQuery}).
 \subsection{Rutas y subscripciones}
 Los canales, al ser un contenido más en la aplicación deberán de tener un recurso de creación y su propio recurso. Además contarán con un recurso de edición para cambiar la configuración del mismo.
-Estos recursos serán: /channels, /channels/submit, /channel/:\_id y /channel/:\_id/edit. 
+Estos recursos serán: \emph{/channels}, \emph{/channels/submit}, \emph{/channel/:\_id} y \emph{/channel/:\_id/edit}. 
 \paragraph{}
-Tanto en el recurso de edición como en el propio del canal necesitaremos subscribirnos a los contenidos del canal correspondientes. Por esto creamos una nueva publicación en /app/server/publications.js compuesta por todos los contenidos. A saber: el propio canal, los usuarios subscritos y las grabaciones y comentarios del mismo. Para el recurso de edición sólo es necesario algunos campos del objeto MongoDB del canal. Por lo que creamos una nueva publicación para esta información. En el recurso /channels necesitaremos subscribirnos a los datos informativos de todos los canales del sitio. Para ello crearemos otra publicación compuesta.
+Tanto en el recurso de edición como en el propio del canal necesitaremos subscribirnos a los contenidos del canal correspondientes. Por esto creamos una nueva publicación en \emph{/app/server/publications.js} compuesta por todos los contenidos. A saber: el propio canal, los usuarios subscritos y las grabaciones y comentarios del mismo. Para el recurso de edición sólo es necesario algunos campos del objeto MongoDB del canal. Por lo que creamos una nueva publicación para esta información. En el recurso \emph{/channels} necesitaremos subscribirnos a los datos informativos de todos los canales del sitio. Para ello crearemos otra publicación compuesta.
 \subsection{Diseño de interfaces e implementación}
 \subsubsection{Creación de un canal}
 \begin{figure}[htpb]
@@ -863,31 +572,9 @@ Tanto en el recurso de edición como en el propio del canal necesitaremos subscri
 	\caption{Formulario de creación para un canal.}
 	\label{fig:createChannel}
 \end{figure}
-La información básica de un canal estará formada por un título, una descripción y una lista de etiquetas. La interfaz de creación de un canal deberá permitir la introducción de dicha información (figura \ref{fig:createChannel}). Utilizamos el sistema de formularios dinámicos basados en variables de sesión que describimos en el prototipo 1 y el complemento de etiquetas que diseñamos en el prototipo 2 para la plantilla \{\{$<$saveForm\}\}. Además creamos un nuevo method en el servidor al que llamaremos desde el cliente para almacenar el objeto canal una vez introducida la información necesaria.
-\begin{lstlisting}[language=Javascript]
-//app/lib/collections/channels.js
-Meteor.methods({
-	insertChannel: function(channelObj){
-		return Channels.insert(channelObj);
-	}
-});
-
-//app/client/modules/channels_module/channelSubmit.js
-Template.channelSubmit.events({
-	'submit form': function(e,template){
-		var obj = {};
-		obj.title = template.find('[name=title]').value();
-		obj.description = template.find('[name=description]').value();
-		obj.tags = Session.get('tagsChosen');
-		Meteor.call('insertChannel',obj,function(err,res){
-			if (err) throw new Meteor.Error('ERROR insertChannel');
-			if (res) console.log('channel inserted with id: ' + res);
- 		});
-	}
-});
-\end{lstlisting}
+La información básica de un canal estará formada por un título, una descripción y una lista de etiquetas. La interfaz de creación de un canal deberá permitir la introducción de dicha información (figura \ref{fig:createChannel}). Utilizamos el sistema de formularios dinámicos basados en variables de sesión que describimos en el prototipo 1 y el complemento de etiquetas que diseñamos en el prototipo 2 para la plantilla \{\{$<$saveForm\}\}. Además creamos un nuevo method en el servidor al que llamaremos desde el cliente para almacenar el objeto canal una vez introducida la información necesaria. (código de ejemplo \ref{code:createChannel}).
 \subsubsection{Página de canales}
-Este es la página correspondiente al recurso /channels y en ella los usuarios podrán navegar por la lista de canales del sitio. Su diseño (figura \ref{fig:channelsPage}) es equivalente al diseño de la lista de grabaciones y se compone de un logo, un enlace al recurso de creación y un sistema de tabs para realizar filtros y mostrar resultados. Este recurso estará accesible desde el sidebar como se muestra en la versión 3 del mismo (figura \ref{fig:sidebarVersions}).
+Este es la página correspondiente al recurso \emph{/channels} y en ella los usuarios podrán navegar por la lista de canales del sitio. Su diseño (figura \ref{fig:channelsPage}) es equivalente al diseño de la lista de grabaciones y se compone de un logo, un enlace al recurso de creación y un sistema de tabs para realizar filtros y mostrar resultados. Este recurso estará accesible desde el sidebar como se muestra en la versión 3 del mismo (figura \ref{fig:sidebarVersions}).
 \subsubsection{Página del canal}
 Al tratarse de un recurso de detalle, el diseño base de la interfaz será el mostrado en la figura \ref{fig:detailBase}. En el \{\{banner\}\} aparecerá el título del canal, su descripción, la lista de etiquetas, un logo, una imagen de fondo, un enlace al recurso de edición y una caja en la que se mostrará la información de su creador. Además incorporará la plantilla \{\{actions\}\} que permitirá subscribirse o cancelar la subscripción y votar dicho canal (figura \ref{fig:channelBanner}).
 \begin{figure}[htpb]
@@ -923,37 +610,14 @@ En este prototipo aparece por primera vez el concepto de organización en leccion
 \subsection{Concepto, entidades y modificaciones}
 Una lección es un espacio privado en el que crear grabaciones. Esta privación se traduce en que la creación de contenido inmediato para cada lección recae en la figura del usuario creador y que el contenido es privado para los usuarios que no estén subscritos a la misma. Además la estructuración del contenido de cada lección estará basada en secciones.
 \paragraph{}
-Con la anterior descripción surgen dos nuevas entidades: lecciones y secciones. Estas entidades se traducen en las colecciones Lessons y Sections cuyos objetos son \ref{lessonMongo} y \ref{sectionMongo} respectivamente. Se crean los ficheros /app/lib/collections/lessons.js y /app/lib/collections/sections.js en los que se declararán las colecciones y se implementarán los methods para gestionar sus modificaciones. Su relación con las demás entidades se muestra en la figura (tal).
+Con la anterior descripción surgen dos nuevas entidades: \textbf{lecciones} y \textbf{secciones}. Estas entidades se traducen en las colecciones Lessons y Sections cuyos objetos son \ref{lessonMongo} y \ref{sectionMongo} respectivamente. Se crean los ficheros \emph{/app/lib/collections/lessons.js} y \emph{/app/lib/collections/sections.js} en los que se declararán las colecciones y se implementarán los methods para gestionar sus modificaciones. Su relación con las demás entidades se muestra en la figura (tal).
 \paragraph{}
-Cada sección estará compuesta de grabaciones. Por lo que dichas grabaciones harán referencia a la sección y a la lección que pertenecen, además de indicar el orden dentro de la sección. Cada sección poseerá también un orden dentro de cada lección. Estos parámetros serán necesarios a la hora de editar las listas en el recurso de edición de la lección. Al igual que para las grabaciones pertenecientes a un canal, informamos al grabador de que se trata de una grabación perteneciente a una lección mediante la url. Esta vez formada por varias query string: lesson\_id, section\_id y order (\ref{recordMongo}). 
-\begin{lstlisting}[language=Javascript]
-//app/lib/router.js
-Router.route('record/submit',{
-	...
-	data: function(){
-		var data = {};
-		....
-		(this.params.query.lesson_id)? data.lesson_id = this.params.query.lesson_id : null;
-		(this.params.query.section_id)? data.section_id = this.params.query.section_id : null;
-		(this.params.query.order)? data.order = this.params.query.order : null;
-	}
-});
+Cada sección estará compuesta de grabaciones. Por lo que dichas grabaciones harán referencia a la sección y a la lección que pertenecen, además de indicar el orden dentro de la sección. Cada sección poseerá también un orden dentro de cada lección. Estos parámetros serán necesarios a la hora de editar las listas en el recurso de edición de la lección. Al igual que para las grabaciones pertenecientes a un canal, informamos al grabador de que se trata de una grabación perteneciente a una lección mediante la url. Esta vez formada por varias query string: \emph{lesson\_id}, \emph{section\_id} y \emph{order} (\ref{recordMongo} y código de ejemplo \ref{code:createRecordingFromLesson}). 
 
-//app/client/modules/record_modules/recordSubmit/recordSubmit.js
-SC.upload(file).then(function(){
-	var obj = {}
-	if (this.data.lesson_id){
-		obj.lesson_id = this.data.lesson_id;
-		obj.section_id = this.data.section_id;
-		obj.order = this.data.order;
-	}
-	Meteor.call('insertRecord',obj,function(err,res){});
-});
-\end{lstlisting}
 \subsection{Rutas y subscripciones}
-Los recursos que se establecen para este contenido son: /lessons/submit, /lessons, /lesson/:\_id y /lesson/:\_id/edit (creación, listado, propio y creación).
+Los recursos que se establecen para este contenido son: \emph{/lessons/submit}, \emph{/lessons}, \emph{/lesson/:\_id} y \emph{/lesson/:\_id/edit} (creación, listado, propio y creación).
 \paragraph{}
-Creamos una publicación compuesta para el recurso detalle, una publicación simple para el recurso de edición y otra compuesta para el recurso de listado a las que nos subscribiremos mediante el método .waitOn de cada ruta establecida en /app/lib/router.js para cada recurso.
+Creamos una publicación compuesta para el recurso detalle, una publicación simple para el recurso de edición y otra compuesta para el recurso de listado a las que nos subscribiremos mediante el método .waitOn() de cada ruta establecida en \emph{/app/lib/router.js} para cada recurso.
 \subsection{Lista de reproducción y opciones}
 \begin{figure}[htpb]
 	\centering
@@ -962,14 +626,14 @@ Creamos una publicación compuesta para el recurso detalle, una publicación simpl
 	\label{fig:playlist}
 \end{figure}
 Debido a que el contenido de las lecciones se estructura en secciones que no son más que una lista de grabaciones, introducimos el concepto de lista de reproducción para el proyecto. Esto es, cuando reproduzcamos una grabación perteneciente a una lección, el reproductor mostrará la lista de grabaciones de la sección a la que pertenece. Además permitirá la navegación por ella y establecer las opciones de reproducción y repetición automática. 
-Estas configuraciones se realizarán en el objeto del usuario mediante los atributos: auto\_play y auto\_repeat. Las funciones son las siguientes: 
+Estas configuraciones se realizarán en el objeto del usuario mediante los atributos: \emph{auto\_play} y \emph{auto\_repeat}. Las funciones son las siguientes: 
 \begin {itemize}
 	\item \textbf{Reproducción automática: } al terminar la reproducción de cada elemento de la lista se comienza con la del siguiente.
 	\item \textbf{Repetición automática: } convierte la lista de grabaciones en una lista circular. El elemento siguiente del último es el elemento primero y el elemento anterior al primero es el último.
 \end{itemize}
 \paragraph{}
 Si se da el caso de que ambas funciones están activadas, la reproducción de la lista de grabaciones de una sección es infinita.
-El diseño de la misma puede verse en la figura \ref {fig:playlist}
+El diseño de la misma puede verse en la figura \ref {fig:playlist}.
 \subsection{Diseño de interfaces e implementación}
 \subsubsection{Creación de una lección}
 La información básica de una lección está formada por un titulo, una descripción y una lista de tags. Para su implementación utilizamos el sistema de formularios dinámicos mediante variables de sesión e integramos en la plantilla del formulario (figura \ref{fig:createChannel}) los complementos que permitan la introducción de dicha información (los mismos que para el recurso de creación de un canal).
@@ -995,28 +659,28 @@ El \{\{navbarTab\}\} contendrá las tabs (figura \ref{fig:navbarTabDesign}):
 	\item \textbf{Users: } lista de usuarios subscritos.
 \end{itemize}
 \paragraph{}
-Cada ítem sección estará formado por una cabecera y por un sistema de tabs implementado mediante un collapsible de Bootstrap. Ciertas acciones sobre estos elementos serán accesibles o no dependiendo del rol del usuario basándonos en los requisitos establecidos. Esto se refleja en la figura \ref{fig:sectionsTab}. Cada ítem en su cabecera mostrará el número de grabaciones, un botón para eliminar la sección, un botón para reproducir los contenidos y un enlace al recurso de creación de las grabaciones (grabador). El sistema de tabs estará formado por dos pestañas. En una aparecerá la lista de grabaciones (enlaces al reproductor) y en la otra la lista de grabaciones con botones para editar el orden dentro de la sección. Todas las acciones que pretendan crear, modificar o borrar están suprimidas para los usuarios con el rol de visitante.
+Cada ítem sección estará formado por una cabecera y por un sistema de tabs implementado mediante un \textbf{collapsible} de Bootstrap. Ciertas acciones sobre estos elementos serán accesibles o no dependiendo del rol del usuario basándonos en los requisitos establecidos. Esto se refleja en la figura \ref{fig:sectionsTab}. Cada ítem en su cabecera mostrará el número de grabaciones, un botón para eliminar la sección, un botón para reproducir los contenidos y un enlace al recurso de creación de las grabaciones (grabador). El sistema de tabs estará formado por dos pestañas. En una aparecerá la lista de grabaciones (enlaces al reproductor) y en la otra la lista de grabaciones con botones para editar el orden dentro de la sección. Todas las acciones que pretendan crear, modificar o borrar están suprimidas para los usuarios con el rol de visitante.
 \subsubsection{Edición de una lección}
-Al tratarse de un recurso de edición, utilizamos el diseño implementado anteriormente. La plantilla \{\{$<$awesomeForm\}\} para cargar el formulario base mostrado en la figura \ref{fig:editFormBase} y a dicho formulario integramos los componentes \ref{fig:formEditComplements} avatarEdit, descriptionEdit, tagsEdit y además creamos uno nuevo para poder editar el orden de las secciones. El diseño se muestra en la figura \ref{fig:lessonEdit} 
+Al tratarse de un recurso de edición, utilizamos el diseño implementado anteriormente. La plantilla \{\{$<$awesomeForm\}\} para cargar el formulario base mostrado en la figura \ref{fig:editFormBase} y a dicho formulario integramos los componentes (figura \ref{fig:formEditComplements}) avatarEdit, descriptionEdit, tagsEdit y además creamos uno nuevo para poder editar el orden de las secciones. El diseño se muestra en la figura \ref{fig:lessonEdit} 
 
 \section{Prototipo 6: Página de perfil y Contactos}
 En este prototipo se ha diseñado e implementado la página de perfil del usuario y un espacio para realizar solicitudes de contacto y mostrar esas relaciones entre los distintos usuarios.
 \subsection{Perfil}
-Se trata de un nuevo módulo y recurso cuya ruta será /profile/\_id, donde \_id corresponderá al id del usuario en cuestión. Se crean nuevas publicaciones y subscripciones y se establece la ruta en /app/lib/router.js.
+Se trata de un nuevo módulo y recurso cuya ruta será \emph{/profile/\_id}, donde \emph{\_id} corresponderá al id del usuario en cuestión. Se crean nuevas publicaciones y subscripciones y se establece la ruta en \emph{/app/lib/router.js}.
 
 \subsubsection{Interfaz}
 Al tratarse de un recurso de detalle compartirá la misma base que los demás (figura \ref{fig:detailBase}). El \{\{banner\}\} estará formado una cabecera en la que se muestran el avatar del usuario, una imagen de fondo, un botón para acceder al recurso de edición del perfil y una caja con acciones y un cuerpo en el que aparece el nombre de usuario, la descripción y lista de servicios (figura \ref{fig:profileBanner}). 
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.9\textwidth]{profileBanner.png}
+	\includegraphics[width=0.8\textwidth]{profileBanner.png}
 	\caption{Diseño banner del perfil}
 	\label{fig:profileBanner}
 \end{figure}
 
 \subsubsection{Contenidos}
 Utilizamos el complemento navbarTab y lo configuramos para que tenga las tabs canales, lecciones, grabaciones, conversaciones y contactos que corresponden a las categorías de contenido de la aplicación (figura \ref{fig:navbarTabDesign}).
-Podemos reutilizar las plantillas  \{\{contentTab\}\} para mostrar las listas de contenido según la categoría que hemos generado para los recursos /records, /channels y /lessons. Sólo aparecerán las del usuario en cuestión, ya que nos hemos subscrito a sus contenidos. Aunque en este caso no existe la opción de iniciar el buscador, sino que se añaden nuevos filtros (figuras \ref{fig:recordsPage}, \ref{fig:lessonsPage} y \ref{fig:channelsPage} ): 
+Podemos reutilizar las plantillas  \{\{contentTab\}\} para mostrar las listas de contenido según la categoría que hemos generado para los recursos \emph{/records}, \emph{/channels} y \emph{/lessons}. Sólo aparecerán las del usuario en cuestión, ya que nos hemos subscrito a sus contenidos. Aunque en este caso no existe la opción de iniciar el buscador, sino que se añaden nuevos filtros (figuras \ref{fig:recordsPage}, \ref{fig:lessonsPage} y \ref{fig:channelsPage} ): 
 \begin{itemize}
 	\item \textbf{Subscrito: }muestra los canales o lecciones a los que se ha subscrito el usuario según corresponda.
 	\item \textbf{Historial: }muestra un total de 10 entradas. Dichas entradas serán las 10 últimas reproducciones que el usuario haya visualizado y formarán parte del  \{\{contentTab\}\} para las grabaciones.
@@ -1030,14 +694,14 @@ Al visualizar cualquier página de perfil un usuario puede adoptar uno de estos d
 	\item \textbf{Visitante:}  lo adoptará el usuario que no sea propietario de dicho perfil. Podrá acceder a las acciones presentes en la cabecera del banner. Sólo existirá una, de momento: realizar peticiones de contacto.
 \end{itemize}
 \subsubsection{Edición del perfil}
-Al igual que para editar las lecciones o los canales se establece un nuevo recurso para editar el perfil cuya ruta es /profile/:\_id/edit. Como en las otras es necesario declararla en /app/lib/router.js crear una nueva plantilla \{\{$<$profileEdit\}\} en /app/client/modules/profile\_modules/profileEdit/profileEdit.html y subscribirse al usuario correspondiente. Al igual que los demás recursos de edición, éste mantiene el diseño base (figura \ref{fig:editFormBase}), es decir, que incorpora la plantilla \{\{$<$awesomeForm\}\} la cual, mediante una variable de sesión, carga uno u otro formulario con características comunes. En este caso, el formulario de edición dinámico creado en el prototipo 4. Además incorporamos los componentes avatar, banner y description (figuras \ref{fig:profileEdit}, \ref{fig:formEditComplements}). 
+Al igual que para editar las lecciones o los canales se establece un nuevo recurso para editar el perfil cuya ruta es \emph{/profile/:\_id/edit}. Como en las otras es necesario declararla en \emph{/app/lib/router.js} crear una nueva plantilla \{\{$<$profileEdit\}\} en \emph{/app/client/modules/profile\_modules/profileEdit/profileEdit.html} y subscribirse al usuario correspondiente. Al igual que los demás recursos de edición, éste mantiene el diseño base (figura \ref{fig:editFormBase}), es decir, que incorpora la plantilla \{\{$<$awesomeForm\}\} la cual, mediante una variable de sesión, carga uno u otro formulario con características comunes. En este caso, el formulario de edición dinámico creado en el prototipo 4. Además incorporamos los componentes avatar, banner y description (figuras \ref{fig:profileEdit}, \ref{fig:formEditComplements}). 
 \subsection{Contactos}
-Al existir usuarios en la aplicación es necesario establecer y denominar las relaciones entre ellos. Dichas relaciones se denominan relaciones de contacto. Con esto surge una nueva entidad (Contactos) que se traduce en una nueva colección Mongo llamada Relations con su fichero correspondiente y cuyo objeto es \ref{relationMongo}
+Al existir usuarios en la aplicación es necesario establecer y denominar las relaciones entre ellos. Dichas relaciones se denominan relaciones de contacto. Con esto surge una nueva entidad (\textbf{Contactos}) que se traduce en una nueva colección Mongo llamada \textbf{Relations} con su fichero correspondiente y cuyo objeto es \ref{relationMongo}. La relación con las demás entidades se muestra en la figura (TAL).
 
 
 \subsubsection{Peticiones y lista de contactos}
 Surge una nueva entidad Peticiones que se traduce en la colección llamada Requests cuyo objeto es \ref{requestsMongo} 
-Para el \{\{contentTab\}\} del tab 'contactos' \ del \{\{navbarTab\}\} de la página de perfil se establecen dos nuevas tabs: contactos y peticiones.
+Para el \{\{contentTab\}\} del tab 'contactos'  del \{\{navbarTab\}\} de la página de perfil se establecen dos nuevas tabs: contactos y peticiones.
 \paragraph{}
 Para la tab contactos activa se mostrará la lista de los contactos (figura \ref{fig:contactsTab}). Cada miniatura contará con el avatar, el nombre de usuario, la fecha desde la que se inició la relación de contacto, la descripción y acciones (sólo visibles cuando el usuario es el propietario del perfil).
 
@@ -1079,16 +743,16 @@ El proceso para establecer la relación de contacto es la siguiente:
 
 \paragraph{}Además de realizar las peticiones mediante este espacio, se habilita para los usuarios que tengan el rol de visitante un botón en \{\{actions\}\} como se muestra en la figura (\ref{fig:profileBanner}).
 
-\paragraph{}La implementación de este prototipo tiene como resultado las figuras (tal tal tal en apéndices).
+\paragraph{}La implementación de este prototipo tiene como resultado las figuras (\ref{fig:profile-page}, \ref{fig:profile-edit}, \ref{fig:contacts-tab} y \ref{fig:contacts-requests}).
 
 
 \section{Prototipo 7: Conversaciones y alertas}
 En este prototipo se ha diseñado y desarrollado el módulo de comunicaciones interno de la aplicación basado en conversaciones o chats. También el sistema de alertas y avisos de nuevos mensajes.
 \subsection{Conversaciones}
 \subsubsection{Entidades, Rutas, subscripciones y publicaciones}
-Se trata de otra categoría de contenidos dentro de la aplicación por lo que tendrá un recurso de creación, de detalle y de edición: /conversation/submit, /conversation/:\_id y /conversation/:\_id/edit. El acceso a las conversaciones es privada, es decir, sólo los miembros pueden visualizarlas. Esto se traduce en que el listado de las mismas está disponible como contenido dentro del recurso perfil de cada usuario y sólo será visible si el usuario tiene el rol de propietario.
+Se trata de otra categoría de contenidos dentro de la aplicación por lo que tendrá un recurso de creación, de detalle y de edición: \emph{/conversation/submit}, \emph{/conversation/:\_id} y \emph{/conversation/:\_id/edit}. El acceso a las conversaciones es privada, es decir, sólo los miembros pueden visualizarlas. Esto se traduce en que el listado de las mismas está disponible como contenido dentro del recurso perfil de cada usuario y sólo será visible si el usuario tiene el rol de propietario.
 \paragraph{}
-Con la aparición de esta nueva categoría surgen las nueva entidades Conversaciones y Mensajes que se traducen en las colecciónes Conversations (/app/lib/collections/conversations.js) y Messages (/app/lib/collections/messages.js) y cuyos objetos se definen en \ref{conversationMongo} y \ref{messageMongo}. La relación de éstas con las demás entidades queda reflejada en la figura (tal).
+Con la aparición de esta nueva categoría surgen las nueva entidades \textbf{Conversaciones} y \textbf{Mensajes} que se traducen en las colecciónes \textbf{Conversations} (\emph{/app/lib/collections/conversations.js}) y \textbf{Messages} (\emph{/app/lib/collections/messages.js}) y cuyos objetos se definen en \ref{conversationMongo} y \ref{messageMongo}. La relación de éstas con las demás entidades queda reflejada en la figura (TAL).
 \paragraph{}
 Al igual que para las anteriores categorías, se han creado las publicaciones necesarias a las que nos subscribiremos mediante Iron Router en las rutas establecidas a los recursos de detalle y de edición.
 \subsubsection{Roles}
@@ -1098,14 +762,14 @@ Los roles en las conversaciones serán importantes a la hora de ofrecer a los usu
 	\item \textbf{Invitados: } éstos tendrán acceso a las mismas funciones que el líder a excepción de expulsar usuarios y de cambiar el asunto.
 \end{itemize}
 \subsubsection{Creación de una conversación}
-Puesto que las conversaciones son privadas, el único medio para acceder a su recurso de creación es desde el recurso perfil. Al igual que los anteriores, este recurso utiliza la plantilla \{\{$<$awesomeForm\}\} que mediante la variable de sesión 'typeForm' incluirá la plantilla base para un formulario de edición. Esta plantilla incorporará los componentes correspondientes para la introducción de la información necesaria. Estos son una caja de texto para el asunto y dos complementos que se han implementado para la introducción de miembros y del primer mensaje (figura tal).
+Puesto que las conversaciones son privadas, el único medio para acceder a su recurso de creación es desde el recurso perfil. Al igual que los anteriores, este recurso utiliza la plantilla \{\{$<$awesomeForm\}\} que mediante la variable de sesión 'typeForm' incluirá la plantilla base para un formulario de edición. Esta plantilla incorporará los componentes correspondientes para la introducción de la información necesaria. Estos son una caja de texto para el asunto y dos complementos que se han implementado para la introducción de miembros y del primer mensaje (figura createConversation).
 
 \subsubsection{Página de conversación}
-Este será el primer y único recurso de detalle que no compartirá con los demás el diseño base formado por un \{\{banner\}\}, \{\{navbarTab\}\} y \{\{contentTab\}\}. El diseño corresponderá al mostrado en la figura (tal) que se compone de tres espacios: 
+Este será el primer y único recurso de detalle que no compartirá con los demás el diseño base formado por un \{\{banner\}\}, \{\{navbarTab\}\} y \{\{contentTab\}\}. El diseño corresponderá al mostrado en la figura (conversationPage) que se compone de tres espacios: 
 \begin{itemize}
 	\item \textbf{Cabecera: } aquí se mostrará toda la información relevante de la conversación (asunto, lista de miembros, contadores), botones para para visualizar el panel de miembros, el panel de opciones y acceder al recurso de edición.
 	\item \textbf{Cuerpo: } corresponde a la lista de mensajes de la conversación. Los escritos por el usuario actual aparecerán a la derecha y los de los demás miembros a la izquierda. Cada mensaje poseerá información sobre su autor (nombre de usuario y avatar) y la fecha en la que se escribió.
-	\item \textbf{Footer: } en este espacio aparecerá una caja de texto para la introducción de mensajes, unos botones para visualizar la lista de emoticonos y la introducción de enlaces y un botón para enviar. 
+	\item \textbf{Pie: } en este espacio aparecerá una caja de texto para la introducción de mensajes, unos botones para visualizar la lista de emoticonos y la introducción de enlaces y un botón para enviar. 
 \end{itemize}
 \paragraph{}
 En el panel de miembros podremos ver la lista completa de usuarios que tienen accesible la conversación y acceder a sus perfiles.
@@ -1123,42 +787,15 @@ Para este recurso se utilizará el mismo diseño de plantillas que para los anteri
 El diseño de estos componentes o complementos puede verse en la figura (tal).
 \subsection{Alertas}
 \subsubsection{Concepto y entidades}
-Partiendo del requisito de que los usuarios deben estar informados en todo momento de lo que ocurre en las conversaciones, se ha desarrollado un módulo de alertas de conversación. Estas alertas se generarán en el momento que se introduzca un nuevo mensaje en cualquier conversación y se mostrarán a todos aquellos usuarios miembro que no se encuentren visualizando la página de dicha conversación. El espacio dedicado a la visualización de las distintas alertas será una pestaña del sidebar (figura tal). De este modo los usuarios podrán visualizarlas en cualquier momento. 
+Partiendo del requisito de que los usuarios deben estar informados en todo momento de lo que ocurre en las conversaciones, se ha desarrollado un módulo de alertas de conversación. Estas alertas se generarán en el momento que se introduzca un nuevo mensaje en cualquier conversación y se mostrarán a todos aquellos usuarios miembro que no se encuentren visualizando la página de dicha conversación. El espacio dedicado a la visualización de las distintas alertas será una pestaña del sidebar (figura \ref{fig:sidebarConversations}). De este modo los usuarios podrán visualizarlas en cualquier momento. 
 \paragraph{}
-Este concepto supone una nueva entidad llamada Alertas de Conversación que se traduce en la colección conversationAlerts (/app/lib/collections/conversationAlerts.js) cuyo objeto MongoDB se muestra en \ref{conversationAlertMongo}. La relación de esta entidad con las anteriores puede verse en el esquema de la figura (tal). 
-\paragraph{}
+Este concepto supone una nueva entidad llamada Alertas de Conversación que se traduce en la colección conversationAlerts (\emph{/app/lib/collections/conversationAlerts.js}) cuyo objeto MongoDB se muestra en \ref{conversationAlertMongo}. La relación de esta entidad con las anteriores puede verse en el esquema de la figura (TAL). 
+
 \subsubsection{Proceso}
-Al crearse una conversación se generan tantas alertas como miembros posea y su atributo alertsAllow tendrá un valor inicial de true. 
-En el momento que un miembro accede a la conversación ese atributo se tornará a false. Creamos una publicación a la que los usuarios estarán subscritos en todo momento. Se basa en publicar las alertas de conversación que tengan el atributo alertsAllow a true. Además contará con la referencia a la conversación de la que proceden por lo que para cada alerta se mostrará el último mensaje.
+Al crearse una conversación se generan tantas alertas como miembros posea y su atributo \emph{alertsAllow} tendrá un valor inicial de \emph{true}. 
+En el momento que un miembro accede a la conversación ese atributo se tornará a false. Creamos una publicación a la que los usuarios estarán subscritos en todo momento. Se basa en publicar las alertas de conversación que tengan el atributo alertsAllow a true. Además contará con la referencia a la conversación de la que proceden por lo que para cada alerta se mostrará el último mensaje (código de ejemplo \ref{code:conversationAlerts}). 
 \paragraph{}
-El siguiente código muestra un ejemplo de implementación de este proceso.
-
-\begin{lstlisting}[language=Javascript]
-//app/client/modules/conversation_modules/conversation/conversation.js
-Template.conversation.events({
-	'click #send-new-message': function(){
-		Meteor.call('insertMessage');
-		//actualizamos el contador de alertas y establecemos el ultimo mensaje
-		Meteor.call('updateAlertsConversation',this._id,Meteor.userId());
-	}
-});
-Template.conversation.rendered = function(){
-	//actualizamos la visualización de las alertas y el contador.
-	Meteor.call('updateAlertsConversation',this._id, Meteor.userId(),function(err){
-		if (err) throw new Meteor.Error ('ERROR: updateAlertsConversation');
-	});
-}
-
-//app/lib/router.js
-Router.configure({
-	//el usuario estará subscrito a sus alertas en todo momento.
-	waitOn: function(){
-		...
-		return Meteor.subscribe('conversationAlerts',Meteor.userId());
-	}
-});
-\end{lstlisting}
-
+El resultado de la implementación de este prototipo puede verse en las capturas tal tal y tal.
 
 \section{Prototipo 8: Emails e integración de servicios de registro}
 En este prototipo se ha implementado un módulo de mensajería, los procesos de verificación de email, cambio y recuperación de contraseña para los usuarios y se han introducido nuevos servicios con los que realizar el registro en la aplicación partiendo de los requisitos correspondientes (ver \ref{sec:requisitos}).
@@ -1166,76 +803,32 @@ En este prototipo se ha implementado un módulo de mensajería, los procesos de ve
 \subsubsection{Proceso de verificación}
 Este servicio será exclusivo para los usuarios que posean un email asociado a su cuenta y será accesible desde el perfil como puede verse en la figura \ref{fig:profileBanner}.
 \paragraph{}
-El proceso es muy simple. El usuario escoge que email verificar y hace click en verificar. En ese momento se enviará un correo con el link de verificación. En Meteor gracias al paquete Accounts podremos configurar la plantilla de los correos que enviemos desde la aplicación. Deberemos especificar una dirección de correo como origen y el cuerpo del mensaje. Para ello se ha generado la dirección duckflight.team@gmail.com. El cuerpo del mensaje accepta un parámetro que corresponde con el link de verificación en este caso. Hacemos uso de Meteor.absoluteUrl() para extraer el dominio base de nuestro sitio y después modificamos la url de forma que coincida con la ruta establecida en Iron Router /verify-email/:\_token. 
+El proceso es muy simple. El usuario escoge que email verificar y hace click en verificar. En ese momento se enviará un correo con el link de verificación. En Meteor gracias al paquete \textbf{Accounts} podremos configurar la plantilla de los correos que enviemos desde la aplicación. Deberemos especificar una dirección de correo como origen y el cuerpo del mensaje. Para ello se ha generado la dirección \emph{duckflight.team@gmail.com}. El cuerpo del mensaje acepta un parámetro que corresponde con el \textbf{link de verificación} en este caso. Hacemos uso de Meteor.absoluteUrl() para extraer el dominio base de nuestro sitio y después modificamos la url de forma que coincida con la ruta establecida en Iron Router \emph{/verify-email/:\_token}. 
 \paragraph{}
-Para enviar el mensaje utilizamos el método .sendVerificationEmail al que le pasamos como parámetro la dirección de correo y el identificador del usuario. Este método sólo está accesible en el paquete Accounts en el cliente por lo que se crea un method en el lado del servidor. En el momento que un nuevo usuario es creado junto con una dirección de correo, también se llamará a este método para que el usuario pueda desde el primer momento acceder a las funcionalidades que brinda el tener un email verificado dentro de la aplicación.
+Para enviar el mensaje utilizamos el método .sendVerificationEmail() al que le pasamos como parámetro la dirección de correo y el identificador del usuario. Este método sólo está accesible en el paquete Accounts en el cliente por lo que se crea un method en el lado del servidor. En el momento que un nuevo usuario es creado junto con una dirección de correo, también se llamará a este método para que el usuario pueda desde el primer momento acceder a las funcionalidades que brinda el tener un email verificado dentro de la aplicación.
 \paragraph{}
-En el momento que el usuario explore su bandeja de entrada y pinche en el link de verificación se llamará al método .verifyEmail de Accounts en el lado del cliente. El único parámetro que necesita es el token del link que lo tiene accesible gracias a Iron Router que lo ha incluido como datos de la plantilla.
-\begin{lstlisting}[language=Javascript]
-//app/server/accounts
-Meteor.methods({
-	sendVerificationLink: function(address,user_id){
-		Accounts.sendVeriicationEmail (address,user_id);
-	}
-});
-
-//app/client/verifications/verificationEmail.js
-Template.verificationEmail.events({
-	'click button.verify': function(){
-		Meteor.call('sendVerificationLink',this.address,Meteor.userId());
-	}
-});
-
-Template.verifyEmail.rendered = function(){
-	Accounts.verifyEmail(this.data.token);
-}
-
-//app/lib/router.js
-Router.route('/verify-email/:_token',{
-	name: 'verifyEmail',
-	data: function(){
-		return {
-			token: this.params.token;
-		}
-	}
-});
-\end{lstlisting}
-El código anterior muestra un esquema de la implementación.
-El diseño de las interfaces puede verse en las figuras tal y tal.
+En el momento que el usuario explore su bandeja de entrada y pinche en el link de verificación se llamará al método .verifyEmail() de Accounts en el lado del cliente. El único parámetro que necesita es el token del link que lo tiene accesible gracias a Iron Router que lo ha incluido como datos de la plantilla (código de ejemplo \ref{code:verificationEmail}).
+\paragraph{}
+La implementación se muestra en la captura (tal).
 
 \subsubsection{Proceso de cambio de contraseña}
 Este servicio será exclusivo para los usuarios que se hayan registrado mediante un nombre de usuario y contraseña y estará accesible desde el perfil como puede verse en la figura \ref{fig:profileBanner}.
 \paragraph{}
-El proceso es muy sencillo. Primero el usuario deberá introducir su contraseña actual (si la ha olvidado podrá iniciar el proceso de recuperación a través de un enlace). Después de comprobar que es correcta, el usuario podrá introducir una nueva contraseña y actualizarla. Mediante el paquete Accounts podremos utilizar los métodos .checkPassword (desde el servidor) y .changePassword (desde el cliente) para este proceso.
-\begin{lstlisting}[language=Javascript]
-//app/client/modules/changePassword/changePassword.js
-Template.changePassword.events({
-	'click #check': function(e,template){
-		var pwToCheck = template.find('[name=oldPassword]')
-		Meteor.call('checkPassword',pwToCheck, Meteor.userId(),function(err,res){
-			if (!err) Session.set('oldPassword',pwToCheck);
-		});
-	},
-	'click #update-password': function(e,template){
-		var password = template.find('[name=password]');
-		var repassword = template.find('[name=repassword]');
-		if (password == repassword){
-			Accounts.changePassword (Session.get('oldPassword'),password,Meteor.userId());
-		}
-	}
-});
-El diseño de las interfaces de este proceso se muestran en las figuras (tal)
-\end{lstlisting}
+El proceso es muy sencillo. Primero el usuario deberá introducir su contraseña actual (si la ha olvidado podrá iniciar el proceso de recuperación a través de un enlace). Después de comprobar que es correcta, el usuario podrá introducir una nueva contraseña y actualizarla. Mediante el paquete Accounts podremos utilizar los métodos .checkPassword() (desde el servidor) y .changePassword() (desde el cliente) para este proceso (código de ejemplo \ref{code:changePassword}).
+\paragraph{}
+La implementación de este proceso se muestran en la figuras (tal)
+
 \subsubsection{Proceso de recuperación de contraseña}
 Este servicio al igual que el de cambio de contraseña será exclusivo de los usuarios registrados con contraseña. Será accesible desde el proceso de cambio de contraseña y desde el formulario de inicio de sesión (figura \ref{fig:signIn}).
 \paragraph{}
-El proceso es similar al de verificación de email sólo que los métodos son: .sendResetPasswordEmail (en el lado del servidor) y resetPassword (e el lado del cliente). Como el proceso requiere el envío de un email habrá que establecer la configuración de su plantilla de la misma forma que para el proceso de verificación.
+El proceso es similar al de verificación de email sólo que los métodos son: .sendResetPasswordEmail (en el lado del servidor) y resetPassword (en el lado del cliente). Como el proceso requiere el envío de un email habrá que establecer la configuración de su plantilla de la misma forma que para el proceso de verificación.
 
-El diseño de las interfaces pueden verse en las figuras (tal y tal).
+La implementación puede verse en la figuras (tal).
 
 
 \subsection{Distribuidor y parámetros globales}
-Para el envío de correos mediante la aplicación es necesario un cliente de mensajería o distribuidor. Para este proyecto hemos usado el servicio que nos proporciona mailgun \footnote{\url{https://mailgun.com}}. Se trata de una herramienta que nos proporciona un dominio de correo propio que añadido como variable de entorno de nuestra aplicación, se encargará de la aceptación y la distribución de nuestros correos. 
+Para el envío de correos mediante la aplicación es necesario un cliente de mensajería o distribuidor. Para este proyecto hemos usado el servicio que nos proporciona \textbf{mailgun}\footnote{\url{https://mailgun.com}}. Se trata de una herramienta que nos proporciona un dominio de correo propio que añadido como variable de entorno de nuestra aplicación, se encargará de la aceptación y la distribución de nuestros correos. 
+\vspace{0.5cm}
 \begin{lstlisting}[language=javascript]
 Meteor.startup(function(){
 	process.env.MAIL_URL = 'nombre_de_dominio_de_mailgun'
@@ -1245,18 +838,17 @@ Meteor.startup(function(){
 Para usar este servicio ha sido necesaria la creación de un usuario en mailgun y la elección de uno de los paquetes ofertados. En este caso se ha optado por el paquete gratuito. Aunque los correos tardan en distribuirse funciona de forma aceptable.
 
 \subsection{Envío de emails desde la aplicación}
-Meteor posee un paquete por defecto para esta funcionalidad: el paquete Email. Mediante su método .send() podremos enviar cualquier email. Este método acepta un objeto con los parámetros to, from y html para establecer el destino, origen y cuerpo del email.
+Meteor posee un paquete por defecto para esta funcionalidad: el paquete \textbf{Email}. Mediante su método .send() podremos enviar cualquier email. Este método acepta un objeto con los parámetros \emph{to}, \emph{from} y \emph{html} para establecer el destino, origen y cuerpo del email.
 \subsubsection{Proceso de envío}
 El proceso sigue dos fases: elección del correo a utilizar como origen y la composición del mensaje, en la que estableceremos las direcciones de destino, el asunto y el cuerpo. 
 \paragraph{}
 Si el usuario no tiene ningún email verificado aparecerá un enlace al recurso de verificación de emails. 
 Para la introducción de las direcciones de destino utilizamos el complemento diseñado para introducir los miembros de una conversación en el recurso de creación y de edición de la misma. 
-Para la composición del cuerpo del mensaje hemos utilizado un editor de textos enriquecido llamado froalaEditor y que lo tenemos disponible como paquete Meteor (froala:editor).
-Las interface pueden verse en las figuras (tal y tal).
+Para la composición del cuerpo del mensaje hemos utilizado un editor de textos enriquecido llamado \textbf{froalaEditor}\footnote{\url{https://www.froala.com/wysiwyg-editor}} y que lo tenemos disponible como paquete Meteor (\textbf{froala:editor}). El resultado de la implementación de este proceso se muestra en la captura (tal)
 \subsection{Integración de servicios de registro}
 Para este proyecto vamos a incluir además del sistema de registro basado en nombre de usuario y contraseña, otros servicios como el de registro mediante Google, Github y Facebook.
 \paragraph{}
-Para cada uno de los anteriores ha sido necesaria la creación de una app en el espacio para desarrolladores correspondiente a cada sitio y la configuración de los servicios mediante la introducción de los parámetros de autenticación proporcionados para cada aplicación. La configuración de los servicios se ha realizado usando el paquete ServiceConfiguration de la forma: 
+Para cada uno de los anteriores ha sido necesaria la creación de una app en el espacio para desarrolladores correspondiente a cada sitio y la configuración de los servicios mediante la introducción de los parámetros de autenticación proporcionados para cada aplicación. La configuración de los servicios se ha realizado usando el paquete \textbf{ServiceConfiguration} de la forma: 
 \begin{lstlisting}[language=Javascript]
 	ServiceConfiguration.configurations.remove({
 	service: 'google'});
@@ -1267,19 +859,13 @@ Para cada uno de los anteriores ha sido necesaria la creación de una app en el e
 		redirect_uri: '//url de redirección'.
 	});
 \end{lstlisting}
-Para cada uno de los servicios incluimos los paquetes loginWith<service>. Esto hará que tengamos el método .loginWith<service> disponible en el paquete Accounts.
+Para cada uno de los servicios incluimos los paquetes \textbf{accounts-<service>}. Esto hará que tengamos el método .loginWith<service>() disponible en el paquete Accounts.
 
-Por último añadimos botones al formulario de inicio de sesión para ofrecer la posibilidad de registrarse a través de estos servicios (figura tal)
+Por último añadimos botones al formulario de inicio de sesión para ofrecer la posibilidad de registrarse a través de estos servicios (\ref{fig:signIn}).
 
 \section{Prototipo 9: Página principal y sistema de búsqueda}
 En este prototipo se diseñará e implementará el contenido de la página principal de la aplicación y el sistema de búsqueda desarrollado.
 \subsection{Estructura}
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=0.8\textwidth]{mainPage.png}
-	\caption{Diseño de la página principal}
-	\label{fig:mainPage}
-\end{figure}
 En esta página según los requisitos debe existir un espacio para recomendaciones y otro para mostrar los contenidos más populares o votados. Por lo que esta va a se la estructura de la información de la página. 
 \paragraph{}
 Además incluiremos un \{\{navbarTab\}\} con las tabs Home y Search para acceder al contenido principal o al buscador como puede verse en la figura \ref{fig:mainPage}.
@@ -1306,29 +892,32 @@ Los modificadores disponibles son:
 \paragraph{}
 Los resultados se clasifican según las categorías en un sistema de tabs. Para cada categoría se muestra el número de resultados. 
 \paragraph{}
-La implementación de este módulo integra una plantilla llamada \{\{<smartSearch\}\} que utiliza un objeto creado mediante el constructor SearchParamsManager creado en /app/client/lib/searchParamsManager.js. Dicho objeto se encarga traducir los actuales modificadores introducidos en parámetros de búsqueda o de subscripción para Mongo. Una vez traducidos procede a la subscripción de las publicaciones correspondientes. En este caso se han creado tres, una por categoría y mediante el valor del modificador +category filtra las subscripciones. Además se han creado plantillas de auto-completado para los modificadores y para la lista de sugerencias de cada uno.
+La implementación de este módulo integra una plantilla llamada \{\{$<$smartSearch\}\} que utiliza un objeto creado mediante el constructor \textbf{SearchParamsManager} creado en \emph{/app/client/lib/searchParamsManager.js}. Dicho objeto se encarga traducir los actuales modificadores introducidos en parámetros de búsqueda o de subscripción para Mongo. Una vez traducidos procede a la subscripción de las publicaciones correspondientes. En este caso se han creado tres, una por categoría y mediante el valor del modificador \emph{+category} filtra las subscripciones. Además se han creado plantillas de auto-completado para los modificadores y para la lista de sugerencias de cada uno.
 \paragraph{}
-La interfaz puede verse en la figura (tal).
+La implementación puede verse en la figura (tal).
 \section{Prototipo 10: Página de inicio y módulos adicionales}
 En este prototipo se ha implementado el apartado descriptivo de la aplicación. Este comprende el desarrollo de la página de inicio, los espacios para tutoriales y features y un módulo de ayuda. El resultado de esta implementación puede verse en las figuras tal tal tal y tal.
 \subsection{Página de inicio}
-Se ha querido que la página de inicio sea lo más descriptiva posible en lo que respecta a las características de la aplicación y su funcionalidad. Por lo que se ha diseñado en secciones. En cada sección se introducirá una característica y se mostrará un enlace al recurso /features correspondiente a la misma. También se ha creado una sección introductoria a los tutoriales con un enlace al recurso /tutorials.
+Se ha querido que la página de inicio sea lo más descriptiva posible en lo que respecta a las características de la aplicación y su funcionalidad. Por lo que se ha diseñado en secciones. En cada sección se introducirá una característica y se mostrará un enlace al recurso \emph{/features} correspondiente a la misma. También se ha creado una sección introductoria a los tutoriales con un enlace al recurso \emph{/tutorials}.
 \subsection{Espacio para tutoriales}
-No es necesario que los usuarios estén autenticados en el sitio para tener acceso a este espacio. Se ha creado un recurso /tutorials cuya layout es similar al principal. Está formado por un sidebar y un header. El sidebar tiene sólo un menu. El menú está estructurado en secciones y cada sección contiene una lista de tutoriales. Los tutoriales serán videos que explicarán cómo realizar diversas funciones dentro de la aplicación. Además, para que sea más accesible, cada tutorial tendrá una url. Esto se ha hecho mediante query strings que indican la sección y el tutorial concreto que se desea visualizar. Se ha habilitado también un enlace en el sidebar de la aplicación para acceder a este recurso en una nueva pestaña.
+No es necesario que los usuarios estén autenticados en el sitio para tener acceso a este espacio. Se ha creado un recurso \emph{/tutorials} cuya layout es similar al principal. Está formado por un sidebar y un header. El sidebar tiene sólo un menu. El menú está estructurado en secciones y cada sección contiene una lista de tutoriales. Serán videos que explicarán cómo realizar diversas funciones dentro de la aplicación. Además, para que sea más accesible, cada tutorial tendrá una url. Esto se ha hecho mediante query strings que indican la sección y el tutorial concreto que se desea visualizar. Se ha habilitado también un enlace en el sidebar de la aplicación para acceder a este recurso en una nueva pestaña.
 \subsection{Espacio para features}
-En este espacio se resumirán todas las características y funcionalidades de la aplicación. Al igual que para el espacio de tutoriales se crea un recurso /features que será accesible para todos los usuarios y el layout es idéntico. Aunque el contenido varía. El contenido de cada feature está formado por una cabecera en la que aparece una imagen descriptiva y el título y un cuerpo en el que se muestra una galería de imágenes. Al hacer click en cada imagen podremos visualizarla en pantalla completa, leer su descripción y navegar por las que conforman la galería. También se ha habilitado un enlace a este recurso en el sidebar de la aplicación.
+En este espacio se resumirán todas las características y funcionalidades de la aplicación. Al igual que para el espacio de tutoriales se crea un recurso \emph{/features} que será accesible para todos los usuarios y el layout es idéntico. Aunque el contenido varía. El contenido de cada feature está formado por una cabecera en la que aparece una imagen descriptiva y el título y un cuerpo en el que se muestra una galería de imágenes. Al hacer click en cada imagen podremos visualizarla en pantalla completa, leer su descripción y navegar por las que conforman la galería. También se ha habilitado un enlace a este recurso en el sidebar de la aplicación.
 \subsection{Módulo de ayuda flexible}
-Este módulo está formado por un botón y un collapsible de Bootstrap. Al hacer click en el botón se despliega una lista de preguntas frequentes que podemos editar y configurar vía javascript para poder adaptar las preguntas al contexto de la página en la que incluyamos dicho módulo. Cada pregunta es un enlace a uno de los tutoriales. 
+Este módulo está formado por un botón y un \emph{collapsible} de Bootstrap. Al hacer click en el botón se despliega una lista de preguntas frequentes (FAQs) que podemos editar y configurar vía javascript para poder adaptar las preguntas al contexto de la página en la que incluyamos dicho módulo. Cada pregunta es un enlace a uno de los tutoriales. 
+\paragraph{}
+El resultado de la implementación de este prototipo puede apreciarse en las figuras (tal, tal y tal)
+
 \section{Prototipo Final: Notificaciones y restricciones de acceso}
 En este prototipo se ha implementado el módulo de notificaciones y las plantillas \{\{notFound\}\} y \{\{accessDenied\}\}.
 \subsection{Notificaciones}
-Partiendo del requisito de que los usuarios deben estar informados en todo momento de cualquier cambio de su interés dentro de la aplicación surge la entidad de Notificaciones y con ella la colección Notifications (/app/lib/collections/notifications.js) cuyo objeto MongoDB será el mostrado en \ref{notificationMongo}.
+Partiendo del requisito de que los usuarios deben estar informados en todo momento de cualquier cambio de su interés dentro de la aplicación surge la entidad de \textbf{Notificaciones} y con ella la colección \textbf{Notifications} (\emph{/app/lib/collections/notifications.js}) cuyo objeto MongoDB será el mostrado en \ref{notificationMongo}.
 \paragraph{}
 Las notificaciones se visualizarán en una pestaña del sidebar como se muestra en la figura \ref{fig:sidebarNotifications}
 
 
 Las notificaciones en el sidebar estarán categorizadas por: canales, lecciones, grabaciones, conversations y contactos. Cada categoría se mostrará como un desplegable con la lista de las notificaciones correspondientes. Éstas podrán borrarse todas de una vez o independientemente. Al hacer click en cualquiera de ellas la aplicación navegará al contexto de la misma y la eliminará de la base de datos. Puesto que es un contenido accesible en todo momento, incluiremos la subscripción a la publicación que hemos desarrollado a la configuración global de Iron Router:
-
+\vspace{1cm}
 \begin{lstlisting}[language=Javascript]
 Router.configure({
 	waitOn: function(){
@@ -1341,16 +930,10 @@ Router.configure({
 })
 \end{lstlisting}
 \paragraph{} 
-Para la creación de las notificaciones se ha desarrollado el constructor NotificationsCreator (/app/client/lib/notificationsCreator.js) del cual se genera una instancia nada más arrancar el cliente. Este objeto posee el método público .createNotification que acepta los parámetros necesarios para su correcta creación. Según su tipo y su contexto generará un mensaje distinto. 
+Para la creación de las notificaciones se ha desarrollado el constructor
+\textbf{NotificationsCreator} (\emph{/app/client/lib/notificationsCreator.js}) del cual se genera una instancia nada más arrancar el cliente. Este objeto posee el método público .createNotification() que acepta los parámetros necesarios para su correcta creación. Según su tipo y su contexto generará un mensaje distinto. 
 \paragraph{}
 Las notificaciones cubren la mayoría de eventos en la aplicación entre los que destacan: el voto a los contenidos, los comentarios, la creación de contenido en canales y lecciones a los que el usuario se ha subscrito, cambios de usuarios en una conversación, creación de respuestas a grabaciones y peticiones de contacto.
-
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=0.7\textwidth]{sidebarNotifications.png}
-	\caption{Diseño de la pestaña de notificaciones en el sidebar}
-	\label{fig:sidebarNotifications}
-\end{figure}
 
 \subsection{Recursos de error}
 \subsubsection{404}
@@ -1360,6 +943,7 @@ El error 404 es devuelto por el servidor cuando los datos a los que intentamos a
 	\item El usuario accede a un recurso inválido.
 \end{itemize}
 Los casos anteriores pueden ser controlados mediante Iron Router. El primero mediante el plugin 'dataNotFound' y el segundo mediante una nueva ruta colocada al final de todas las creadas y que acepte cualquier recurso. El siguiente código ilustra la configuración mencionada: 
+\vspace{0.5cm}
 \begin{lstlisting}[language=Javascript]
 Router.plugin('dataNotFound',{template: 'notFound'});
 Router.route('/(.*)',{name: 'notFound'});
@@ -1367,7 +951,8 @@ Router.route('/(.*)',{name: 'notFound'});
 \subsubsection{Access Denied}
 Si bien la aplicación no permite el acceso a contenidos privados para el usuario mediante el flujo diseñado, si que es posible alterar las urls para navegar al recurso privado, por lo que esto debe de controlarse.
 \paragraph{}
-Para ello se ha creado la plantilla \{\{$<$accessDenied\}\} (figura tal), la cual se muestra cuando un usuario intenta editar algún recurso detalle del cual no es autor. Esto se consigue mediante los hooks de Iron Router, en concreto el hook beforeAction. He aquí un ejemplo: 
+Para ello se ha creado la plantilla \{\{$<$accessDenied\}\} (figura tal), la cual se muestra cuando un usuario intenta editar algún recurso detalle del cual no es autor. Esto se consigue mediante los \textbf{hooks} de Iron Router, en concreto el hook .beforeAction(). He aquí un ejemplo: 
+\vspace{0.5cm}
 \begin{lstlisting}[language=Javascript]
 Router.route('/profile/:_id/edit',{
 	...
@@ -1382,17 +967,23 @@ Router.route('/profile/:_id/edit',{
 \end{lstlisting}
 
 \section{Despliegue}
-El despliegue se ha llevado a cabo mediante el sistema de Hosting de Heroku. 
+El despliegue se ha llevado a cabo mediante el sistema de Hosting de Heroku \cite{bazHeroku}. 
 
 \subsection{Primeros pasos}
 Para realizar este despliegue el primer paso ha sido crear una cuenta en heroku y descargar el CLI para poder desplegar nuestra aplicación de forma remota. El despliegue en Heroku se basa en una idea muy simple. El despliegue es tan sencillo como almacenar una nueva versión de tu repositorio local en el repositorio remoto en github. El siguiente paso, una vez autenticado mediante el comando del CLI heroku login, creamos una aplicación a la que damos el nombre de duckflight. Acto seguido nos devuelve dos urls que corresponden a dos repositorios remotos de github. Esa url la añadiremos como repositorio remoto al actual.
 \paragraph{}
-Ahora necesitamos una base de datos remota, ya que hasta ahora habíamos trabajado con la base de datos que nos creaba Meteor. Para ello creamos un sandbox en mlab mediante el CLI de heroku. Esto nos devolverá la url de la base de datos que deberemos atribuir como parámetro global a la aplicación duckflight. 
+Ahora necesitamos una base de datos remota, ya que hasta ahora habíamos trabajado con la base de datos que nos creaba Meteor. Para ello creamos un sandbox en \textbf{mlab} mediante el CLI de heroku. Esto nos devolverá la url de la base de datos que deberemos atribuir como parámetro global a la aplicación duckflight. 
 \paragraph{}
-Finalmente necesitamos un paquete constructor que se encargue de identificar que se trata de una aplicación de Meteor y de generarla en la url en la que se hará el despliegue. Dicho paquete es jordansissel:heroku-buildpack-meteor y se configura mediante el comando heroku create --buildpack <buildpack>. 
+Finalmente necesitamos un paquete constructor que se encargue de identificar que se trata de una aplicación de Meteor y de generarla en la url en la que se hará el despliegue. Dicho paquete es \textbf{jordansissel:heroku-buildpack-meteor} y se configura mediante el comando \emph{heroku create --buildpack <buildpack>}. 
 \paragraph{}
-Una vez seguidos estos pasos, procedemos al despliegue de la aplicación mediante el comando git push heroku master.
+Una vez seguidos estos pasos, procedemos al despliegue de la aplicación mediante el comando \emph{git push heroku master}.
 \subsection{Proceso}
-En el momento que ejecutamos el comando anterior se crea una copia de nuestro repositorio local en el repositorio remoto heroku. Acto seguido el buildpack o paquete constructor se encarga de generar nuestra aplicación y de arrancarla en la url correspondiente.
+En el momento que ejecutamos el comando anterior se crea una copia de nuestro repositorio local en el repositorio remoto heroku. Acto seguido el \textbf{buildpack} o paquete constructor se encarga de generar nuestra aplicación y de arrancarla en la url correspondiente.
 \subsection{Pruebas globales}
 Una vez realizado el despliegue se han llevado ha explotado la funcionalidad de la aplicación de forma que se han probado todas las características de la misma. El resultado de estas pruebas ha sido satisfactorio.
+\subsection{Licencias}
+Un requisito indispensable a la hora de realizar el despliegue de manera pública es el de incluir licencias al código que preserven los derechos de autor y conviertan el código, en este caso, en código libre o abierto. 
+\paragraph{}
+Para el código fuente se ha utilizado la licencia libre y gratuita de \textbf{GNU APGL}\footnote{\url{https://www.gnu.org/licenses/why-affero-gpl.html}} creando un fichero /app/license.txt que contiene las bases e integrando referencias a dicha licencia en cada uno de los ficheros de código fuente de la aplicación. 
+\paragraph{}
+Para el producto visible se ha utilizado una licencia \textbf{Creative Commons}\footnote{\url{http://es.creativecommons.org/blog/licencias/}} que deniega cualquier uso comercial de la aplicación y derivados. Se ha incluido en el sitio mediante una etiqueta en documento HTML de la página de inicio.

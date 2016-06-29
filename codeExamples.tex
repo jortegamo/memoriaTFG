@@ -1,0 +1,327 @@
+\chapter{Ejemplos de código}
+\begin{lstlisting}[language=Javascript, caption=Captura de eventos del editor, label=code:eventsEditor]
+var editor = ace.editor('#id');
+editor.getSession().on('change', function(e) {
+     switch (e.action) {
+     	case "remove":
+         	var rmRange = {start: e.start, end: e.end};
+          docsManagerRecorder.insertFunctions([{
+                time: new Date() - date,
+                arg: rmRange,
+                toDo: 'editor.getSession().getDocument().remove(arg);'
+           }]);
+           break;
+       }
+});
+\end{lstlisting}
+\vspace{0.5cm}
+\begin{lstlisting}[language=Javascript, caption=Configuración del Stream, label=code:navigator]
+	navigator.getUserMedia  = navigator.getUserMedia || 
+						 navigator.webkitGetUserMedia || 
+						 navigator.mozGetUserMedia || 
+						 navigator.msGetUserMedia;
+	var audioConstraints = {audio: true, video: false};
+	navigator.getUserMedia(audioConstraints,function(stream){
+		var settings = {}
+		var recorder = window.RecordRTC(stream,settings);
+		recorder.startRecording();
+	},function(error){
+		throw new Meteor.error(error.reason);
+	});
+\end{lstlisting}
+\vspace{0.5cm}
+\begin{lstlisting}[language=Javascript,caption=Configuración global de Soundcloud, label=code:SCSettings]
+if (Meteor.isServer()){
+	Soudcloud.setConfig({
+		client_id: CLIENT_ID,
+		client_secret: CLIENT_SECRET,
+		username: USERNAME,
+		password: PASSWORD
+	});
+	
+	Meteor.methods({
+		getClientSC: function(){
+			var client = Soundcloud.getClient();
+			return {
+				client_id: CLIENT_ID,
+				access_token: client.settings.access_token
+			}
+		}
+	});
+}
+if (Meteor.isClient()){
+	$.getScript("https://cdn.WebRTC-Experiment.com/RecordRTC.js",function(){
+		Meteor.call('getClientSC',function(err,res){
+			if (err) throw new Meteor.error(err.reason);
+			if (res){
+				SC.initialize({
+					client_id: res.client_id,
+					oauth_token: res.access_token,
+					scope: 'non-expiring'
+				});
+			}
+		});
+	});
+}
+\end{lstlisting}
+\vspace{0.5cm}
+
+\begin{lstlisting}[language=Javascript, caption=Ejemplo de publicación compuesta, label=code:publishcomposite]
+	// app/server/publications.js
+	Meteor.publishComposite('record',function(id){
+		//Publicamos el record y los documentos asociados al mismo. 
+		var sub = {
+			find: function(){
+				return Records.find(id)
+			},
+			children: [{
+				find: function(record){
+					return Documents.find({record_id: record._id});
+				},
+				{...}
+			}];
+		};
+		return sub;
+	});
+\end{lstlisting}
+\vspace{0.5cm}
+\begin{lstlisting}[language=Javascript, caption=Ejemplo de subscripción, label=code:subscription]
+// app/lib/router.js
+
+Router.route('/record/:_id',{
+	name: 'record',
+	data: function(){
+		return Records.findOne(this.params_id);
+	},
+	waitOn: function(){
+		return Meteor.subscribe('record',this.params._id);
+	}
+});
+\end{lstlisting}
+\vspace{0.5cm}
+\begin{lstlisting}[language=Javascript, caption=Proceso de sincronización del editor, label=code:sincroEditor]
+EditorPlayerManager = function(){
+	var RC, listPending, editor;
+	
+	this.initialize = function(params){
+		RC = params.RC;
+		listPending = RC;
+		editor = ace.edit(params.editor);
+	};
+	
+	this.update = function(pos){
+		//filtramos las acciones a ejecutar
+		var listToDo = _(listPending).filter(function(action){
+			return action.time <= pos;
+		});
+		
+		//ejecutamos las acciones que corresponden.
+		_(listToDo).each(function(action){
+			switch(action.type){
+				//ejecución de las funciones guardadas sobre el editor.
+			}
+		});
+		
+		//actualizamos la lista de acciones pedientes.
+		listPending = _(listPending).difference(listToDo);
+	}
+}
+\end{lstlisting}
+\vspace{0.5cm}
+\begin{lstlisting}[language=Javascript, caption=Proceso de conexión con SoundCloud API, label=code:SCConnection]
+// app/client/modules/record_modules/record/player.js
+
+Template.player.rendered = function(){
+	var self = this.
+	Meteor.call('getClientSC',function(err,res){
+		if (res){
+			SC.initialize ({
+				client_id: res.client_id,
+				auth_token: res.auth_token,
+				scope: 'non-expiring'
+			});
+			SC.connect().then(function(){
+				SC.stream('tracks/' + self.track_id)
+					.then(function(s){
+						this.recordPlayer.initialize(s,
+							this.editorPlayerManager, ...);
+					});
+			});
+		}
+	});
+}
+\end{lstlisting}
+\vspace{0.5cm}
+\begin{lstlisting}[language=Javascript, caption=Configuración de datos de plantilla mediante query string, label=code:dataByQuery]
+Router.route('/records/submit',{
+	...
+	data: function(){
+		var data = {}
+		if (this.params.query){ //es una respuesta
+			var playerState = (Session.get(playerState));
+			(playerState)? data.playInstantObject = playerState : null;
+		}
+		return data;
+	},
+	waitOn: function(){
+		if (this.params.query){
+			return Meteor.subscribe('recordDocuments'
+						this.params.query.parent_id);
+		}
+	}
+});
+\end{lstlisting}
+\vspace{0.5cm}
+\begin{lstlisting}[language=Javascript, caption=Proceso de creación de grabación de un canal, label=code:createChannelRecordingByQuery]
+//app/client/modules/channels_module/channel.js
+Template.channel.events({
+	'click button#create-recording': function(){
+		Router.go('recordSubmit',{},{query: 'channel_id=' + this._id});
+	}
+});
+
+//app/lib/router.js
+
+Router.route('/records/submit',{
+	...
+	data: function(){
+		var data = {};
+		(this.params.query.channel_id)? data.channel_id = this.params.query.channel_id : null;
+		return data;
+	}
+})
+
+//app/client/modules/records_module/recordSubmit/recordSubmit.js
+
+SC.upload(audio).then(function(){
+	var object = {};
+	if (this.data.channel_id){
+		object.channel_id = this.data.channel_id;
+	}
+	Meteor.call('insertRecording',object,function(err,result){});
+});
+\end{lstlisting}
+\vspace{0.5cm}
+\begin{lstlisting}[language=Javascript, caption=Creación de un canal, label=code:createChannel]
+//app/lib/collections/channels.js
+Meteor.methods({
+	insertChannel: function(channelObj){
+		return Channels.insert(channelObj);
+	}
+});
+
+//app/client/modules/channels_module/channelSubmit.js
+Template.channelSubmit.events({
+	'submit form': function(e,template){
+		var obj = {};
+		obj.title = template.find('[name=title]').value();
+		obj.description = template.find('[name=description]').value();
+		obj.tags = Session.get('tagsChosen');
+		Meteor.call('insertChannel',obj,function(err,res){
+			if (err) throw new Meteor.Error('ERROR insertChannel');
+			if (res) console.log('channel inserted with id: ' + res);
+ 		});
+	}
+});
+\end{lstlisting}
+\vspace{0.5cm}
+\begin{lstlisting}[language=Javascript, caption=Proceso de creación de una grabación dentro de una lección, label=code:createRecordingFromLesson]
+//app/lib/router.js
+Router.route('record/submit',{
+	...
+	data: function(){
+		var data = {};
+		....
+		(this.params.query.lesson_id)? data.lesson_id = this.params.query.lesson_id : null;
+		(this.params.query.section_id)? data.section_id = this.params.query.section_id : null;
+		(this.params.query.order)? data.order = this.params.query.order : null;
+	}
+});
+
+//app/client/modules/record_modules/recordSubmit/recordSubmit.js
+SC.upload(file).then(function(){
+	var obj = {}
+	if (this.data.lesson_id){
+		obj.lesson_id = this.data.lesson_id;
+		obj.section_id = this.data.section_id;
+		obj.order = this.data.order;
+	}
+	Meteor.call('insertRecord',obj,function(err,res){});
+});
+\end{lstlisting}
+\vspace{0.5cm}
+
+\begin{lstlisting}[language=Javascript, caption=Proceso de alerta de las conversaciones, label=code:conversationAlerts]
+//app/client/modules/conversation_modules/conversation/conversation.js
+Template.conversation.events({
+	'click #send-new-message': function(){
+		Meteor.call('insertMessage');
+		//actualizamos el contador de alertas y establecemos el ultimo mensaje
+		Meteor.call('updateAlertsConversation',this._id,Meteor.userId());
+	}
+});
+Template.conversation.rendered = function(){
+	//actualizamos la visualización de las alertas y el contador.
+	Meteor.call('updateAlertsConversation',this._id, Meteor.userId(),function(err){
+		if (err) throw new Meteor.Error ('ERROR: updateAlertsConversation');
+	});
+}
+
+//app/lib/router.js
+Router.configure({
+	//el usuario estará subscrito a sus alertas en todo momento.
+	waitOn: function(){
+		...
+		return Meteor.subscribe('conversationAlerts',Meteor.userId());
+	}
+});
+\end{lstlisting}
+\vspace{0.5cm}
+\begin{lstlisting}[language=Javascript,caption=Proceso de verificación de Email, label=code:verificationEmail]
+//app/server/accounts
+Meteor.methods({
+	sendVerificationLink: function(address,user_id){
+		Accounts.sendVeriicationEmail (address,user_id);
+	}
+});
+
+//app/client/verifications/verificationEmail.js
+Template.verificationEmail.events({
+	'click button.verify': function(){
+		Meteor.call('sendVerificationLink',this.address,Meteor.userId());
+	}
+});
+
+Template.verifyEmail.rendered = function(){
+	Accounts.verifyEmail(this.data.token);
+}
+
+//app/lib/router.js
+Router.route('/verify-email/:_token',{
+	name: 'verifyEmail',
+	data: function(){
+		return {
+			token: this.params.token;
+		}
+	}
+});
+\end{lstlisting}
+\vspace{0.5cm}
+\begin{lstlisting}[language=Javascript, caption=Proceso de cambio de contraseña, label=code:changePassword]
+//app/client/modules/changePassword/changePassword.js
+Template.changePassword.events({
+	'click #check': function(e,template){
+		var pwToCheck = template.find('[name=oldPassword]')
+		Meteor.call('checkPassword',pwToCheck, Meteor.userId(),function(err,res){
+			if (!err) Session.set('oldPassword',pwToCheck);
+		});
+	},
+	'click #update-password': function(e,template){
+		var password = template.find('[name=password]');
+		var repassword = template.find('[name=repassword]');
+		if (password == repassword){
+			Accounts.changePassword (Session.get('oldPassword'),password,Meteor.userId());
+		}
+	}
+});
+\end{lstlisting}
