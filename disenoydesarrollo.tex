@@ -50,7 +50,7 @@ Partiendo del requisito de que la aplicación debe ser atractiva al usuario y no 
 \section{Composición Inicial y entorno de desarrollo}
 \paragraph{}
 Una vez realizada la búsqueda de herramientas comenzamos a componer el entorno de nuestra aplicación. Para este proyecto utilizaremos el programa \textbf{WebStorm}\footnote{\url{https://www.jetbrains.com/webstorm/}} de \emph{JetBrains}. Incorpora herramientas de búsqueda y sustitución avanzada, terminal para comandos, integración con sistema de control de versiones Git y plugins que facilitan la labor de desarrollo como \textbf{emmet}\footnote{\url{https://www.jetbrains.com/help/webstorm/2016.1/emmet.html}}.
-\subsection{Primeros pasos}
+\subsection{Creación de la aplicación y paquetes iniciales}
 \paragraph{}
 Gracias al CLI de Meteor generamos nuestra aplicación mediante el comando: \emph{meteor create $<$AppName$>$}. Esto nos genera una carpeta con tres ficheros: index.html, index.js e index.css. En este momento ya tenemos nuestra aplicación Meteor creada. 
 \paragraph{}
@@ -280,9 +280,6 @@ En el momento que el cliente realiza la llamada con los datos suministrados por 
 
 El resultado de este prototipo puede verse en las capturas de pantalla de la figura \ref{fig:signFormsReal}
 
-
-
-
 \section{Prototipo 2: Grabador y reproductor basados en documentos}
 \paragraph{}
 Este prototipo engloba el diseño y desarrollo del grabador, del reproductor y del recurso en el que se muestran las grabaciones realizadas. Los requisitos extraídos en este prototipo son los mostrados en \ref{rRec}.
@@ -508,8 +505,6 @@ La interfaz es muy sencilla (figura \ref{fig:recordsPage}). Está formada por dos
 
 Tras el desarrollo de la interfaz el resultado se muestra en la figura \ref{fig:records}.
 
-\paragraph{}
-\paragraph{}
 \section{Prototipo 3: Respuestas a grabaciones}
 En este prototipo actualizamos la lógica del grabador y añadimos nuevas acciones para la página de detalle de grabación. En este prototipo se ha realizado la extracción de los requisitos expuestos en \ref{rRec}
 \subsection{Actualización del grabador}
@@ -587,13 +582,13 @@ Estos recursos serán: \emph{/channels}, \emph{/channels/submit}, \emph{/channel/
 Tanto en el recurso de edición como en el propio del canal necesitaremos subscribirnos a los contenidos del canal correspondientes. Por esto creamos una nueva publicación en \emph{/app/server/publications.js} compuesta por todos los contenidos. A saber: el propio canal, los usuarios subscritos y las grabaciones y comentarios del mismo. Para el recurso de edición sólo es necesario algunos campos del objeto MongoDB del canal. Por lo que creamos una nueva publicación para esta información. En el recurso \emph{/channels} necesitaremos subscribirnos a los datos informativos de todos los canales del sitio. Para ello crearemos otra publicación compuesta.
 \subsection{Diseño de interfaces e implementación}
 \subsubsection{Creación de un canal}
+La información básica de un canal estará formada por un título, una descripción y una lista de etiquetas. La interfaz de creación de un canal deberá permitir la introducción de dicha información (figura \ref{fig:createChannel}). Utilizamos el sistema de formularios dinámicos basados en variables de sesión que describimos en el prototipo 1 y el complemento de etiquetas que diseñamos en el prototipo 2 para la plantilla \{\{$<$saveForm\}\}. Además creamos un nuevo method en el servidor al que llamaremos desde el cliente para almacenar el objeto canal una vez introducida la información necesaria. (código de ejemplo \ref{code:createChannel}).
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=0.7\textwidth]{createChannel.png}
 	\caption{Formulario de creación para un canal.}
 	\label{fig:createChannel}
 \end{figure}
-La información básica de un canal estará formada por un título, una descripción y una lista de etiquetas. La interfaz de creación de un canal deberá permitir la introducción de dicha información (figura \ref{fig:createChannel}). Utilizamos el sistema de formularios dinámicos basados en variables de sesión que describimos en el prototipo 1 y el complemento de etiquetas que diseñamos en el prototipo 2 para la plantilla \{\{$<$saveForm\}\}. Además creamos un nuevo method en el servidor al que llamaremos desde el cliente para almacenar el objeto canal una vez introducida la información necesaria. (código de ejemplo \ref{code:createChannel}).
 \subsubsection{Página de canales}
 Este es la página correspondiente al recurso \emph{/channels} y en ella los usuarios podrán navegar por la lista de canales del sitio. Su diseño (figura \ref{fig:channelsPage}) es equivalente al diseño de la lista de grabaciones y se compone de un logo, un enlace al recurso de creación y un sistema de tabs para realizar filtros y mostrar resultados. Este recurso estará accesible desde el sidebar como se muestra en la versión 3 del mismo (figura \ref{fig:sidebarVersions}).
 \subsubsection{Página del canal}
