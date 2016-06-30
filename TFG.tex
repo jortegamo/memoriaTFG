@@ -30,6 +30,7 @@
 \renewcommand{\appendixtocname}{Apéndices}
 \renewcommand{\appendixpagename}{Apéndices}
 \renewcommand{\lstlistingname}{}
+\newenvironment{bottompar}{\par\vspace*{\fill}}{\clearpage}
 %SetFonts
 
 %SetFonts
@@ -91,7 +92,8 @@ frame=single,
 						% Activate to display a given date or no date
 \begin{document}
 \include{portada}
-
+\clearpage
+\include{license}
 \tableofcontents
 \listoffigures
 

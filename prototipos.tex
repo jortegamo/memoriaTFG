@@ -1,0 +1,172 @@
+\chapter{Prototipos Auxiliares}\label{appendix:prototipos}
+En este apéndice se detalla el proceso de diseño e implementación de los últimos prototipos de la aplicación. En el prototipo 8 se detalla todo lo relacionado con el módulo de emails e integración de servicios de registro, en el prototipo 9 la implementación de la página principal y el buscador, en el prototipo 10 el módulo de presentación de la aplicación y en el prototipo final el módulo de notificaciones y la gestión de accesos a los recursos.
+\section{Prototipo 8: Emails y servicios de registro}
+En este prototipo se ha implementado un módulo de mensajería, los procesos de verificación de email, cambio y recuperación de contraseña para los usuarios y se han introducido nuevos servicios con los que realizar el registro en la aplicación partiendo de los requisitos correspondientes (ver \ref{rServ}).
+\subsection{Verificación de Email, cambio y recuperación de contraseña}
+\subsubsection{Proceso de verificación}
+Este servicio será exclusivo para los usuarios que posean un email asociado a su cuenta y será accesible desde el perfil como puede verse en la figura \ref{fig:profileBanner}.
+\paragraph{}
+El proceso es muy simple. El usuario escoge que email verificar y hace click en verificar. En ese momento se enviará un correo con el link de verificación. En Meteor gracias al paquete \textbf{Accounts} podremos configurar la plantilla de los correos que enviemos desde la aplicación. Deberemos especificar una dirección de correo como origen y el cuerpo del mensaje. Para ello se ha generado la dirección \emph{duckflight.team@gmail.com}. El cuerpo del mensaje acepta un parámetro que corresponde con el \textbf{link de verificación} en este caso. Hacemos uso de Meteor.absoluteUrl() para extraer el dominio base de nuestro sitio y después modificamos la url de forma que coincida con la ruta establecida en Iron Router \emph{/verify-email/:\_token}. 
+\paragraph{}
+Para enviar el mensaje utilizamos el método .sendVerificationEmail() al que le pasamos como parámetro la dirección de correo y el identificador del usuario. Este método sólo está accesible en el paquete Accounts en el cliente por lo que se crea un method en el lado del servidor. En el momento que un nuevo usuario es creado junto con una dirección de correo, también se llamará a este método para que el usuario pueda desde el primer momento acceder a las funcionalidades que brinda el tener un email verificado dentro de la aplicación.
+\paragraph{}
+En el momento que el usuario explore su bandeja de entrada y pinche en el link de verificación se llamará al método .verifyEmail() de Accounts en el lado del cliente. El único parámetro que necesita es el token del link que lo tiene accesible gracias a Iron Router que lo ha incluido como datos de la plantilla (código de ejemplo \ref{code:verificationEmail}).
+\paragraph{}
+La implementación se muestra en la captura \ref{fig:verifications-page}.
+
+\subsubsection{Proceso de cambio de contraseña}
+Este servicio será exclusivo para los usuarios que se hayan registrado mediante un nombre de usuario y contraseña y estará accesible desde el perfil como puede verse en la figura \ref{fig:profileBanner}.
+\paragraph{}
+El proceso es muy sencillo. Primero el usuario deberá introducir su contraseña actual (si la ha olvidado podrá iniciar el proceso de recuperación a través de un enlace). Después de comprobar que es correcta, el usuario podrá introducir una nueva contraseña y actualizarla. Mediante el paquete Accounts podremos utilizar los métodos .checkPassword() (desde el servidor) y .changePassword() (desde el cliente) para este proceso (código de ejemplo \ref{code:changePassword}).
+\paragraph{}
+La implementación de este proceso se muestra en la figura \ref{fig:change-password}.
+
+\subsubsection{Proceso de recuperación de contraseña}
+Este servicio al igual que el de cambio de contraseña será exclusivo de los usuarios registrados con contraseña. Será accesible desde el proceso de cambio de contraseña y desde el formulario de inicio de sesión (figura \ref{fig:signIn}).
+\paragraph{}
+El proceso es similar al de verificación de email sólo que los métodos son: .sendResetPasswordEmail (en el lado del servidor) y resetPassword (en el lado del cliente). Como el proceso requiere el envío de un email habrá que establecer la configuración de su plantilla de la misma forma que para el proceso de verificación.
+
+La implementación puede verse en la figura \ref{fig:forgot-password-form}.
+
+
+\subsection{Distribuidor y parámetros globales}
+Para el envío de correos mediante la aplicación es necesario un cliente de mensajería o distribuidor. Para este proyecto hemos usado el servicio que nos proporciona \textbf{mailgun}\footnote{\url{https://mailgun.com}}. Se trata de una herramienta que nos proporciona un dominio de correo propio que añadido como variable de entorno de nuestra aplicación, se encargará de la aceptación y la distribución de nuestros correos. 
+\vspace{0.5cm}
+\begin{lstlisting}[language=javascript]
+Meteor.startup(function(){
+	process.env.MAIL_URL = 'nombre_de_dominio_de_mailgun'
+});
+\end{lstlisting}
+\paragraph{}
+Para usar este servicio ha sido necesaria la creación de un usuario en mailgun y la elección de uno de los paquetes ofertados. En este caso se ha optado por el paquete gratuito. Aunque los correos tardan en distribuirse funciona de forma aceptable.
+
+\subsection{Envío de emails desde la aplicación}
+Meteor posee un paquete por defecto para esta funcionalidad: el paquete \textbf{Email}. Mediante su método .send() podremos enviar cualquier email. Este método acepta un objeto con los parámetros \emph{to}, \emph{from} y \emph{html} para establecer el destino, origen y cuerpo del email.
+\subsubsection{Proceso de envío}
+El proceso sigue dos fases: elección del correo a utilizar como origen y la composición del mensaje, en la que estableceremos las direcciones de destino, el asunto y el cuerpo. 
+\paragraph{}
+Si el usuario no tiene ningún email verificado aparecerá un enlace al recurso de verificación de emails. 
+Para la introducción de las direcciones de destino utilizamos el complemento diseñado para introducir los miembros de una conversación en el recurso de creación y de edición de la misma. 
+Para la composición del cuerpo del mensaje hemos utilizado un editor de textos enriquecido llamado \textbf{froalaEditor}\footnote{\url{https://www.froala.com/wysiwyg-editor}} y que lo tenemos disponible como paquete Meteor (\textbf{froala:editor}). El resultado de la implementación de este proceso se muestra en las capturas \ref{fig:email-sender} y \ref{fig:email-writter}
+\subsection{Integración de servicios de registro}
+Para este proyecto vamos a incluir además del sistema de registro basado en nombre de usuario y contraseña, otros servicios como el de registro mediante Google, Github y Facebook.
+\paragraph{}
+Para cada uno de los anteriores ha sido necesaria la creación de una app en el espacio para desarrolladores correspondiente a cada sitio y la configuración de los servicios mediante la introducción de los parámetros de autenticación proporcionados para cada aplicación. La configuración de los servicios se ha realizado usando el paquete \textbf{ServiceConfiguration} de la forma: 
+\begin{lstlisting}[language=Javascript]
+	ServiceConfiguration.configurations.remove({
+	service: 'google'});
+	ServiceConfiguration.configurations.insert({
+		service: 'google',
+		client_id: '//identificador de la aplicación',
+		secret: '//clave secreta de la aplicación',
+		redirect_uri: '//url de redirección'.
+	});
+\end{lstlisting}
+Para cada uno de los servicios incluimos los paquetes \textbf{accounts-$<$service$>$}. Esto hará que tengamos el método .loginWith$<$service$>$() disponible en el paquete Accounts.
+
+Por último añadimos botones al formulario de inicio de sesión para ofrecer la posibilidad de registrarse a través de estos servicios (\ref{fig:signIn}).
+
+\section{Prototipo 9: Página principal y buscador}
+En este prototipo se diseñará e implementará el contenido de la página principal de la aplicación y el sistema de búsqueda desarrollado partiendo de los requisitos \ref{rCont}.
+\subsection{Estructura}
+En esta página según los requisitos debe existir un espacio para recomendaciones y otro para mostrar los contenidos más populares o votados. Por lo que esta va a se la estructura de la información de la página. 
+\paragraph{}
+Además incluiremos un \{\{navbarTab\}\} con las tabs Home y Search para acceder al contenido principal o al buscador como puede verse en la figura \ref{fig:mainPage}.
+\paragraph{}
+El contenido principal se estructura en tres bloques: 
+\begin {itemize}
+	\item \textbf{Módulo de tareas iniciales:} este módulo impondrá al usuario una serie de tareas categorizadas que le ayudarán a establecer un primer contacto con la aplicación.
+	\item \textbf{Relacionados:} este espacio estará categorizado según los tres grandes categorías de contenido de la aplicación (grabaciones,canales y lecciones). Los contenidos se mostrarán como un carousel de miniaturas. Se mostrarán los contenidos que compartan las tags que posean los contenidos votados por el usuario. De esta forma se oferta contenido relacionado a los gustos del usuario.
+	\item \textbf{Populares:} aquí se muestran los contenidos más populares del momento. Su representación es idéntica que la del espacio anterior.
+\end{itemize}
+La implementación puede verse en \ref{fig:main-page}
+
+\subsection{Sistema de búsqueda basado en modificadores}
+Para hacer las búsquedas más rápidas y precisas se ha implementado un sistema de búsqueda basado en modificadores. De manera que con solo introducir el carácter + en el cuadro de búsqueda el sistema nos sugiera modificadores.
+\paragraph{}
+Los modificadores disponibles son: 
+\begin{itemize}
+	\item \textbf{+category: } los posibles valores son recordings, channels, lessons y all. Establece el tipo de contenido a buscar.
+	\item \textbf{+author: } nos irá sugiriendo usuarios mediante un auto-completado. Establece el autor de los contenidos.
+	\item \textbf{+sort: } los posibles valores son latest y popular. Sirve para ordenar los resultados según estos filtros.
+	\item \textbf{+tag: } se trata de un auto-completado de etiquetas. Establece las etiquetas que poseerán los resultados.
+	\item \textbf{+from: } sólo disponible cuando la categoría corresponde a recordings. Los posibles valores son lesson o channel. Establecen la procedencia de las grabaciones a buscar.
+	\item \textbf{+subscribed: } los valores son subscribed o unsubscribed. Sólo disponible si la categoría corresponde a lessons o channels. Establece el estado de subscripción del usuario en los contenidos.
+\end{itemize}
+\paragraph{}
+Los resultados se clasifican según las categorías en un sistema de tabs. Para cada categoría se muestra el número de resultados. 
+\paragraph{}
+La implementación de este módulo integra una plantilla llamada \{\{$>$smartSearch\}\} que utiliza un objeto creado mediante el constructor \textbf{SearchParamsManager} creado en \emph{/app/client/lib/searchParamsManager.js}. Dicho objeto se encarga traducir los actuales modificadores introducidos en parámetros de búsqueda o de subscripción para Mongo. Una vez traducidos procede a la subscripción de las publicaciones correspondientes. En este caso se han creado tres, una por categoría y mediante el valor del modificador \emph{+category} filtra las subscripciones. Además se han creado plantillas de auto-completado para los modificadores y para la lista de sugerencias de cada uno.
+\paragraph{}
+La implementación puede verse en la figura \ref{fig:search}.
+\section{Prototipo 10: Página de inicio y espacios}
+En este prototipo se ha implementado el apartado descriptivo de la aplicación partiendo algunos de los requisitos de \ref{rExp}. Este comprende el desarrollo de la página de inicio, los espacios para tutoriales y features y un módulo de ayuda.
+\subsection{Página de inicio}
+Se ha querido que la página de inicio sea lo más descriptiva posible en lo que respecta a las características de la aplicación y su funcionalidad. Por lo que se ha diseñado en secciones. En cada sección se introducirá una característica y se mostrará un enlace al recurso \emph{/features} correspondiente a la misma. También se ha creado una sección introductoria a los tutoriales con un enlace al recurso \emph{/tutorials}.
+\subsection{Espacio para tutoriales}
+No es necesario que los usuarios estén autenticados en el sitio para tener acceso a este espacio. Se ha creado un recurso \emph{/tutorials} cuya layout es similar al principal. Está formado por un sidebar y un header. El sidebar tiene sólo un menu. El menú está estructurado en secciones y cada sección contiene una lista de tutoriales. Serán videos que explicarán cómo realizar diversas funciones dentro de la aplicación. Además, para que sea más accesible, cada tutorial tendrá una url. Esto se ha hecho mediante query strings que indican la sección y el tutorial concreto que se desea visualizar. Se ha habilitado también un enlace en el sidebar de la aplicación para acceder a este recurso en una nueva pestaña.
+\subsection{Espacio para features}
+En este espacio se resumirán todas las características y funcionalidades de la aplicación. Al igual que para el espacio de tutoriales se crea un recurso \emph{/features} que será accesible para todos los usuarios y el layout es idéntico. Aunque el contenido varía. El contenido de cada feature está formado por una cabecera en la que aparece una imagen descriptiva y el título y un cuerpo en el que se muestra una galería de imágenes. Al hacer click en cada imagen podremos visualizarla en pantalla completa, leer su descripción y navegar por las que conforman la galería. También se ha habilitado un enlace a este recurso en el sidebar de la aplicación.
+\subsection{Módulo de ayuda flexible}
+Este módulo está formado por un botón y un \emph{collapsible} de Bootstrap. Al hacer click en el botón se despliega una lista de preguntas frequentes (FAQs) que podemos editar y configurar vía javascript para poder adaptar las preguntas al contexto de la página en la que incluyamos dicho módulo. Cada pregunta es un enlace a uno de los tutoriales. 
+\paragraph{}
+El resultado de la implementación de este prototipo puede apreciarse en las figuras \ref{fig:start-page}, \ref{fig:tutorials} y \ref{fig:features}.
+
+\section{Prototipo Final: Notificaciones y restricciones}
+En este prototipo se ha implementado el módulo de notificaciones y las plantillas \{\{notFound\}\} y \{\{accessDenied\}\} partiendo de los requisitos mostrados en \ref{rExp}.
+\subsection{Notificaciones}
+Partiendo del requisito de que los usuarios deben estar informados en todo momento de cualquier cambio de su interés dentro de la aplicación surge la entidad de \textbf{Notificaciones} y con ella la colección \textbf{Notifications} (\emph{/app/lib/collections/notifications.js}) cuyo objeto MongoDB será el mostrado en \ref{notificationMongo}.
+\paragraph{}
+Las notificaciones se visualizarán en una pestaña del sidebar como se muestra en la figura \ref{fig:sidebarNotifications}
+
+
+Las notificaciones en el sidebar estarán categorizadas por: canales, lecciones, grabaciones, conversations y contactos. Cada categoría se mostrará como un desplegable con la lista de las notificaciones correspondientes. Éstas podrán borrarse todas de una vez o independientemente. Al hacer click en cualquiera de ellas la aplicación navegará al contexto de la misma y la eliminará de la base de datos. Puesto que es un contenido accesible en todo momento, incluiremos la subscripción a la publicación que hemos desarrollado a la configuración global de Iron Router:
+\vspace{1cm}
+\begin{lstlisting}[language=Javascript]
+Router.configure({
+	waitOn: function(){
+		var subs = [
+			Meteor.subscribe('conversationAlerts',Meteor.userId()),
+			Meteor.subscribe('notifications',Meteor.userId())
+		];
+		return subs;
+	}
+})
+\end{lstlisting}
+\paragraph{} 
+Para la creación de las notificaciones se ha desarrollado el constructor
+\textbf{NotificationsCreator} (\emph{/app/client/lib/notificationsCreator.js}) del cual se genera una instancia nada más arrancar el cliente. Este objeto posee el método público .createNotification() que acepta los parámetros necesarios para su correcta creación. Según su tipo y su contexto generará un mensaje distinto. 
+\paragraph{}
+Las notificaciones cubren la mayoría de eventos en la aplicación entre los que destacan: el voto a los contenidos, los comentarios, la creación de contenido en canales y lecciones a los que el usuario se ha subscrito, cambios de usuarios en una conversación, creación de respuestas a grabaciones y peticiones de contacto.
+
+\subsection{Recursos de error}
+\subsubsection{404}
+El error 404 es devuelto por el servidor cuando los datos a los que intentamos acceder no existen. Esto puede deberse al acceso mediante url de algún recurso que ya no exista. Debe controlarse y se hace creando la plantilla \{\{$>$notFound\}\} (figura \ref{fig:notFound}). Necesitamos utilizarla en dos posibles situaciones: 
+\begin{itemize}
+	\item El usuario accede a un recurso que cuyos datos han sido borrados, pero el recurso es válido.
+	\item El usuario accede a un recurso inválido.
+\end{itemize}
+Los casos anteriores pueden ser controlados mediante Iron Router. El primero mediante el plugin 'dataNotFound' y el segundo mediante una nueva ruta colocada al final de todas las creadas y que acepte cualquier recurso. El siguiente código ilustra la configuración mencionada: 
+\vspace{0.5cm}
+\begin{lstlisting}[language=Javascript]
+Router.plugin('dataNotFound',{template: 'notFound'});
+Router.route('/(.*)',{name: 'notFound'});
+\end{lstlisting}
+\subsubsection{Access Denied}
+Si bien la aplicación no permite el acceso a contenidos privados para el usuario mediante el flujo diseñado, si que es posible alterar las urls para navegar al recurso privado, por lo que esto debe de controlarse.
+\paragraph{}
+Para ello se ha creado la plantilla \{\{$>$accessDenied\}\} (figura \ref{fig:accessDenied}), la cual se muestra cuando un usuario intenta editar algún recurso detalle del cual no es autor. Esto se consigue mediante los \textbf{hooks} de Iron Router, en concreto el hook .beforeAction(). He aquí un ejemplo: 
+\vspace{0.5cm}
+\begin{lstlisting}[language=Javascript]
+Router.route('/profile/:_id/edit',{
+	...
+	beforeAction: function(){
+		if (Meteor.userId() !== this.params.id){
+			this.render('accessDenied');
+		}else{
+			this.next();
+		}
+	}
+});
+\end{lstlisting}
+\paragraph{}
